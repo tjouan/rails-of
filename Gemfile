@@ -10,3 +10,5 @@ gem 'coffee-rails', '~> 4.0'
 
 gem 'jquery-rails', '~> 3.1'
 gem 'jbuilder',     '~> 2.0'
+
+gem 'tzinfo-data',  '~> 1.2014.2'
