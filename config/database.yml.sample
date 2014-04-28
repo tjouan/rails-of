@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: opti-front_development
+
+test:
+  <<: *default
+  database: opti-front_test
+
+production:
+  <<: *default
+  database: opti-front_production
