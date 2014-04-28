@@ -12,3 +12,8 @@ gem 'sass-rails',   '~> 4.0'
 gem 'uglifier',     '~> 1.3'
 
 gem 'jquery-rails', '~> 3.1'
+
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
