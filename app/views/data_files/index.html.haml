@@ -1,0 +1,17 @@
+%h1 Fichiers
+
+%table
+  %tr
+    %th Fichier
+    %th Actions
+
+  - @data_files.each do |data_file|
+    %tr
+      %td= link_to data_file.label, data_file
+      %td
+        %ul
+          %li= link_to 'Modifier', edit_data_file_path(data_file)
+          %li= link_to 'Supprimer', data_file, method: :delete, data: { confirm: 'Confirmez la suppression' }
+
+%p
+  = link_to 'Ajouter un fichier', new_data_file_path
