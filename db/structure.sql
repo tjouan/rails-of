@@ -36,6 +36,7 @@ SET default_with_oids = false;
 CREATE TABLE data_files (
     id integer NOT NULL,
     label character varying(255),
+    description character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
