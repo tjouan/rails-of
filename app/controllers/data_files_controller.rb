@@ -45,6 +45,6 @@ class DataFilesController < ApplicationController
   end
 
   def data_file_params
-    params.require(:data_file).permit(:label, :description)
+    params.require(:data_file).permit(:label, :description, :file)
   end
 end
