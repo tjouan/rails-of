@@ -30,12 +30,59 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: data_files; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE data_files (
+    id integer NOT NULL,
+    label character varying(255),
+    description character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: data_files_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE data_files_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: data_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE data_files_id_seq OWNED BY data_files.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY data_files ALTER COLUMN id SET DEFAULT nextval('data_files_id_seq'::regclass);
+
+
+--
+-- Name: data_files_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY data_files
+    ADD CONSTRAINT data_files_pkey PRIMARY KEY (id);
 
 
 --
@@ -51,5 +98,5 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 SET search_path TO "$user",public;
 
-
+INSERT INTO schema_migrations (version) VALUES ('20140502171133');
 
