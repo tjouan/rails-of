@@ -15,6 +15,7 @@ gem 'jquery-rails', '~> 3.1'
 
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails',        '~> 3.0.0.beta'
   gem 'factory_girl_rails', '~> 4.4'
   gem 'capybara',           '~> 2.2.1'
