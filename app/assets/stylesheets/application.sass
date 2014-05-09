@@ -74,3 +74,19 @@ body
   a:hover
     background-color: inherit
     color: $blue
+
+
+.actions
+  padding-left: 0
+
+  li
+    display: inline-block
+
+    &::before
+      content: " | "
+      background-color: inherit
+      color: $gray_light
+
+    &:first-child
+      &::before
+        content: ""
