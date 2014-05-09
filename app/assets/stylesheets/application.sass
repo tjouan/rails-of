@@ -1,11 +1,12 @@
 $black:         lighten(black, 10%)
+$white:         darken(white, 5%)
 
 $blue:          #0078b3
 $blue_light:    #5ca8de
 
-//$gray_dark:     #3f3f42
 $gray:          #6b6e70
 $gray_lighter:  lighten($gray, 57%)
+$gray_dark:     #3f3f42
 
 
 html
@@ -18,10 +19,40 @@ body
   margin: 0
 
 h1, h2, h3, a
-  background-color: transparent
+  background-color: inherit
   color: $blue
 
 a
   text-decoration: none
   &:hover
     text-decoration: underline
+
+
+body
+  margin: 0 auto
+  max-width: 72rem
+
+#header
+  text-align: right
+  overflow: auto
+
+  #logo
+    display: block
+    float: left
+
+  nav
+    ul li
+      display: inline-block
+
+    a
+      padding: .8rem 1.6rem
+      border-radius: .2rem
+
+      font-size: 1.2rem
+      font-variant: small-caps
+
+      background-color: $gray_dark
+      color: $white
+
+      &:hover
+        background-color: $blue

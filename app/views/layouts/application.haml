@@ -9,11 +9,19 @@
     = csrf_meta_tags
 
   %body
-    %header
-      HEADER
+    %header#header
+      = link_to image_tag('logo.png', size: '81x96', alt: 'OptiDM by DATACUBE'),
+          '/', id: 'logo'
+
+      %p
+        +33 1 23 45 67 89
 
       %nav
-        NAV
+        %ul
+          %li
+            = link_to 'Fichiers', data_files_path
+          %li
+            = link_to 'Contact'
 
     %main
       = yield
