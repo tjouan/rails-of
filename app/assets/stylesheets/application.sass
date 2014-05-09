@@ -1,0 +1,27 @@
+$black:         lighten(black, 10%)
+
+$blue:          #0078b3
+$blue_light:    #5ca8de
+
+//$gray_dark:     #3f3f42
+$gray:          #6b6e70
+$gray_lighter:  lighten($gray, 57%)
+
+
+html
+  font-size: 80%
+  font-family: sans-serif
+  background-color: $gray_lighter
+  color: $black
+
+body
+  margin: 0
+
+h1, h2, h3, a
+  background-color: transparent
+  color: $blue
+
+a
+  text-decoration: none
+  &:hover
+    text-decoration: underline
