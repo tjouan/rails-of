@@ -5,6 +5,7 @@ $blue:          #0078b3
 $blue_light:    #5ca8de
 
 $gray:          #6b6e70
+$gray_light:    lighten($gray, 20%)
 $gray_lighter:  lighten($gray, 57%)
 $gray_dark:     #3f3f42
 
@@ -56,3 +57,16 @@ body
 
       &:hover
         background-color: $blue
+
+#footer
+  margin-top: 3em
+  padding: 1em .5em
+  border-top: solid 1px $gray_light
+
+  &, a
+    background-color: $gray_dark
+    color: $gray_light
+
+  a:hover
+    background-color: inherit
+    color: $blue

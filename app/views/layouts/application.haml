@@ -26,5 +26,14 @@
     %main
       = yield
 
-    %footer
-      FOOTER
+    %footer#footer
+      %nav
+        %ul
+          %li
+            = link_to 'À propos'
+          %li
+            = link_to 'Mentions légales'
+          %li
+            = link_to 'Contact'
+          %li
+            = link_to '…'
