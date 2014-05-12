@@ -1,14 +1,21 @@
 %h1 Fichiers
 
-%table
+%table.data_files
   %tr
-    %th Fichier
-    %th Actions
+    %th
+      Fichier
+    %th.created_at
+      Ajouté le
+    %th.actions
+      Actions
 
   - @data_files.each do |data_file|
     %tr
-      %td= link_to data_file.label, data_file
-      %td
+      %td.label
+        = link_to data_file.label, data_file
+      %td.created_at
+        = data_file.created_at
+      %td.actions
         %ul.actions
           %li= link_to 'Modifier', edit_data_file_path(data_file)
           %li= link_to 'Supprimer', data_file, method: :delete, data: { confirm: 'Confirmez la suppression' }

@@ -3,6 +3,7 @@ $white:         darken(white, 5%)
 
 $blue:          #0078b3
 $blue_light:    #5ca8de
+$blue_lighter:  lighten($blue_light, 30%)
 
 $gray:          #6b6e70
 $gray_light:    lighten($gray, 20%)
@@ -99,3 +100,25 @@ body
     &:first-child
       &::before
         content: ""
+
+
+.data_files
+  width: 100%
+
+  th
+    border-bottom: solid 1px $gray_light
+
+  tr:hover
+    td
+      background-color: $blue_lighter
+      color: inherit
+
+  .label
+    width: 50%
+
+  .created_at,
+  .actions
+    text-align: right
+
+  .actions
+    margin: 0
