@@ -1,19 +1,30 @@
 = form_for @data_file do |f|
-  - if @data_file.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@data_file.errors.count, "error")} prohibited this data_file from being saved:"
-      %ul
-        - @data_file.errors.full_messages.each do |msg|
-          %li= msg
+  %fieldset
+    - if @data_file.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@data_file.errors.count, "error")} prohibited this data_file from being saved:"
+        %ul
+          - @data_file.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :file, 'Fichier'
-    = f.file_field :file
-  .field
-    = f.label :label
-    = f.text_field :label
-  .field
-    = f.label :description
-    = f.text_field :description
-  .actions
-    = f.submit 'Enregistrer'
+    %p.field
+      %label
+        Label
+        %br
+        = f.text_field :label
+
+    %p.field
+      = f.label :description
+      %br
+      = f.text_field :description
+
+    %p.field
+      = f.label :file, 'Fichier'
+      %br
+      = f.file_field :file
+
+  %ul.actions
+    %li
+      = f.submit 'Enregistrer'
+    %li
+      = link_to 'Retour', data_files_path

@@ -1,0 +1,39 @@
+!!!
+%html(lang='fr')
+  %head
+    %meta(charset='utf-8')
+    %title OptiDM
+
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+    %header#header
+      = link_to image_tag('logo.png', size: '81x96', alt: 'OptiDM by DATACUBE'),
+          '/', id: 'logo'
+
+      %p
+        +33 1 23 45 67 89
+
+      %nav
+        %ul
+          %li
+            = link_to 'Fichiers', data_files_path
+          %li
+            = link_to 'Contact'
+
+    %main
+      = yield
+
+    %footer#footer
+      %nav
+        %ul
+          %li
+            = link_to 'À propos'
+          %li
+            = link_to 'Mentions légales'
+          %li
+            = link_to 'Contact'
+          %li
+            = link_to '…'

@@ -1,0 +1,92 @@
+$black:         lighten(black, 10%)
+$white:         darken(white, 5%)
+
+$blue:          #0078b3
+$blue_light:    #5ca8de
+
+$gray:          #6b6e70
+$gray_light:    lighten($gray, 20%)
+$gray_lighter:  lighten($gray, 57%)
+$gray_dark:     #3f3f42
+
+
+html
+  font-size: 80%
+  font-family: sans-serif
+  background-color: $gray_lighter
+  color: $black
+
+body
+  margin: 0
+
+h1, h2, h3, a
+  background-color: inherit
+  color: $blue
+
+a
+  text-decoration: none
+  transition: background-color .2s
+  &:hover
+    text-decoration: underline
+
+fieldset
+  border: solid 1px $gray
+
+
+body
+  margin: 0 auto
+  max-width: 72rem
+
+#header
+  text-align: right
+  overflow: auto
+
+  #logo
+    display: block
+    float: left
+
+  nav
+    ul li
+      display: inline-block
+
+    a
+      padding: .8rem 1.6rem
+      border-radius: .2rem
+
+      font-size: 1.2rem
+      font-variant: small-caps
+
+      background-color: $gray_dark
+      color: $white
+
+      &:hover
+        background-color: $blue
+
+#footer
+  margin-top: 3em
+  padding: 1em .5em
+  border-top: solid 1px $gray_light
+
+  &, a
+    background-color: $gray_dark
+    color: $gray_light
+
+  a:hover
+    background-color: inherit
+    color: $blue
+
+
+.actions
+  padding-left: 0
+
+  li
+    display: inline-block
+
+    &::before
+      content: " | "
+      background-color: inherit
+      color: $gray_light
+
+    &:first-child
+      &::before
+        content: ""
