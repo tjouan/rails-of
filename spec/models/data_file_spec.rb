@@ -17,16 +17,19 @@ describe DataFile do
   end
 
   describe '#file=' do
-    let(:file)          { File.new(File.join(fixture_path, 'sample_0.csv')) }
+    let(:file)          { fixture_file_upload '/sample_0.csv', 'text/csv' }
     subject(:data_file) { FactoryGirl.create(:data_file) }
 
     before do
-      allow(file).to receive(:content_type) { 'text/csv' }
       data_file.file = file
     end
 
     it 'copies the file' do
       expect(File.read(data_file.path)).to eq file.read
+    end
+
+    it 'updates the file name' do
+      expect(data_file.file_name).to eq 'sample_0.csv'
     end
 
     it 'updates the mime type' do

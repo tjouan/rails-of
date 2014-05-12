@@ -5,6 +5,7 @@ class CreateDataFiles < ActiveRecord::Migration
 
       t.string :label
       t.string :description
+      t.string :file_name
       t.string :mime_type
     end
   end

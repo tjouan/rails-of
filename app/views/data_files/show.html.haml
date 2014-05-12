@@ -7,5 +7,5 @@
   = @data_file.description
 
 %p
-  %b Type de fichier :
-  = @data_file.mime_type
+  %b Fichier :
+  = '%s (%s)' % [@data_file.file_name, @data_file.mime_type]
