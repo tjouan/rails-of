@@ -18,7 +18,8 @@ gem 'jquery-rails',   '~> 3.1'
 group :development, :test do
   gem 'pry'
 
-  gem 'rspec-rails',        '~> 3.0.0.beta'
+  gem 'rspec',              '~> 3.0.0.beta2'
+  gem 'rspec-rails',        '~> 3.0.0.beta2'
 
   gem 'factory_girl_rails', '~> 4.4'
 
