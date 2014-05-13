@@ -12,4 +12,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   #config.order = 'random'
+  config.after :all do
+    `rm -f #{Rails.configuration.data_files_path}/*`
+  end
 end
