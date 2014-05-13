@@ -3,7 +3,9 @@ require 'spec_helper'
 describe Source do
   subject(:source) { FactoryGirl.build(:source) }
 
-  it { is_expected.to be_valid }
+  it 'is valid' do
+    expect(source).to be_valid
+  end
 
   describe 'path' do
     subject(:source) { FactoryGirl.build(:source_with_file) }

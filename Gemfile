@@ -18,8 +18,8 @@ gem 'jquery-rails',   '~> 3.1'
 group :development, :test do
   gem 'pry'
 
-  gem 'rspec',              '~> 3.0.0.beta2'
-  gem 'rspec-rails',        '~> 3.0.0.beta2'
+  gem 'rspec',              '~> 2.14'
+  gem 'rspec-rails',        '~> 2.14'
 
   gem 'factory_girl_rails', '~> 4.4'
 
@@ -30,4 +30,8 @@ group :development, :test do
 
   gem 'guard-rspec',        '~> 4.2.9', require: false
   gem 'celluloid',          '0.16.0.pre', require: false
+
+  gem 'spork',              '~> 1.0rc'
+  gem 'spork-rails',        '~> 4.0'
+  gem 'guard-spork',        '~> 1.5'
 end
