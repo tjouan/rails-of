@@ -25,6 +25,6 @@ group :development, :test do
 
   gem 'capybara',           '~> 2.2.1'
 
-  gem 'guard-rspec',        '~> 4.2', require: false
+  gem 'guard-rspec',        '~> 4.2.9', require: false
   gem 'celluloid',          '0.16.0.pre', require: false
 end
