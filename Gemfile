@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'rails',          '~> 4.1'
+gem 'rails',          '~> 4.1.1'
 gem 'pg',             '~> 0.17'
 gem 'tzinfo-data',    '~> 1.2014.2'
 gem 'unicorn-rails',  '~> 2.1'
