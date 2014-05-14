@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Data files' do
+feature 'Data files CRUD' do
   scenario 'lists data files' do
     FactoryGirl.create(:data_file, label: 'some file')
     FactoryGirl.create(:data_file, label: 'other file')
