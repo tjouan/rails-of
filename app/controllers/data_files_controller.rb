@@ -19,7 +19,11 @@ class DataFilesController < ApplicationController
     @data_file = DataFile.new(data_file_params)
 
     if @data_file.save
-      redirect_to data_files_path
+      if @data_file.mime_type
+        redirect_to edit_data_file_header_path(@data_file)
+      else
+        redirect_to data_files_path
+      end
     else
       render :new
     end
@@ -45,6 +49,8 @@ class DataFilesController < ApplicationController
   end
 
   def data_file_params
-    params.require(:data_file).permit(:label, :description, :file)
+    p = params.require(:data_file).permit(:label, :description, :file, :header)
+    p[:header] = p[:header].to_i == 1 ? {} : nil
+    p
   end
 end

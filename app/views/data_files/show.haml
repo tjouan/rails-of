@@ -14,6 +14,10 @@
   %p
     %b Aucun fichier attaché.
 
+%p
+  %b En-tête :
+  = @data_file.header ? 'Oui' : 'Non'
+
 %ul.actions
   %li
     = link_to 'Retour', data_files_path
