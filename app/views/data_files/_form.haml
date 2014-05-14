@@ -21,7 +21,7 @@
 
     %p.field
       %label
-        - if @data_file.new_record? || @data_file.mime_type.nil?
+        - if @data_file.new_record? || !@data_file.file?
           Fichier
         - else
           = "Modifier le fichier actuel (#{@data_file.file_name})"

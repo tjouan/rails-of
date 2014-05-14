@@ -34,4 +34,20 @@ describe DataFile do
       expect(data_file.mime_type).to eq 'text/csv'
     end
   end
+
+  describe '#file?' do
+    context 'without a file' do
+      it 'returns false' do
+        expect(data_file.file?).to be false
+      end
+    end
+
+    context 'with a file' do
+      subject(:data_file) { FactoryGirl.build(:data_file_with_file) }
+
+      it 'returns true' do
+        expect(data_file.file?).to be true
+      end
+    end
+  end
 end

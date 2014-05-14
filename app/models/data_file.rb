@@ -12,4 +12,8 @@ class DataFile < ActiveRecord::Base
     self.file_name = Pathname.new(file.original_filename).to_s
     self.mime_type = file.content_type
   end
+
+  def file?
+    !!sha256
+  end
 end
