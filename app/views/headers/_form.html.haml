@@ -11,6 +11,20 @@
           - @data_file.errors.full_messages.each do |msg|
             %li= msg
 
+    %table
+      %thead
+        %tr
+          %th Nom
+          %th Type
+      %tbody
+        - @data_file.editable_header.each do |k, v|
+          %tr
+            %td.data_file_header_key
+              = text_field_tag(:data_file_header_key_text, k)
+            %td.data_file_header_type
+              = select_tag(:data_file_header_type, options_for_select(DataFile::TYPES))
+
+
   %ul.actions
     %li
       = f.submit 'Enregistrer'

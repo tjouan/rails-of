@@ -50,4 +50,39 @@ describe DataFile do
       end
     end
   end
+
+  describe '#editable_header' do
+    subject(:data_file) { FactoryGirl.build(:data_file_with_file) }
+
+    context 'file without header' do
+      it 'returns the placeholder' do
+        expect(data_file.editable_header).to eq({
+          'Champ 1' => nil,
+          'Champ 2' => nil,
+          'Champ 3' => nil
+        })
+      end
+    end
+
+    context 'file with header' do
+      let(:header) { { some_header_key: nil } }
+
+      before do
+        data_file.header = {}
+        allow(data_file).to receive(:file_header) { header }
+      end
+
+      it 'returns the file header' do
+        expect(data_file.editable_header).to eq header
+      end
+    end
+  end
+
+  describe '#file_header' do
+    subject(:data_file) { FactoryGirl.build(:data_file_with_file) }
+
+    it 'detects keys' do
+      expect(data_file.file_header).to eq ['name', 'score', 'active']
+    end
+  end
 end
