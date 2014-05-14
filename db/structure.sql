@@ -55,7 +55,8 @@ CREATE TABLE data_files (
     description character varying(255),
     sha256 character varying(255),
     file_name character varying(255),
-    mime_type character varying(255)
+    mime_type character varying(255),
+    header hstore
 );
 
 
