@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-feature 'Data files header' do
+feature 'Sources header' do
   def create_file(header: false)
-    visit new_data_file_path
+    visit new_source_path
     if header
       check 'en-tête'
     else
       uncheck 'en-tête'
     end
-    attach_file 'data_file_file', File.join(fixture_path, '3col_header.csv')
+    attach_file 'source_file', File.join(fixture_path, '3col_header.csv')
     click_button 'Enregistrer'
   end
 
@@ -16,22 +16,22 @@ feature 'Data files header' do
     create_file
   end
 
-  scenario 'updates a data file without header' do
-    visit data_file_path(DataFile.last)
+  scenario 'updates a source without header' do
+    visit source_path(Source.last)
 
     expect(page.body).to match /en-tête.+non/im
   end
 
-  scenario 'updates a data file with header' do
+  scenario 'updates a source with header' do
     create_file(header: true)
-    visit data_file_path(DataFile.last)
+    visit source_path(Source.last)
 
     expect(page.body).to match /en-tête.+oui/im
   end
 
   context 'edit' do
     scenario 'detects columns count' do
-      expect(page.all('main form .data_file_header_key').size).to eq 3
+      expect(page.all('main form .source_header_key').size).to eq 3
     end
 
     scenario 'detects header' do
@@ -40,7 +40,7 @@ feature 'Data files header' do
     end
 
     scenario 'list available data types' do
-      expect(page).to have_select('data_file_header_type', options: [
+      expect(page).to have_select('source_header_type', options: [
         'chaîne de caractères',
         'entier'
       ])

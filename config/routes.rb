@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :data_files do
+  resources :sources do
     resource :header, only: :edit
   end
 end

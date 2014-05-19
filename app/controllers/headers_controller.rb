@@ -1,12 +1,12 @@
 class HeadersController < ApplicationController
-  before_action :set_data_file, only: :edit
+  before_action :set_source, only: :edit
 
   def edit
   end
 
   private
 
-  def set_data_file
-    @data_file = DataFile.find(params[:data_file_id])
+  def set_source
+    @source = Source.find(params[:source_id])
   end
 end

@@ -13,6 +13,6 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   #config.order = 'random'
   config.after :all do
-    `rm -f #{Rails.configuration.data_files_path}/*`
+    `rm -f #{Rails.configuration.sources_path}/*`
   end
 end

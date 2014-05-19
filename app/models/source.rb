@@ -1,4 +1,4 @@
-class DataFile < ActiveRecord::Base
+class Source < ActiveRecord::Base
   require 'fileutils'
   require 'pathname'
   require 'csv'
@@ -11,7 +11,7 @@ class DataFile < ActiveRecord::Base
   ].freeze
 
   def path
-    File.join(Rails.configuration.data_files_path, sha256)
+    File.join(Rails.configuration.sources_path, sha256)
   end
 
   def file=(file)

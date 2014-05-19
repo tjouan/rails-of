@@ -1,6 +1,6 @@
-class CreateDataFiles < ActiveRecord::Migration
+class CreateSources < ActiveRecord::Migration
   def change
-    create_table :data_files do |t|
+    create_table :sources do |t|
       t.timestamps
 
       t.string :label

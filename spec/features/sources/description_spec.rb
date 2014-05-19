@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature 'Data files description' do
-  scenario 'associates description to a data file' do
-    FactoryGirl.create(:data_file, label: 'some file')
-    visit data_files_path
+feature 'Sources description' do
+  scenario 'associates description to a source' do
+    FactoryGirl.create(:source, label: 'some file')
+    visit sources_path
 
     click_link 'Modifier'
     fill_in 'Description', with: 'some description'

@@ -1,0 +1,24 @@
+%h1 Fichiers
+
+%table.sources
+  %tr
+    %th
+      Fichier
+    %th.created_at
+      Ajouté le
+    %th.actions
+      Actions
+
+  - @sources.each do |source|
+    %tr
+      %td.label
+        = link_to source.label, source
+      %td.created_at
+        = source.created_at
+      %td.actions
+        %ul.actions
+          %li= link_to 'Modifier', edit_source_path(source)
+          %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
+
+%p
+  = link_to 'Ajouter un fichier', new_source_path

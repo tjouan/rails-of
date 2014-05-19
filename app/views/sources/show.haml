@@ -1,0 +1,23 @@
+%h1
+  Fichier
+  = @source.label
+
+%p
+  %b Description :
+  = simple_format @source.description
+
+- if @source.file?
+  %p
+    %b Fichier :
+    = '%s (%s)' % [@source.file_name, @source.mime_type]
+- else
+  %p
+    %b Aucun fichier attaché.
+
+%p
+  %b En-tête :
+  = @source.header ? 'Oui' : 'Non'
+
+%ul.actions
+  %li
+    = link_to 'Retour', sources_path
