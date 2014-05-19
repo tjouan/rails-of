@@ -1,1 +1,4 @@
-test,foo,bar
+name,score,active
+foo,42,1
+bar,13,1
+baz,32,0

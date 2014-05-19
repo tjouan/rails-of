@@ -1,0 +1,32 @@
+= form_for @data_file do |f|
+  %fieldset
+    %legend
+      En-tête du fichier
+      = '« %s »' % [@data_file.label]
+
+    - if @data_file.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@data_file.errors.count, "error")} prohibited this data_file from being saved:"
+        %ul
+          - @data_file.errors.full_messages.each do |msg|
+            %li= msg
+
+    %table
+      %thead
+        %tr
+          %th Nom
+          %th Type
+      %tbody
+        - @data_file.editable_header.each do |k, v|
+          %tr
+            %td.data_file_header_key
+              = text_field_tag(:data_file_header_key_text, k)
+            %td.data_file_header_type
+              = select_tag(:data_file_header_type, options_for_select(DataFile::TYPES))
+
+
+  %ul.actions
+    %li
+      = f.submit 'Enregistrer'
+    %li
+      = link_to 'Retour', data_files_path

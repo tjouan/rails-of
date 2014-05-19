@@ -19,14 +19,19 @@
         %br
         = f.text_area :description
 
-    %p.field
-      %label
-        - if @data_file.new_record? || @data_file.mime_type.nil?
-          Fichier
-        - else
-          = "Modifier le fichier actuel (#{@data_file.file_name})"
-        %br
-        = f.file_field :file
+    %fieldset
+      %legend Fichier
+
+      %p.field
+        %label
+          - unless @data_file.new_record? || !@data_file.file?
+            = "Modifier le fichier actuel (#{@data_file.file_name})"
+            %br
+          = f.file_field :file
+
+      %p.field
+        = f.check_box :header
+        = f.label :header, 'ce fichier comporte un en-tête'
 
   %ul.actions
     %li

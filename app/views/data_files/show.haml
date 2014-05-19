@@ -6,13 +6,17 @@
   %b Description :
   = simple_format @data_file.description
 
-- if @data_file.mime_type
+- if @data_file.file?
   %p
     %b Fichier :
     = '%s (%s)' % [@data_file.file_name, @data_file.mime_type]
 - else
   %p
     %b Aucun fichier attaché.
+
+%p
+  %b En-tête :
+  = @data_file.header ? 'Oui' : 'Non'
 
 %ul.actions
   %li
