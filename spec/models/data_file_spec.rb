@@ -27,7 +27,7 @@ describe DataFile do
     end
 
     it 'updates the file name' do
-      expect(data_file.file_name).to eq 'sample_0.csv'
+      expect(data_file.file_name).to eq '3col_header.csv'
     end
 
     it 'updates the mime type' do

@@ -8,7 +8,7 @@ feature 'Data files header' do
     else
       uncheck 'en-tête'
     end
-    attach_file 'data_file_file', File.join(fixture_path, 'sample_0.csv')
+    attach_file 'data_file_file', File.join(fixture_path, '3col_header.csv')
     click_button 'Enregistrer'
   end
 
