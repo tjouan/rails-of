@@ -9,31 +9,33 @@
     = csrf_meta_tags
 
   %body
-    %header#header
-      = link_to image_tag('logo.png', size: '246x96', alt: 'OptiDM by DATACUBE'),
-          '/', id: 'logo'
+    .header_wrapper
+      %header#header
+        = link_to image_tag('logo.png', size: '246x96', alt: 'OptiDM by DATACUBE'),
+            '/', id: 'logo'
 
-      %p
-        +33 1 23 45 67 89
+        %p
+          +33 1 23 45 67 89
 
-      %nav
-        %ul
-          %li
-            = link_to 'Fichiers', sources_path
-          %li
-            = link_to 'Contact'
+        %nav
+          %ul
+            %li
+              = link_to 'Fichiers', sources_path
+            %li
+              = link_to 'Contact'
 
     %main
       = yield
 
-    %footer#footer
-      %nav
-        %ul
-          %li
-            = link_to 'À propos'
-          %li
-            = link_to 'Mentions légales'
-          %li
-            = link_to 'Contact'
-          %li
-            = link_to '…'
+    .footer_wrapper
+      %footer#footer
+        %nav
+          %ul
+            %li
+              = link_to 'À propos'
+            %li
+              = link_to 'Mentions légales'
+            %li
+              = link_to 'Contact'
+            %li
+              = link_to '…'

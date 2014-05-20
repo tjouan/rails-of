@@ -35,14 +35,21 @@ a
 
 fieldset
   border: solid 1px $gray
+  background: $gray_lighter
+  color: inherit
 
 
 // structure
 ////////////
 
-body
+#header,
+body > main,
+#footer
   margin: 0 auto
   max-width: 72rem
+
+.header_wrapper
+  box-shadow: 0 -4px 16px $gray_light
 
 #header
   text-align: right
@@ -71,9 +78,8 @@ body
       &:hover
         background-color: $blue
 
-#footer
+.footer_wrapper
   margin-top: 3rem
-  padding: 1rem .5rem
   border-top: solid 1px $gray_light
 
   &, a
@@ -83,6 +89,9 @@ body
   a:hover
     background-color: inherit
     color: $blue
+
+#footer
+  padding: 1rem .5rem
 
   ul
     list-style-type: none
