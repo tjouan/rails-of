@@ -6,13 +6,9 @@
   %b Description :
   = simple_format @source.description
 
-- if @source.file?
-  %p
-    %b Fichier :
-    = '%s (%s)' % [@source.file_name, @source.mime_type]
-- else
-  %p
-    %b Aucun fichier attaché.
+%p
+  %b Fichier :
+  = '%s (%s)' % [@source.file_name, @source.mime_type]
 
 %p
   %b En-tête :

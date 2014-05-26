@@ -21,10 +21,6 @@ class Source < ActiveRecord::Base
     self.mime_type = file.content_type
   end
 
-  def file?
-    !!sha256
-  end
-
   def editable_header
     return file_header if header
     file.shift.inject({}) do |m, e|

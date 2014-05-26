@@ -37,22 +37,6 @@ describe Source do
     end
   end
 
-  describe '#file?' do
-    context 'without a file' do
-      it 'returns false' do
-        expect(source.file?).to be false
-      end
-    end
-
-    context 'with a file' do
-      subject(:source) { FactoryGirl.build(:source_with_file) }
-
-      it 'returns true' do
-        expect(source.file?).to be true
-      end
-    end
-  end
-
   describe '#editable_header' do
     subject(:source) { FactoryGirl.build(:source_with_file) }
 
