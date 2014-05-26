@@ -7,7 +7,7 @@ guard :spork, rspec_env: { RAILS_ENV: 'test' } do
   watch('spec/spec_helper.rb') { :rspec }
 end
 
-guard :rspec, cmd: 'bundle exec rspec --drb -f doc' do
+guard :rspec, cmd: 'bundle exec rspec --drb -f doc', failed_mode: :keep do
   watch(%r{^spec/.+_spec\.rb$})
 
   watch('spec/spec_helper.rb')        { 'spec' }
