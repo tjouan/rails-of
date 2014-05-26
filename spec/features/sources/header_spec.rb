@@ -27,7 +27,7 @@ feature 'Sources header' do
     end
 
     scenario 'list available data types' do
-      expect(page).to have_select('source_header_type', options: Source::TYPES)
+      expect(page).to have_select('source_header_type', options: Source.types)
     end
   end
 end

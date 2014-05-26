@@ -22,7 +22,7 @@
             %td.source_header_key
               = text_field_tag(:source_header_key_text, e.name)
             %td.source_header_type
-              = select_tag(:source_header_type, options_for_select(Source::TYPES))
+              = select_tag(:source_header_type, options_for_select(Source.types))
 
 
   %ul.actions

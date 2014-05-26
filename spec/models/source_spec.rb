@@ -7,7 +7,18 @@ describe Source do
     expect(source).to be_valid
   end
 
-  describe 'path' do
+  describe '.types' do
+    it 'returns all types' do
+      expect(described_class.types.size).to eq Source::TYPES.size
+    end
+
+    it 'capitalizes types' do
+      char = described_class.types.first[0]
+      expect(char).to eq char.upcase
+    end
+  end
+
+  describe '#path' do
     subject(:source) { FactoryGirl.build(:source_with_file) }
 
     it 'returns the attached file path' do

@@ -6,11 +6,20 @@ class Source < ActiveRecord::Base
   HEADER_PLACEHOLDER = 'Champ %d'.freeze
 
   TYPES = [
-    'chaîne de caractères',
-    'entier'
+    'texte',
+    'entier',
+    'flottant',
+    'date',
+    'texte long'
   ].freeze
 
   has_many :headers, dependent: :destroy
+
+  class << self
+    def types
+      TYPES.map(&:capitalize)
+    end
+  end
 
   def path
     File.join(Rails.configuration.sources_path, sha256)
