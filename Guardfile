@@ -20,5 +20,5 @@ guard :rspec, cmd: 'bundle exec rspec --drb -f doc' do
 
   watch('app/controllers/application_controller.rb')  { 'spec/controllers' }
 
-  watch(%r{^app/views/layouts/.+})    { 'spec/features' }
+  watch(%r{^app/views/.+})            { 'spec/features' }
 end
