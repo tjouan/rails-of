@@ -17,10 +17,10 @@
           %th Nom
           %th Type
       %tbody
-        - @source.editable_header.each do |k, v|
+        - @source.headers.each do |e|
           %tr
             %td.source_header_key
-              = text_field_tag(:source_header_key_text, k)
+              = text_field_tag(:source_header_key_text, e.name)
             %td.source_header_type
               = select_tag(:source_header_type, options_for_select(Source::TYPES))
 

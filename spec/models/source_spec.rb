@@ -37,29 +37,38 @@ describe Source do
     end
   end
 
-  describe '#editable_header' do
-    subject(:source) { FactoryGirl.build(:source_with_file) }
-
-    context 'file without header' do
-      it 'returns the placeholder' do
-        expect(source.editable_header).to eq({
-          'Champ 1' => nil,
-          'Champ 2' => nil,
-          'Champ 3' => nil
-        })
+  describe '#header?' do
+    context 'without header' do
+      it 'returns false' do
+        expect(source.header?).to be false
       end
     end
 
-    context 'file with header' do
-      let(:header) { { some_header_key: nil } }
+    context 'with at least a header' do
+      before { source.headers = [Header.new] }
 
-      before do
-        source.header = {}
-        allow(source).to receive(:file_header) { header }
+      it 'returns true' do
+        expect(source.header?).to be true
       end
+    end
+  end
 
-      it 'returns the file header' do
-        expect(source.editable_header).to eq header
+  describe '#detect_headers!' do
+    subject(:source) { FactoryGirl.build(:source_with_file) }
+
+    context 'not detecting from file' do
+      it 'builds placeholder headers' do
+        source.detect_headers!
+        expect(source.headers.size).to eq 3
+        expect(source.headers.last.name).to eq 'Champ 3'
+      end
+    end
+
+    context 'detecting from file' do
+      it 'builds headers from file content' do
+        source.detect_headers! true
+        expect(source.headers.size).to eq 3
+        expect(source.headers.last.name).to eq 'active'
       end
     end
   end

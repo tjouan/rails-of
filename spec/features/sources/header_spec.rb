@@ -16,19 +16,6 @@ feature 'Sources header' do
     create_file
   end
 
-  scenario 'updates a source without header' do
-    visit source_path(Source.last)
-
-    expect(page.body).to match /en-tête.+non/im
-  end
-
-  scenario 'updates a source with header' do
-    create_file(header: true)
-    visit source_path(Source.last)
-
-    expect(page.body).to match /en-tête.+oui/im
-  end
-
   context 'edit' do
     scenario 'detects columns count' do
       expect(page.all('main form .source_header_key').size).to eq 3
@@ -40,10 +27,7 @@ feature 'Sources header' do
     end
 
     scenario 'list available data types' do
-      expect(page).to have_select('source_header_type', options: [
-        'chaîne de caractères',
-        'entier'
-      ])
+      expect(page).to have_select('source_header_type', options: Source::TYPES)
     end
   end
 end

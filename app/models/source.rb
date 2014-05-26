@@ -10,6 +10,8 @@ class Source < ActiveRecord::Base
     'entier'
   ].freeze
 
+  has_many :headers, dependent: :destroy
+
   def path
     File.join(Rails.configuration.sources_path, sha256)
   end
@@ -21,12 +23,17 @@ class Source < ActiveRecord::Base
     self.mime_type = file.content_type
   end
 
-  def editable_header
-    return file_header if header
-    file.shift.inject({}) do |m, e|
-      k = HEADER_PLACEHOLDER % [m.size + 1]
-      m[k] = nil
-      m
+  def header?
+    headers.any?
+  end
+
+  def detect_headers!(from_file = false)
+    if from_file
+      file_header.each { |e| headers.build name: e }
+    else
+      file.shift.each_with_index do |e, k|
+        headers.build name: HEADER_PLACEHOLDER % [k + 1]
+      end
     end
   end
 

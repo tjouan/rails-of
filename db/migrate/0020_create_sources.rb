@@ -9,8 +9,6 @@ class CreateSources < ActiveRecord::Migration
       t.string :sha256
       t.string :file_name
       t.string :mime_type
-
-      t.hstore :header
     end
   end
 end

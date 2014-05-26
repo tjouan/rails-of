@@ -1,7 +1,8 @@
 class HeadersController < ApplicationController
-  before_action :set_source, only: :edit
+  before_action :set_source, only: :new
 
-  def edit
+  def new
+    @source.detect_headers! params[:header]
   end
 
   private

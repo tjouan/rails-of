@@ -27,8 +27,9 @@
           = f.file_field :file
 
         %p.field
-          = f.check_box :header
-          = f.label :header, 'ce fichier comporte un en-tête'
+          %label
+            = check_box_tag :header
+            ce fichier comporte un en-tête
 
   %ul.actions
     %li

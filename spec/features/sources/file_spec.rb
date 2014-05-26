@@ -17,8 +17,8 @@ feature 'Sources file' do
     expect(page.body).to include 'text/csv'
   end
 
-  scenario 'redirects to header edit' do
+  scenario 'redirects to header new' do
     create_new_source_with_file
-    expect(current_path).to eq edit_source_header_path(Source.last)
+    expect(current_path).to eq new_source_headers_path(Source.last)
   end
 end
