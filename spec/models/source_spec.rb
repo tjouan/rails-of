@@ -7,15 +7,8 @@ describe Source do
     expect(source).to be_valid
   end
 
-  describe '.types' do
-    it 'returns all types' do
-      expect(described_class.types.size).to eq Source::TYPES.size
-    end
-
-    it 'capitalizes types' do
-      char = described_class.types.first[0]
-      expect(char).to eq char.upcase
-    end
+  it 'accepts nested attributes for headers' do
+    expect(source).to accept_nested_attributes_for :headers
   end
 
   describe '#path' do

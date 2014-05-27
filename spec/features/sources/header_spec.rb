@@ -27,7 +27,23 @@ feature 'Sources header' do
     end
 
     scenario 'list available data types' do
-      expect(page).to have_select('source_header_type', options: Source.types)
+      expect(page).to have_select(
+        'source[headers_attributes][0][type]',
+        with_options: %w[Texte Entier]
+      )
+    end
+  end
+
+  context 'create' do
+    scenario 'creates header' do
+      click_button 'Enregistrer'
+      visit source_path(Source.last)
+
+      expect(page.all('main table tbody td').map(&:text)).to eq [
+        'Champ 1', 'Texte',
+        'Champ 2', 'Texte',
+        'Champ 3', 'Texte'
+      ]
     end
   end
 end

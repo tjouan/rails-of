@@ -19,11 +19,7 @@ class SourcesController < ApplicationController
     @source = Source.new(source_params)
 
     if @source.save
-      if @source.mime_type
-        redirect_to new_source_headers_path(@source, header: params[:header])
-      else
-        redirect_to sources_path
-      end
+      redirect_to new_source_headers_path(@source, header: params[:header])
     else
       render :new
     end
@@ -49,6 +45,8 @@ class SourcesController < ApplicationController
   end
 
   def source_params
-    params.require(:source).permit(:label, :description, :file)
+    params.require(:source).permit(:label, :description, :file, {
+      headers_attributes: [:name, :type]
+    })
   end
 end

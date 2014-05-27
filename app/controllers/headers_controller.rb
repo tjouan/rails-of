@@ -3,6 +3,7 @@ class HeadersController < ApplicationController
 
   def new
     @source.detect_headers! params[:header]
+    @types = Header::TYPES
   end
 
   private

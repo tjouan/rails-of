@@ -17,12 +17,12 @@
           %th Nom
           %th Type
       %tbody
-        - @source.headers.each do |e|
+        = f.fields_for :headers do |hf|
           %tr
             %td.source_header_key
-              = text_field_tag(:source_header_key_text, e.name)
+              = hf.text_field :name
             %td.source_header_type
-              = select_tag(:source_header_type, options_for_select(Source.types))
+              = hf.select(:type, @types.map { |k, v| [v.capitalize, k] })
 
 
   %ul.actions
