@@ -23,6 +23,8 @@ group :development, :test do
 
   gem 'factory_girl_rails', '~> 4.4'
 
+  gem 'shoulda-matchers',   '~> 2.6'
+
   # FIXME: use master until next release
   # https://github.com/jnicklas/capybara/issues/1254
   #gem 'capybara',           '~> 2.2.1'
