@@ -16,7 +16,7 @@ feature 'Sources header' do
     create_file
   end
 
-  context 'edit' do
+  context 'new' do
     scenario 'detects columns count' do
       expect(page.all('main form .source_header_key').size).to eq 3
     end

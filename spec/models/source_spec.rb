@@ -28,7 +28,7 @@ describe Source do
   end
 
   describe '#file=' do
-    let(:file)          { FactoryGirl.attributes_for(:source_with_file)[:file] }
+    let(:file)       { FactoryGirl.attributes_for(:source_with_file)[:file] }
     subject(:source) { FactoryGirl.build(:source_with_file) }
 
     it 'copies the file' do
