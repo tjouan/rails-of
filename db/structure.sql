@@ -79,9 +79,9 @@ CREATE TABLE sources (
     id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    label character varying(255),
+    label character varying(255) NOT NULL,
     description character varying(255),
-    sha256 character varying(255),
+    sha256 character varying(255) NOT NULL,
     file_name character varying(255),
     mime_type character varying(255)
 );
