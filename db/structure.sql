@@ -63,6 +63,37 @@ ALTER SEQUENCE headers_id_seq OWNED BY headers.id;
 
 
 --
+-- Name: operations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE operations (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    name character varying(255) NOT NULL
+);
+
+
+--
+-- Name: operations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE operations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: operations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE operations_id_seq OWNED BY operations.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -117,6 +148,13 @@ ALTER TABLE ONLY headers ALTER COLUMN id SET DEFAULT nextval('headers_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY operations ALTER COLUMN id SET DEFAULT nextval('operations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY sources ALTER COLUMN id SET DEFAULT nextval('sources_id_seq'::regclass);
 
 
@@ -126,6 +164,14 @@ ALTER TABLE ONLY sources ALTER COLUMN id SET DEFAULT nextval('sources_id_seq'::r
 
 ALTER TABLE ONLY headers
     ADD CONSTRAINT headers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: operations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY operations
+    ADD CONSTRAINT operations_pkey PRIMARY KEY (id);
 
 
 --
@@ -152,4 +198,6 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
+
+INSERT INTO schema_migrations (version) VALUES ('40');
 

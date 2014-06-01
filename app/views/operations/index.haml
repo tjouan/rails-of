@@ -1,0 +1,8 @@
+%h1 Analyses
+
+
+- if @operations.any?
+  %ul
+    - @operations.each do |operation|
+      %li
+        = link_to operation.name, operation
