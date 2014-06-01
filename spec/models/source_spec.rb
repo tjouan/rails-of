@@ -12,8 +12,6 @@ describe Source do
   end
 
   describe '#path' do
-    subject(:source) { FactoryGirl.build(:source_with_file) }
-
     it 'returns the attached file path' do
       expect(source.path)
         .to eq "#{Rails.configuration.sources_path}/#{source.sha256}"
@@ -21,8 +19,7 @@ describe Source do
   end
 
   describe '#file=' do
-    let(:file)       { FactoryGirl.attributes_for(:source_with_file)[:file] }
-    subject(:source) { FactoryGirl.build(:source_with_file) }
+    let(:file) { FactoryGirl.attributes_for(:source)[:file] }
 
     it 'copies the file' do
       expect(File.read(source.path)).to eq file.read
@@ -58,8 +55,6 @@ describe Source do
   end
 
   describe '#detect_headers!' do
-    subject(:source) { FactoryGirl.build(:source_with_file) }
-
     context 'not detecting from file' do
       it 'builds placeholder headers' do
         source.detect_headers!
@@ -78,8 +73,6 @@ describe Source do
   end
 
   describe '#file_header' do
-    subject(:source) { FactoryGirl.build(:source_with_file) }
-
     it 'detects keys' do
       expect(source.file_header).to eq ['name', 'score', 'active']
     end
