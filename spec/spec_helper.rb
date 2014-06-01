@@ -14,7 +14,6 @@ Spork.prefork do
     config.include ActionDispatch::TestProcess
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
     config.use_transactional_fixtures = true
-    #config.order = 'random'
     config.after :all do
       `rm -f #{Rails.configuration.sources_path}/*`
     end
@@ -22,13 +21,5 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  # FIXME: it's not only the output, but even running test seems broken
-  #if Spork.using_spork?
-  #  RSpec.configure do |config|
-  #    config.reset
-  #    config.output_stream = $stdout
-  #  end
-  #end
-
   FactoryGirl.reload
 end
