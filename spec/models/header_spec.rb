@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Header do
-  subject(:header) { FactoryGirl.build(:header) }
+  subject(:header) { build :header }
 
   it 'is valid' do
     expect(header).to be_valid

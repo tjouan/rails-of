@@ -12,6 +12,7 @@ Spork.prefork do
   RSpec.configure do |config|
     # required for fixture_file_upload method
     config.include ActionDispatch::TestProcess
+    config.include FactoryGirl::Syntax::Methods
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
     config.use_transactional_fixtures = true
     config.after :all do

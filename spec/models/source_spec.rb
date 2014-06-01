@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Source do
-  subject(:source) { FactoryGirl.build(:source) }
+  subject(:source) { build :source }
 
   it 'is valid' do
     expect(source).to be_valid
@@ -19,7 +19,7 @@ describe Source do
   end
 
   describe '#file=' do
-    let(:file) { FactoryGirl.attributes_for(:source)[:file] }
+    let(:file) { attributes_for(:source)[:file] }
 
     it 'copies the file' do
       expect(File.read(source.path)).to eq file.read

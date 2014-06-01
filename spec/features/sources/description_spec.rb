@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Sources description' do
   scenario 'associates description to a source' do
-    FactoryGirl.create(:source, label: 'some file')
+    create :source, label: 'some file'
     visit sources_path
 
     click_link 'Modifier'

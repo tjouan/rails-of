@@ -2,8 +2,8 @@ require 'spec_helper'
 
 feature 'Sources CRUD' do
   scenario 'lists sources' do
-    FactoryGirl.create(:source, label: 'some file')
-    FactoryGirl.create(:source, label: 'other file')
+    create :source, label: 'some file'
+    create :source, label: 'other file'
 
     visit sources_path
 
@@ -11,7 +11,7 @@ feature 'Sources CRUD' do
   end
 
   scenario 'shows source' do
-    FactoryGirl.create(:source, label: 'some file')
+    create :source, label: 'some file'
 
     visit sources_path
     click_link 'some file'
@@ -32,7 +32,7 @@ feature 'Sources CRUD' do
   end
 
   scenario 'edits source' do
-    FactoryGirl.create(:source, label: 'some file')
+    create :source, label: 'some file'
     visit sources_path
 
     click_link 'Modifier'
@@ -44,7 +44,7 @@ feature 'Sources CRUD' do
   end
 
   scenario 'destroys source' do
-    FactoryGirl.create(:source, label: 'some file')
+    create :source, label: 'some file'
     visit sources_path
 
     click_link 'Supprimer'
