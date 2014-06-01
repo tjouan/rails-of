@@ -1,0 +1,23 @@
+%h1 Analyses en cours
+
+
+- if @works.any?
+  %table
+    %thead
+      %tr
+        %th
+          Analyse
+        %th
+          Fichier
+        %th.created_at
+          Démarrée le
+
+    %tbody
+      - @works.each do |source|
+        %tr
+          %td
+            = source.operation.name
+          %td
+            = source.source.label
+          %td.created_at
+            = source.created_at

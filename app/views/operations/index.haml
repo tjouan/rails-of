@@ -6,3 +6,4 @@
     - @operations.each do |operation|
       %li
         = link_to operation.name, operation
+        = link_to 'Appliquer', new_work_path(operation_id: operation)

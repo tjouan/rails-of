@@ -1,0 +1,25 @@
+= form_for @work do |f|
+  = f.hidden_field :operation_id, value: @work.operation.id
+
+  %fieldset
+    %legend
+      Analyse
+      = @work.operation.name
+
+    - if @work.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@work.errors.count, "error")} prohibited this work from being saved:"
+        %ul
+          - @work.errors.full_messages.each do |msg|
+            %li= msg
+
+    %p.field
+      %label
+        Fichier
+        %br
+        = collection_select(:work, :source_id, @sources, :id, :label)
+
+
+  %ul.actions
+    %li
+      = f.submit 'Enregistrer'

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :operations, only: [:index, :show]
+
+  resources :works, only: [:index, :new, :create]
 end
