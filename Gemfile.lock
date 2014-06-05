@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/ogerman/backburner_spec
+  revision: 94ecf79819db76c5800fa4619fc348accae21397
+  specs:
+    backburner_spec (0.0.1)
+      backburner (>= 0.4.3)
+      rspec-core (>= 2.14.0)
+      rspec-expectations (>= 2.14.0)
+      rspec-mocks (>= 2.14.0)
+
+GIT
   remote: git:datacube/opti-geo_score
   revision: 852ae57ccab630130efd1d9d53cdb6dcd4849bd4
   specs:
@@ -35,6 +45,10 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    backburner (0.4.5)
+      beaneater (~> 0.3.1)
+      dante (~> 0.1.5)
+    beaneater (0.3.2)
     builder (3.2.2)
     capybara (2.3.0)
       mime-types (>= 1.16)
@@ -54,6 +68,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    dante (0.1.5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.1.0)
@@ -204,6 +219,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  backburner (~> 0.4)
+  backburner_spec!
   capybara (~> 2.3)
   celluloid (= 0.16.0.pre)
   coffee-rails (~> 4.0)

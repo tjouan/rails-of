@@ -14,10 +14,13 @@ gem 'uglifier',       '~> 1.3'
 
 gem 'jquery-rails',   '~> 3.1'
 
+gem 'backburner',     '~> 0.4'
+
 gem 'geo_score',      git: 'git:datacube/opti-geo_score'
 
 
 group :development, :test do
+  gem 'backburner_spec',    git: 'git://github.com/ogerman/backburner_spec'
   gem 'pry'
 
   gem 'rspec',              '~> 2.14'
