@@ -25,10 +25,7 @@ group :development, :test do
 
   gem 'shoulda-matchers',   '~> 2.6'
 
-  # FIXME: use master until next release
-  # https://github.com/jnicklas/capybara/issues/1254
-  #gem 'capybara',           '~> 2.2.1'
-  gem 'capybara',           github: 'jnicklas/capybara'
+  gem 'capybara',           '~> 2.3'
 
   gem 'guard-rspec',        '~> 4.2.9', require: false
   gem 'celluloid',          '0.16.0.pre', require: false
