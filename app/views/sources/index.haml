@@ -18,6 +18,7 @@
           = source.created_at
         %td.actions
           %ul.actions
+            %li= link_to 'Télécharger', download_source_path(source)
             %li= link_to 'Modifier', edit_source_path(source)
             %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
 

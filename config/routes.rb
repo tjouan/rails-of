@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :sources do
+    get 'download', on: :member
+
     resource :headers, only: :new
   end
 
