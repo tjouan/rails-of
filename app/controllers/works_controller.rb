@@ -11,7 +11,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    if @work.save
+    if WorkSubmitter.new(@work).call
       redirect_to works_path
     else
       render :new
