@@ -14,6 +14,8 @@ gem 'uglifier',       '~> 1.3'
 
 gem 'jquery-rails',   '~> 3.1'
 
+gem 'geo_score',      git: 'git:datacube/opti-geo_score'
+
 
 group :development, :test do
   gem 'pry'
