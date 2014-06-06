@@ -13,11 +13,11 @@
           Démarrée le
 
     %tbody
-      - @works.each do |source|
+      - @works.each do |work|
         %tr
           %td
-            = source.operation.name
+            = work.operation.name
           %td
-            = source.source.label
+            = work.source.label
           %td.created_at
-            = source.created_at
+            = work.created_at
