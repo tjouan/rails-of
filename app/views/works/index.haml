@@ -9,8 +9,12 @@
           Analyse
         %th
           Fichier
-        %th.created_at
-          Démarrée le
+        %th.date
+          Demande
+        %th.date
+          Traitement
+        %th.date
+          Fin
 
     %tbody
       - @works.each do |work|
@@ -19,5 +23,9 @@
             = work.operation.name
           %td
             = work.source.label
-          %td.created_at
+          %td.date
             = work.created_at
+          %td.date
+            = work.started_at || 'N/A'
+          %td.date
+            = work.processed_at || 'N/A'

@@ -138,6 +138,40 @@ ALTER SEQUENCE sources_id_seq OWNED BY sources.id;
 
 
 --
+-- Name: works; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE works (
+    id integer NOT NULL,
+    operation_id integer NOT NULL,
+    source_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    started_at timestamp without time zone,
+    processed_at timestamp without time zone
+);
+
+
+--
+-- Name: works_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE works_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: works_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE works_id_seq OWNED BY works.id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -156,6 +190,13 @@ ALTER TABLE ONLY operations ALTER COLUMN id SET DEFAULT nextval('operations_id_s
 --
 
 ALTER TABLE ONLY sources ALTER COLUMN id SET DEFAULT nextval('sources_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY works ALTER COLUMN id SET DEFAULT nextval('works_id_seq'::regclass);
 
 
 --
@@ -183,6 +224,14 @@ ALTER TABLE ONLY sources
 
 
 --
+-- Name: works_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY works
+    ADD CONSTRAINT works_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -200,4 +249,6 @@ INSERT INTO schema_migrations (version) VALUES ('20');
 INSERT INTO schema_migrations (version) VALUES ('30');
 
 INSERT INTO schema_migrations (version) VALUES ('40');
+
+INSERT INTO schema_migrations (version) VALUES ('50');
 

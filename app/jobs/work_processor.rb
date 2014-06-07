@@ -14,6 +14,8 @@ class WorkProcessor
   end
 
   def call
+    work.touch :started_at
+
     Tempfile.create('opti-work') do |f|
       operation_to(f).process!
       f.rewind
@@ -23,7 +25,7 @@ class WorkProcessor
       )
     end
 
-    # FIXME: update work processed_at
+    work.touch :processed_at
   end
 
   def operation_to(output)
