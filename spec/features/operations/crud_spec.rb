@@ -11,11 +11,4 @@ feature 'Operations CRUD' do
 
     expect(page.body).to include operation.name
   end
-
-  scenario 'shows operation' do
-    visit operations_path
-    click_link operation.name
-
-    expect(page.body).to include operation.name
-  end
 end

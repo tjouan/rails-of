@@ -8,7 +8,7 @@ feature 'Works CRUD' do
     operation.save!
     source.save!
     visit operations_path
-    click_link 'Appliquer'
+    click_link operation.name
   end
 
   scenario 'lists works' do
