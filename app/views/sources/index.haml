@@ -1,5 +1,6 @@
 %h1 Fichiers
 
+
 - if @sources.any?
   %table.sources
     %tr
@@ -22,5 +23,7 @@
             %li= link_to 'Modifier', edit_source_path(source)
             %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
 
-%p
-  = link_to 'Ajouter un fichier', new_source_path
+
+%ul.actions
+  %li
+    = link_to 'Ajouter un fichier', new_source_path
