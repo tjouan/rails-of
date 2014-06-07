@@ -7,7 +7,8 @@ $blue_lighter:  lighten($blue_light, 30%)
 
 $gray:          #6b6e70
 $gray_light:    lighten($gray, 20%)
-$gray_lighter:  lighten($gray, 57%)
+$gray_lighter:  lighten($gray, 40%)
+$gray_lightest: lighten($gray, 57%)
 $gray_dark:     #3f3f42
 
 
@@ -17,7 +18,7 @@ $gray_dark:     #3f3f42
 html
   font-size: 80%
   font-family: sans-serif
-  background-color: $gray_lighter
+  background-color: $gray_lightest
   color: $black
 
 body
@@ -34,9 +35,29 @@ a
     text-decoration: underline
 
 fieldset
-  border: solid 1px $gray
-  background: $gray_lighter
-  color: inherit
+  border: none
+  box-shadow: 1px 1px 2px $gray_lighter
+
+table
+  width: 100%
+
+  th
+    border-bottom: solid 1px $gray_light
+
+  tbody tr:last-child td
+    border-bottom: solid 1px $gray_lighter
+
+  tr:hover
+    td
+      background-color: $blue_lighter
+      color: inherit
+
+  .date,
+  .actions
+    text-align: right
+
+  .actions
+    margin: 0
 
 
 // structure
@@ -117,22 +138,18 @@ body > main,
 
 
 .sources
-  width: 100%
-
-  th
-    border-bottom: solid 1px $gray_light
-
-  tr:hover
-    td
-      background-color: $blue_lighter
-      color: inherit
-
   .label
     width: 50%
 
-  .created_at,
-  .actions
-    text-align: right
 
-  .actions
-    margin: 0
+// FIXME: should be a class
+form
+  display: inline-block
+  min-width: 40%
+
+  input[type=text],
+    width: 98%
+
+  textarea
+    width: 98%
+    min-height: 4em

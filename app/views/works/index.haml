@@ -1,4 +1,4 @@
-%h1 Analyses en cours
+%h1 Analyses
 
 
 - if @works.any?
@@ -6,9 +6,9 @@
     %thead
       %tr
         %th
-          Analyse
-        %th
           Fichier
+        %th
+          Analyse
         %th.date
           Demande
         %th.date
@@ -20,9 +20,9 @@
       - @works.each do |work|
         %tr
           %td
-            = work.operation.name
-          %td
             = work.source.label
+          %td
+            = work.operation.name
           %td.date
             = work.created_at
           %td.date
