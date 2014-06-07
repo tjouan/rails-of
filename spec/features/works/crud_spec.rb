@@ -28,7 +28,7 @@ feature 'Works CRUD' do
 
     scenario 'creates work' do
       select(source.label, from: 'Fichier')
-      click_button 'Enregistrer'
+      click_button 'Démarrer'
 
       expect(page.body).to include operation.name
     end
