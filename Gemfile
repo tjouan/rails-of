@@ -20,7 +20,6 @@ gem 'geo_score',      git: 'git:datacube/opti-geo_score'
 
 
 group :development, :test do
-  gem 'backburner_spec',    git: 'git://github.com/ogerman/backburner_spec'
   gem 'pry'
 
   gem 'rspec',              '~> 2.14'
@@ -38,4 +37,8 @@ group :development, :test do
   gem 'spork',              '~> 1.0rc'
   gem 'spork-rails',        '~> 4.0'
   gem 'guard-spork',        '~> 1.5'
+end
+
+group :test do
+  gem 'backburner_spec',    git: 'git://github.com/ogerman/backburner_spec'
 end
