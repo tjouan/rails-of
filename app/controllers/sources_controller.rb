@@ -39,7 +39,7 @@ class SourcesController < ApplicationController
   end
 
   def download
-    send_file @source.path, type: @source.mime_type, disposition: nil
+    send_file @source.path, type: @source.mime_type, filename: @source.file_name
   end
 
   private
