@@ -11,6 +11,12 @@ describe Source do
     expect(source).to accept_nested_attributes_for :headers
   end
 
+  fit 'assigns a default label as the attached file name' do
+    source.label = nil
+    source.save
+    expect(source.label).to eq '3col_header.csv'
+  end
+
   describe '#path' do
     it 'returns the attached file path' do
       expect(source.path)

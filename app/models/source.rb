@@ -8,6 +8,12 @@ class Source < ActiveRecord::Base
   has_many :headers, dependent: :destroy
   accepts_nested_attributes_for :headers
 
+  before_validation :set_default_label, on: :create
+
+  def set_default_label
+    self.label = file_name if label.blank? || label.nil?
+  end
+
   def path
     File.join(Rails.configuration.sources_path, sha256)
   end
