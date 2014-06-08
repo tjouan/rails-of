@@ -10,9 +10,9 @@ GIT
 
 GIT
   remote: git:datacube/opti-geo_score
-  revision: 852ae57ccab630130efd1d9d53cdb6dcd4849bd4
+  revision: 792788b81f4685507c4d4eb63a20ee32b0a12334
   specs:
-    geo_score (0.0.2)
+    geo_score (0.0.3)
       text (~> 1.2)
 
 GEM
