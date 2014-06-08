@@ -1,7 +1,18 @@
 %h1 Analyses
 
 
+- if @operations.any?
+  %h2 Nouvelle analyse :
+
+  %ul
+    - @operations.each do |operation|
+      %li
+        = link_to operation.name, new_work_path(operation_id: operation)
+
+
 - if @works.any?
+  %h2 Liste de vos analyses :
+
   %table
     %thead
       %tr

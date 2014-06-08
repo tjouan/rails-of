@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @works      = Work.all
+    @operations = Operation.all
   end
 
   def new

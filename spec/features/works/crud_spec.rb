@@ -3,22 +3,29 @@ require 'spec_helper'
 feature 'Works CRUD' do
   let(:operation) { build :operation }
   let(:source)    { build :source }
+  let(:work)      { build :work }
 
-  before do
-    operation.save!
-    source.save!
-    visit operations_path
-    click_link operation.name
-  end
+  before          { visit root_path }
 
-  scenario 'lists works' do
-    work = create :work
-    visit works_path
+  context 'index' do
+    before do
+      work.save!
+      click_link 'Analyses'
+    end
 
-    expect(page.body).to include work.operation.name
+    scenario 'lists works' do
+      expect(page.body).to include work.operation.name
+    end
   end
 
   context 'creation' do
+    before do
+      operation.save!
+      source.save!
+      click_link 'Analyses'
+      click_link operation.name
+    end
+
     scenario 'shows form' do
       expect(page).to have_select(
         'work[source_id]',
