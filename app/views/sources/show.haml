@@ -12,19 +12,20 @@
   %b Fichier original :
   = '%s (%s)' % [@source.file_name, @source.mime_type]
 
-%table
-  %caption En-tête
-  %thead
-    %tr
-      %th Nom
-      %th Type
-  %tbody
-    - @source.headers.each do |e|
+- if @source.headers.any?
+  %table.source_header
+    %caption En-tête :
+    %thead
       %tr
-        %td.source_header_key
-          = e.name
-        %td.source_header_type
-          = e.type_description.capitalize
+        %th.source_header_key Nom
+        %th.source_header_type Type
+    %tbody
+      - @source.headers.each do |e|
+        %tr
+          %td.source_header_key
+            = e.name
+          %td.source_header_type
+            = e.type_description.capitalize
 
 
 %ul.actions
