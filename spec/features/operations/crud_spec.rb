@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Operations CRUD' do
-  let(:operation) { build(:operation) }
+  let(:operation) { build :operation }
 
   before { operation.save! }
 
