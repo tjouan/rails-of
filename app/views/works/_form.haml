@@ -1,4 +1,4 @@
-= form_for @work do |f|
+= form_for @work, html: { class: 'form' } do |f|
   = f.hidden_field :operation_id, value: @work.operation.id
 
   %fieldset
