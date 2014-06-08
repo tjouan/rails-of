@@ -1,14 +1,15 @@
 %h1
   Fichier
-  = @source.label
+  = "« #{@source.label} »"
 
+
+- if @source.description?
+  %p
+    %b Description :
+    = simple_format @source.description
 
 %p
-  %b Description :
-  = simple_format @source.description
-
-%p
-  %b Fichier :
+  %b Fichier original :
   = '%s (%s)' % [@source.file_name, @source.mime_type]
 
 %table
@@ -27,5 +28,7 @@
 
 
 %ul.actions
-  %li
-    = link_to 'Retour', sources_path
+  %li= link_to 'Télécharger', download_source_path(@source)
+  %li= link_to 'Modifier', edit_source_path(@source)
+  %li= link_to 'Supprimer', @source, method: :delete, data: { confirm: 'Confirmez la suppression' }
+  %li= link_to 'Retour', sources_path
