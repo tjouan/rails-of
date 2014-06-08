@@ -1,0 +1,24 @@
+- source_headers = work.source.headers.map.with_index { |e, i| [e.name, i] }
+
+%table.field
+  %caption Paramètres
+  %thead
+    %tr
+      %th Analyse
+      %th
+      %th Fichier
+  %tbody
+    %tr
+      %td
+        Champ code postal
+      %td
+        ⇄
+      %td
+        = f.select 'parameters', source_headers, {}, { name: 'work[parameters][]' }
+    %tr
+      %td
+        Champ ville
+      %td
+        ⇄
+      %td
+        = f.select 'parameters', source_headers, {}, { name: 'work[parameters][]' }

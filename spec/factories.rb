@@ -24,5 +24,6 @@ FactoryGirl.define do
   factory :work do
     operation
     source
+    parameters []
   end
 end

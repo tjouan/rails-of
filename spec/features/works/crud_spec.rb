@@ -33,11 +33,19 @@ feature 'Works CRUD' do
       )
     end
 
-    scenario 'creates work' do
+    scenario 'select source' do
       select(source.label, from: 'Fichier')
-      click_button 'Démarrer'
+      click_button 'Paramétrer'
 
       expect(page.body).to include operation.name
+    end
+
+    scenario 'creates work' do
+      click_button 'Paramétrer'
+      click_button 'Démarrer'
+
+      expect(current_path).to eq works_path
+      expect(page.body).to include source.label
     end
   end
 end

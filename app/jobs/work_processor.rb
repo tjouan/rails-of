@@ -37,7 +37,7 @@ class WorkProcessor
   end
 
   def params
-    [0, 1]
+    work.parameters.map &:to_i
   end
 
   def output_file(file, file_name)

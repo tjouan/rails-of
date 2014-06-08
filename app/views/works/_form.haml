@@ -1,18 +1,26 @@
 = form_for @work, html: { class: 'form' } do |f|
   = f.hidden_field :operation_id, value: @work.operation.id
+  = f.hidden_field :source_id, value: @work.source.id if @work.source
 
   %fieldset
     %legend
       Analyse
       = @work.operation.name
 
-    %p.field
-      %label
-        Fichier
-        %br
-        = collection_select(:work, :source_id, @sources, :id, :label)
+    - unless @work.source
+      %p.field
+        %label
+          Fichier
+          %br
+          = collection_select(:work, :source_id, @sources, :id, :label)
+
+    - else
+      %p
+        Fichier :
+        = @work.source.label
+        = render "form_#{@work.operation.name.downcase}", f: f, work: @work
 
 
   %ul.actions
     %li
-      = f.submit 'Démarrer'
+      = f.submit @work.source ? 'Démarrer' : 'Paramétrer'

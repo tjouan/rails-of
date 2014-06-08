@@ -22,6 +22,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:operation_id, :source_id)
+    params.require(:work).permit(:operation_id, :source_id, parameters: [])
   end
 end

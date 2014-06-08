@@ -148,7 +148,8 @@ CREATE TABLE works (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     started_at timestamp without time zone,
-    processed_at timestamp without time zone
+    processed_at timestamp without time zone,
+    parameters character varying(255)[] NOT NULL
 );
 
 
