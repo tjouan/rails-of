@@ -1,4 +1,6 @@
 /.bundle/
+/.env
+/.foreman
 /config/database.yml
 /data/
 /db/schema.rb
