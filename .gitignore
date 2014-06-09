@@ -5,4 +5,5 @@
 /data/
 /db/schema.rb
 /log/*.log
+/public/assets/
 /tmp/
