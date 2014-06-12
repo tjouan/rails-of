@@ -16,7 +16,7 @@ gem 'jquery-rails',   '~> 3.1'
 
 gem 'backburner',     '~> 0.4'
 
-gem 'geo_score',      git: 'git:datacube/opti-geo_score'
+gem 'geo_score',      git: 'git:datacube/geo_score'
 
 
 group :development, :test do

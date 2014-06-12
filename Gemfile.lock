@@ -9,8 +9,8 @@ GIT
       rspec-mocks (>= 2.14.0)
 
 GIT
-  remote: git:datacube/opti-geo_score
-  revision: 792788b81f4685507c4d4eb63a20ee32b0a12334
+  remote: git:datacube/geo_score
+  revision: 16c6f0c7a97dffb2b1dde7cc4d430c4a7c6b4a98
   specs:
     geo_score (0.0.3)
       text (~> 1.2)
