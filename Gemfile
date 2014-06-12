@@ -20,7 +20,7 @@ gem 'geo_score',      git: 'git:datacube/opti-geo_score'
 
 
 group :development, :test do
-  gem 'pry'
+  gem 'pry-rails'
 
   gem 'rspec',              '~> 2.14'
   gem 'rspec-rails',        '~> 2.14'
