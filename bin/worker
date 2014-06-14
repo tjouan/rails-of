@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+OptionParser.new do |o|
+  o.banner = "Usage: #{$0} [options]"
+
+  o.on '-d', '--detach', 'Detach from controlling terminal' do |v|
+    $detach = v
+  end
+end.parse!
+
+
+APP_PATH = 'config/application'
+require './config/application'
+require './config/initializers/backburner'
+
+if $detach
+  exit if fork
+  Process.setsid
+  exit if fork
+  $stdin.reopen '/dev/null'
+  $stdout.reopen '/dev/null', 'a'
+  $stderr.reopen '/dev/null', 'a'
+end
+
+$0 = 'opti-worker'
+Backburner.work
