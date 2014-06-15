@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :operations, only: [:index, :show]
 
   resources :works, only: [:index, :new, :create]
+
+  get '/404' => 'errors#not_found'
+  get '/500' => 'errors#internal_error'
 end
