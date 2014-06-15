@@ -1,8 +1,4 @@
 class Source < ActiveRecord::Base
-  require 'fileutils'
-  require 'pathname'
-  require 'csv'
-
   HEADER_PLACEHOLDER = 'Champ %d'.freeze
 
   has_many :headers, dependent: :destroy

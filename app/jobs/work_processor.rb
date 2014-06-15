@@ -1,6 +1,4 @@
 class WorkProcessor
-  require 'tempfile'
-
   class << self
     def perform(work_id)
       new(Work.find(work_id)).call
