@@ -27,6 +27,15 @@ module OptiFront
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+    # FIXME: we must find a better solution with either a helper, or assign TZ
+    # only from user session/preferences.
+    # http://www.elabs.se/blog/36-working-with-time-zones-in-ruby-on-rails
+    # http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/
+    # http://viget.com/extend/using-time-zones-with-rails
+    # http://stackoverflow.com/questions/6060436/rails-3-how-to-get-todays-date-in-specific-timezone
+    # http://stackoverflow.com/questions/5267170/how-to-display-the-time-in-users-timezone
+    config.time_zone = 'Paris'
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
