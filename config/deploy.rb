@@ -60,7 +60,7 @@ end
 task :www_config do
   conf = <<-eoh
 worker_processes  #{www_workers}
-preload_app       true
+preload_app       false
 pid               '#{www_pid_path}'
 listen            "\#{ENV['HOME']}/#{app_path}/#{www_sock_path}"
   eoh
