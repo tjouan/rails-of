@@ -1,7 +1,7 @@
 - source_headers = work.source.headers.map.with_index { |e, i| [e.name, i] }
 
 %table.field
-  %caption Paramètres
+  %caption Association des champs de la source de données
   %thead
     %tr
       %th Analyse
@@ -10,14 +10,14 @@
   %tbody
     %tr
       %td
-        Champ code postal
+        Code postal
       %td
         ⇄
       %td
         = f.select 'parameters', source_headers, {}, { name: 'work[parameters][]' }
     %tr
       %td
-        Champ ville
+        Ville
       %td
         ⇄
       %td
