@@ -18,7 +18,7 @@ class SourcesController < ApplicationController
   def create
     @source = Source.new(source_params)
 
-    if @source.save
+    if SourceSaver.new(@source).call
       redirect_to new_source_headers_path(@source, header: params[:header])
     else
       render :new
