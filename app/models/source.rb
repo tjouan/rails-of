@@ -4,6 +4,8 @@ class Source < ActiveRecord::Base
   has_many :headers, dependent: :destroy
   accepts_nested_attributes_for :headers
 
+  has_many :works, dependent: :destroy
+
   before_validation :set_default_label, on: :create
 
   def set_default_label
