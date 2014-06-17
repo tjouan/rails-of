@@ -20,6 +20,7 @@ macro :bundle_install do
 end
 
 
+=begin
 ensure_dir app_path, 0701
 
 #git_clone repository, app_path
@@ -77,6 +78,7 @@ task :www_start do
 
   sh "cd #{app_path} && bundle exec unicorn -c config/unicorn.rb -D"
 end
+=end
 
 
 git_update app_path
