@@ -9,6 +9,8 @@ class Source < ActiveRecord::Base
 
   before_create :set_default_label
 
+  validates_presence_of :sha256
+
   validate :charset_must_be_supported
 
 
@@ -17,6 +19,8 @@ class Source < ActiveRecord::Base
   end
 
   def charset_must_be_supported
+    return unless sha256
+
     sample = File.new(path).read(CHARSET_CHECK_LENGTH)
     sample.force_encoding 'utf-8'
     unless sample.valid_encoding?
@@ -29,6 +33,8 @@ class Source < ActiveRecord::Base
   end
 
   def file=(file)
+    return unless file
+
     self.sha256 = Digest::SHA256.file(file.path).hexdigest
     FileUtils.cp file.path, path
     self.file_name = Pathname.new(file.original_filename).to_s

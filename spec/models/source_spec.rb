@@ -7,6 +7,14 @@ describe Source do
     expect(source).to be_valid
   end
 
+  context 'without file' do
+    subject(:source) { build :source_without_file }
+
+    it 'is not valid' do
+      expect(source).to_not be_valid
+    end
+  end
+
   context 'when file charset can not be detected' do
     subject(:source) { build :source_latin1 }
 

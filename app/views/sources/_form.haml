@@ -4,13 +4,9 @@
       %fieldset
         %legend Fichier
 
-        %p.field
-          = f.file_field :file
-
-        %p.field
-          %label
-            = check_box_tag :header
-            ce fichier comporte un en-tête
+        - if @source.errors.include? :sha256
+          .errors
+            %p Veuillez sélectionner un fichier
 
         - if @source.errors.include? :charset
           .errors
@@ -18,6 +14,14 @@
             %ul
               - @source.errors[:charset].each do |e|
                 %li= e
+
+        %p.field
+          = f.file_field :file
+
+        %p.field
+          %label
+            = check_box_tag :header
+            ce fichier comporte un en-tête
 
     %p.field
       %label

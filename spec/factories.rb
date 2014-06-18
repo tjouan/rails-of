@@ -17,6 +17,10 @@ FactoryGirl.define do
     factory :source_latin1 do
       file { fixture_file_upload 'spec/fixtures/3col_header_body_latin1.csv', 'text/csv' }
     end
+
+    factory :source_without_file do
+      file { nil }
+    end
   end
 
   factory :work do
