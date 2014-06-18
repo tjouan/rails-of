@@ -11,7 +11,7 @@ describe Source do
     subject(:source) { build :source_without_file }
 
     it 'is not valid' do
-      expect(source).to_not be_valid
+      expect(source).not_to be_valid
     end
   end
 
@@ -19,7 +19,7 @@ describe Source do
     subject(:source) { build :source_latin1 }
 
     it 'is not valid' do
-      expect(source).to_not be_valid
+      expect(source).not_to be_valid
     end
 
     it 'registers an error message on validation' do

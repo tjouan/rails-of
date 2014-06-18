@@ -50,6 +50,6 @@ feature 'Sources CRUD' do
     click_link 'Supprimer'
 
     expect(current_path).to eq sources_path
-    expect(page).to_not have_content 'some file'
+    expect(page).not_to have_content 'some file'
   end
 end
