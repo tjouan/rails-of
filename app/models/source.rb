@@ -6,7 +6,7 @@ class Source < ActiveRecord::Base
 
   has_many :works, dependent: :destroy
 
-  before_validation :set_default_label, on: :create
+  before_create :set_default_label
 
   def set_default_label
     self.label = file_name if label.blank? || label.nil?
