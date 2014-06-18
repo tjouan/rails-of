@@ -12,6 +12,13 @@
             = check_box_tag :header
             ce fichier comporte un en-tête
 
+        - if @source.errors.include? :charset
+          .errors
+            %p Erreur lors de l'enregistrement de votre fichier :
+            %ul
+              - @source.errors[:charset].each do |e|
+                %li= e
+
     %p.field
       %label
         Label

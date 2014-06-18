@@ -7,6 +7,20 @@ describe Source do
     expect(source).to be_valid
   end
 
+  context 'when file charset can not be detected' do
+    subject(:source) { build :source_latin1 }
+
+    it 'is not valid' do
+      expect(source).to_not be_valid
+    end
+
+    it 'registers an error message on validation' do
+      source.valid?
+      expect(source.errors[:charset].first)
+        .to match /impossible.+détect.+jeu.+caractères/
+    end
+  end
+
   it 'accepts nested attributes for headers' do
     expect(source).to accept_nested_attributes_for :headers
   end

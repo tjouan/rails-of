@@ -1,5 +1,6 @@
 class Source < ActiveRecord::Base
-  HEADER_PLACEHOLDER = 'Champ %d'.freeze
+  HEADER_PLACEHOLDER    = 'Champ %d'.freeze
+  CHARSET_CHECK_LENGTH  = 500 * (10 ** 3)
 
   has_many :headers, dependent: :destroy
   accepts_nested_attributes_for :headers
@@ -8,8 +9,19 @@ class Source < ActiveRecord::Base
 
   before_create :set_default_label
 
+  validate :charset_must_be_supported
+
+
   def set_default_label
     self.label = file_name if label.blank? || label.nil?
+  end
+
+  def charset_must_be_supported
+    sample = File.new(path).read(CHARSET_CHECK_LENGTH)
+    sample.force_encoding 'utf-8'
+    unless sample.valid_encoding?
+      errors.add :charset, 'impossible de détecter le jeu de caractères'
+    end
   end
 
   def path

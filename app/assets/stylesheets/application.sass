@@ -11,6 +11,10 @@ $gray_lighter:  lighten($gray, 40%)
 $gray_lightest: lighten($gray, 57%)
 $gray_dark:     #3f3f42
 
+$red:           #ff0000
+$red_dark:      darken($red, 30%)
+$red_light:     lighten($red, 30%)
+
 
 // elements
 ///////////
@@ -152,6 +156,14 @@ body > main,
   textarea
     width: 98%
     min-height: 4em
+
+
+.errors
+  padding: 0 1em
+  border: solid 1px $red_dark
+
+  background-color: $red_light
+  color: inherit
 
 
 .sources
