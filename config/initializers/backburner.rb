@@ -4,5 +4,5 @@ Backburner.configure do |config|
   config.beanstalk_url    = 'beanstalk://127.0.0.1'
   config.tube_namespace   = 'opti'
   config.logger           = Logger.new(log_destination)
-  config.respond_timeout  = 3600 / 4
+  config.respond_timeout  = 3600 / 3
 end
