@@ -16,7 +16,7 @@ feature 'Sources CRUD' do
     visit sources_path
     click_link 'some file'
 
-    expect(page.body).to include 'some file'
+    expect(page).to have_content 'some file'
   end
 
   scenario 'creates source' do
@@ -28,7 +28,7 @@ feature 'Sources CRUD' do
     click_button 'Enregistrer'
 
     expect(current_path).not_to eq new_source_path
-    expect(page.body).to include 'some file'
+    expect(page).to have_content 'some file'
   end
 
   scenario 'edits source' do
@@ -40,7 +40,7 @@ feature 'Sources CRUD' do
     click_button 'Enregistrer'
 
     expect(current_path).to eq sources_path
-    expect(page.body).to include 'a new label'
+    expect(page).to have_content 'a new label'
   end
 
   scenario 'destroys source' do
@@ -50,6 +50,6 @@ feature 'Sources CRUD' do
     click_link 'Supprimer'
 
     expect(current_path).to eq sources_path
-    expect(page.body).to_not include 'some file'
+    expect(page).to_not have_content 'some file'
   end
 end

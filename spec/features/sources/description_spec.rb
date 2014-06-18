@@ -10,6 +10,6 @@ feature 'Sources description' do
     click_button 'Enregistrer'
     click_link 'some file'
 
-    expect(page.body).to include 'some description'
+    expect(page).to have_content 'some description'
   end
 end

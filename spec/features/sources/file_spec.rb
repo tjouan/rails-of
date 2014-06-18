@@ -15,8 +15,8 @@ feature 'Sources file' do
       visit sources_path
       click_link 'some file'
 
-      expect(page.body).to include '3col_header.csv'
-      expect(page.body).to include 'text/csv'
+      expect(page).to have_content '3col_header.csv'
+      expect(page).to have_content 'text/csv'
     end
 
     scenario 'redirects to header new' do

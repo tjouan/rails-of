@@ -14,7 +14,7 @@ feature 'Works CRUD' do
     end
 
     scenario 'lists works' do
-      expect(page.body).to include work.operation.name
+      expect(page).to have_content work.operation.name
     end
   end
 
@@ -37,7 +37,7 @@ feature 'Works CRUD' do
       select(source.label, from: 'Fichier')
       click_button 'Paramétrer'
 
-      expect(page.body).to include operation.name
+      expect(page).to have_content operation.name
     end
 
     scenario 'creates work' do
@@ -45,7 +45,7 @@ feature 'Works CRUD' do
       click_button 'Démarrer'
 
       expect(current_path).to eq works_path
-      expect(page.body).to include source.label
+      expect(page).to have_content source.label
     end
   end
 end
