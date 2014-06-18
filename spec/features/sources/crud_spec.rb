@@ -32,7 +32,7 @@ feature 'Sources CRUD' do
   end
 
   scenario 'edits source' do
-    create :source, label: 'some file'
+    create :source
     visit sources_path
 
     click_link 'Modifier'
@@ -44,7 +44,7 @@ feature 'Sources CRUD' do
   end
 
   scenario 'destroys source' do
-    create :source, label: 'some file'
+    create :source
     visit sources_path
 
     click_link 'Supprimer'
