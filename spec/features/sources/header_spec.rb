@@ -1,20 +1,9 @@
 require 'spec_helper'
 
 feature 'Sources header' do
-  def create_file(header: false)
-    visit new_source_path
-    if header
-      check 'en-tête'
-    else
-      uncheck 'en-tête'
-    end
-    attach_file 'source_file', File.join(fixture_path, '3col_header.csv')
-    click_button 'Enregistrer'
-  end
+  include AcceptanceHelpers
 
-  before do
-    create_file
-  end
+  background { create_source }
 
   context 'new' do
     scenario 'detects columns count' do
@@ -22,7 +11,7 @@ feature 'Sources header' do
     end
 
     scenario 'detects header' do
-      create_file(header: true)
+      create_source header: true
       expect(page.first('main form input[type=text]').value).to eq 'name'
     end
 

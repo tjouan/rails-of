@@ -7,8 +7,8 @@ describe Source do
     expect(source).to be_valid
   end
 
-  context 'without file' do
-    subject(:source) { build :source_without_file }
+  context 'without SHA256 sum' do
+    before { source.sha256 = nil }
 
     it 'is not valid' do
       expect(source).not_to be_valid
@@ -40,29 +40,21 @@ describe Source do
   end
 
   describe '#path' do
-    it 'returns the attached file path' do
+    it 'returns a path to the attached file' do
       expect(source.path)
         .to eq "#{Rails.configuration.sources_path}/#{source.sha256}"
     end
   end
 
-  describe '#file=' do
-    let(:file) { attributes_for(:source)[:file] }
-
-    it 'copies the file' do
-      expect(File.read(source.path)).to eq file.read
+  describe '#to_file' do
+    it 'returns a readable IO' do
+      expect(source.to_file.read).to match /\Aname,score,active\nfoo/
     end
+  end
 
-    it 'updates the SHA256 digest' do
-      expect(source.sha256).to eq Digest::SHA256.file(file.path).hexdigest
-    end
-
-    it 'updates the file name' do
-      expect(source.file_name).to eq '3col_header.csv'
-    end
-
-    it 'updates the mime type' do
-      expect(source.mime_type).to eq 'text/csv'
+  describe '#to_csv' do
+    it 'returns a readable CSV' do
+      expect(source.to_csv.shift.first).to eq 'name'
     end
   end
 
@@ -82,11 +74,21 @@ describe Source do
     end
   end
 
+  describe '#file_header' do
+    it 'detects keys' do
+      expect(source.file_header).to eq ['name', 'score', 'active']
+    end
+  end
+
   describe '#detect_headers!' do
+    it 'detect columns count' do
+      source.detect_headers!
+      expect(source.headers.size).to eq 3
+    end
+
     context 'not detecting from file' do
       it 'builds placeholder headers' do
         source.detect_headers!
-        expect(source.headers.size).to eq 3
         expect(source.headers.last.name).to eq 'Champ 3'
       end
     end
@@ -94,15 +96,8 @@ describe Source do
     context 'detecting from file' do
       it 'builds headers from file content' do
         source.detect_headers! true
-        expect(source.headers.size).to eq 3
         expect(source.headers.last.name).to eq 'active'
       end
-    end
-  end
-
-  describe '#file_header' do
-    it 'detects keys' do
-      expect(source.file_header).to eq ['name', 'score', 'active']
     end
   end
 end

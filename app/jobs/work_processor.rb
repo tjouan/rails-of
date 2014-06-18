@@ -17,10 +17,12 @@ class WorkProcessor
     Tempfile.create('opti-work') do |f|
       operation_to(f).process!
       f.rewind
-      Source.create(
-        label: "#{work.source.label} enrichi par GeoScore",
-        file: output_file(f, work.source.file_name)
-      )
+      SourceSaver.new(
+        Source.new(
+          label: "#{work.source.label} enrichi par GeoScore",
+          file: output_file(f, work.source.file_name)
+        )
+      ).call
     end
 
     work.touch :processed_at
