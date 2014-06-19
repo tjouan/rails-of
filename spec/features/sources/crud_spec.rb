@@ -22,7 +22,7 @@ feature 'Sources CRUD' do
   scenario 'creates source' do
     visit sources_path
 
-    click_link 'Ajouter un fichier'
+    click_link 'Ajouter'
     fill_in 'Label', with: 'some file'
     attach_file 'source_file', File.join(fixture_path, '3col_header.csv').to_s
     click_button 'Enregistrer'

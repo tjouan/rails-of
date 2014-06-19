@@ -1,11 +1,11 @@
-%h1 Fichiers
+%h1 Données
 
 
 - if @sources.any?
   %table.sources
     %tr
       %th
-        Fichier
+        Données
       %th.created_at
         Ajouté le
       %th.actions
@@ -24,9 +24,9 @@
             %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
 
 - else
-  %p Aucun fichier disponible.
+  %p Aucune donnée disponible.
 
 
 %ul.actions
   %li
-    = link_to 'Ajouter un fichier', new_source_path
+    = link_to 'Ajouter des données', new_source_path

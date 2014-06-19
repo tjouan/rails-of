@@ -10,7 +10,7 @@ feature 'Works CRUD' do
   context 'index' do
     background do
       work.save!
-      click_link 'Analyses'
+      click_link 'Tableau de bord'
     end
 
     scenario 'lists works' do
@@ -22,7 +22,7 @@ feature 'Works CRUD' do
     background do
       operation.save!
       source.save!
-      click_link 'Analyses'
+      click_link 'Tableau de bord'
       click_link operation.name
     end
 
@@ -34,7 +34,7 @@ feature 'Works CRUD' do
     end
 
     scenario 'selects source' do
-      select(source.label, from: 'Fichier')
+      select(source.label, from: 'Données')
       click_button 'Paramétrer'
 
       expect(page).to have_content operation.name

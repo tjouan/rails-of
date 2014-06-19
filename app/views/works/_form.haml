@@ -4,19 +4,19 @@
 
   %fieldset
     %legend
-      Analyse
+      Outil
       = @work.operation.name
 
     - unless @work.source
       %p.field
         %label
-          Fichier
+          Données :
           %br
           = collection_select(:work, :source_id, @sources, :id, :label)
 
     - else
       %p
-        Fichier :
+        Données :
         = @work.source.label
         = render "form_#{@work.operation.name.downcase}", f: f, work: @work
 
