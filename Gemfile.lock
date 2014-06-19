@@ -10,9 +10,9 @@ GIT
 
 GIT
   remote: git:datacube/geo_score
-  revision: 929272cac8ec2854514d25820abc8f44319888c1
+  revision: 42556aa8d8d4ca1ae4c371aa23f9e9700f6798cb
   specs:
-    geo_score (0.0.7)
+    geo_score (0.0.8)
       text (~> 1.2)
 
 GEM
