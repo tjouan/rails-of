@@ -1,17 +1,8 @@
 %h1 Tableau de bord
 
 
-- if @operations.any?
-  %h2 Nouvelle analyse :
-
-  %ul
-    - @operations.each do |operation|
-      %li
-        = link_to operation.name, new_work_path(operation_id: operation)
-
-
 - if @works.any?
-  %h2 Vos dernières utilisations :
+  %h2 Vos dernières utilisations
 
   %table
     %thead
@@ -40,3 +31,12 @@
             = work.started_at ? l(work.started_at) : 'N/A'
           %td.date
             = work.processed_at ? l(work.processed_at) : 'N/A'
+
+
+- if @operations.any?
+  %h2 Actions rapides
+
+  %ul
+    - @operations.each do |operation|
+      %li
+        = link_to operation.name, new_work_path(operation_id: operation)
