@@ -32,7 +32,8 @@ class WorkProcessor
     @operation ||= GeoScore::Operation.new(
       work.source.to_file,
       params,
-      output
+      output,
+      ignore_lines: work.source.file_header ? 1 : 0
     )
   end
 
