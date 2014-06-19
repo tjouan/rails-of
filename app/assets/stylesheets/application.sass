@@ -11,6 +11,7 @@ $gray_light:    lighten($gray, 20%)
 $gray_lighter:  lighten($gray, 40%)
 $gray_lightest: lighten($gray, 57%)
 $gray_dark:     #3f3f42
+$gray_darker:   darken($gray_dark, 8%)
 
 $red:           #ff0000
 $red_dark:      darken($red, 30%)
@@ -24,10 +25,11 @@ $red_light:     lighten($red, 30%)
 html
   font-size: 80%
   font-family: sans-serif
-  background-color: $gray_lightest
+  background-color: $gray_darker
   color: $black
 
 body
+  background-color: $gray_lightest
   margin: 0
 
 h1, h2, h3, a
@@ -95,6 +97,9 @@ body > main,
 
 .header_wrapper
   box-shadow: 0 -4px 16px $gray_light
+
+.footer_wrapper
+  box-shadow: 0 8px 16px -16px black
 
 #header
   text-align: right
