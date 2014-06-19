@@ -13,7 +13,7 @@
   = '%s (%s, %s)' % [@source.file_name, @source.mime_type, @source.charset.upcase]
 
 %p
-  %b En-tête présent :
+  %b Le fichier comporte un en-tête :
   = @source.file_header ? 'Oui' : 'Non'
 
 - if @source.headers.any?
