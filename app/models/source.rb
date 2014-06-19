@@ -32,7 +32,7 @@ class Source < ActiveRecord::Base
     CSV.new(to_file)
   end
 
-  def file_header
+  def first_row
     to_csv.shift
   end
 
@@ -42,9 +42,9 @@ class Source < ActiveRecord::Base
 
   def detect_headers!(names: false)
     if names
-      file_header.each { |e| headers.build name: e }
+      first_row.each { |e| headers.build name: e }
     else
-      file_header.each_with_index do |e, k|
+      first_row.each_with_index do |e, k|
         headers.build name: HEADER_PLACEHOLDER % [k + 1]
       end
     end

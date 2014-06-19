@@ -12,6 +12,10 @@
   %b Fichier original :
   = '%s (%s, %s)' % [@source.file_name, @source.mime_type, @source.charset.upcase]
 
+%p
+  %b En-tête présent :
+  = @source.file_header ? 'Oui' : 'Non'
+
 - if @source.headers.any?
   %table.source_header
     %caption En-tête :

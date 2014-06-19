@@ -2,7 +2,7 @@ class HeadersController < ApplicationController
   before_action :set_source, only: :new
 
   def new
-    @source.detect_headers! names: params[:header]
+    @source.detect_headers! names: @source.file_header
     @types = Header::TYPES
   end
 

@@ -90,9 +90,9 @@ describe Source do
     end
   end
 
-  describe '#file_header' do
+  describe '#first_row' do
     it 'detects keys' do
-      expect(source.file_header).to eq ['name', 'score', 'active']
+      expect(source.first_row).to eq ['name', 'score', 'active']
     end
   end
 

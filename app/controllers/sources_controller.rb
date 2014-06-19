@@ -19,7 +19,7 @@ class SourcesController < ApplicationController
     @source = Source.new(source_params)
 
     if SourceSaver.new(@source).call
-      redirect_to new_source_headers_path(@source, header: params[:header])
+      redirect_to new_source_headers_path(@source)
     else
       render :new
     end
@@ -49,7 +49,7 @@ class SourcesController < ApplicationController
   end
 
   def source_params
-    params.require(:source).permit(:label, :description, :file, {
+    params.require(:source).permit(:label, :description, :file, :file_header, {
       headers_attributes: [:name, :type]
     })
   end
