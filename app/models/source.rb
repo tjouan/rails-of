@@ -36,8 +36,8 @@ class Source < ActiveRecord::Base
     headers.any?
   end
 
-  def detect_headers!(from_file = false)
-    if from_file
+  def detect_headers!(names: false)
+    if names
       file_header.each { |e| headers.build name: e }
     else
       file_header.each_with_index do |e, k|

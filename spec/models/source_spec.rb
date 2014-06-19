@@ -86,16 +86,16 @@ describe Source do
       expect(source.headers.size).to eq 3
     end
 
-    context 'not detecting from file' do
+    context 'not detecting header names' do
       it 'builds placeholder headers' do
         source.detect_headers!
         expect(source.headers.last.name).to eq 'Champ 3'
       end
     end
 
-    context 'detecting from file' do
-      it 'builds headers from file content' do
-        source.detect_headers! true
+    context 'detecting header names' do
+      it 'builds headers with names read from file' do
+        source.detect_headers! names: true
         expect(source.headers.last.name).to eq 'active'
       end
     end
