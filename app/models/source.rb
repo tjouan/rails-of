@@ -1,6 +1,10 @@
 class Source < ActiveRecord::Base
   HEADER_PLACEHOLDER    = 'Champ %d'.freeze
-  CHARSET_CHECK_LENGTH  = 500 * (10 ** 3)
+  CHARSET_CHECK_LENGTH  = (500 * (10 ** 3)).freeze
+  CHARSETS              = %w[
+    utf-8
+    iso-8859-15
+  ].freeze
 
   attr_accessor :file
 
@@ -9,11 +13,11 @@ class Source < ActiveRecord::Base
 
   has_many :works, dependent: :destroy
 
-  before_create :set_default_label
+  before_validation :set_charset
+  before_create     :set_default_label
 
   validates_presence_of :sha256
-
-  validate :charset_must_be_supported
+  validates_presence_of :charset
 
 
   def path
@@ -21,7 +25,7 @@ class Source < ActiveRecord::Base
   end
 
   def to_file
-    @file || File.new(path)
+    @file || (sha256 ? File.new(path, encoding: charset) : nil)
   end
 
   def to_csv
@@ -46,17 +50,16 @@ class Source < ActiveRecord::Base
     end
   end
 
-  def set_default_label
-    self.label = file_name if label.blank? || label.nil?
-  end
-
-  def charset_must_be_supported
-    return unless sha256
+  def set_charset
+    return unless to_file
 
     sample = to_file.read(CHARSET_CHECK_LENGTH)
-    sample.force_encoding 'utf-8'
-    unless sample.valid_encoding?
-      errors.add :charset, 'impossible de détecter le jeu de caractères'
+    self.charset = CHARSETS.detect do |e|
+      sample.force_encoding(e).valid_encoding? and e
     end
+  end
+
+  def set_default_label
+    self.label = file_name if label.blank? || label.nil?
   end
 end

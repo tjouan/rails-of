@@ -15,28 +15,16 @@ describe Source do
     end
   end
 
-  context 'when file charset can not be detected' do
-    subject(:source) { build :source_latin1 }
-
-    it 'is not valid' do
-      expect(source).not_to be_valid
-    end
-
-    it 'registers an error message on validation' do
-      source.valid?
-      expect(source.errors[:charset].first)
-        .to match /impossible.+détect.+jeu.+caractères/
-    end
-  end
-
   it 'accepts nested attributes for headers' do
     expect(source).to accept_nested_attributes_for :headers
   end
 
-  it 'assigns a default label as the attached file name' do
-    source.label = nil
-    source.save
-    expect(source.label).to eq '3col_header.csv'
+  context 'before create' do
+    it 'assigns a default label as the attached file name' do
+      source.label = nil
+      source.save
+      expect(source.label).to eq '3col_header.csv'
+    end
   end
 
   describe '#path' do
@@ -47,8 +35,36 @@ describe Source do
   end
 
   describe '#to_file' do
-    it 'returns a readable IO' do
-      expect(source.to_file.read).to match /\Aname,score,active\nfoo/
+    context 'when a file is assigned' do
+      let(:file)        { double 'file' }
+      subject(:source)  { described_class.new(file: file) }
+
+      it 'returns the assigned file' do
+        expect(source.to_file).to be file
+      end
+    end
+
+    context 'when a file is attached (not assigned)' do
+      before { source.file = nil }
+
+      it 'builds a File' do
+        expect(File).to receive(:new).with(source.path, encoding: source.charset)
+        source.to_file
+      end
+
+      it 'returns the file' do
+        file = double 'file'
+        allow(File).to receive(:new) { file }
+        expect(source.to_file).to be file
+      end
+    end
+
+    context 'when no file is available' do
+      subject(:source) { described_class.new }
+
+      it 'returns nil' do
+        expect(source.to_file).to be nil
+      end
     end
   end
 
@@ -97,6 +113,30 @@ describe Source do
       it 'builds headers with names read from file' do
         source.detect_headers! names: true
         expect(source.headers.last.name).to eq 'active'
+      end
+    end
+  end
+
+  describe '#set_charset' do
+    before { source.set_charset }
+
+    it 'assigns the charset' do
+      expect(source.charset).to eq 'utf-8'
+    end
+
+    context 'when attached file is coded in latin1' do
+      subject(:source) { build :source_latin1 }
+
+      it 'assigns iso-8859-15 charset' do
+        expect(source.charset).to eq 'iso-8859-15'
+      end
+    end
+
+    context 'when no file is attached' do
+      subject(:source) { described_class.new }
+
+      it 'does not change the charset' do
+        expect { source.set_charset }.not_to change { source.charset }
       end
     end
   end

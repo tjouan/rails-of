@@ -19,15 +19,6 @@ feature 'Sources file' do
     scenario 'redirects to headers/new' do
       expect(current_path).to eq new_source_headers_path(Source.last)
     end
-
-    context 'when file charset is invalid' do
-      let(:file_name) { '3col_header_body_latin1.csv' }
-
-      scenario 'shows error message' do
-        expect(page.body)
-          .to match /erreur.+détect.+jeu.+caractères/mi
-      end
-    end
   end
 
   context 'download' do

@@ -30,7 +30,7 @@ class WorkProcessor
 
   def operation_to(output)
     @operation ||= GeoScore::Operation.new(
-      File.new(work.source.path),
+      work.source.to_file,
       params,
       output
     )

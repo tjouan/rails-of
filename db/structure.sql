@@ -114,7 +114,8 @@ CREATE TABLE sources (
     description character varying(255),
     sha256 character varying(255) NOT NULL,
     file_name character varying(255),
-    mime_type character varying(255)
+    mime_type character varying(255),
+    charset character varying(255)
 );
 
 
@@ -246,6 +247,8 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20');
+
+INSERT INTO schema_migrations (version) VALUES ('20140619122948');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 

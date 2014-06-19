@@ -10,7 +10,7 @@
 
 %p
   %b Fichier original :
-  = '%s (%s)' % [@source.file_name, @source.mime_type]
+  = '%s (%s, %s)' % [@source.file_name, @source.mime_type, @source.charset.upcase]
 
 - if @source.headers.any?
   %table.source_header
