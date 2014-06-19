@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 feature 'Sources label' do
-  let(:file_path) { File.join(fixture_path, '3col_header.csv') }
+  include AcceptanceHelpers
 
-  before do
-    visit new_source_path
-    attach_file 'source_file', file_path
-    click_button 'Enregistrer'
-  end
+  background { create_source }
 
   context 'creation' do
     scenario 'assigns a default label as the attached file name' do

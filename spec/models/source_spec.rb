@@ -81,7 +81,7 @@ describe Source do
   end
 
   describe '#detect_headers!' do
-    it 'detect columns count' do
+    it 'detects columns count' do
       source.detect_headers!
       expect(source.headers.size).to eq 3
     end

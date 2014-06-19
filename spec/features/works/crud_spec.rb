@@ -5,10 +5,10 @@ feature 'Works CRUD' do
   let(:source)    { build :source }
   let(:work)      { build :work }
 
-  before          { visit root_path }
+  background      { visit root_path }
 
   context 'index' do
-    before do
+    background do
       work.save!
       click_link 'Analyses'
     end
@@ -19,7 +19,7 @@ feature 'Works CRUD' do
   end
 
   context 'creation' do
-    before do
+    background do
       operation.save!
       source.save!
       click_link 'Analyses'
@@ -33,7 +33,7 @@ feature 'Works CRUD' do
       )
     end
 
-    scenario 'select source' do
+    scenario 'selects source' do
       select(source.label, from: 'Fichier')
       click_button 'Paramétrer'
 

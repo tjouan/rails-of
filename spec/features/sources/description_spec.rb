@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Sources description' do
   include AcceptanceHelpers
 
-  before { create_source }
+  background { create_source }
 
   scenario 'associates description to a source' do
     visit sources_path

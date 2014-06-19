@@ -1,30 +1,27 @@
 require 'spec_helper'
 
 feature 'Sources file' do
-  let(:file_path) { File.join(fixture_path, '3col_header.csv') }
+  include AcceptanceHelpers
 
-  before do
-    visit new_source_path
-    fill_in 'Label', with: 'some file'
-    attach_file 'source_file', file_path
-    click_button 'Enregistrer'
-  end
+  let(:file_name) { '3col_header.csv' }
+
+  background { create_source file: file_name }
 
   context 'creation' do
     scenario 'creates source with attached file' do
       visit sources_path
-      click_link 'some file'
+      click_link file_name
 
       expect(page).to have_content '3col_header.csv'
       expect(page).to have_content 'text/csv'
     end
 
-    scenario 'redirects to header new' do
+    scenario 'redirects to headers/new' do
       expect(current_path).to eq new_source_headers_path(Source.last)
     end
 
     context 'when file charset is invalid' do
-      let(:file_path) { File.join(fixture_path, '3col_header_body_latin1.csv') }
+      let(:file_name) { '3col_header_body_latin1.csv' }
 
       scenario 'shows error message' do
         expect(page.body)
@@ -34,13 +31,15 @@ feature 'Sources file' do
   end
 
   context 'download' do
-    before do
+    let(:file) { File.new(File.join(fixture_path, file_name)) }
+
+    background do
       visit sources_path
       click_link 'Télécharger'
     end
 
     scenario 'gets the attached file' do
-      expect(page.body).to eq File.new(file_path).read
+      expect(page.body).to eq file.read
     end
 
     scenario 'sets the source content-type' do
