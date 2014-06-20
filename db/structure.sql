@@ -39,7 +39,8 @@ CREATE TABLE headers (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     name character varying(255) NOT NULL,
-    type integer NOT NULL
+    type integer NOT NULL,
+    "position" integer NOT NULL
 );
 
 
@@ -115,7 +116,8 @@ CREATE TABLE sources (
     sha256 character varying(255) NOT NULL,
     file_name character varying(255),
     mime_type character varying(255),
-    charset character varying(255)
+    charset character varying(255),
+    file_header boolean DEFAULT false NOT NULL
 );
 
 
@@ -249,6 +251,10 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20');
 
 INSERT INTO schema_migrations (version) VALUES ('20140619122948');
+
+INSERT INTO schema_migrations (version) VALUES ('20140619193501');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620201555');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
