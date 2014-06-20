@@ -102,6 +102,11 @@ describe Source do
       expect(source.headers.size).to eq 3
     end
 
+    it 'assigns columns position' do
+      source.detect_headers!
+      expect(source.headers.map &:position).to eq [0, 1, 2]
+    end
+
     context 'not detecting header names' do
       it 'builds placeholder headers' do
         source.detect_headers!

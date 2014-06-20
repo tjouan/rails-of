@@ -6,7 +6,9 @@ class Source < ActiveRecord::Base
 
   attr_accessor :file
 
-  has_many :headers, dependent: :destroy
+  has_many :headers,
+    -> { order 'position ASC' },
+    dependent: :destroy
   accepts_nested_attributes_for :headers
 
   has_many :works, dependent: :destroy
@@ -39,12 +41,9 @@ class Source < ActiveRecord::Base
   end
 
   def detect_headers!(names: false)
-    if names
-      first_row.each { |e| headers.build name: e }
-    else
-      first_row.each_with_index do |e, k|
-        headers.build name: HEADER_PLACEHOLDER % [k + 1]
-      end
+    first_row.each_with_index do |e, i|
+      headers.build position: i,
+        name: names ? e : HEADER_PLACEHOLDER % [i + 1]
     end
   end
 

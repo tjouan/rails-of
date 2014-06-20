@@ -50,7 +50,7 @@ class SourcesController < ApplicationController
 
   def source_params
     params.require(:source).permit(:label, :description, :file, :file_header, {
-      headers_attributes: [:name, :type]
+      headers_attributes: [:name, :type, :position]
     })
   end
 end
