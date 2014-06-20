@@ -15,7 +15,7 @@ feature 'Sources header' do
       expect(page.first('main form input[type=text]').value).to eq 'name'
     end
 
-    scenario 'list available data types' do
+    scenario 'lists available data types' do
       expect(page).to have_select(
         'source[headers_attributes][0][type]',
         with_options: %w[Texte Entier]
