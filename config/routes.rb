@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'download', on: :member
 
     resource :headers, only: :new
+    resource :preview, only: :show
   end
 
   resources :operations, only: [:index, :show]

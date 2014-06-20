@@ -1,0 +1,15 @@
+%h1
+  Prévisualisation des données
+  = "« #{@source.label} »"
+
+
+%table.source_header
+  %thead
+    %tr
+      - @source.headers.each do |e|
+        %th= e.name
+  %tbody
+    - @source.preview.each do |r|
+      %tr
+        - r.each do |e|
+          %td= e

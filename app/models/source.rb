@@ -1,10 +1,8 @@
 class Source < ActiveRecord::Base
   HEADER_PLACEHOLDER    = 'Champ %d'.freeze
   CHARSET_CHECK_LENGTH  = (500 * (10 ** 3)).freeze
-  CHARSETS              = %w[
-    utf-8
-    iso-8859-15
-  ].freeze
+  CHARSETS              = %w[utf-8 iso-8859-15].freeze
+  PREVIEW_SIZE          = 32
 
   attr_accessor :file
 
@@ -48,6 +46,10 @@ class Source < ActiveRecord::Base
         headers.build name: HEADER_PLACEHOLDER % [k + 1]
       end
     end
+  end
+
+  def preview
+    to_csv.drop(file_header ? 1 : 0).take PREVIEW_SIZE
   end
 
   def set_charset
