@@ -12,7 +12,7 @@ class Header < ActiveRecord::Base
 
   belongs_to :source
 
-  enum type: [:text, :int, :float, :date]
+  enum type: [:text, :longtext, :int, :float, :date]
 
   def type_description
     TYPES[type.to_sym]

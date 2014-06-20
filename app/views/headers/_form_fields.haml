@@ -1,0 +1,13 @@
+%table
+  %thead
+    %tr
+      %th Nom
+      %th Type
+  %tbody
+    = f.fields_for :headers do |hf|
+      %tr
+        %td.source_header_key
+          = hf.text_field :name
+        %td.source_header_type
+          = hf.select(:type, Header::TYPES.map { |k, v| [v.capitalize, k] })
+          = hf.hidden_field :position

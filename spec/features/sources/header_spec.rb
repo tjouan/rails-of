@@ -35,4 +35,20 @@ feature 'Sources header' do
       ]
     end
   end
+
+  context 'edit' do
+    background do
+      click_button 'Enregistrer'
+      visit sources_path
+    end
+
+    scenario 'edits a header' do
+      click_link 'Modifier'
+      fill_in 'source[headers_attributes][0][name]', with: 'other name'
+      click_button 'Enregistrer'
+      visit source_path Source.last
+
+      expect(page.all('main table tbody td').first.text).to eq 'other name'
+    end
+  end
 end
