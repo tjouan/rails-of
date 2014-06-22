@@ -1,14 +1,20 @@
 class WorkProcessor
+  OPERATIONS = {
+    geoscore: GeoScore::Operation
+  }.freeze
+
   class << self
     def perform(work_id)
       new(Work.find(work_id)).call
     end
   end
 
-  attr_reader :work
+  attr_reader :work, :operations, :source_saver
 
-  def initialize(work)
-    @work = work
+  def initialize(work, operations: OPERATIONS, source_saver: SourceSaver)
+    @work         = work
+    @operations   = operations
+    @source_saver = source_saver
   end
 
   def call
@@ -17,7 +23,7 @@ class WorkProcessor
     Tempfile.create('opti-work') do |f|
       operation_to(f).process!
       f.rewind
-      SourceSaver.new(
+      source_saver.new(
         Source.new(
           label: "#{work.source.label} enrichi par GeoScore",
           file: output_file(f, work.source.file_name)
@@ -29,12 +35,16 @@ class WorkProcessor
   end
 
   def operation_to(output)
-    @operation ||= GeoScore::Operation.new(
+    @operation ||= operation_class.new(
       work.source.to_file,
       params,
       output,
       ignore_lines: work.source.file_header ? 1 : 0
     )
+  end
+
+  def operation_class
+    operations[work.operation.ref.to_sym]
   end
 
   def params

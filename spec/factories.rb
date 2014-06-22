@@ -32,6 +32,6 @@ FactoryGirl.define do
   factory :work do
     operation
     source
-    parameters []
+    parameters %w[0, 1]
   end
 end
