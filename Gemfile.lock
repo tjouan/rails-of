@@ -204,9 +204,9 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2014.5)
       tzinfo (>= 1.0.0)
-    uglifier (1.3.0)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+      json (>= 1.8.0)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -242,5 +242,5 @@ DEPENDENCIES
   spork (~> 1.0rc)
   spork-rails (~> 4.0)
   tzinfo-data (~> 1.2014.2)
-  uglifier (~> 1.3)
+  uglifier (~> 2.0)
   unicorn-rails (~> 2.1)

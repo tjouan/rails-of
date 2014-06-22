@@ -10,7 +10,7 @@ gem 'haml-rails',     '~> 0.5'
 
 gem 'coffee-rails',   '~> 4.0'
 gem 'sass-rails',     '~> 4.0'
-gem 'uglifier',       '~> 1.3'
+gem 'uglifier',       '~> 2.0'
 
 gem 'jquery-rails',   '~> 3.1'
 
