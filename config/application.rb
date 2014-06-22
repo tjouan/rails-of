@@ -36,12 +36,12 @@ module OptiFront
     # http://viget.com/extend/using-time-zones-with-rails
     # http://stackoverflow.com/questions/6060436/rails-3-how-to-get-todays-date-in-specific-timezone
     # http://stackoverflow.com/questions/5267170/how-to-display-the-time-in-users-timezone
-    config.time_zone = 'Paris'
+    config.time_zone = 'Paris' unless Rails.env.test?
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.i18n.default_locale = :fr
+    config.i18n.default_locale = :fr unless Rails.env.test?
 
     config.exceptions_app = self.routes
   end
