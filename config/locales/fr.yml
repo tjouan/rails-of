@@ -1,4 +1,8 @@
 fr:
+  processed:  Terminé
+  error:      Erreur
+  timeout:    Expiré
+
   date:
     abbr_day_names:
       - dim

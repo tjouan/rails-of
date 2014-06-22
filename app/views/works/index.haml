@@ -11,12 +11,8 @@
           Données
         %th
           Outil
-        %th.date
-          Demande
-        %th.date
-          Traitement
-        %th.date
-          Fin
+        %th
+          État
 
     %tbody
       - @works.each do |work|
@@ -26,11 +22,7 @@
           %td
             = work.operation.name
           %td.date
-            = l work.created_at
-          %td.date
-            = work.started_at ? l(work.started_at) : 'N/A'
-          %td.date
-            = work.processed_at ? l(work.processed_at) : 'N/A'
+            = t work.status
 
 
 - if @operations.any?
