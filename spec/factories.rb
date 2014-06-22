@@ -2,8 +2,9 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
   factory :header do
-    name 'name'
-    type :text
+    name      'name'
+    type      :text
+    position  0
   end
 
   factory :operation do
