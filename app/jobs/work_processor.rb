@@ -30,7 +30,13 @@ class WorkProcessor
         )
       ).call
     end
-
+  rescue Backburner::Job::JobTimeout
+    work.touch :terminated_at
+    raise
+  rescue => ex
+    work.touch :failed_at
+    raise
+  else
     work.touch :processed_at
   end
 

@@ -59,6 +59,53 @@ describe WorkProcessor do
         expect(work.processed_at).to be_within(1.second).of Time.now
       end
     end
+
+    context 'when operation fails' do
+      before do
+        allow_any_instance_of(DummyOperation)
+          .to receive(:process!).and_raise RuntimeError
+      end
+
+      it 'does not hide the error' do
+        expect { processor.call }.to raise_error RuntimeError
+      end
+
+      it 'does not touch processed_at' do
+        expect { processor.call rescue RuntimeError }
+          .not_to change { work.processed_at }
+      end
+
+      it 'touches failed_at' do
+        processor.call rescue RuntimeError
+        expect(work.failed_at).to be_within(1.second).of Time.now
+      end
+    end
+
+    context 'when operation timeouts' do
+      before do
+        allow_any_instance_of(DummyOperation)
+          .to receive(:process!).and_raise Backburner::Job::JobTimeout
+      end
+
+      it 'does not hide the error' do
+        expect { processor.call }.to raise_error Backburner::Job::JobTimeout
+      end
+
+      it 'does not touch processed_at' do
+        expect { processor.call rescue Backburner::Job::JobTimeout }
+          .not_to change { work.processed_at }
+      end
+
+      it 'does not touch failed_at' do
+        expect { processor.call rescue Backburner::Job::JobTimeout }
+          .not_to change { work.failed_at }
+      end
+
+      it 'touches terminated_at' do
+        processor.call rescue Backburner::Job::JobTimeout
+        expect(work.terminated_at).to be_within(1.second).of Time.now
+      end
+    end
   end
 
   describe '#operation_to' do
