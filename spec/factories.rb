@@ -7,7 +7,8 @@ FactoryGirl.define do
   end
 
   factory :operation do
-    name 'GeoScore'
+    name  'GeoScore'
+    ref   'geoscore'
   end
 
   factory :source do

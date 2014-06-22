@@ -18,7 +18,7 @@
       %p
         Données :
         = @work.source.label
-        = render "form_#{@work.operation.name.downcase}", f: f, work: @work
+        = render "form_#{@work.operation.ref}", f: f, work: @work
 
 
   %ul.actions
