@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'Home page' do
-  scenario 'displays home message'do
+  scenario 'redirects to works/index'do
     visit root_path
 
-    expect(page).to have_content 'OptiDM'
+    expect(current_path).to eq works_path
   end
 end
