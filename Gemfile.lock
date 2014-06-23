@@ -9,6 +9,13 @@ GIT
       rspec-mocks (>= 2.14.0)
 
 GIT
+  remote: git://github.com/tjouan/spork.git
+  revision: 0031bb85acaf0d1cc0a75b2b2afbf9488478ee39
+  branch: rspec-2.99
+  specs:
+    spork (1.0.0rc4)
+
+GIT
   remote: git:datacube/geo_score
   revision: 969920a2b3cfab641d2c73daef7da2d9148a2777
   specs:
@@ -194,7 +201,6 @@ GEM
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
     slop (3.6.0)
-    spork (1.0.0rc4)
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
@@ -261,7 +267,7 @@ DEPENDENCIES
   rspec-rails (~> 2.14)
   sass-rails (~> 4.0)
   shoulda-matchers (~> 2.6)
-  spork (~> 1.0rc)
+  spork!
   spork-rails (~> 4.0)
   tzinfo-data (~> 1.2014.2)
   uglifier (~> 2.0)
