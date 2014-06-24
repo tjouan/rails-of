@@ -10,12 +10,16 @@ class Work < ActiveRecord::Base
   validates :parameters, length: { minimum: 0, allow_nil: false }
 
   def status
+    return :queued unless started_at
+
     if processed_at
       :processed
     elsif failed_at
       :error
     elsif terminated_at
       :timeout
+    else
+      :processing
     end
   end
 end

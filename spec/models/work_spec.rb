@@ -20,8 +20,20 @@ describe Work do
   end
 
   describe '#status' do
+    it 'returns :queued' do
+      expect(work.status).to be :queued
+    end
+
+    context 'when work is beeing processed' do
+      let(:work) { build :work, started_at: Time.now }
+
+      it 'returns :processing' do
+        expect(work.status).to be :processing
+      end
+    end
+
     context 'when work has been processed' do
-      let(:work) { build :work, processed_at: Time.now }
+      let(:work) { build :work, started_at: Time.now, processed_at: Time.now }
 
       it 'returns :processed' do
         expect(work.status).to be :processed
@@ -29,7 +41,7 @@ describe Work do
     end
 
     context 'when work failed' do
-      let(:work) { build :work, failed_at: Time.now }
+      let(:work) { build :work, started_at: Time.now, failed_at: Time.now }
 
       it 'returns :error' do
         expect(work.status).to be :error
@@ -37,7 +49,7 @@ describe Work do
     end
 
     context 'when work has terminated' do
-      let(:work) { build :work, terminated_at: Time.now }
+      let(:work) { build :work, started_at: Time.now, terminated_at: Time.now }
 
       it 'returns :timeout' do
         expect(work.status).to be :timeout

@@ -1,4 +1,6 @@
 fr:
+  queued:     En attente
+  processing: En cours
   processed:  Terminé
   error:      Erreur
   timeout:    Expiré
