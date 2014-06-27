@@ -1,5 +1,3 @@
-target 'optidm-qa1'
-
 repository      = 'git:datacube/opti-front'
 app_path        = 'www/opti-front'
 www_workers     = 2
