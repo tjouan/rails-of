@@ -1,16 +1,18 @@
 class WorksController < ApplicationController
+  WORK_PARAMETERS = [ :id, :target, { ignore: [] } ].freeze
+
   def index
     @works      = Work.all
     @operations = Operation.all
   end
 
   def new
-    @work     = Work.new(operation: Operation.find(params[:operation_id]))
+    @work     = WorkForm.build(operation_id: params[:operation_id])
     @sources  = Source.all
   end
 
   def create
-    @work = Work.new(work_params)
+    @work = WorkForm.build(work_params)
 
     if WorkSubmitter.new(@work).call
       redirect_to works_path
@@ -22,6 +24,11 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:operation_id, :source_id, parameters: [])
+    params.require(:work).permit(
+      :operation_id, :source_id, :target_source_id, {
+        parameters:
+          params[:work][:parameters].is_a?(Hash) ? WORK_PARAMETERS : []
+      }
+    )
   end
 end

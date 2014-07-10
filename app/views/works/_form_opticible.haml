@@ -1,0 +1,22 @@
+%table.field
+  %caption Configuration des champs de la source de données
+  %thead
+    %tr
+      %th Champ
+      %th Identifiant
+      %th Cible
+      %th Ignorer
+  %tbody
+    - work.source.headers.each do |h|
+      %tr
+        %td
+          = h.name
+        %td
+          = f.radio_button 'parameters_id', h.position,
+            { name: 'work[parameters][id]' }
+        %td
+          = f.radio_button 'parameters_target', h.position,
+            { name: 'work[parameters][target]' }
+        %td
+          = f.check_box "parameters_ignore_#{h.position}",
+            { name: 'work[parameters][ignore][]' }, h.position, ''

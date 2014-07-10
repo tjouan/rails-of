@@ -1,6 +1,7 @@
 = form_for @work, html: { class: 'form' } do |f|
-  = f.hidden_field :operation_id, value: @work.operation.id
-  = f.hidden_field :source_id, value: @work.source.id if @work.source
+  = f.hidden_field :operation_id,     value: @work.operation.id
+  = f.hidden_field :source_id,        value: @work.source.id        if @work.source
+  = f.hidden_field :target_source_id, value: @work.target_source.id if @work.target_source
 
   %fieldset
     %legend
@@ -12,13 +13,26 @@
         %label
           Données :
           %br
-          = collection_select(:work, :source_id, @sources, :id, :label)
+          = collection_select :work, :source_id, @sources, :id, :label
+
+      - if @work.need_target?
+        %p.field
+          %label
+            Données cible :
+            %br
+            = collection_select :work, :target_source_id, @sources, :id, :label
 
     - else
       %p
         Données :
         = @work.source.label
-        = render "form_#{@work.operation.ref}", f: f, work: @work
+
+      - if @work.target_source
+        %p
+          Données cible :
+          = @work.target_source.label
+
+      = render "form_#{@work.operation.ref}", f: f, work: @work
 
 
   %ul.actions
