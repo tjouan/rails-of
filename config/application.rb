@@ -44,5 +44,9 @@ module OptiFront
     config.i18n.default_locale = :fr unless Rails.env.test?
 
     config.exceptions_app = self.routes
+
+    config.action_view.field_error_proc = proc do |html_tag, instance|
+      html_tag.html_safe
+    end
   end
 end
