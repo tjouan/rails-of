@@ -155,7 +155,8 @@ CREATE TABLE works (
     processed_at timestamp without time zone,
     parameters character varying(255)[] NOT NULL,
     failed_at timestamp without time zone,
-    terminated_at timestamp without time zone
+    terminated_at timestamp without time zone,
+    target_source_id integer
 );
 
 
@@ -262,6 +263,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140620201555');
 INSERT INTO schema_migrations (version) VALUES ('20140622134708');
 
 INSERT INTO schema_migrations (version) VALUES ('20140622175028');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630144723');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
