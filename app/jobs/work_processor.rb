@@ -1,6 +1,7 @@
 class WorkProcessor
   OPERATIONS = {
-    geoscore: GeoScore::Operation
+    geoscore:   GeoScore::Operation,
+    opticible:  Operations::Opticible
   }.freeze
 
   class << self
@@ -25,7 +26,7 @@ class WorkProcessor
       f.rewind
       source_saver.new(
         Source.new(
-          label: "#{work.source.label} enrichi par GeoScore",
+          label: "#{work.source.label} enrichi par #{work.operation.name}",
           file: output_file(f, work.source.file_name)
         )
       ).call
@@ -41,20 +42,18 @@ class WorkProcessor
   end
 
   def operation_to(output)
-    @operation ||= operation_class.new(
+    operation = operation_class.new(
       work.source.to_file,
-      params,
+      work.parameters,
       output,
       ignore_lines: work.source.file_header ? 1 : 0
     )
+    operation.work = work if operation.respond_to? :work=
+    operation
   end
 
   def operation_class
     operations[work.operation.ref.to_sym]
-  end
-
-  def params
-    work.parameters.map &:to_i
   end
 
   def output_file(file, file_name)

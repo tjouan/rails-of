@@ -121,12 +121,6 @@ describe WorkProcessor do
     end
   end
 
-  describe '#params' do
-    it 'returns work params as integers' do
-      expect(processor.params).to eq [0, 1]
-    end
-  end
-
   describe '#output_file' do
     let(:file)            { StringIO.new }
     let(:file_name)       { 'some_file' }
