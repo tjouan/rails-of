@@ -72,7 +72,7 @@ module Operations
           stderr => method(:log_error)
         }.each do |stream, meth|
           while line = stream.gets
-            meth.call line
+            meth.call line.chomp
           end
         end
         exit_status = wait_thr.value.exitstatus
