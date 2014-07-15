@@ -9,7 +9,7 @@ class WorkForm < FormBase
       return unless source
 
       source.headers.each do |h|
-        define_parameters_ignore h.position, false
+        define_parameters_ignore "col#{h.position}", false
       end
     end
 
@@ -20,7 +20,7 @@ class WorkForm < FormBase
         value[:target],
         ignored_parameters.join(',')
       ]
-      ignored_parameters.map(&:to_i).each do |e|
+      ignored_parameters.each do |e|
         define_parameters_ignore e, true, force: true
       end
     end

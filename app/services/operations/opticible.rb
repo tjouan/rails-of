@@ -35,12 +35,8 @@ module Operations
         OPTICIBLE, LEVEL_BASE,
         File.expand_path(work.source.path),
         File.expand_path(work.target_source.path),
-        # FIXME: use real parameters
-        #params[0],
-        #params[1]
-        #params[2]
-        'ident',
-        'target',
+        params[0],
+        params[1],
         params[2],
         # FIXME: implement last parameters
         *%w['' '' '']
