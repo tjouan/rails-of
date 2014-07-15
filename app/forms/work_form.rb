@@ -16,7 +16,6 @@ class WorkForm < FormBase
     def parameters=(value)
       ignored_parameters = value[:ignore].reject(&:empty?)
       object.parameters = [
-        value[:id],
         value[:target],
         ignored_parameters.join(',')
       ]
@@ -27,10 +26,6 @@ class WorkForm < FormBase
 
     def need_target?
       return true
-    end
-
-    def parameters_id
-      object.parameters ? object.parameters[0] : nil
     end
 
     def parameters_target

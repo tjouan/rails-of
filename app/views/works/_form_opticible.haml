@@ -3,7 +3,6 @@
   %thead
     %tr
       %th Champ
-      %th Identifiant
       %th Cible
       %th Ignorer
   %tbody
@@ -11,9 +10,6 @@
       %tr
         %td
           = h.name
-        %td
-          = f.radio_button 'parameters_id', h.position,
-            { name: 'work[parameters][id]' }
         %td
           = f.radio_button 'parameters_target', h.position,
             { name: 'work[parameters][target]' }

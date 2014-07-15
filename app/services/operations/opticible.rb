@@ -16,7 +16,10 @@ module Operations
     LEVEL_BASE        = 1
     LEVEL_PLUS        = 2
     TMPDIR_PATTERN    = 'opticible'.freeze
-    COLUMN_ARG_FORMAT = 'col%s'.freeze
+    COLUMN_ARG_FORMAT = 'col%d'.freeze
+    COLUMN_IDENT      = 'col0'.freeze
+    TRAIN_FILE_PATH   = 'train.csv'.freeze
+    TARGET_FILE_PATH  = 'target.csv'.freeze
 
     attr_accessor :work
     attr_reader   :input, :output, :params
@@ -35,11 +38,11 @@ module Operations
     def command(dir)
       command = [
         OPTICIBLE, LEVEL_BASE,
-        File.expand_path(work.source.path),
-        File.expand_path(work.target_source.path),
+        TRAIN_FILE_PATH,
+        TARGET_FILE_PATH,
+        COLUMN_IDENT,
         column_argument(params[0]),
         column_argument(params[1]),
-        column_argument(params[2]),
         # FIXME: implement last parameters
         nil, nil, nil
       ]
@@ -47,8 +50,8 @@ module Operations
     end
 
     def column_argument(param)
-      param.split(',').map do |e|
-        COLUMN_ARG_FORMAT % e
+      param.split(',').map(&:to_i).map do |e|
+        COLUMN_ARG_FORMAT % (e + 1)
       end.join ','
     end
 
@@ -59,10 +62,35 @@ module Operations
           Shellwords.shelljoin(command(dir))
         ].join ' '
         log_info(cmd)
+        prepare_sources(dir)
         Dir.chdir(dir) do
           run_command cmd
         end
       end
+    end
+
+    def prepare_sources(dir)
+      train_id_last = prepare_source work.source, File.join(dir, TRAIN_FILE_PATH)
+
+      prepare_source work.target_source, File.join(dir, TARGET_FILE_PATH),
+        id_start: train_id_last + 1
+    end
+
+    def prepare_source(source, path, id_start: 0)
+      id = nil
+      i = source.to_csv
+
+      CSV.open(path, 'w') do |out|
+        out << header = (i.shift.size + 1).times.inject([]) do |m, e|
+          m << COLUMN_ARG_FORMAT % e
+        end
+        i.rewind unless source.file_header?
+        i.each_with_index do |r, i|
+          id = id_start + i
+          out << [id, *r]
+        end
+      end
+      id
     end
 
     def run_command(cmd)
