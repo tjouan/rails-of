@@ -8,14 +8,15 @@ module Operations
 
     # FIXME: remove env usage and fullpath when opticible can be packaged and
     # installed.
-    OPTICIBLE_ROOT  = (ENV.key? 'OPTICIBLE') ?
-                        ENV['OPTICIBLE'].dup.freeze :
-                        "#{ENV['HOME']}/usr/opticible".freeze
-    OPTICIBLE       = "#{OPTICIBLE_ROOT}/bin/opti-r.R".freeze
-    R_LIBS          = "#{OPTICIBLE_ROOT}/.vendor".freeze
-    LEVEL_BASE      = 1
-    LEVEL_PLUS      = 2
-    TMPDIR_PATTERN  = 'opticible'.freeze
+    OPTICIBLE_ROOT    = (ENV.key? 'OPTICIBLE') ?
+                          ENV['OPTICIBLE'].dup.freeze :
+                          "#{ENV['HOME']}/usr/opticible".freeze
+    OPTICIBLE         = "#{OPTICIBLE_ROOT}/bin/opti-r.R".freeze
+    R_LIBS            = "#{OPTICIBLE_ROOT}/.vendor".freeze
+    LEVEL_BASE        = 1
+    LEVEL_PLUS        = 2
+    TMPDIR_PATTERN    = 'opticible'.freeze
+    COLUMN_ARG_FORMAT = 'col%s'.freeze
 
     attr_accessor :work
     attr_reader   :input, :output, :params
@@ -33,21 +34,30 @@ module Operations
 
     def command(dir)
       command = [
-        "R_LIBS=#{R_LIBS}",
         OPTICIBLE, LEVEL_BASE,
         File.expand_path(work.source.path),
         File.expand_path(work.target_source.path),
-        params[0],
-        params[1],
-        params[2],
+        column_argument(params[0]),
+        column_argument(params[1]),
+        column_argument(params[2]),
         # FIXME: implement last parameters
-        *%w['' '' '']
-      ].join ' '
+        nil, nil, nil
+      ]
+      command
+    end
+
+    def column_argument(param)
+      param.split(',').map do |e|
+        COLUMN_ARG_FORMAT % e
+      end.join ','
     end
 
     def run_command_in_tmp_dir
       Dir.mktmpdir(TMPDIR_PATTERN) do |dir|
-        cmd = command(dir)
+        cmd = [
+          "R_LIBS=#{R_LIBS}",
+          Shellwords.shelljoin(command(dir))
+        ].join ' '
         log_info(cmd)
         Dir.chdir(dir) do
           run_command cmd

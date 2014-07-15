@@ -9,7 +9,7 @@ class WorkForm < FormBase
       return unless source
 
       source.headers.each do |h|
-        define_parameters_ignore "col#{h.position}", false
+        define_parameters_ignore h.position, false
       end
     end
 

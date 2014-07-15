@@ -12,11 +12,11 @@
         %td
           = h.name
         %td
-          = f.radio_button 'parameters_id', "col#{h.position}",
+          = f.radio_button 'parameters_id', h.position,
             { name: 'work[parameters][id]' }
         %td
-          = f.radio_button 'parameters_target', "col#{h.position}",
+          = f.radio_button 'parameters_target', h.position,
             { name: 'work[parameters][target]' }
         %td
-          = f.check_box "parameters_ignore_col#{h.position}",
-            { name: 'work[parameters][ignore][]' }, "col#{h.position}", ''
+          = f.check_box "parameters_ignore_#{h.position}",
+            { name: 'work[parameters][ignore][]' }, h.position, ''
