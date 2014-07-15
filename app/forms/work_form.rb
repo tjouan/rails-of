@@ -30,11 +30,11 @@ class WorkForm < FormBase
     end
 
     def parameters_id
-      object.parameters ? object.parameters[0] : 0
+      object.parameters ? object.parameters[0] : nil
     end
 
     def parameters_target
-      object.parameters ? object.parameters[1] : 0
+      object.parameters ? object.parameters[1] : nil
     end
 
     def define_parameters_ignore(position, value, force: false)
