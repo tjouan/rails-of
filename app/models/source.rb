@@ -48,7 +48,9 @@ class Source < ActiveRecord::Base
   end
 
   def preview
-    to_csv.drop(file_header ? 1 : 0).take PREVIEW_SIZE
+    c = to_csv
+    c.shift if file_header
+    c.take PREVIEW_SIZE
   end
 
   def set_charset
