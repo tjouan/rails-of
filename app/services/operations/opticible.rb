@@ -1,8 +1,10 @@
 module Operations
   class Opticible
+    require 'open3'
+
     OpticibleError = Class.new(RuntimeError)
 
-    require 'open3'
+    include Backburner::Logger
 
     # FIXME: remove env usage and fullpath when opticible can be packaged and
     # installed.
@@ -46,7 +48,7 @@ module Operations
     def run_command_in_tmp_dir
       Dir.mktmpdir(TMPDIR_PATTERN) do |dir|
         cmd = command(dir)
-        $stdout.puts cmd
+        log_info(cmd)
         Dir.chdir(dir) do
           run_command cmd
         end
@@ -56,9 +58,11 @@ module Operations
     def run_command(cmd)
       exit_status = 0
       Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-        { stdout => output, stderr => $stderr }.each do |i, o|
-          while line = i.gets
-            o.puts line
+        { stdout => output.method(:puts),
+          stderr => method(:log_error)
+        }.each do |stream, meth|
+          while line = stream.gets
+            meth.call line
           end
         end
         exit_status = wait_thr.value.exitstatus
