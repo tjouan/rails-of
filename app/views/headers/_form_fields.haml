@@ -3,6 +3,7 @@
     %tr
       %th Nom
       %th Type
+      %th Exemple
   %tbody
     = f.fields_for :headers do |hf|
       %tr
@@ -11,3 +12,5 @@
         %td.source_header_type
           = hf.select(:type, Header::TYPES.map { |k, v| [v.capitalize, k] })
           = hf.hidden_field :position
+        %td.source_header_example
+          = hf.object.value_sample

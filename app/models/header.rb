@@ -21,4 +21,10 @@ class Header < ActiveRecord::Base
   def type_description
     TYPES[type.to_sym]
   end
+
+  def value_sample
+    csv = source.to_csv
+    csv.shift if source.file_header?
+    csv.shift[position]
+  end
 end

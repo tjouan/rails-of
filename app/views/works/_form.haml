@@ -34,6 +34,13 @@
 
       = render "form_#{@work.operation.ref}", f: f, work: @work
 
+      %br
+
+      %fieldset
+        %legend Prévisualisation données
+
+        = render 'previews/preview', source: @work.source, count: 5
+
 
   %ul.actions
     %li

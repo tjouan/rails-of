@@ -2,7 +2,6 @@ require 'spec_helper'
 
 feature 'Works CRUD' do
   let(:operation) { build :operation }
-  let(:source)    { build :source }
   let(:work)      { build :work }
 
   background      { visit root_path }
@@ -19,9 +18,11 @@ feature 'Works CRUD' do
   end
 
   context 'creation' do
+    include AcceptanceHelpers
+
     background do
       operation.save!
-      source.save!
+      create_source
       click_link 'Tableau de bord'
       click_link operation.name
     end
@@ -29,12 +30,12 @@ feature 'Works CRUD' do
     scenario 'shows form' do
       expect(page).to have_select(
         'work[source_id]',
-        with_options: [source.label]
+        with_options: ['3col_header.csv']
       )
     end
 
     scenario 'selects source' do
-      select(source.label, from: 'Données')
+      select('3col_header.csv', from: 'Données')
       click_button 'Paramétrer'
 
       expect(page).to have_content operation.name
@@ -45,7 +46,7 @@ feature 'Works CRUD' do
       click_button 'Démarrer'
 
       expect(current_path).to eq works_path
-      expect(page).to have_content source.label
+      expect(page).to have_content '3col_header.csv'
     end
   end
 end

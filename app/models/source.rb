@@ -47,10 +47,10 @@ class Source < ActiveRecord::Base
     end
   end
 
-  def preview
+  def preview(count = PREVIEW_SIZE)
     c = to_csv
     c.shift if file_header
-    c.take PREVIEW_SIZE
+    c.take count
   end
 
   def set_charset
