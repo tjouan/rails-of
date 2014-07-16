@@ -1,5 +1,3 @@
-- source_headers = work.source.headers.map.with_index { |e, i| [e.name, i] }
-
 %table.field
   %caption Association des champs de la source de données
   %thead
@@ -8,17 +6,12 @@
       %th
       %th Données
   %tbody
-    %tr
-      %td
-        Code postal
-      %td
-        ⇄
-      %td
-        = f.select 'parameters', source_headers, {}, { name: 'work[parameters][]' }
-    %tr
-      %td
-        Ville
-      %td
-        ⇄
-      %td
-        = f.select 'parameters', source_headers, {}, { name: 'work[parameters][]' }
+    - ['Code postal', 'Ville'].each do |e|
+      %tr
+        %td
+          = e
+        %td
+          ⇄
+        %td
+          = f.collection_select 'parameters', work.source.headers,
+            :position, :name, {}, { name: 'work[parameters][]' }
