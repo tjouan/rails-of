@@ -62,6 +62,8 @@ module Operations
           Shellwords.shelljoin(command(dir))
         ].join ' '
         log_info(cmd)
+        log_info("SOURCE: ##{work.source.id} `#{work.source.label}'")
+        log_info("TARGET: ##{work.target_source.id} `#{work.target_source.label}'")
         prepare_sources(dir)
         Dir.chdir(dir) do
           run_command cmd
