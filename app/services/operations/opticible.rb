@@ -43,8 +43,9 @@ module Operations
         COLUMN_IDENT,
         column_argument(params[0]),
         column_argument(params[1]),
-        # FIXME: implement last parameters
-        nil, nil, nil
+        column_argument(columns_for('date')),
+        column_argument(columns_for('longtext')),
+        nil
       ]
       command
     end
@@ -53,6 +54,10 @@ module Operations
       param.split(',').map(&:to_i).map do |e|
         COLUMN_ARG_FORMAT % (e + 1)
       end.join ','
+    end
+
+    def columns_for(type)
+      work.source.headers.select { |h| h.type == type }.map(&:position).join(',')
     end
 
     def run_command_in_tmp_dir
