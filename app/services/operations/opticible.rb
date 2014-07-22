@@ -30,12 +30,28 @@ module Operations
     end
 
     def process!
-      run_command_in_tmp_dir
+      log_info "WORK: ##{work.id}"
+      Dir.mktmpdir(TMPDIR_PATTERN) do |dir|
+        log_info command
+        log_info "SOURCE: ##{work.source.id} `#{work.source.label}'"
+        log_info "TARGET: ##{work.target_source.id} `#{work.target_source.label}'"
+        prepare_sources dir
+        Dir.chdir(dir) do
+          run_command command
+        end
+      end
     end
 
-    def command(dir)
-      command = [
-        OPTICIBLE, LEVEL_BASE,
+    def command
+      [
+        "R_LIBS=#{R_LIBS}",
+        Shellwords.shelljoin([OPTICIBLE, *arguments]),
+      ].join ' '
+    end
+
+    def arguments
+      [
+        LEVEL_BASE,
         TRAIN_FILE_PATH,
         TARGET_FILE_PATH,
         COLUMN_IDENT,
@@ -45,7 +61,6 @@ module Operations
         column_argument(columns_for('longtext')),
         nil
       ]
-      command
     end
 
     def column_argument(param)
@@ -56,22 +71,6 @@ module Operations
 
     def columns_for(type)
       work.source.headers.select { |h| h.type == type }.map(&:position).join(',')
-    end
-
-    def run_command_in_tmp_dir
-      Dir.mktmpdir(TMPDIR_PATTERN) do |dir|
-        cmd = [
-          "R_LIBS=#{R_LIBS}",
-          Shellwords.shelljoin(command(dir))
-        ].join ' '
-        log_info(cmd)
-        log_info("SOURCE: ##{work.source.id} `#{work.source.label}'")
-        log_info("TARGET: ##{work.target_source.id} `#{work.target_source.label}'")
-        prepare_sources(dir)
-        Dir.chdir(dir) do
-          run_command cmd
-        end
-      end
     end
 
     def prepare_sources(dir)
