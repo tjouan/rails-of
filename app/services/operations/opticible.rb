@@ -1,23 +1,14 @@
 module Operations
   class Opticible
-    OpticibleError = Class.new(RuntimeError)
-
     include Backburner::Logger
 
-    # FIXME: remove env usage and fullpath when opticible can be packaged and
-    # installed.
-    OPTICIBLE_ROOT    = (ENV.key? 'OPTICIBLE') ?
-                          ENV['OPTICIBLE'].dup.freeze :
-                          "#{ENV['HOME']}/usr/opticible".freeze
-    OPTICIBLE         = "#{OPTICIBLE_ROOT}/bin/opti-r.R".freeze
-    R_LIBS            = "#{OPTICIBLE_ROOT}/.vendor".freeze
-    LEVEL_BASE        = 1
-    LEVEL_PLUS        = 2
     TMPDIR_PATTERN    = 'opticible'.freeze
     COLUMN_ARG_FORMAT = 'col%d'.freeze
     COLUMN_IDENT      = 'col0'.freeze
     TRAIN_FILE_PATH   = 'train.csv'.freeze
     TARGET_FILE_PATH  = 'target.csv'.freeze
+    LEVEL_BASE        = 1
+    LEVEL_PLUS        = 2
 
     attr_accessor :work
     attr_reader   :input, :output, :params
@@ -32,24 +23,18 @@ module Operations
     def process!
       log_info "WORK: ##{work.id}"
       Dir.mktmpdir(TMPDIR_PATTERN) do |dir|
-        log_info command
-        log_info "SOURCE: ##{work.source.id} `#{work.source.label}'"
-        log_info "TARGET: ##{work.target_source.id} `#{work.target_source.label}'"
         prepare_sources dir
         Dir.chdir(dir) do
-          run_command command
+          execution.run
         end
       end
     end
 
-    def command
-      [
-        "R_LIBS=#{R_LIBS}",
-        Shellwords.shelljoin([OPTICIBLE, *arguments]),
-      ].join ' '
+    def execution
+      @execution ||= Execution.new(execution_arguments)
     end
 
-    def arguments
+    def execution_arguments
       [
         LEVEL_BASE,
         TRAIN_FILE_PATH,
@@ -81,6 +66,7 @@ module Operations
     end
 
     def prepare_source(source, path, id_start: 0)
+      log_info "source: ##{source.id} `#{source.label}'"
       id = nil
 
       CSV.open(path, 'w') do |out|
@@ -93,23 +79,6 @@ module Operations
         end
       end
       id
-    end
-
-    def run_command(cmd)
-      exit_status = 0
-      Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-        { stdout => output.method(:puts),
-          stderr => method(:log_error)
-        }.each do |stream, meth|
-          while line = stream.gets
-            meth.call line.chomp
-          end
-        end
-        exit_status = wait_thr.value.exitstatus
-      end
-      if exit_status != 0
-        fail OpticibleError, "Opticible exited with: #{exit_status}"
-      end
     end
   end
 end
