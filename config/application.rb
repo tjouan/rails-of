@@ -8,14 +8,15 @@ require 'action_mailer/railtie'
 require 'action_view/railtie'
 require 'sprockets/railtie'
 
-require 'pathname'
-require 'tempfile'
-require 'fileutils'
-require 'csv'
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+require 'csv'
+require 'fileutils'
+require 'open3'
+require 'pathname'
+require 'tempfile'
 
 module OptiFront
   class Application < Rails::Application

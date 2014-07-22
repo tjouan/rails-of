@@ -1,7 +1,5 @@
 module Operations
   class Opticible
-    require 'open3'
-
     OpticibleError = Class.new(RuntimeError)
 
     include Backburner::Logger
