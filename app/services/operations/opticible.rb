@@ -2,13 +2,16 @@ module Operations
   class Opticible
     include Backburner::Logger
 
-    TMPDIR_PATTERN    = 'opticible'.freeze
-    COLUMN_ARG_FORMAT = 'col%d'.freeze
-    COLUMN_IDENT      = 'col0'.freeze
-    TRAIN_FILE_PATH   = 'train.csv'.freeze
-    TARGET_FILE_PATH  = 'target.csv'.freeze
-    LEVEL_BASE        = 1
-    LEVEL_PLUS        = 2
+    TMPDIR_PATTERN        = 'opticible'.freeze
+    COLUMN_ARG_FORMAT     = 'col%d'.freeze
+    COLUMN_IDENT          = 'col0'.freeze
+    TRAIN_FILE_PATH       = 'train.csv'.freeze
+    TARGET_FILE_PATH      = 'target.csv'.freeze
+    LEVEL_BASE            = 1
+    LEVEL_PLUS            = 2
+    OUT_TRAIN_TRAIN_PATH  = 'sc_train_train'.freeze
+    OUT_TRAIN_TEST_PATH   = 'sc_train_test'.freeze
+    OUT_TEST_PROB_PATH    = 'sc_test_prob'.freeze
 
     attr_accessor :work
     attr_reader   :input, :output, :target, :ignores
@@ -25,10 +28,55 @@ module Operations
       log_info "WORK: ##{work.id}"
       Dir.mktmpdir(TMPDIR_PATTERN) do |dir|
         prepare_sources dir
+        rows_test = work.target_source.rows
+        target_rate_train = adjust_target_rate_train
         Dir.chdir(dir) do
           execution.run
+          output_results(rows_test, target_rate_train / adjust_target_rate_real)
         end
       end
+    end
+
+    def output_results(rows, correction)
+      log_info 'OUTPUT correction: %f' % correction
+      results = CSV.open(OUT_TEST_PROB_PATH).tap(&:shift)
+
+      CSV(output) do |o|
+        results.each do |r|
+          prob = r.last
+          prob_corrected = prob.to_f * correction
+          prob_corrected = 1 - Float::EPSILON if prob_corrected > 1.0
+          o << [*rows.shift, prob, prob_corrected]
+        end
+      end
+    end
+
+    def adjust_target_rate_train
+      total_count = 0
+
+      truthy_target_count = work.source.rows.inject(0) do |m, r|
+        m += 1 if r[target] == '1'
+        total_count += 1
+        m
+      end
+
+      truthy_target_count.fdiv total_count
+    end
+
+    def adjust_target_rate_real
+      total_count         = 0
+      truthy_target_count = 0
+
+      [OUT_TRAIN_TRAIN_PATH, OUT_TRAIN_TEST_PATH].each do |p|
+        i = CSV.open(p).tap(&:shift)
+        truthy_target_count += i.inject(0) do |m, r|
+          m += r.last.to_f
+          total_count += 1
+          m
+        end
+      end
+
+      truthy_target_count.fdiv total_count
     end
 
     def execution
