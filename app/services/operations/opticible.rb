@@ -11,12 +11,13 @@ module Operations
     LEVEL_PLUS        = 2
 
     attr_accessor :work
-    attr_reader   :input, :output, :params
+    attr_reader   :input, :output, :target, :ignores
 
     def initialize(input, params, output, ignore_lines: 0)
       @input        = input
       @output       = output
-      @params       = params
+      @target       = params[0].to_i
+      @ignores      = params[1]
       @ignore_lines = ignore_lines
     end
 
@@ -40,8 +41,8 @@ module Operations
         TRAIN_FILE_PATH,
         TARGET_FILE_PATH,
         COLUMN_IDENT,
-        column_argument(params[0]),
-        column_argument(params[1]),
+        column_argument(target.to_s),
+        column_argument(ignores),
         column_argument(columns_for('date')),
         column_argument(columns_for('longtext')),
         nil
