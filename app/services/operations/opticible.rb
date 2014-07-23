@@ -14,7 +14,7 @@ module Operations
     OUT_TEST_PROB_PATH    = 'sc_test_prob'.freeze
 
     attr_accessor :work
-    attr_reader   :input, :output, :target, :ignores
+    attr_reader   :input, :output, :target, :ignores, :test_probs
 
     def initialize(input, params, output, ignore_lines: 0)
       @input        = input
@@ -22,6 +22,7 @@ module Operations
       @target       = params[0].to_i
       @ignores      = params[1]
       @ignore_lines = ignore_lines
+      @test_probs   = []
     end
 
     def process!
@@ -33,8 +34,21 @@ module Operations
         Dir.chdir(dir) do
           execution.run
           output_results(rows_test, target_rate_train / adjust_target_rate_real)
+          update_work_results
         end
       end
+    end
+
+    def update_work_results
+      reporter = ResultsReporter.new(test_probs)
+      work.update_attribute :results, {
+        min:          reporter.min,
+        max:          reporter.max,
+        mean:         reporter.mean,
+        distribution: reporter.distribution,
+        means:        reporter.means,
+        means_acc:    reporter.means_accumulated
+      }
     end
 
     def output_results(rows, correction)
@@ -47,6 +61,7 @@ module Operations
           prob_corrected = prob.to_f * correction
           prob_corrected = 1 - Float::EPSILON if prob_corrected > 1.0
           o << [*rows.shift, prob, prob_corrected]
+          @test_probs << prob_corrected
         end
       end
     end
