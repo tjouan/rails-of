@@ -4,8 +4,6 @@ class Source < ActiveRecord::Base
   CHARSETS              = %w[utf-8 iso-8859-15].freeze
   PREVIEW_SIZE          = 32
 
-  attr_accessor :file
-
   has_many :headers,
     -> { order 'position ASC' },
     dependent: :destroy
@@ -25,19 +23,23 @@ class Source < ActiveRecord::Base
   end
 
   def to_file
-    @file || (sha256 ? File.new(path, encoding: charset) : nil)
+    File.new(path, encoding: charset)
   end
 
-  def to_csv
-    CSV.new(to_file)
+  def header?
+    headers.any?
+  end
+
+  def rows
+    to_csv.tap { |e| e.shift if file_header }
   end
 
   def first_row
     to_csv.shift
   end
 
-  def header?
-    headers.any?
+  def line_sample
+    rows.shift
   end
 
   def detect_headers!
@@ -48,21 +50,24 @@ class Source < ActiveRecord::Base
   end
 
   def preview(count = PREVIEW_SIZE)
-    c = to_csv
-    c.shift if file_header
-    c.take count
+    rows.take count
   end
 
   def set_charset
-    return unless to_file
-
     sample = to_file.read(CHARSET_CHECK_LENGTH)
     self.charset = CHARSETS.detect do |e|
-      sample.force_encoding(e).valid_encoding? and e
+      sample.force_encoding(e).valid_encoding?
     end
   end
 
   def set_default_label
     self.label = file_name if label.blank? || label.nil?
+  end
+
+
+  private
+
+  def to_csv
+    CSV.new(to_file)
   end
 end

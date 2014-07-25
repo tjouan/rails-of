@@ -43,7 +43,8 @@ describe WorkProcessor do
 
     context 'when operation succeeds' do
       it 'builds a new saver' do
-        expect(saver).to receive(:new).with an_instance_of Source
+        expect(saver)
+          .to receive(:new).with(an_instance_of(Source), an_instance_of(File))
         processor.call
       end
 

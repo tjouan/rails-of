@@ -2,10 +2,19 @@ require 'spec_helper'
 
 describe SourceSaver do
   let(:file)      { fixture_file_upload 'mydata.csv', 'text/csv' }
-  let(:source)    { build :source }
-  subject(:saver) { SourceSaver.new(source) }
+  let(:source)    { Source.new }
+  subject(:saver) { SourceSaver.new(source, file) }
 
-  before { source.file = file }
+  describe '#call' do
+    it 'saves the file' do
+      saver.call
+      expect { source.to_file }.not_to raise_error
+    end
+
+    it 'saves the source' do
+      expect { saver.call }.to change(Source, :count).by 1
+    end
+  end
 
   describe '#save_file!' do
     it 'copies the file' do
@@ -26,18 +35,6 @@ describe SourceSaver do
     it 'updates the source mime type' do
       saver.save_file!
       expect(source.mime_type).to eq 'text/csv'
-    end
-
-    it 'returns true' do
-      expect(saver.save_file!).to be true
-    end
-
-    context 'when source has no file' do
-      before { source.file = nil }
-
-      it 'returns false' do
-        expect(saver.save_file!).to be false
-      end
     end
   end
 end

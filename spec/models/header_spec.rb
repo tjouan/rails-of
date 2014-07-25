@@ -42,4 +42,14 @@ describe Header do
       expect(header.type_description).to eq 'texte'
     end
   end
+
+  describe '#value_sampe' do
+    let(:source) { build :source }
+
+    before { header.source = source }
+
+    it 'retrieves element from source line sample at current position' do
+      expect(header.value_sample).to eq 'foo'
+    end
+  end
 end

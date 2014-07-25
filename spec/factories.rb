@@ -16,12 +16,14 @@ FactoryGirl.define do
     label       'some file'
     sha256      '1d3cb3affc9fb394b1f2bcdf5d429bb4079e67202c11c20ed5dd7fbfd669103e'
     file_name   'mydata.csv'
+    file_header true
     mime_type   'text/csv'
     charset     'utf-8'
-    file        { StringIO.new("name,score,active\nfoo,42,1\nbar,13,1\nbaz,32,0\n") }
 
-    factory :source_latin1 do
-      file { File.new('spec/fixtures/mydata_latin1.csv') }
+    after :build do |e|
+      e.stub(:to_file) do
+        StringIO.new("name,score,active\nfoo,42,1\nbar,13,1\nbaz,32,0\n")
+      end
     end
   end
 

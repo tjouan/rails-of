@@ -83,14 +83,12 @@ module Operations
 
     def prepare_source(source, path, id_start: 0)
       id = nil
-      i = source.to_csv
 
       CSV.open(path, 'w') do |out|
-        out << header = (i.shift.size + 1).times.inject([]) do |m, e|
+        out << header = (source.headers.count + 1).times.inject([]) do |m, e|
           m << COLUMN_ARG_FORMAT % e
         end
-        i.rewind unless source.file_header
-        i.each_with_index do |r, i|
+        source.rows.each_with_index do |r, i|
           id = id_start + i
           out << [id, *r]
         end

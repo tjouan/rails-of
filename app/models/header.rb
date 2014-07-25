@@ -23,8 +23,6 @@ class Header < ActiveRecord::Base
   end
 
   def value_sample
-    csv = source.to_csv
-    csv.shift if source.file_header
-    csv.shift[position]
+    source.line_sample[position]
   end
 end

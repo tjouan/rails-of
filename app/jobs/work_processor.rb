@@ -26,9 +26,9 @@ class WorkProcessor
       f.rewind
       source_saver.new(
         Source.new(
-          label: "#{work.source.label} enrichi par #{work.operation.name}",
-          file: output_file(f, work.source.file_name)
-        )
+          label: "#{work.source.label} enrichi par #{work.operation.name}"
+        ),
+        output_file(f, work.source.file_name)
       ).call
     end
   rescue Backburner::Job::JobTimeout
