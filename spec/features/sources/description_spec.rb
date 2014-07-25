@@ -11,7 +11,7 @@ feature 'Sources description' do
     click_link 'Modifier'
     fill_in 'Description', with: 'some description'
     click_button 'Enregistrer'
-    click_link '3col_header'
+    click_link 'mydata.csv'
 
     expect(page).to have_content 'some description'
   end

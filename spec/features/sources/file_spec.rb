@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Sources file' do
   include AcceptanceHelpers
 
-  let(:file_name) { '3col_header.csv' }
+  let(:file_name) { 'mydata.csv' }
 
   background { create_source file: file_name }
 
@@ -12,7 +12,7 @@ feature 'Sources file' do
       visit sources_path
       click_link file_name
 
-      expect(page).to have_content '3col_header.csv'
+      expect(page).to have_content file_name
       expect(page).to have_content 'text/csv'
     end
 

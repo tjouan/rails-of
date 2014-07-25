@@ -7,7 +7,7 @@ feature 'Sources label' do
 
   context 'creation' do
     scenario 'assigns a default label as the attached file name' do
-      expect(page).to have_content '3col_header.csv'
+      expect(page).to have_content 'mydata.csv'
     end
   end
 end

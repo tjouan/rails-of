@@ -30,12 +30,12 @@ feature 'Works CRUD' do
     scenario 'shows form' do
       expect(page).to have_select(
         'work[source_id]',
-        with_options: ['3col_header.csv']
+        with_options: ['mydata.csv']
       )
     end
 
     scenario 'selects source' do
-      select('3col_header.csv', from: 'Données')
+      select('mydata.csv', from: 'Données')
       click_button 'Paramétrer'
 
       expect(page).to have_content operation.name
@@ -46,7 +46,7 @@ feature 'Works CRUD' do
       click_button 'Démarrer'
 
       expect(current_path).to eq works_path
-      expect(page).to have_content '3col_header.csv'
+      expect(page).to have_content 'mydata.csv'
     end
   end
 end

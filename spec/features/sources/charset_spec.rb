@@ -10,7 +10,7 @@ feature 'Sources file charset detection' do
   end
 
   context 'when file is encoded as utf-8' do
-    let(:file_name) { '3col_header.csv' }
+    let(:file_name) { 'mydata.csv' }
 
     scenario 'detects utf-8 charset' do
       expect(page).to have_content 'UTF-8'
@@ -18,7 +18,7 @@ feature 'Sources file charset detection' do
   end
 
   context 'when file is encoded as latin*' do
-    let(:file_name) { '3col_header_body_latin1.csv' }
+    let(:file_name) { 'mydata_latin1.csv' }
 
     scenario 'detects iso-8859-15 charset' do
       expect(page).to have_content 'ISO-8859-15'

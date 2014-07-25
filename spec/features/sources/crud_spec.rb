@@ -24,7 +24,7 @@ feature 'Sources CRUD' do
 
     click_link 'Ajouter'
     fill_in 'Label', with: 'some file'
-    attach_file 'source_file', File.join(fixture_path, '3col_header.csv').to_s
+    attach_file 'source_file', File.join(fixture_path, 'mydata.csv').to_s
     click_button 'Enregistrer'
 
     expect(current_path).not_to eq new_source_path

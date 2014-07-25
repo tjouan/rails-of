@@ -1,5 +1,5 @@
 module AcceptanceHelpers
-  def create_source(file: '3col_header.csv', header: false)
+  def create_source(file: 'mydata.csv', header: false)
     @_uploaded_source_file_path = uploaded_source_path file
 
     visit new_source_path

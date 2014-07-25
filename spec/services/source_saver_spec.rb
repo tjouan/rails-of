@@ -19,7 +19,7 @@ describe SourceSaver do
 
     it 'updates the source file name' do
       saver.save_file!
-      expect(source.file_name).to eq '3col_header.csv'
+      expect(source.file_name).to eq 'mydata.csv'
     end
 
     it 'updates the source mime type' do
