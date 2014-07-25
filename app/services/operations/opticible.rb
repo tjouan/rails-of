@@ -89,7 +89,7 @@ module Operations
         out << header = (i.shift.size + 1).times.inject([]) do |m, e|
           m << COLUMN_ARG_FORMAT % e
         end
-        i.rewind unless source.file_header?
+        i.rewind unless source.file_header
         i.each_with_index do |r, i|
           id = id_start + i
           out << [id, *r]

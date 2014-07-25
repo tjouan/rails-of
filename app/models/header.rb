@@ -24,7 +24,7 @@ class Header < ActiveRecord::Base
 
   def value_sample
     csv = source.to_csv
-    csv.shift if source.file_header?
+    csv.shift if source.file_header
     csv.shift[position]
   end
 end

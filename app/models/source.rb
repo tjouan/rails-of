@@ -43,7 +43,7 @@ class Source < ActiveRecord::Base
   def detect_headers!
     first_row.each_with_index do |e, i|
       headers.build position: i,
-        name: file_header? ? e : HEADER_PLACEHOLDER % [i + 1]
+        name: file_header ? e : HEADER_PLACEHOLDER % [i + 1]
     end
   end
 
