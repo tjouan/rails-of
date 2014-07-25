@@ -1,5 +1,5 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_source, only: [:show, :edit, :update, :destroy]
 
   def index
     @sources = Source.all
@@ -36,10 +36,6 @@ class SourcesController < ApplicationController
   def destroy
     @source.destroy
     redirect_to sources_path
-  end
-
-  def download
-    send_file @source.path, type: @source.mime_type, filename: @source.file_name
   end
 
 

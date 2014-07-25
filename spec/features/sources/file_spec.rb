@@ -28,21 +28,4 @@ feature 'Sources file' do
       expect(page).to have_content /en-tête.+oui/mi
     end
   end
-
-  context 'download' do
-    let(:file) { File.new(File.join(fixture_path, file_name)) }
-
-    background do
-      visit sources_path
-      click_link 'Télécharger'
-    end
-
-    scenario 'gets the attached file' do
-      expect(page.body).to eq file.read
-    end
-
-    scenario 'sets the source content-type' do
-      expect(response_headers['Content-Type']).to eq 'text/csv'
-    end
-  end
 end
