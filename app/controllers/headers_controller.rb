@@ -5,6 +5,7 @@ class HeadersController < ApplicationController
     @source.detect_headers! names: @source.file_header
   end
 
+
   private
 
   def set_source

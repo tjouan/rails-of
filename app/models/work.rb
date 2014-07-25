@@ -1,8 +1,8 @@
 class Work < ActiveRecord::Base
   belongs_to :operation
   belongs_to :source
-
-  belongs_to :target_source, class_name: 'Source', foreign_key: 'target_source_id'
+  belongs_to :target_source,
+    class_name: 'Source', foreign_key: 'target_source_id'
 
   validates :operation, presence: true
   validates :source,    presence: true

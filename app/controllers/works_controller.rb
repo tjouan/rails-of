@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  WORK_PARAMETERS = [ :id, :target, { ignore: [] } ].freeze
+  WORK_PARAMETERS = [:id, :target, { ignore: [] }].freeze
 
   def index
     @works      = Work.all
@@ -20,6 +20,7 @@ class WorksController < ApplicationController
       render :new
     end
   end
+
 
   private
 
