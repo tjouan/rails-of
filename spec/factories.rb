@@ -23,10 +23,6 @@ FactoryGirl.define do
     factory :source_latin1 do
       file { File.new('spec/fixtures/mydata_latin1.csv') }
     end
-
-    factory :source_with_upload do
-      file { fixture_file_upload 'spec/fixtures/mydata.csv', 'text/csv' }
-    end
   end
 
   factory :work do

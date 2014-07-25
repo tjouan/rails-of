@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe SourceSaver do
-  let(:source)    { build :source_with_upload }
+  let(:file)      { fixture_file_upload 'mydata.csv', 'text/csv' }
+  let(:source)    { build :source }
   subject(:saver) { SourceSaver.new(source) }
 
-  describe '#save_file!' do
-    let(:file) { attributes_for(:source_with_upload)[:file] }
+  before { source.file = file }
 
+  describe '#save_file!' do
     it 'copies the file' do
       saver.save_file!
       expect(File.read(source.path)).to eq file.read
