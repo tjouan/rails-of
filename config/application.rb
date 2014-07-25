@@ -46,8 +46,19 @@ module OptiFront
 
     config.exceptions_app = self.routes
 
+    config.action_dispatch.default_headers.clear
+
     config.action_view.field_error_proc = proc do |html_tag, instance|
       html_tag.html_safe
     end
+
+    config.assets.precompile += %w[
+      operations.js
+    ]
+
+
+    config.sources_path = Rails.env.test? ?
+      File.join('data', Rails.env, 'sources') :
+      File.join('data', 'sources')
   end
 end
