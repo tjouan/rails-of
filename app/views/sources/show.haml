@@ -16,7 +16,7 @@
   %b Le fichier comporte un en-tête :
   = @source.file_header ? 'Oui' : 'Non'
 
-- if @source.headers.any?
+- if @source.header?
   %table.source_header
     %caption En-tête :
     %thead
