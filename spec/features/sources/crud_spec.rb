@@ -7,7 +7,7 @@ feature 'Sources CRUD' do
 
     visit sources_path
 
-    expect(page.body).to match /some file.+other file/m
+    expect(page).to have_content /some file.+other file/m
   end
 
   scenario 'shows source' do

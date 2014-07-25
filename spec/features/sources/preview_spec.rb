@@ -7,8 +7,6 @@ feature 'Sources preview' do
     create_source
     visit sources_path
     click_link 'Preview'
-
-    visit source_preview_path(Source.last)
   end
 
   scenario 'shows data preview' do
