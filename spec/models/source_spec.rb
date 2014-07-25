@@ -115,9 +115,11 @@ describe Source do
     end
 
     context 'detecting header names' do
+      before { source.file_header = true }
+
       it 'builds headers with names read from file' do
-        source.detect_headers! names: true
-        expect(source.headers.last.name).to eq 'active'
+        source.detect_headers!
+        expect(source.headers.map &:name).to eq %w[name score active]
       end
     end
   end
