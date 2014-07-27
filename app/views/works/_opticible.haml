@@ -1,0 +1,104 @@
+%p
+  Fichier train :
+  = link_to @work.source.label, source_path(@work.source)
+
+%p
+  Fichier application :
+  = link_to @work.target_source.label, source_path(@work.target_source)
+
+
+%table
+  %caption Le fichier retraité comporte :
+  %thead
+    %tr
+      %th
+      %th= @work.source.label
+      %th= @work.target_source.label
+  %tbody
+    %tr
+      %th Nombre d'enregistrements (lignes)
+      %td FIXME
+      %td FIXME
+    %tr
+      %th Nombre de critères (colonnes)
+      %td FIXME
+      %td FIXME
+
+%p
+  Les données utilisées pour l'analyse sont :
+
+%ul
+  %li FIXME name + type
+  %li FIXME
+  %li FIXME
+
+
+- if @work.results['distribution']
+  %p
+    Borne mini :
+    = @work.results['min']
+    %br
+    Borne maxi :
+    = @work.results['max']
+    %br
+    Moyenne
+    = @work.results['mean']
+
+  %table
+    %caption Répartition des effectifs
+    %thead
+      %tr
+        %th Décile
+        %th Taux moyen
+    %tbody
+      - @work.results['distribution'].each do |k, v|
+        %tr
+          %th= k
+          %td= v
+
+
+- if @work.results['means']
+  %p
+    Votre fichier a été découpé en 10 déciles, c'est à dire 10 groupes
+    contenant chacun
+    FIXME
+    enregistrements sur les
+    FIXME
+    enregistrements que comporte votre fichier
+    = @work.target_source.label
+
+  %ul
+    %li
+      Le 1er décile correspond aux 10 % d'enregistrements de votre fichier
+      = @work.target_source.label
+      ayant la plus faible probabilité d'atteindre votre objectif.
+    %li
+      Le 10ème décile correspond aux 10 % d'enregistrements ayant la plus forte
+      probabilité d'atteindre votre objectif.
+
+  %table
+    %caption Taux moyens par tranches de 10 %
+    %thead
+      %tr
+        %th Décile
+        %th Taux moyen
+    %tbody
+      - @work.results['means'].each do |k, v|
+        %tr
+          %th= k
+          %td= v
+
+
+- if @work.results['means_acc']
+
+  %table
+    %caption Projections du taux
+    %thead
+      %tr
+        %th Décile
+        %th Taux projeté
+    %tbody
+      - @work.results['means_acc'].each do |k, v|
+        %tr
+          %th= k
+          %td= v

@@ -1,0 +1,10 @@
+%h1
+  = 'Résultat analyse %s' % @work.operation.name
+
+
+%p
+  Date d'exécution de l'analyse :
+  = l @work.created_at
+
+
+= render @work.operation.ref, work: @work

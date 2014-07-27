@@ -1,9 +1,14 @@
 class WorksController < ApplicationController
   WORK_PARAMETERS = [:id, :target, { ignore: [] }].freeze
 
+  before_action :set_work, only: :show
+
   def index
     @works      = Work.all
     @operations = Operation.all
+  end
+
+  def show
   end
 
   def new
@@ -23,6 +28,10 @@ class WorksController < ApplicationController
 
 
   private
+
+  def set_work
+    @work = Work.find(params[:id])
+  end
 
   def work_params
     params.require(:work).permit(

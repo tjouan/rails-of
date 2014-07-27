@@ -12,6 +12,8 @@
         %th
           Outil
         %th
+          Date
+        %th
           État
 
     %tbody
@@ -22,7 +24,9 @@
           %td
             = work.operation.name
           %td
-            = t work.status
+            = l work.created_at
+          %td
+            = link_to t(work.status), work_path(work)
 
 
 - if @operations.any?
