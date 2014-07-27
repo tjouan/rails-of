@@ -7,4 +7,5 @@
   = l @work.created_at
 
 
-= render @work.operation.ref, work: @work
+- if @work.results
+  = render @work.operation.ref, work: @work
