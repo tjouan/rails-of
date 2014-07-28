@@ -54,6 +54,7 @@ module OptiFront
 
     config.assets.precompile += %w[
       operations.js
+      works_show.js
     ]
 
 

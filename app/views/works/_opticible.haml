@@ -34,27 +34,28 @@
 
 
 - if @work.results['distribution']
-  %p
-    Borne mini :
-    = @work.results['min']
-    %br
-    Borne maxi :
-    = @work.results['max']
-    %br
-    Moyenne
-    = @work.results['mean']
+  .work-results-distribution
+    %p
+      Borne mini :
+      = @work.results['min']
+      %br
+      Borne maxi :
+      = @work.results['max']
+      %br
+      Moyenne
+      = @work.results['mean']
 
-  %table
-    %caption Répartition des effectifs
-    %thead
-      %tr
-        %th Décile
-        %th Taux moyen
-    %tbody
-      - @work.results['distribution'].each do |k, v|
+    %table
+      %caption Répartition des effectifs
+      %thead
         %tr
-          %th= k
-          %td= v
+          %th Décile
+          %th Taux moyen
+      %tbody
+        - @work.results['distribution'].each do |k, v|
+          %tr
+            %th= k
+            %td= v
 
 
 - if @work.results['means']
@@ -102,3 +103,10 @@
         %tr
           %th= k
           %td= v
+
+
+
+:javascript
+  work_results = JSON.parse('#{j @work.results.to_json}')
+
+= javascript_include_tag 'works_show'
