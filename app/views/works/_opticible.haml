@@ -1,3 +1,5 @@
+%h2 Vos données
+
 %p
   Fichier train :
   = link_to @work.source.label, source_path(@work.source)
@@ -33,8 +35,12 @@
   %li FIXME
 
 
+%h2 L'analyse
+
 - if @work.results['distribution']
   .work-results-distribution
+    %h3 Répartition des effectifs
+
     %p
       Borne mini :
       = @work.results['min']
@@ -45,20 +51,10 @@
       Moyenne
       = @work.results['mean']
 
-    %table
-      %caption Répartition des effectifs
-      %thead
-        %tr
-          %th Décile
-          %th Taux moyen
-      %tbody
-        - @work.results['distribution'].each do |k, v|
-          %tr
-            %th= k
-            %td= v
-
 
 - if @work.results['means']
+  %h3 Calculs des taux moyens par tranche d'effectifs
+
   %p
     Votre fichier a été découpé en 10 déciles, c'est à dire 10 groupes
     contenant chacun
@@ -78,7 +74,6 @@
       probabilité d'atteindre votre objectif.
 
   %table
-    %caption Taux moyens par tranches de 10 %
     %thead
       %tr
         %th Décile
@@ -91,9 +86,9 @@
 
 
 - if @work.results['means_acc']
+  %h3 Projection du taux
 
   %table
-    %caption Projections du taux
     %thead
       %tr
         %th Décile
@@ -104,6 +99,11 @@
           %th= "De #{(9 - i) * 10} % à #{((9 - i) + 1) * 10} %"
           %td= e
 
+
+%h2 Évaluation financière de l'optimisation
+
+
+%h2 Validation du modèle
 
 
 :javascript
