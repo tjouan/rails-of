@@ -84,10 +84,10 @@
         %th Décile
         %th Taux moyen
     %tbody
-      - @work.results['means'].each do |k, v|
+      - @work.results['means'].each_with_index do |e, i|
         %tr
-          %th= k
-          %td= v
+          %th= "De #{i * 10} % à #{(i + 1) * 10} %"
+          %td= e
 
 
 - if @work.results['means_acc']
@@ -99,10 +99,10 @@
         %th Décile
         %th Taux projeté
     %tbody
-      - @work.results['means_acc'].each do |k, v|
+      - @work.results['means_acc'].each_with_index do |e, i|
         %tr
-          %th= k
-          %td= v
+          %th= "De #{(9 - i) * 10} % à #{((9 - i) + 1) * 10} %"
+          %td= e
 
 
 
