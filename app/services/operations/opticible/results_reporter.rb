@@ -26,18 +26,18 @@ module Operations
       end
 
       def means
-        probs_by_interval(intervals: 10).each_with_object({}) do |(k, v), m|
-          m[k] = v.inject(0.0) { |m, e| m + e } / v.size
+        sorted_probs.each_slice(probs.size / 10).map do |ps|
+          ps.inject(0.0) { |m, e| m + e } / ps.size
         end
       end
 
       def means_accumulated
-        ps = Hash[probs_by_interval(intervals: 10).to_a.reverse]
-        ps.each_with_object({}) do |(k, v), m|
-          m[k] = v.inject(0.0) { |m, e| m + e } / v.size
-          means_up = (k..9).map { |e| m[e] }.compact
-          next unless means_up.size >= 2
-          m[k] = [m[k], *means_up].inject(0.0) { |m, e| m + e } / (means_up.size + 1)
+        means.reverse.each_with_object([]) do |mean, m|
+          if m.any?
+            m << [*m, mean].inject(0.0) { |m, e| m + e } / (m.size + 1)
+          else
+            m << mean
+          end
         end
       end
 
