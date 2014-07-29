@@ -26,7 +26,9 @@ module Operations
       end
 
       def means
-        sorted_probs.each_slice(probs.size / 10).map do |ps|
+        sorted_probs.each_slice(probs.size / 10).to_a.tap do |e|
+          e[e.size - 2] += e.pop
+        end.map do |ps|
           ps.inject(0.0) { |m, e| m + e } / ps.size
         end
       end
