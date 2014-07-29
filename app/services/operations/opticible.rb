@@ -33,15 +33,17 @@ module Operations
         target_rate_train = adjust_target_rate_train
         Dir.chdir(dir) do
           execution.run
-          output_results(rows_test, target_rate_train / adjust_target_rate_real)
-          update_work_results
+          correction = target_rate_train / adjust_target_rate_real
+          output_results(rows_test, correction)
+          update_work_results correction
         end
       end
     end
 
-    def update_work_results
+    def update_work_results(correction)
       reporter = ResultsReporter.new(test_probs)
       work.update_attribute :results, {
+        correction:   correction,
         min:          reporter.min,
         max:          reporter.max,
         mean:         reporter.mean,
