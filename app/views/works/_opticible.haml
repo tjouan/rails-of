@@ -36,20 +36,21 @@
 %h2 L'analyse
 
 - if @work.results['distribution']
-  .work-results-distribution
-    %h3 Répartition des effectifs
+  %h3 Répartition des effectifs
 
-    %table
-      %tbody
-        %tr
-          %th Borne mini :
-          %td.list-numeric= format_percentage @work.results['min']
-        %tr
-          %th Borne maxi :
-          %td.list-numeric= format_percentage @work.results['max']
-        %tr
-          %th Moyenne :
-          %td.list-numeric= format_percentage @work.results['mean']
+  %p.work-results-distribution.opticible
+
+  %table
+    %tbody
+      %tr
+        %th Borne mini :
+        %td.list-numeric= format_percentage @work.results['min']
+      %tr
+        %th Borne maxi :
+        %td.list-numeric= format_percentage @work.results['max']
+      %tr
+        %th Moyenne :
+        %td.list-numeric= format_percentage @work.results['mean']
 
 
 - if @work.results['means']
@@ -107,7 +108,9 @@
 
 
 
-:javascript
-  work_results = JSON.parse('#{j @work.results.to_json}')
+:coffeescript
+  $ ->
+    chart = new DistributionChart '.work-results-distribution', [0..99].map (e) ->
+      work_results.distribution[e] or 0
 
-= javascript_include_tag 'works_show'
+    chart.append()

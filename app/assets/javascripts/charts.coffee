@@ -34,6 +34,7 @@ class DistributionChart
   appendSVG: (selector) ->
     d3.select(selector)
       .append('svg')
+      .attr('class', 'chart')
       .attr('width', @width + @margin.left + @margin.right)
       .attr('height', @height + @margin.top + @margin.bottom)
       .append('g')
@@ -65,8 +66,4 @@ class DistributionChart
     @width / @dataset.length
 
 
-$ ->
-  chart = new DistributionChart '.work-results-distribution', [0..99].map (e) ->
-    work_results.distribution[e] or 0
-
-  chart.append()
+@?.DistributionChart = DistributionChart

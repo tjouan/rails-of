@@ -1,0 +1,67 @@
+%h2 Contenu du fichier
+
+%p
+  Fichier :
+  = link_to @work.source.label, source_path(@work.source)
+
+%table
+  %thead
+    %tr
+      %th
+      %th= @work.source.label
+  %tbody
+    %tr
+      %th Nombre d'enregistrements (lignes)
+      %td.list-numeric= @work.source.rows_count
+    %tr
+      %th Taux de matching
+      %td.list-numeric= format_percentage @work.results['match_rate']
+
+%p
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+%h2 Répartition du score
+
+%em fréquence par tranche de score
+
+%p.work-results-distribution.opticible
+
+%p
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+%h2
+  Corrélation taux de réponse et
+  = @work.operation.name
+
+%em taux de réponse moyen par tranche de score
+
+%p FIXME line chart
+
+%p
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+
+:coffeescript
+  $ ->
+    chart = new DistributionChart '.work-results-distribution', [0..9].map (e) ->
+      work_results.distribution[e] or 0
+
+    chart.append()

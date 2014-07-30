@@ -8,4 +8,7 @@
 
 
 - if @work.results
+  = javascript_include_tag 'charts'
+  :javascript
+    work_results = JSON.parse('#{j @work.results.to_json}')
   = render @work.operation.ref, work: @work

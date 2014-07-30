@@ -17,6 +17,7 @@ $red_dark:      darken($red, 30%)
 $red_light:     lighten($red, 30%)
 
 
+
 // elements
 ///////////
 
@@ -82,6 +83,7 @@ table
       color: $blue_dark
 
 
+
 // structure
 ////////////
 
@@ -137,6 +139,7 @@ body > main,
 
   ul
     list-style-type: none
+
 
 
 // modules
@@ -196,17 +199,8 @@ table
     margin: 0
 
 
-.sources-list
-  width: 100%
-
-
-.works-list
-  width: 100%
-
-
-.work-results-distribution
-  .chart
-    border: solid 1px $gray_light
+.chart
+  border: solid 1px $gray_light
 
   .chart-bar
     fill: $blue
@@ -217,6 +211,21 @@ table
       stroke: $black
       shape-rendering: crispEdges
 
-    &.chart-x
+
+
+// specific
+///////////
+
+.sources-list
+  width: 100%
+
+
+.works-list
+  width: 100%
+
+
+.work-results-distribution
+  .opticible
+    .chart-axis.chart-x
       .tick
         display: none
