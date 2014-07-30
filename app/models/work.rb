@@ -13,6 +13,8 @@ class Work < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
+  scope :latest, -> { limit 5 }
+
 
   def status
     return :queued unless started_at

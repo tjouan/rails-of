@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :works, only: [:index, :show, :new, :create]
 
+  get '/dashboard' => 'dashboard#show'
+
   get '/404' => 'errors#not_found'
   get '/500' => 'errors#internal_error'
 end

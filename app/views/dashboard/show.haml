@@ -1,0 +1,16 @@
+%h1 Tableau de bord
+
+
+- if @works.any?
+  %h2 Vos dernières utilisations
+
+  = render 'works/list', works: @works
+
+
+- if @operations.any?
+  %h2 Actions rapides
+
+  %ul
+    - @operations.each do |operation|
+      %li
+        = link_to operation.name, new_work_path(operation_id: operation)

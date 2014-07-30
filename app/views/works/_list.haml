@@ -1,0 +1,23 @@
+%table
+  %thead
+    %tr
+      %th
+        Données
+      %th
+        Outil
+      %th
+        Date
+      %th
+        État
+
+  %tbody
+    - works.each do |work|
+      %tr
+        %td
+          = work.source.label
+        %td
+          = work.operation.name
+        %td
+          = l work.created_at
+        %td
+          = link_to t(work.status), work_path(work)

@@ -9,7 +9,7 @@ feature 'Works CRUD' do
   context 'index' do
     background do
       work.save!
-      click_link 'Tableau de bord'
+      click_link 'Résultats'
     end
 
     scenario 'lists works' do
@@ -45,7 +45,7 @@ feature 'Works CRUD' do
       click_button 'Paramétrer'
       click_button 'Démarrer'
 
-      expect(current_path).to eq works_path
+      expect(current_path).to eq dashboard_path
       expect(page).to have_content 'mydata.csv'
     end
   end

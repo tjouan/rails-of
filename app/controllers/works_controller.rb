@@ -4,8 +4,7 @@ class WorksController < ApplicationController
   before_action :set_work, only: :show
 
   def index
-    @works      = Work.all
-    @operations = Operation.all
+    @works = Work.all
   end
 
   def show
@@ -20,7 +19,7 @@ class WorksController < ApplicationController
     @work = WorkForm.build(work_params)
 
     if WorkSubmitter.new(@work).call
-      redirect_to works_path
+      redirect_to dashboard_path
     else
       render :new
     end

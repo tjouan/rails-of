@@ -1,38 +1,5 @@
-%h1 Tableau de bord
+%h1 Résultats
 
 
 - if @works.any?
-  %h2 Vos dernières utilisations
-
-  %table
-    %thead
-      %tr
-        %th
-          Données
-        %th
-          Outil
-        %th
-          Date
-        %th
-          État
-
-    %tbody
-      - @works.each do |work|
-        %tr
-          %td
-            = work.source.label
-          %td
-            = work.operation.name
-          %td
-            = l work.created_at
-          %td
-            = link_to t(work.status), work_path(work)
-
-
-- if @operations.any?
-  %h2 Actions rapides
-
-  %ul
-    - @operations.each do |operation|
-      %li
-        = link_to operation.name, new_work_path(operation_id: operation)
+  = render 'list', works: @works
