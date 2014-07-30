@@ -48,7 +48,7 @@ class DistributionChart
       .attr('class', 'chart-bar')
       .attr('x', (d, i) => @x(i))
       .attr('y', (d) => @y(d))
-      .attr('width', @barWidth() - 2)
+      .attr('width', @barWidth() - 1)
       .attr('height', (d) => @height - @y(d))
 
   appendXAxis: (selector) ->
