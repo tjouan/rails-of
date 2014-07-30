@@ -48,6 +48,7 @@ module Operations
         max:          reporter.max,
         mean:         reporter.mean,
         distribution: reporter.distribution,
+        slice_size:   reporter.slice_size,
         means:        reporter.means,
         means_acc:    reporter.means_accumulated
       }

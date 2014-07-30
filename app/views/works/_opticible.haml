@@ -60,9 +60,9 @@
   %p
     Votre fichier a été découpé en 10 déciles, c'est à dire 10 groupes
     contenant chacun
-    FIXME
+    %b= @work.results['slice_size']
     enregistrements sur les
-    %b= @work.source.rows_count
+    %b= @work.target_source.rows_count
     enregistrements que comporte votre fichier
     %b= @work.target_source.label
 

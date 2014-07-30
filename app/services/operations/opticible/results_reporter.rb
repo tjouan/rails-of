@@ -1,6 +1,8 @@
 module Operations
   class Opticible
     class ResultsReporter
+      SLICES = 10.freeze
+
       attr_reader :probs
 
       def initialize(probs)
@@ -25,10 +27,12 @@ module Operations
         probs.inject(0.0) { |m, e| m + e } / probs.size
       end
 
+      def slice_size
+        sliced_probs.first.size
+      end
+
       def means
-        sorted_probs.each_slice(probs.size / 10).to_a.tap do |e|
-          e[e.size - 2] += e.pop
-        end.map do |ps|
+        sliced_probs.map do |ps|
           ps.inject(0.0) { |m, e| m + e } / ps.size
         end
       end
@@ -54,6 +58,14 @@ module Operations
 
       def sorted_probs
         @sorted_probs ||= probs.sort
+      end
+
+      def sliced_probs
+        @sliced_probs ||= begin
+          sorted_probs.each_slice(probs.size / SLICES).to_a.tap do |e|
+            e[e.size - 2] += e.pop
+          end
+        end
       end
     end
   end
