@@ -16,6 +16,8 @@ class Source < ActiveRecord::Base
   validates_presence_of :sha256
   validates_presence_of :charset
 
+  default_scope { order('created_at DESC') }
+
 
   def path
     File.join(Rails.configuration.sources_path, sha256)
