@@ -7,12 +7,13 @@ feature 'Sources header' do
 
   context 'new' do
     scenario 'detects columns count' do
-      expect(page.all('main form .source_header_key').size).to eq 3
+      expect(page.all('.source-headers-list select').size).to eq 3
     end
 
     scenario 'detects header' do
       create_source header: true
-      expect(page.first('main form input[type=text]').value).to eq 'name'
+      expect(page.first('.source-headers-list input[type=text]').value)
+        .to eq 'name'
     end
 
     scenario 'lists available data types' do
@@ -28,7 +29,7 @@ feature 'Sources header' do
       click_button 'Enregistrer'
       visit source_path(Source.last)
 
-      expect(page.all('.source_header tbody td').map(&:text)).to eq [
+      expect(page.all('.source-headers-list tbody td').map(&:text)).to eq [
         'Champ 1', 'Texte',
         'Champ 2', 'Texte',
         'Champ 3', 'Texte'
@@ -48,7 +49,8 @@ feature 'Sources header' do
       click_button 'Enregistrer'
       visit source_path Source.last
 
-      expect(page.all('.source_header tbody td').first.text).to eq 'other name'
+      expect(page.all('.source-headers-list tbody td').first.text)
+        .to eq 'other name'
     end
   end
 end

@@ -4,6 +4,7 @@ $white:         darken(white, 5%)
 $blue:          #0078b3
 $blue_light:    #5ca8de
 $blue_lighter:  lighten($blue_light, 30%)
+$blue_dark:     darken($blue, 20%)
 
 $gray:          #6b6e70
 $gray_light:    lighten($gray, 20%)
@@ -43,29 +44,42 @@ fieldset
   box-shadow: 1px 1px 2px $gray_lighter
 
 table
-  min-width: 100%
+  border-collapse: collapse
 
   caption
     text-align: left
     font-weight: bold
 
-  th
-    border-bottom: solid 1px $gray_light
+  th, td
+    padding: .1rem .8rem
 
-  tbody tr:last-child td
-    border-bottom: solid 1px $gray_lighter
+  tr th:first-child,
+  tr td:first-child
+    padding-left: .1rem
 
-  tr:hover
-    td
-      background-color: $blue_lighter
-      color: inherit
+  tr th:last-child,
+  tr td:last-child
+    padding-right: .1rem
 
-  .date,
-  .actions
-    text-align: right
+  tbody
+    tr:first-child
+      th, td
+        border-top: solid 1px $gray_light
 
-  .actions
-    margin: 0
+    tr:hover
+      th, td
+        background-color: $blue_lighter
+        color: inherit
+
+    th, td
+      border-bottom: dashed 1px $gray_lighter
+
+    th
+      padding-left: 0
+      font-weight: normal
+      text-align: left
+      background-color: inherit
+      color: $blue_dark
 
 
 // structure
@@ -165,15 +179,27 @@ body > main,
   color: inherit
 
 
-.sources
-  .label
-    min-width: 50%
+table
+  th.list-date,
+  td.list-date
+    text-align: center
 
-.source_header
-  min-width: 25%
-
-  .source_header_type
+  th.list-actions,
+  td.list-actions,
+  th.list-type,
+  td.list-type
     text-align: right
+
+  .actions
+    margin: 0
+
+
+.sources-list
+  width: 100%
+
+
+.works-list
+  width: 100%
 
 
 .work-results-distribution

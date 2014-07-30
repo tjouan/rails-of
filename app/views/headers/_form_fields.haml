@@ -1,4 +1,4 @@
-%table
+%table.source-headers-list
   %thead
     %tr
       %th Nom
@@ -7,10 +7,10 @@
   %tbody
     = f.fields_for :headers do |hf|
       %tr
-        %td.source_header_key
+        %td
           = hf.text_field :name
-        %td.source_header_type
+        %td.list-type
           = hf.select(:type, Header::TYPES.map { |k, v| [v.capitalize, k] })
           = hf.hidden_field :position
-        %td.source_header_example
+        %td
           = hf.object.value_sample

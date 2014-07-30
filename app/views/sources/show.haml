@@ -40,17 +40,17 @@
 
 %h2 En-tête
 
-%table.source_header
+%table.source-headers-list
   %thead
     %tr
-      %th.source_header_key Nom
-      %th.source_header_type Type
+      %th Nom
+      %th.list-type Type
   %tbody
     - @source.headers.each do |e|
       %tr
-        %td.source_header_key
+        %td
           = e.name
-        %td.source_header_type
+        %td.list-type
           = e.type_description.capitalize
 
 

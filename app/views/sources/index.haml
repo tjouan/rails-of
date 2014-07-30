@@ -2,27 +2,29 @@
 
 
 - if @sources.any?
-  %table.sources
-    %tr
-      %th
-        Données
-      %th.created_at
-        Ajouté le
-      %th.actions
-        Actions
-
-    - @sources.each do |source|
+  %table.sources-list
+    %thead
       %tr
-        %td.label
-          = link_to source.label, source
-        %td.date
-          = l source.created_at
-        %td.actions
-          %ul.actions
-            %li= link_to 'Preview', source_preview_path(source)
-            %li= link_to 'Télécharger', source_download_path(source)
-            %li= link_to 'Modifier', edit_source_path(source)
-            %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
+        %th
+          Données
+        %th.list-date
+          Ajouté le
+        %th.list-actions
+          Actions
+
+    %tbody
+      - @sources.each do |source|
+        %tr
+          %td
+            = link_to source.label, source
+          %td.list-date
+            = l source.created_at
+          %td.list-actions
+            %ul.actions
+              %li= link_to 'Preview', source_preview_path(source)
+              %li= link_to 'Télécharger', source_download_path(source)
+              %li= link_to 'Modifier', edit_source_path(source)
+              %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
 
 - else
   %p Aucune donnée disponible.
