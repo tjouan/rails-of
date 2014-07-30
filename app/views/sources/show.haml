@@ -2,23 +2,46 @@
   Données
   = "« #{@source.label} »"
 
-
 - if @source.description?
   %p
     %b Description :
     = simple_format @source.description
 
-%p
-  %b Fichier original :
-  = '%s (%s, %s)' % [@source.file_name, @source.mime_type, @source.charset.upcase]
 
-%p
-  %b Le fichier comporte un en-tête :
-  = @source.file_header ? 'Oui' : 'Non'
+%h2 Fichier
+
+%table
+  %tbody
+    %tr
+      %th Nom d'origine
+      %td= @source.file_name
+    %tr
+      %th Type
+      %td= @source.mime_type
+    %tr
+      %th Jeu de caractère
+      %td= @source.charset
+
+
+%h2 Données
+
+%table
+  %tbody
+    %tr
+      %th Présence d'en-tête
+      %td= @source.file_header ? 'Oui' : 'Non'
+    %tr
+      %th Nombre de lignes
+      %td= @source.rows_count
+    %tr
+      %th Nombre de colonnes
+      %td= @source.headers.count
+
 
 - if @source.header?
+  %h2 En-tête
+
   %table.source_header
-    %caption En-tête :
     %thead
       %tr
         %th.source_header_key Nom
@@ -30,6 +53,7 @@
             = e.name
           %td.source_header_type
             = e.type_description.capitalize
+
 
 
 %ul.actions
