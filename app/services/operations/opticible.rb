@@ -14,7 +14,7 @@ module Operations
     OUT_TEST_PROB_PATH    = 'sc_test_prob'.freeze
 
     attr_accessor :work
-    attr_reader   :input, :output, :target, :ignores, :test_probs
+    attr_reader   :input, :output, :target, :ignores, :test_probs, :correction
 
     def initialize(input, params, output, ignore_lines: 0)
       @input        = input
@@ -23,6 +23,7 @@ module Operations
       @ignores      = params[1]
       @ignore_lines = ignore_lines
       @test_probs   = []
+      @correction   = nil
     end
 
     def process!
@@ -33,16 +34,15 @@ module Operations
         target_rate_train = adjust_target_rate_train
         Dir.chdir(dir) do
           execution.run
-          correction = target_rate_train / adjust_target_rate_real
+          @correction = target_rate_train / adjust_target_rate_real
           output_results(rows_test, correction)
-          update_work_results correction
         end
       end
     end
 
-    def update_work_results(correction)
+    def results_report
       reporter = ResultsReporter.new(test_probs)
-      work.update_attribute :results, {
+      {
         correction:   correction,
         min:          reporter.min,
         max:          reporter.max,

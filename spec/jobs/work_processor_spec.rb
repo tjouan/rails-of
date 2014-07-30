@@ -13,6 +13,10 @@ describe WorkProcessor do
 
     def process!
     end
+
+    def results_report
+      {}
+    end
   end
 
   let(:operations)    { { dummy: DummyOperation } }
