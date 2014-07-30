@@ -25,10 +25,6 @@ class Source < ActiveRecord::Base
     File.new(path, encoding: charset)
   end
 
-  def header?
-    headers.any?
-  end
-
   def rows
     to_csv.tap { |e| e.shift if file_header }
   end

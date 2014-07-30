@@ -57,22 +57,6 @@ describe Source do
     end
   end
 
-  describe '#header?' do
-    context 'without header' do
-      it 'returns false' do
-        expect(source.header?).to be false
-      end
-    end
-
-    context 'with at least a header' do
-      before { source.headers = [Header.new] }
-
-      it 'returns true' do
-        expect(source.header?).to be true
-      end
-    end
-  end
-
   describe '#rows' do
     it 'enumerates all data lines' do
       expect(source.rows.each.to_a).to eq [

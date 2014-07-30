@@ -38,21 +38,20 @@
       %td= @source.headers.count
 
 
-- if @source.header?
-  %h2 En-tête
+%h2 En-tête
 
-  %table.source_header
-    %thead
+%table.source_header
+  %thead
+    %tr
+      %th.source_header_key Nom
+      %th.source_header_type Type
+  %tbody
+    - @source.headers.each do |e|
       %tr
-        %th.source_header_key Nom
-        %th.source_header_type Type
-    %tbody
-      - @source.headers.each do |e|
-        %tr
-          %td.source_header_key
-            = e.name
-          %td.source_header_type
-            = e.type_description.capitalize
+        %td.source_header_key
+          = e.name
+        %td.source_header_type
+          = e.type_description.capitalize
 
 
 

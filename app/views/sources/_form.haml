@@ -34,7 +34,7 @@
         %br
         = f.text_area :description, placeholder: 'Description multi-ligne optionnelle…'
 
-    - if @source.persisted? && @source.header?
+    - if @source.persisted?
       .field
         %p En-tête
         = render 'headers/form_fields', f: f
