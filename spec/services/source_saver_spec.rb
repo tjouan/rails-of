@@ -16,24 +16,24 @@ describe SourceSaver do
     end
   end
 
-  describe '#save_file!' do
+  describe '#save_file' do
     it 'copies the file' do
-      saver.save_file!
+      saver.save_file
       expect(File.read(source.path)).to eq file.read
     end
 
     it 'updates the source SHA256 digest' do
-      saver.save_file!
+      saver.save_file
       expect(source.sha256).to eq Digest::SHA256.file(file.path).hexdigest
     end
 
     it 'updates the source file name' do
-      saver.save_file!
+      saver.save_file
       expect(source.file_name).to eq 'mydata.csv'
     end
 
     it 'updates the source mime type' do
-      saver.save_file!
+      saver.save_file
       expect(source.mime_type).to eq 'text/csv'
     end
   end

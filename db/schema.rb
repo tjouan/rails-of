@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727111230) do
+ActiveRecord::Schema.define(version: 20140730085942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140727111230) do
     t.string   "mime_type"
     t.string   "charset"
     t.boolean  "file_header", default: false, null: false
+    t.integer  "rows_count"
   end
 
   create_table "works", force: true do |t|
