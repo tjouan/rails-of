@@ -19,12 +19,12 @@
   %tbody
     %tr
       %th Nombre d'enregistrements (lignes)
-      %td FIXME
-      %td FIXME
+      %td= @work.source.rows_count
+      %td= @work.target_source.rows_count
     %tr
       %th Nombre de critères (colonnes)
-      %td FIXME
-      %td FIXME
+      %td= @work.source.headers.count
+      %td= @work.target_source.headers.count
 
 %p
   Les données utilisées pour l'analyse sont :
