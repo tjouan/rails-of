@@ -8,9 +8,9 @@
   Fichier application :
   = link_to @work.target_source.label, source_path(@work.target_source)
 
+%p Le fichier retraité comporte :
 
 %table
-  %caption Le fichier retraité comporte :
   %thead
     %tr
       %th
@@ -41,15 +41,17 @@
   .work-results-distribution
     %h3 Répartition des effectifs
 
-    %p
-      Borne mini :
-      = @work.results['min']
-      %br
-      Borne maxi :
-      = @work.results['max']
-      %br
-      Moyenne
-      = @work.results['mean']
+    %table
+      %tbody
+        %tr
+          %th Borne mini :
+          %td.list-numeric= format_percentage @work.results['min']
+        %tr
+          %th Borne maxi :
+          %td.list-numeric= format_percentage @work.results['max']
+        %tr
+          %th Moyenne :
+          %td.list-numeric= format_percentage @work.results['mean']
 
 
 - if @work.results['means']
@@ -60,9 +62,20 @@
     contenant chacun
     FIXME
     enregistrements sur les
-    FIXME
+    %b= @work.source.rows_count
     enregistrements que comporte votre fichier
-    = @work.target_source.label
+    %b= @work.target_source.label
+
+  %table
+    %thead
+      %tr
+        %th Décile
+        %th.list-numeric Taux moyen
+    %tbody
+      - @work.results['means'].each_with_index do |e, i|
+        %tr
+          %th= "De #{i * 10} % à #{(i + 1) * 10} %"
+          %td.list-numeric= format_percentage e
 
   %ul
     %li
@@ -73,17 +86,6 @@
       Le 10ème décile correspond aux 10 % d'enregistrements ayant la plus forte
       probabilité d'atteindre votre objectif.
 
-  %table
-    %thead
-      %tr
-        %th Décile
-        %th Taux moyen
-    %tbody
-      - @work.results['means'].each_with_index do |e, i|
-        %tr
-          %th= "De #{i * 10} % à #{(i + 1) * 10} %"
-          %td= e
-
 
 - if @work.results['means_acc']
   %h3 Projection du taux
@@ -92,12 +94,12 @@
     %thead
       %tr
         %th Décile
-        %th Taux projeté
+        %th.list-numeric Taux projeté
     %tbody
       - @work.results['means_acc'].each_with_index do |e, i|
         %tr
           %th= "De #{(9 - i) * 10} % à #{((9 - i) + 1) * 10} %"
-          %td= e
+          %td.list-numeric= format_percentage e
 
 
 %h2 Évaluation financière de l'optimisation
