@@ -19,7 +19,7 @@ class SourcesController < ApplicationController
     @source = Source.new(source_params.except :file)
 
     if SourceSaver.new(@source, source_params[:file]).call
-      redirect_to new_source_headers_path(@source)
+      redirect_to edit_source_headers_path(@source)
     else
       render :new
     end

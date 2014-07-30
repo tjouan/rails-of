@@ -10,6 +10,7 @@ class SourceSaver
     save_file
     source.set_charset
     update_rows_count
+    source.detect_headers!
     source.save
   end
 

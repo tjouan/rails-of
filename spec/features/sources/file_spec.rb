@@ -17,7 +17,7 @@ feature 'Sources file' do
     end
 
     scenario 'redirects to headers/new' do
-      expect(current_path).to eq new_source_headers_path(Source.last)
+      expect(current_path).to eq edit_source_headers_path(Source.last)
     end
 
     scenario 'stores whether source include a file header' do

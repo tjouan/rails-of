@@ -20,6 +20,10 @@ describe SourceSaver do
       expect(source.rows_count).to eq 4
     end
 
+    it 'detects headers' do
+      expect { saver.call }.to change(source.headers, :count).by 3
+    end
+
     it 'saves the source' do
       expect { saver.call }.to change(Source, :count).by 1
     end

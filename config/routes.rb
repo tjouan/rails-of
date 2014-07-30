@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :sources do
-    resource :headers, only: :new
+    resource :headers, only: :edit
     resource :preview, only: :show
     resource :download, only: :show
   end
