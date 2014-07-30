@@ -29,10 +29,8 @@
 %p
   Les données utilisées pour l'analyse sont :
 
-%ul
-  %li FIXME name + type
-  %li FIXME
-  %li FIXME
+- operation_headers = @work.source.headers - @work.parameters_as_headers(1)
+= render 'headers/list', headers: operation_headers
 
 
 %h2 L'analyse
@@ -106,6 +104,7 @@
 
 
 %h2 Validation du modèle
+
 
 
 :javascript

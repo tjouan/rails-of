@@ -1,0 +1,12 @@
+%table.source-headers-list
+  %thead
+    %tr
+      %th Nom
+      %th.list-type Type
+  %tbody
+    - headers.each do |e|
+      %tr
+        %td
+          = e.name
+        %td.list-type
+          = e.type_description.capitalize

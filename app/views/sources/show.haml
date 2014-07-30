@@ -40,18 +40,7 @@
 
 %h2 En-tête
 
-%table.source-headers-list
-  %thead
-    %tr
-      %th Nom
-      %th.list-type Type
-  %tbody
-    - @source.headers.each do |e|
-      %tr
-        %td
-          = e.name
-        %td.list-type
-          = e.type_description.capitalize
+= render 'headers/list', headers: @source.headers
 
 
 

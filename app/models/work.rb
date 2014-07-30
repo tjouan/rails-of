@@ -29,4 +29,8 @@ class Work < ActiveRecord::Base
       :processing
     end
   end
+
+  def parameters_as_headers(index)
+    source.headers.where position: parameters[index].split(',').map(&:to_i)
+  end
 end
