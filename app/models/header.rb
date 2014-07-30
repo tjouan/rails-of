@@ -18,6 +18,7 @@ class Header < ActiveRecord::Base
   validates :name,      presence: true
   validates :type,      presence: true
 
+
   def type_description
     TYPES[type.to_sym]
   end

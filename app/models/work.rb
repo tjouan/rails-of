@@ -11,6 +11,7 @@ class Work < ActiveRecord::Base
   # true), and there are no specific validation to test for nil.
   validates :parameters, length: { minimum: 0, allow_nil: false }
 
+
   def status
     return :queued unless started_at
 
