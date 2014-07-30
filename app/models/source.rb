@@ -11,8 +11,7 @@ class Source < ActiveRecord::Base
 
   has_many :works, dependent: :destroy
 
-  before_validation :set_charset
-  before_create     :set_default_label
+  before_create :set_default_label
 
   validates_presence_of :sha256
   validates_presence_of :charset

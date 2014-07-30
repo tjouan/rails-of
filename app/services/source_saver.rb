@@ -8,6 +8,8 @@ class SourceSaver
 
   def call
     save_file
+    source.set_charset
+    update_rows_count
     source.save
   end
 
@@ -16,5 +18,12 @@ class SourceSaver
     FileUtils.cp file.path, source.path
     source.file_name = Pathname.new(file.original_filename).to_s
     source.mime_type = file.content_type
+  end
+
+
+  private
+
+  def update_rows_count
+    source.rows_count = source.rows.count
   end
 end

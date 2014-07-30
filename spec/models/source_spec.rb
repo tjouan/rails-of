@@ -15,6 +15,14 @@ describe Source do
     end
   end
 
+  context 'without charset' do
+    before { source.charset = nil }
+
+    it 'is not valid' do
+      expect(source).not_to be_valid
+    end
+  end
+
   it 'accepts nested attributes for headers' do
     expect(source).to accept_nested_attributes_for :headers
   end

@@ -11,6 +11,15 @@ describe SourceSaver do
       expect { source.to_file }.not_to raise_error
     end
 
+    it 'updates source charset' do
+      expect { saver.call }.to change(source, :charset)
+    end
+
+    it 'updates source rows count' do
+      saver.call
+      expect(source.rows_count).to eq 4
+    end
+
     it 'saves the source' do
       expect { saver.call }.to change(Source, :count).by 1
     end
