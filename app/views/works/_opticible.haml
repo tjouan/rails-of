@@ -19,12 +19,12 @@
   %tbody
     %tr
       %th Nombre d'enregistrements (lignes)
-      %td= @work.source.rows_count
-      %td= @work.target_source.rows_count
+      %td.list-numeric= @work.source.rows_count
+      %td.list-numeric= @work.target_source.rows_count
     %tr
       %th Nombre de critères (colonnes)
-      %td= @work.source.headers.count
-      %td= @work.target_source.headers.count
+      %td.list-numeric= @work.source.headers.count
+      %td.list-numeric= @work.target_source.headers.count
 
 %p
   Les données utilisées pour l'analyse sont :
