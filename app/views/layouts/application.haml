@@ -9,6 +9,8 @@
     = csrf_meta_tags
 
   %body
+    = embed_svg_sprite 'icons.svg'
+
     .header_wrapper
       %header#header
         = link_to image_tag('logo.png', size: '246x96', alt: 'OptiDM by DATACUBE'),

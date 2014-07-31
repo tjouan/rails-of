@@ -1,4 +1,13 @@
 fr:
+  edit:           Modifier
+  delete:         Supprimer
+  delete_confirm: Confirmez la suppression
+
+  preview:        Prévisualiser
+  download:       Télécharger
+
+  report:         Rapport
+
   queued:     En attente
   processing: En cours
   processed:  Terminé

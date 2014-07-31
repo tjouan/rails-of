@@ -21,10 +21,10 @@
             = l source.created_at
           %td.list-actions
             %ul.actions
-              %li= link_to 'Preview', source_preview_path(source)
-              %li= link_to 'Télécharger', source_download_path(source)
-              %li= link_to 'Modifier', edit_source_path(source)
-              %li= link_to 'Supprimer', source, method: :delete, data: { confirm: 'Confirmez la suppression' }
+              = action_link :preview, source_preview_path(source)
+              = action_link :download, source_download_path(source)
+              = action_link :edit, edit_source_path(source)
+              = action_link :delete, source
 
 - else
   %p Aucune donnée disponible.

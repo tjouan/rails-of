@@ -20,4 +20,8 @@
         %td.list-date
           = l work.created_at
         %td.list-actions
-          = link_to t(work.status), work_path(work)
+          - if work.status == :processed
+            %ul.actions
+              = action_link :report, work_path(work), custom_text: t(work.status)
+          - else
+            = t(work.status)

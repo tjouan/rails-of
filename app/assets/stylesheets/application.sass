@@ -153,8 +153,12 @@ body > main
 // modules
 //////////
 
+.icon-set
+  display: none
+
+
 .actions
-  margin-top: 2em
+  margin-top: 2rem
   padding-left: 0
 
   li
@@ -168,6 +172,18 @@ body > main
     &:first-child
       &::before
         content: ""
+
+    .icon
+      vertical-align: text-bottom
+      width: 1.1rem
+      height: 1.1rem
+
+      path
+        fill: $blue
+
+      &:hover
+        path
+          fill: $blue_dark
 
 
 .form

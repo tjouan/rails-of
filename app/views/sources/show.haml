@@ -45,7 +45,7 @@
 
 
 %ul.actions
-  %li= link_to 'Télécharger', source_download_path(@source)
-  %li= link_to 'Modifier', edit_source_path(@source)
-  %li= link_to 'Supprimer', @source, method: :delete, data: { confirm: 'Confirmez la suppression' }
-  %li= link_to 'Retour', sources_path
+  = action_link :preview, source_preview_path(@source), append_text: true
+  = action_link :download, source_download_path(@source), append_text: true
+  = action_link :edit, edit_source_path(@source), append_text: true
+  = action_link :delete, @source, append_text: true
