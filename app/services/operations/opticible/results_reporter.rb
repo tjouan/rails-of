@@ -38,12 +38,9 @@ module Operations
       end
 
       def means_accumulated
-        means.reverse.each_with_object([]) do |mean, m|
-          if m.any?
-            m << [*m, mean].inject(0.0) { |m, e| m + e } / (m.size + 1)
-          else
-            m << mean
-          end
+        ms = means.reverse
+        (0...ms.size).each_with_object([]) do |i, m|
+          m << ms[0..i].inject(0.0) { |m, e| m + e } / (i + 1)
         end
       end
 

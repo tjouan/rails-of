@@ -97,7 +97,11 @@
     %tbody
       - @work.results['means_acc'].each_with_index do |e, i|
         %tr
-          %th= "De #{(9 - i) * 10} % à #{((9 - i) + 1) * 10} %"
+          %th
+            - if i < 9
+              = "Top #{(i + 1) * 10} %"
+            - else
+              = "#{(i + 1) * 10} %"
           %td.list-numeric= format_percentage e
 
 
