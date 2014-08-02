@@ -107,8 +107,9 @@ end
 
 task :assets_update do
   sh "cd #{app_path} && bundle exec rake assets:precompile"
-  sh "cd #{app_path} && chmod 701 public public/assets"
-  sh "cd #{app_path} && chmod 644 public/assets/*"
+  sh "cd #{app_path} && chmod 711 public public/assets"
+  sh "cd #{app_path} && find . -type d -exec chmod 711 {} \\;"
+  sh "cd #{app_path} && find . -type f -exec chmod 644 {} \\;"
 end
 
 
