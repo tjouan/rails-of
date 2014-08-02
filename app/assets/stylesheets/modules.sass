@@ -1,0 +1,81 @@
+.icon-set
+  display: none
+
+
+.actions
+  margin-top: 2rem
+  padding-left: 0
+
+  li
+    display: inline-block
+
+    &::before
+      content: " | "
+      background-color: inherit
+      color: $gray_light
+
+    &:first-child
+      &::before
+        content: ""
+
+    .icon
+      vertical-align: text-bottom
+      width: 1.1rem
+      height: 1.1rem
+
+      path
+        fill: $blue
+
+      &:hover
+        path
+          fill: $blue_dark
+
+
+.form
+  display: inline-block
+  min-width: 45%
+
+  input[type=text],
+    width: 98%
+
+  textarea
+    width: 98%
+    min-height: 4em
+
+
+.errors
+  padding: 0 1em
+  border: solid 1px $red_dark
+
+  background-color: $red_light
+  color: inherit
+
+
+table
+  th.list-date,
+  td.list-date
+    text-align: center
+
+  th.list-actions,
+  td.list-actions,
+  th.list-numeric,
+  td.list-numeric,
+  th.list-type,
+  td.list-type
+    text-align: right
+
+  .actions
+    margin: 0
+
+
+.chart
+  border: solid 1px $gray_light
+  shape-rendering: crispEdges
+
+  .chart-bar
+    fill: $blue
+
+  .chart-axis
+    line, path
+      fill: none
+      stroke: $black

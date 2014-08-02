@@ -1,0 +1,62 @@
+#header,
+body > main,
+#footer
+  margin: 0 auto
+  max-width: 72rem
+
+
+.header_wrapper
+  box-shadow: 0 -4px 16px $gray_light
+
+.footer_wrapper
+  box-shadow: 0 8px 16px -16px black
+
+
+#header
+  text-align: right
+  overflow: auto
+
+  #logo
+    display: block
+    float: left
+
+  nav
+    margin-top: 1.8rem
+
+    ul li
+      display: inline-block
+
+    a
+      padding: .7rem 1rem
+      border-radius: .2rem
+
+      font-size: 1.1rem
+
+      background-color: $gray_dark
+      color: $white
+
+      &:hover
+        background-color: $blue
+
+
+body > main
+  min-height: 55vh
+
+
+.footer_wrapper
+  margin-top: 3rem
+  border-top: solid 1px $gray_light
+
+  &, a
+    background-color: $gray_dark
+    color: $gray_light
+
+  a:hover
+    background-color: inherit
+    color: $blue
+
+#footer
+  padding: 1rem .5rem
+
+  ul
+    list-style-type: none
