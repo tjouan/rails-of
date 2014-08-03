@@ -118,7 +118,8 @@ CREATE TABLE sources (
     file_name character varying(255),
     mime_type character varying(255),
     charset character varying(255),
-    file_header boolean DEFAULT false NOT NULL
+    file_header boolean DEFAULT false NOT NULL,
+    rows_count integer
 );
 
 
@@ -156,7 +157,8 @@ CREATE TABLE works (
     parameters character varying(255)[] NOT NULL,
     failed_at timestamp without time zone,
     terminated_at timestamp without time zone,
-    target_source_id integer
+    target_source_id integer,
+    results json
 );
 
 
@@ -265,6 +267,10 @@ INSERT INTO schema_migrations (version) VALUES ('20140622134708');
 INSERT INTO schema_migrations (version) VALUES ('20140622175028');
 
 INSERT INTO schema_migrations (version) VALUES ('20140630144723');
+
+INSERT INTO schema_migrations (version) VALUES ('20140727111230');
+
+INSERT INTO schema_migrations (version) VALUES ('20140730085942');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
