@@ -27,6 +27,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :user do
+    name      'Bob'
+    email     'bob@example.net'
+    password  'p4ssw0rd'
+  end
+
   factory :work do
     operation
     source

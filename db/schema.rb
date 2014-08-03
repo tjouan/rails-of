@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20140803144345) do
     t.integer  "rows_count"
   end
 
+  create_table "users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name",            null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
   create_table "works", force: true do |t|
     t.integer  "operation_id",     null: false
     t.integer  "source_id",        null: false
