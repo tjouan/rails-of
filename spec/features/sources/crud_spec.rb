@@ -3,6 +3,8 @@ require 'spec_helper'
 feature 'Sources CRUD' do
   include AcceptanceHelpers
 
+  background { sign_in }
+
   scenario 'destroys source' do
     create :source
     visit sources_path

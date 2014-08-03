@@ -5,6 +5,8 @@ feature 'Sources file' do
 
   let(:file_name) { 'mydata.csv' }
 
+  background { sign_in }
+
   context 'creation' do
     scenario 'redirects to headers/new' do
       create_source

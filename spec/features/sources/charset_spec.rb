@@ -4,6 +4,7 @@ feature 'Sources file charset detection' do
   include AcceptanceHelpers
 
   background do
+    sign_in
     create_source file: file_name
     visit sources_path
     click_link file_name

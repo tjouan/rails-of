@@ -14,6 +14,9 @@ en:
   error:          Error
   timeout:        Timeout
 
+  authent:
+    invalid:      Invalid authentication
+
 
   errors_count:
     zero:   no error

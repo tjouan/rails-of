@@ -8,6 +8,7 @@ feature 'Works CRUD' do
   context 'creation' do
     background do
       operation.save!
+      sign_in
       create_source
       click_link 'Tableau de bord'
       click_link operation.name

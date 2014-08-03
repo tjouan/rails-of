@@ -14,6 +14,9 @@ fr:
   error:          Erreur
   timeout:        Expiré
 
+  authent:
+    invalid:      Authentification incorrecte
+
 
   activerecord:
     attributes:

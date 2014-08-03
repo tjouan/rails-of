@@ -1,4 +1,12 @@
 module AcceptanceHelpers
+  def sign_in
+    user = create :user
+    visit signin_path
+    fill_in 'Adresse mail', with: user.email
+    fill_in 'Mot de passe', with: user.password
+    click_button 'Connexion'
+  end
+
   def create_source(file: 'mydata.csv', header: false)
     @_uploaded_source_file_path = uploaded_source_path file
 

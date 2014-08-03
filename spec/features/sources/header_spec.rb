@@ -3,7 +3,10 @@ require 'spec_helper'
 feature 'Sources header' do
   include AcceptanceHelpers
 
-  background { create_source }
+  background do
+    sign_in
+    create_source
+  end
 
   context 'new' do
     scenario 'detects columns count' do

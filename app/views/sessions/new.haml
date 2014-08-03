@@ -1,0 +1,21 @@
+%h1 Authentification
+
+
+= form_for :session, url: sessions_path, html: { class: 'form' } do |f|
+  %fieldset
+    %p.field
+      %label
+        Adresse mail
+        %br
+        = f.text_field :email
+
+    %p.field
+      %label
+        Mot de passe
+        %br
+        = f.password_field :password
+
+
+  %ul.actions
+    %li
+      = f.submit 'Connexion'

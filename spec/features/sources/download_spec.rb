@@ -4,6 +4,7 @@ feature 'Source download' do
   include AcceptanceHelpers
 
   background do
+    sign_in
     create_source
     visit sources_path
     click_icon 'Download'

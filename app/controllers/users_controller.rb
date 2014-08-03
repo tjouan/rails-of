@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_filter :authenticate!, only: %i[new create]
+
   def new
     @user = User.new
   end
@@ -6,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      self.current_user = @user
       redirect_to :root
     else
       render :new

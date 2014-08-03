@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resource :download, only: :show
   end
 
+  resource :sessions, only: :create
+  get '/signin' => 'sessions#new'
+
   resource :users, only: [:new, :create]
 
   resources :works, only: [:index, :show, :new, :create]
