@@ -6,6 +6,7 @@ gem 'pg',             '~> 0.17'
 gem 'tzinfo-data',    '~> 1.2014.2'
 gem 'unicorn-rails',  '~> 2.1'
 gem 'bcrypt',         '~> 3.1.7'
+gem 'activerecord-session_store', '~> 0.1.0'
 
 gem 'haml-rails',     '~> 0.5'
 
