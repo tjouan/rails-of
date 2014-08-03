@@ -6,7 +6,7 @@ feature 'Source download' do
   background do
     create_source
     visit sources_path
-    click_link 'Télécharger'
+    click_icon 'Download'
   end
 
   scenario 'gets the attached file' do

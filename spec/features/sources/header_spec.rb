@@ -44,7 +44,7 @@ feature 'Sources header' do
     end
 
     scenario 'edits a header' do
-      click_link 'Modifier'
+      click_icon 'Edit'
       fill_in 'source[headers_attributes][0][name]', with: 'other name'
       click_button 'Enregistrer'
       visit source_path Source.last

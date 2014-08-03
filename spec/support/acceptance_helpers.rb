@@ -16,6 +16,10 @@ module AcceptanceHelpers
     File.new(@_uploaded_source_file_path)
   end
 
+  def click_icon(text)
+    find(:xpath, "//a/svg[@alt='#{text}']/..").click
+  end
+
 
   private
 

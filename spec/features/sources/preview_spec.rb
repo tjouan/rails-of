@@ -6,7 +6,7 @@ feature 'Sources preview' do
   background do
     create_source
     visit sources_path
-    click_link 'Preview'
+    click_icon 'Preview'
   end
 
   scenario 'shows data preview' do

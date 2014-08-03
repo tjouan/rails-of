@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature 'Sources CRUD' do
+  include AcceptanceHelpers
+
   scenario 'lists sources' do
     create :source, label: 'some file'
     create :source, label: 'other file'
@@ -35,7 +37,7 @@ feature 'Sources CRUD' do
     create :source
     visit sources_path
 
-    click_link 'Modifier'
+    click_icon 'Edit'
     fill_in 'Label', with: 'a new label'
     click_button 'Enregistrer'
 
@@ -47,7 +49,7 @@ feature 'Sources CRUD' do
     create :source
     visit sources_path
 
-    click_link 'Supprimer'
+    click_icon 'Delete'
 
     expect(current_path).to eq sources_path
     expect(page).not_to have_content 'some file'
