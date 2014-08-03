@@ -48,6 +48,7 @@ GEM
     backburner (0.4.5)
       beaneater (~> 0.3.1)
       dante (~> 0.1.5)
+    bcrypt (3.1.7)
     beaneater (0.3.2)
     builder (3.2.2)
     capybara (2.4.1)
@@ -223,6 +224,7 @@ PLATFORMS
 DEPENDENCIES
   backburner (~> 0.4)
   backburner_spec!
+  bcrypt (~> 3.1.7)
   capybara (~> 2.3)
   celluloid (= 0.16.0.pre)
   coffee-rails (~> 4.0)

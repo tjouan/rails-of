@@ -5,6 +5,7 @@ gem 'rails',          '~> 4.1.1'
 gem 'pg',             '~> 0.17'
 gem 'tzinfo-data',    '~> 1.2014.2'
 gem 'unicorn-rails',  '~> 2.1'
+gem 'bcrypt',         '~> 3.1.7'
 
 gem 'haml-rails',     '~> 0.5'
 
