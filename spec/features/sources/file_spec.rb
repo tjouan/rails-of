@@ -5,10 +5,10 @@ feature 'Sources file' do
 
   let(:file_name) { 'mydata.csv' }
 
-  background { create_source file: file_name }
-
   context 'creation' do
     scenario 'creates source with attached file' do
+      create_source
+
       visit sources_path
       click_link file_name
 
@@ -17,6 +17,8 @@ feature 'Sources file' do
     end
 
     scenario 'redirects to headers/new' do
+      create_source
+
       expect(current_path).to eq edit_source_headers_path(Source.last)
     end
 
