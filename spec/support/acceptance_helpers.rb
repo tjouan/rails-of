@@ -1,10 +1,14 @@
 module AcceptanceHelpers
-  def sign_in
-    user = create :user
+  def sign_in(user = nil)
+    @_current_user ||= (user or create :user)
     visit signin_path
-    fill_in 'Adresse mail', with: user.email
-    fill_in 'Mot de passe', with: user.password
+    fill_in 'Adresse mail', with: current_user.email
+    fill_in 'Mot de passe', with: current_user.password
     click_button 'Connexion'
+  end
+
+  def current_user
+    @_current_user
   end
 
   def create_source(file: 'mydata.csv', header: false)

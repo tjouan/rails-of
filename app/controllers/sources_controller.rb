@@ -2,7 +2,7 @@ class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sources = Source.all
+    @sources = current_user.sources
   end
 
   def show
@@ -16,7 +16,7 @@ class SourcesController < ApplicationController
   end
 
   def create
-    @source = Source.new(source_params.except :file)
+    @source = current_user.sources.new source_params.except :file
 
     if SourceSaver.new(@source, source_params[:file]).call
       redirect_to edit_source_headers_path(@source)
@@ -42,7 +42,7 @@ class SourcesController < ApplicationController
   private
 
   def set_source
-    @source = Source.find(params[:id])
+    @source = current_user.sources.find params[:id]
   end
 
   def source_params

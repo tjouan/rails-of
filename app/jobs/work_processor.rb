@@ -27,7 +27,7 @@ class WorkProcessor
       work.update_attribute :results, op.results_report
       f.rewind
       source_saver.new(
-        Source.new(
+        work.user.sources.new(
           label: "#{work.source.label} enrichi par #{work.operation.name}"
         ),
         output_file(f, work.source.file_name)

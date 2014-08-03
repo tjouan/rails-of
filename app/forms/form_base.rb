@@ -5,8 +5,8 @@ class FormBase
   include ActiveModel::Validations
 
   class << self
-    def build(object)
-      new(object)
+    def build(*args)
+      new(*args)
     end
 
     def model_name

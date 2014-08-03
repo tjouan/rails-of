@@ -13,6 +13,7 @@ FactoryGirl.define do
   end
 
   factory :source do
+    user
     label       'some file'
     sha256      '1d3cb3affc9fb394b1f2bcdf5d429bb4079e67202c11c20ed5dd7fbfd669103e'
     file_name   'mydata.csv'
@@ -34,8 +35,9 @@ FactoryGirl.define do
   end
 
   factory :work do
+    user
     operation
-    source
+    source { build :source, user: user }
     parameters %w[0, 1]
   end
 end

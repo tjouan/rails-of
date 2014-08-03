@@ -6,7 +6,7 @@ feature 'Sources CRUD' do
   background { sign_in }
 
   scenario 'destroys source' do
-    create :source
+    create :source, user: current_user
     visit sources_path
 
     click_icon 'Delete'

@@ -4,19 +4,19 @@ class WorksController < ApplicationController
   before_action :set_work, only: :show
 
   def index
-    @works = Work.all
+    @works = current_user.works
   end
 
   def show
   end
 
   def new
-    @work     = WorkForm.build(operation_id: params[:operation_id])
-    @sources  = Source.all
+    @work     = WorkForm.build(params.slice :operation_id, new_work)
+    @sources  = current_user.sources
   end
 
   def create
-    @work = WorkForm.build(work_params)
+    @work = WorkForm.build(work_params, new_work)
 
     if WorkSubmitter.new(@work).call
       redirect_to dashboard_path
@@ -28,8 +28,12 @@ class WorksController < ApplicationController
 
   private
 
+  def new_work
+    current_user.works.new
+  end
+
   def set_work
-    @work = Work.find(params[:id])
+    @work = current_user.works.find params[:id]
   end
 
   def work_params

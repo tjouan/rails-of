@@ -1,5 +1,5 @@
 class PreviewsController < ApplicationController
   def show
-    @source = Source.find(params[:source_id])
+    @source = current_user.sources.find params[:source_id]
   end
 end

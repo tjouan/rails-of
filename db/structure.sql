@@ -151,7 +151,8 @@ CREATE TABLE sources (
     mime_type character varying(255),
     charset character varying(255),
     file_header boolean DEFAULT false NOT NULL,
-    rows_count integer
+    rows_count integer,
+    user_id integer NOT NULL
 );
 
 
@@ -223,7 +224,8 @@ CREATE TABLE works (
     failed_at timestamp without time zone,
     terminated_at timestamp without time zone,
     target_source_id integer,
-    results json
+    results json,
+    user_id integer NOT NULL
 );
 
 
@@ -351,10 +353,24 @@ CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
 
 
 --
+-- Name: index_sources_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_sources_on_user_id ON sources USING btree (user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_works_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_works_on_user_id ON works USING btree (user_id);
 
 
 --
@@ -391,6 +407,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140730085942');
 INSERT INTO schema_migrations (version) VALUES ('20140803115554');
 
 INSERT INTO schema_migrations (version) VALUES ('20140803144345');
+
+INSERT INTO schema_migrations (version) VALUES ('20140803170644');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 

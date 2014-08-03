@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803144345) do
+ActiveRecord::Schema.define(version: 20140803170644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(version: 20140803144345) do
     t.string   "charset"
     t.boolean  "file_header", default: false, null: false
     t.integer  "rows_count"
+    t.integer  "user_id",                     null: false
   end
+
+  add_index "sources", ["user_id"], name: "index_sources_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
@@ -77,6 +80,9 @@ ActiveRecord::Schema.define(version: 20140803144345) do
     t.datetime "terminated_at"
     t.integer  "target_source_id"
     t.json     "results"
+    t.integer  "user_id",          null: false
   end
+
+  add_index "works", ["user_id"], name: "index_works_on_user_id", using: :btree
 
 end

@@ -4,6 +4,8 @@ class Source < ActiveRecord::Base
   CHARSETS              = %w[utf-8 iso-8859-15].freeze
   PREVIEW_SIZE          = 32
 
+  belongs_to :user
+
   has_many :headers,
     -> { order 'position ASC' },
     dependent: :destroy

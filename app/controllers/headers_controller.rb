@@ -8,6 +8,6 @@ class HeadersController < ApplicationController
   private
 
   def set_source
-    @source = Source.find(params[:source_id])
+    @source = current_user.sources.find params[:source_id]
   end
 end

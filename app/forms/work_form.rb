@@ -57,9 +57,9 @@ class WorkForm < FormBase
   def_delegators :@object, *ATTRIBUTES_DELEGATED
 
   class << self
-    def build(params)
-      operation = Operation.find(params[:operation_id])
-      OPERATION_FORMS[operation.ref.to_sym].new(params)
+    def build(*args)
+      operation = Operation.find(args.first[:operation_id])
+      OPERATION_FORMS[operation.ref.to_sym].new(*args)
     end
 
     def resource

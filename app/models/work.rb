@@ -1,4 +1,5 @@
 class Work < ActiveRecord::Base
+  belongs_to :user
   belongs_to :operation
   belongs_to :source
   belongs_to :target_source,
