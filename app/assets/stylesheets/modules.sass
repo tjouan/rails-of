@@ -1,3 +1,12 @@
+.flash
+  margin-top: 2rem
+
+  &.flash-error
+    +boxify($red_light, $red_dark)
+  &.flash-notice
+    +boxify($blue_light, $blue_dark)
+
+
 .icon-set
   display: none
 
@@ -42,13 +51,8 @@
     width: 98%
     min-height: 4em
 
-
-.errors
-  padding: 0 1em
-  border: solid 1px $red_dark
-
-  background-color: $red_light
-  color: inherit
+.form-errors
+  +boxify($red_light, $red_dark)
 
 
 table

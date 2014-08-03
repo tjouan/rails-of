@@ -36,8 +36,14 @@
             %li
               = link_to 'Contact'
 
+
     %main
+      - flash.each do |name, message|
+        .flash(class="flash-#{name}")
+          %p= message
+
       = yield
+
 
     .footer_wrapper
       %footer#footer
