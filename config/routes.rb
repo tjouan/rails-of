@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resource :download, only: :show
   end
 
+  resource :users, only: [:new, :create]
+
   resources :works, only: [:index, :show, :new, :create]
 
   get '/404' => 'errors#not_found'

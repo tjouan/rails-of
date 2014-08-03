@@ -1,0 +1,34 @@
+= form_for @user, html: { class: 'form' } do |f|
+  %fieldset
+    %p.field
+      = f.label :name
+      %br
+      = f.text_field :name, placeholder: 'Prénom Nom (ou raison sociale)'
+
+    %p.field
+      = f.label :email
+      %br
+      = f.text_field :email, placeholder: 'example@example.net'
+
+    %p.field
+      = f.label :password
+      %br
+      = f.password_field :password
+
+    %p.field
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation
+
+
+    - if @user.errors.any?
+      .form-errors
+        %p= t('errors_count', count: @user.errors.size)
+        %ul
+          - @user.errors.full_messages.each do |e|
+            %li= e
+
+
+  %ul.actions
+    %li
+      = f.submit 'Créer mon compte'
