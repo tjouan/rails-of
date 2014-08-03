@@ -7,3 +7,15 @@ en:
   download:       Download
 
   report:         Report
+
+  queued:         Queued
+  processing:     Processing
+  processed:      Processed
+  error:          Error
+  timeout:        Timeout
+
+
+  errors_count:
+    zero:   no error
+    one:    1 error
+    other:  '%{count} errors :'

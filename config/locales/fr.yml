@@ -8,11 +8,17 @@ fr:
 
   report:         Rapport
 
-  queued:     En attente
-  processing: En cours
-  processed:  Terminé
-  error:      Erreur
-  timeout:    Expiré
+  queued:         En attente
+  processing:     En cours
+  processed:      Terminé
+  error:          Erreur
+  timeout:        Expiré
+
+
+  errors_count:
+    one:    1 erreur
+    other:  '%{count} erreurs :'
+
 
   date:
     abbr_day_names:
