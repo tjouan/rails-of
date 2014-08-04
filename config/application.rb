@@ -57,6 +57,11 @@ module OptiFront
       charts.js
     ]
 
+    config.action_mailer.delivery_method = :sendmail
+    ActionMailer::Base.sendmail_settings = {
+      arguments: '-i -f tj+datacube_opti_front@a13.fr'
+    }
+
 
     config.sources_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sources') :
