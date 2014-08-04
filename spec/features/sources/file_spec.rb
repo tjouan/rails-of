@@ -6,16 +6,6 @@ feature 'Sources file' do
   let(:file_name) { 'mydata.csv' }
 
   context 'creation' do
-    scenario 'creates source with attached file' do
-      create_source
-
-      visit sources_path
-      click_link file_name
-
-      expect(page).to have_content file_name
-      expect(page).to have_content 'text/csv'
-    end
-
     scenario 'redirects to headers/new' do
       create_source
 

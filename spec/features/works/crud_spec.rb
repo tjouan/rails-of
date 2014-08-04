@@ -1,25 +1,11 @@
 require 'spec_helper'
 
 feature 'Works CRUD' do
+  include AcceptanceHelpers
+
   let(:operation) { build :operation }
-  let(:work)      { build :work }
-
-  background      { visit root_path }
-
-  context 'index' do
-    background do
-      work.save!
-      click_link 'Résultats'
-    end
-
-    scenario 'lists works' do
-      expect(page).to have_content work.operation.name
-    end
-  end
 
   context 'creation' do
-    include AcceptanceHelpers
-
     background do
       operation.save!
       create_source
