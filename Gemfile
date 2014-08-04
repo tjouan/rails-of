@@ -18,6 +18,8 @@ gem 'jquery-rails',   '~> 3.1'
 
 gem 'backburner',     '~> 0.4'
 
+gem 'exception_notification', '~> 4.0'
+
 gem 'geo_score',      git: 'git:datacube/geo_score'
 
 

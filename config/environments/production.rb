@@ -80,4 +80,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix:         '[opti-front] ',
+      sender_address:       'tj+datacube_opti_front@a13.fr',
+      exception_recipients: %w[tj+datacube_opti_front@a13.fr]
+    }
 end

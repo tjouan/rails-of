@@ -76,6 +76,9 @@ GEM
     dante (0.1.5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -233,6 +236,7 @@ DEPENDENCIES
   capybara (~> 2.3)
   celluloid (= 0.16.0.pre)
   coffee-rails (~> 4.0)
+  exception_notification (~> 4.0)
   factory_girl_rails (~> 4.4)
   geo_score!
   guard-rspec (~> 4.2.9)
