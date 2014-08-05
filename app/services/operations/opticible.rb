@@ -9,6 +9,10 @@ module Operations
     TARGET_FILE_PATH      = 'target.csv'.freeze
     LEVEL_BASE            = 1
     LEVEL_PLUS            = 2
+    TRAIN_LEVEL_BASE      = 0
+    TRAIN_LEVEL_FULL      = 1
+    SEED_BASE             = 0
+    SEED_RANDOM           = 1
     OUT_TRAIN_TRAIN_PATH  = 'sc_train_train'.freeze
     OUT_TRAIN_TEST_PATH   = 'sc_train_test'.freeze
     OUT_TEST_PROB_PATH    = 'sc_test_prob'.freeze
@@ -111,7 +115,9 @@ module Operations
         column_argument(ignores),
         column_argument(columns_for('date')),
         column_argument(columns_for('longtext')),
-        nil
+        nil,
+        TRAIN_LEVEL_BASE,
+        SEED_BASE
       ]
     end
 
