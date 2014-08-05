@@ -32,7 +32,7 @@ module Operations
           @status = wait_thr.value.exitstatus
         end
 
-        fail Error, "Opticible exited with: #{exit_status}" unless @status == 0
+        fail Error, "Opticible exited with: #{@status}" unless @status == 0
       end
 
       def command
