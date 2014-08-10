@@ -105,7 +105,78 @@
           %td.list-numeric= format_percentage e
 
 
-%h2 Évaluation financière de l'optimisation
+- if @work.results['evaluation']
+  %h2 Évaluation financière de l'optimisation
+
+  %p
+    L'analyse financière a été réalisée à partir de l'historique transmis, des
+    prévisions de probabilités calculées par
+    = @work.operation.name
+    et des éléments financiers que vous avez renseignés.
+
+  %table
+    %tbody
+      %tr
+        %th Coût marginal
+        %td.list-numeric
+          = number_to_currency @work.results['evaluation']['cost']
+      %tr
+        %th Marge moyenne
+        %td.list-numeric
+          = number_to_currency @work.results['evaluation']['margin']
+
+  %p
+    = @work.operation.name
+    a déterminé le taux optimal à
+    %b= format_percentage @work.results['evaluation']['optimal_rate']
+    en dessous duquel il n'est pas rentable, écnonomiquement parlant, de
+    communiquer et établit un bilan prévisionnel de l'optimisation du ciblage
+    réalisé :
+
+  %table
+    %thead
+      %tr
+        %th Paramètre
+        %th Avant optimisation
+        %th Après optimisation
+        %th Variation
+    %tbody
+      %tr
+        %th Nombre d'enregistrements
+        %td.list-numeric= @work.results['evaluation']['count_before']
+        %td.list-numeric= @work.results['evaluation']['count_after']
+        %td.list-numeric
+      %tr
+        %th Budget
+        %td.list-numeric
+          = number_to_currency @work.results['evaluation']['cost_before']
+        %td.list-numeric
+          = number_to_currency @work.results['evaluation']['cost_after']
+        %td.list-numeric
+      %tr
+        %th Taux
+        %td.list-numeric= format_percentage @work.results['mean']
+        %td.list-numeric= format_percentage @work.results['evaluation']['rate_after']
+        %td.list-numeric
+      %tr
+        %th Marge générée
+        %td.list-numeric
+          = number_to_currency @work.results['evaluation']['margin_before']
+        %td.list-numeric
+          = number_to_currency @work.results['evaluation']['margin_after']
+        %td.list-numeric
+      %tr
+        %th Rentabilité brute
+        %td.list-numeric
+          = format_percentage @work.results['evaluation']['margin_rate_before']
+        %td.list-numeric
+          = format_percentage @work.results['evaluation']['margin_rate_after']
+        %td.list-numeric
+
+  %p
+    L'optimisation est susceptible de vous rapporter
+    %b= number_to_currency @work.results['evaluation']['margin_gain']
+    de marge supplémentaire sur la base de fichier initial.
 
 
 %h2 Validation du modèle

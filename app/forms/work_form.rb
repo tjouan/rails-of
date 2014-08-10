@@ -17,7 +17,9 @@ class WorkForm < FormBase
       ignored_parameters = value[:ignore].reject(&:empty?)
       object.parameters = [
         value[:target],
-        ignored_parameters.join(',')
+        ignored_parameters.join(','),
+        value[:cost],
+        value[:margin]
       ]
       ignored_parameters.each do |e|
         define_parameters_ignore e, true, force: true
@@ -31,6 +33,17 @@ class WorkForm < FormBase
     def parameters_target
       object.parameters ? object.parameters[1] : nil
     end
+
+    def parameters_cost
+      object.parameters ? object.parameters[2] : nil
+    end
+
+    def parameters_margin
+      object.parameters ? object.parameters[3] : nil
+    end
+
+
+    private
 
     def define_parameters_ignore(position, value, force: false)
       return if respond_to?("parameters_ignore_#{position}") unless force

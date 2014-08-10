@@ -18,16 +18,21 @@ module Operations
     OUT_TEST_PROB_PATH    = 'sc_test_prob'.freeze
 
     attr_accessor :work
-    attr_reader   :input, :output, :target, :ignores, :test_probs, :correction
+    attr_reader   :input, :output, :target, :ignores, :cost, :margin
+    attr_reader   :correction, :test_probs, :expectations
 
     def initialize(input, params, output, ignore_lines: 0)
       @input        = input
       @output       = output
       @target       = params[0].to_i
       @ignores      = params[1]
+      @cost         = params[2].to_f
+      @margin       = params[3].to_f
       @ignore_lines = ignore_lines
-      @test_probs   = []
+
       @correction   = nil
+      @test_probs   = []
+      @expectations = []
     end
 
     def process!
@@ -39,13 +44,14 @@ module Operations
         Dir.chdir(dir) do
           execution.run
           @correction = target_rate_train / adjust_target_rate_real
-          output_results(rows_test, correction)
+          output_results(rows_test)
         end
       end
     end
 
     def results_report
-      reporter = ResultsReporter.new(test_probs)
+      reporter    = ResultsReporter.new(test_probs)
+      evaluation  = FinancialEvaluation.new(cost, margin, test_probs.zip(expectations))
       {
         correction:   correction,
         min:          reporter.min,
@@ -54,23 +60,33 @@ module Operations
         distribution: reporter.distribution,
         slice_size:   reporter.slice_size,
         means:        reporter.means,
-        means_acc:    reporter.means_accumulated
+        means_acc:    reporter.means_accumulated,
+        evaluation:   evaluation.report
       }
     end
 
-    def output_results(rows, correction)
+    def output_results(rows)
       log_info 'OUTPUT correction: %f' % correction
       results = CSV.open(OUT_TEST_PROB_PATH).tap(&:shift)
 
       CSV(output) do |o|
         results.each do |r|
-          prob = r.last
-          prob_corrected = prob.to_f * correction
-          prob_corrected = 1 - Float::EPSILON if prob_corrected > 1.0
-          o << [*rows.shift, prob, prob_corrected]
-          @test_probs << prob_corrected
+          prob        = prob_adjust r.last.to_f
+          expectation = prob_to_expectation prob
+          o << [*rows.shift, prob, expectation]
+          @test_probs   << prob
+          @expectations << expectation
         end
       end
+    end
+
+    def prob_adjust(prob)
+      prob_adjusted = prob.to_f * correction
+      prob_adjusted <= 1.0 ? prob_adjusted : 1 - Float::EPSILON
+    end
+
+    def prob_to_expectation(prob)
+      margin * prob - cost
     end
 
     def adjust_target_rate_train

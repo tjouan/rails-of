@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  WORK_PARAMETERS = [:id, :target, { ignore: [] }].freeze
+  WORK_PARAMETERS = [:id, :target, :cost, :margin, { ignore: [] }].freeze
 
   before_action :set_work, only: :show
 

@@ -17,3 +17,16 @@
         %td
           = f.check_box "parameters_ignore_#{h.position}",
             { name: 'work[parameters][ignore][]' }, h.position, ''
+
+
+%p Paramètres financiers :
+
+%p.field
+  %label
+    Coût
+    = f.number_field :parameters_cost, name: 'work[parameters][cost]',
+      step: '0.01'
+  %label
+    Marge
+    = f.number_field :parameters_margin, name: 'work[parameters][margin]',
+      step: '0.01'
