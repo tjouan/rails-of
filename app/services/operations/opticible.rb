@@ -2,6 +2,7 @@ module Operations
   class Opticible
     include Backburner::Logger
 
+    DEBUG_VAR             = 'OPTICIBLE_DEBUG'.freeze
     TMPDIR_PATTERN        = 'opticible'.freeze
     COLUMN_ARG_FORMAT     = 'col%d'.freeze
     COLUMN_IDENT          = 'col0'.freeze
@@ -33,6 +34,10 @@ module Operations
       @correction   = nil
       @test_probs   = []
       @expectations = []
+    end
+
+    def debug?
+      ENV.key? DEBUG_VAR
     end
 
     def process!
@@ -71,9 +76,16 @@ module Operations
 
       CSV(output) do |o|
         results.each do |r|
-          prob        = prob_adjust r.last.to_f
+          raw_prob    = r.last.to_f
+          prob        = prob_adjust raw_prob
           expectation = prob_to_expectation prob
-          o << [*rows.shift, prob, expectation]
+
+          values = rows.shift
+          values << raw_prob if debug?
+          values << prob
+          values << expectation
+
+          o             << values
           @test_probs   << prob
           @expectations << expectation
         end
