@@ -156,7 +156,7 @@ module Operations
     end
 
     def columns_for(type)
-      work.source.headers.select { |h| h.type == type }.map(&:position).join(',')
+      work.source.headers_by_type(type).map(&:position).join(',')
     end
 
     def prepare_sources(dir)

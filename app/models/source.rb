@@ -64,6 +64,10 @@ class Source < ActiveRecord::Base
     self.label = file_name if label.blank? || label.nil?
   end
 
+  def headers_by_type(type)
+    headers.select { |e| e.type == type }
+  end
+
 
   private
 
