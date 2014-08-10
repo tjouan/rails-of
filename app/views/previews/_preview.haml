@@ -1,13 +1,14 @@
 - count ||= nil
 
 
-%table
-  %thead
-    %tr
-      - source.headers.each do |e|
-        %th= e.name
-  %tbody
-    - (count ? source.preview(count) : source.preview).each do |r|
+.sources-preview
+  %table
+    %thead
       %tr
-        - r.each do |e|
-          %td= e
+        - source.headers.each do |e|
+          %th= e.name
+    %tbody
+      - (count ? source.preview(count) : source.preview).each do |r|
+        %tr
+          - r.each do |e|
+            %td= e
