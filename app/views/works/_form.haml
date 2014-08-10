@@ -32,15 +32,14 @@
           Données cible :
           = @work.target_source.label
 
-      %p Configuration des champs de la source de données
 
-      = render "form_#{@work.operation.ref}", f: f, work: @work
+      %fieldset
+        %legend Paramètrage
+        = render "form_#{@work.operation.ref}", f: f, work: @work
 
-      %br
 
       %fieldset
         %legend Prévisualisation données
-
         = render 'previews/preview', source: @work.source, count: 5
 
 
