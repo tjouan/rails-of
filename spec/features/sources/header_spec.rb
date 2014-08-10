@@ -13,8 +13,9 @@ feature 'Sources header' do
       expect(page.all('.source-headers-list select').size).to eq 3
     end
 
-    scenario 'detects header' do
+    scenario 'detects header names' do
       create_source header: true
+      visit edit_source_path Source.unscoped.last
       expect(page.first('.source-headers-list input[type=text]').value)
         .to eq 'name'
     end

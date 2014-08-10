@@ -19,7 +19,12 @@ class SourcesController < ApplicationController
     @source = current_user.sources.new source_params.except :file
 
     if SourceSaver.new(@source, source_params[:file]).call
-      redirect_to edit_source_headers_path(@source)
+      if @source.file_header
+        flash[:notice] = 'Données « %s » enregistrées.' % @source.label
+        redirect_to dashboard_path
+      else
+        redirect_to edit_source_headers_path @source
+      end
     else
       render :new
     end
