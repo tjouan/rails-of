@@ -36,7 +36,7 @@ module Operations
       end
 
       def cost_after
-        @cost_before ||= expectations_after.size * cost
+        @cost_after ||= expectations_after.size * cost
       end
 
       def rate_after
