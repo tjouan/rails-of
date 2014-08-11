@@ -53,8 +53,9 @@ module OptiFront
     end
 
     config.assets.precompile += %w[
-      operations.js
+      body_end.js
       charts.js
+      operations.js
     ]
 
     config.action_mailer.delivery_method = :sendmail
