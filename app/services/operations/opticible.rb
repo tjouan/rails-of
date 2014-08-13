@@ -27,8 +27,8 @@ module Operations
       @output       = output
       @target       = params[0].to_i
       @ignores      = params[1]
-      @cost         = params[2].to_f
-      @margin       = params[3].to_f
+      @cost         = !params[2].empty? ? params[2].to_f : nil
+      @margin       = !params[3].empty? ? params[3].to_f : nil
       @ignore_lines = ignore_lines
 
       @correction   = nil
@@ -55,9 +55,9 @@ module Operations
     end
 
     def results_report
-      reporter    = ResultsReporter.new(test_probs)
-      evaluation  = FinancialEvaluation.new(cost, margin, test_probs.zip(expectations))
-      {
+      reporter = ResultsReporter.new(test_probs)
+
+      report = {
         correction:   correction,
         min:          reporter.min,
         max:          reporter.max,
@@ -65,9 +65,18 @@ module Operations
         distribution: reporter.distribution,
         slice_size:   reporter.slice_size,
         means:        reporter.means,
-        means_acc:    reporter.means_accumulated,
-        evaluation:   evaluation.report
+        means_acc:    reporter.means_accumulated
       }
+
+      if cost && margin
+        report[:evaluation] = FinancialEvaluation.new(
+          cost,
+          margin,
+          test_probs.zip(expectations)
+        ).report
+      end
+
+      report
     end
 
     def output_results(rows)
@@ -78,18 +87,22 @@ module Operations
         results.each do |r|
           raw_prob    = r.last.to_f
           prob        = prob_adjust raw_prob
-          expectation = prob_to_expectation prob
+          expectation = prob_to_expectation prob if financial_report?
 
           values = rows.shift
           values << raw_prob if debug?
           values << prob
-          values << expectation
+          values << expectation if financial_report?
 
           o             << values
           @test_probs   << prob
-          @expectations << expectation
+          @expectations << expectation if financial_report?
         end
       end
+    end
+
+    def financial_report?
+      margin && cost
     end
 
     def prob_adjust(prob)
