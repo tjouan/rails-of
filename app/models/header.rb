@@ -19,6 +19,10 @@ class Header < ActiveRecord::Base
   validates :type,      presence: true
 
 
+  def to_s
+    '#%d %s:%s,%d (#%d)' % [id, name, type, position, source_id]
+  end
+
   def type_description
     TYPES[type.to_sym]
   end

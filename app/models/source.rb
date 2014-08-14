@@ -21,6 +21,10 @@ class Source < ActiveRecord::Base
   default_scope { order('created_at DESC') }
 
 
+  def to_s
+    '#%d %s %s,%s (#%d)' % [id, label, mime_type, charset, user_id]
+  end
+
   def path
     File.join(Rails.configuration.sources_path, sha256)
   end

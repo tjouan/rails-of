@@ -17,6 +17,17 @@ class Work < ActiveRecord::Base
   scope :latest, -> { limit 5 }
 
 
+  def to_s
+    '#%d %s/%s %s (#%d%s)' % [
+      id,
+      operation.ref,
+      status,
+      parameters.inspect,
+      source_id,
+      target_source_id ? ',#%d' % target_source_id : ''
+    ]
+  end
+
   def status
     return :queued unless started_at
 
