@@ -53,9 +53,9 @@ module OptiFront
     end
 
     config.assets.precompile += %w[
-      body_end.js
       charts.js
       operations.js
+      zopim.js
     ]
 
     config.action_mailer.delivery_method = :sendmail
