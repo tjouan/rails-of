@@ -33,4 +33,10 @@ module ApplicationHelper
       tag :use, 'xlink:href' => "#icon-#{ACTIONS_ICONS[action]}"
     end
   end
+
+  def javascript_include_tag_prod(filepath)
+    if Rails.configuration.host == Rails.configuration.host_prod
+      javascript_include_tag filepath
+    end
+  end
 end

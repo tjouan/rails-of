@@ -64,6 +64,9 @@ module OptiFront
     }
 
 
+    config.host       = ENV['OPTI_FRONT_HOST'].freeze
+    config.host_prod  = 'beta.optidm.fr'
+
     config.sources_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sources') :
       File.join('data', 'sources')
