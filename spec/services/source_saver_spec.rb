@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe SourceSaver do
   let(:file)      { fixture_file_upload 'mydata.csv', 'text/csv' }
-  let(:source)    { Source.new }
+  let(:user)      { create :user }
+  let(:source)    { user.sources.new }
   subject(:saver) { SourceSaver.new(source, file) }
 
   describe '#call' do
