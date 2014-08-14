@@ -72,7 +72,8 @@ CREATE TABLE operations (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     name character varying(255) NOT NULL,
-    ref character varying(255)
+    ref character varying(255),
+    description text
 );
 
 
@@ -409,6 +410,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140803115554');
 INSERT INTO schema_migrations (version) VALUES ('20140803144345');
 
 INSERT INTO schema_migrations (version) VALUES ('20140803170644');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814130211');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
