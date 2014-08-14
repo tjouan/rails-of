@@ -1,0 +1,7 @@
+%h1 Outils
+
+
+- if @operations.any?
+  %ul
+    - @operations.each do |o|
+      %li= link_to o.name, operation_path(o)
