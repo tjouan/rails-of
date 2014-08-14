@@ -1,5 +1,6 @@
 require 'securerandom'
 
+
 repository      = 'git:datacube/opti-front'
 app_path        = 'www/opti-front'
 www_workers     = 2
@@ -11,6 +12,7 @@ www_sock_path   = 'tmp/run/www.sock'
 
 source 'vendor/deploy/stdlib/fs'
 source 'vendor/deploy/stdlib/git'
+
 
 macro :bundle_install do
   gemfile = "--gemfile #{app_path}/Gemfile"
@@ -132,16 +134,23 @@ else
     sh 'tmux kill-session -t app'
   end
 
-  task :www_reload do
-    sh "kill -HUP $(cat #{app_path}/#{www_pid_path})"
+  #task :www_reload do
+  #  sh "kill -HUP $(cat #{app_path}/#{www_pid_path})"
+  #end
+
+  task :www_stop do
+    condition { file? [app_path, www_pid_path].join('/') }
+
+    sh "kill -QUIT $(cat #{app_path}/#{www_pid_path}); sleep 1"
+  end
+
+  task :www_start do
+    condition { no_file? [app_path, www_pid_path].join('/') }
+
+    sh "cd #{app_path} && bundle exec unicorn -c config/unicorn.rb -D"
   end
 
   task :app_start do
     sh "cd #{app_path} && tmux new -d -s app 'foreman start -c queue=1,worker=#{queue_workers}; zsh'"
   end
 end
-
-
-# task :www_stop do
-#   sh "kill -QUIT $(cat #{app_path}/#{www_pid_path})"
-# end
