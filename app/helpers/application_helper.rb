@@ -5,7 +5,8 @@ module ApplicationHelper
     edit:     :pencil,
     delete:   :x,
     report:   :report
-  }
+  }.freeze
+
 
   def embed_svg_sprite(filename)
     path = Rails.root.join('app', 'assets', 'images', filename)
