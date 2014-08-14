@@ -7,6 +7,8 @@
       %tr
         %th
           Données
+        %th.list-numeric
+          Lignes
         %th.list-date
           Ajouté le
         %th.list-actions
@@ -17,6 +19,8 @@
         %tr
           %td
             = link_to source.label, source
+          %td.list-numeric
+            = source.rows_count
           %td.list-date
             = l source.created_at
           %td.list-actions
