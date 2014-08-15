@@ -1,4 +1,8 @@
 class WorkForm < FormBase
+  class FirstnamesForm < WorkForm
+    def_delegators :@object, :parameters
+  end
+
   class GeoScoreForm < WorkForm
     def_delegators :@object, :parameters
   end
@@ -54,6 +58,7 @@ class WorkForm < FormBase
 
 
   OPERATION_FORMS = {
+    firstnames: FirstnamesForm,
     geoscore:   GeoScoreForm,
     opticible:  OpticibleForm
   }.freeze

@@ -1,0 +1,4 @@
+%p Sélectionnez le champ contenant le prénom :
+
+= f.collection_select 'parameters', work.source.headers,
+  :position, :name, {}, { name: 'work[parameters][]' }

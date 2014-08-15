@@ -1,0 +1,18 @@
+%h2 Contenu du fichier
+
+%p
+  Fichier :
+  = link_to @work.source.label, source_path(@work.source)
+
+%table
+  %thead
+    %tr
+      %th
+      %th= @work.source.label
+  %tbody
+    %tr
+      %th Nombre d'enregistrements (lignes)
+      %td.list-numeric= @work.source.rows_count
+    %tr
+      %th Taux de matching
+      %td.list-numeric FIXME
