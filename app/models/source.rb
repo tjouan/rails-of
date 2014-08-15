@@ -1,8 +1,5 @@
 class Source < ActiveRecord::Base
-  HEADER_PLACEHOLDER    = 'Champ %d'.freeze
-  CHARSET_CHECK_LENGTH  = (500 * (10 ** 3)).freeze
-  CHARSETS              = %w[utf-8 iso-8859-15].freeze
-  PREVIEW_SIZE          = 32
+  PREVIEW_SIZE = 32
 
   belongs_to :user
 
@@ -45,23 +42,8 @@ class Source < ActiveRecord::Base
     rows.shift
   end
 
-  def detect_headers!
-    first_row.each_with_index do |e, i|
-      headers.build position: i,
-        name: file_header ? e : HEADER_PLACEHOLDER % [i + 1],
-        type: :text
-    end
-  end
-
   def preview(count = PREVIEW_SIZE)
     rows.take count
-  end
-
-  def set_charset
-    sample = to_file.read(CHARSET_CHECK_LENGTH)
-    self.charset = CHARSETS.detect do |e|
-      sample.force_encoding(e).valid_encoding?
-    end
   end
 
   def set_default_label

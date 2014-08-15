@@ -4,16 +4,12 @@ describe SourceSaver do
   let(:file)      { fixture_file_upload 'mydata.csv', 'text/csv' }
   let(:user)      { create :user }
   let(:source)    { user.sources.new }
-  subject(:saver) { SourceSaver.new(source, file) }
+  subject(:saver) { described_class.new(source, file) }
 
   describe '#call' do
     it 'saves the file' do
       saver.call
       expect { source.to_file }.not_to raise_error
-    end
-
-    it 'updates source charset' do
-      expect { saver.call }.to change(source, :charset)
     end
 
     it 'updates source rows count' do
@@ -45,10 +41,42 @@ describe SourceSaver do
       saver.save_file
       expect(source.file_name).to eq 'mydata.csv'
     end
+  end
 
-    it 'updates the source mime type' do
-      saver.save_file
-      expect(source.mime_type).to eq 'text/csv'
+  describe '#detect_charset' do
+    it 'detect the charset' do
+      expect(saver.detect_charset).to eq 'utf-8'
+    end
+
+    context 'when attached file is coded in latin1' do
+      let(:file) { fixture_file_upload 'mydata_latin1.csv', 'text/csv' }
+
+      it 'detects iso-8859-15 charset' do
+        expect(saver.detect_charset).to eq 'iso-8859-15'
+      end
+    end
+  end
+
+  describe '#build_headers!' do
+    it 'detects columns count' do
+      expect(saver.build_headers.size).to eq 3
+    end
+
+    it 'assigns columns position' do
+      expect(saver.build_headers.map &:position).to eq [0, 1, 2]
+    end
+
+    context 'not detecting header names' do
+      it 'builds placeholder headers' do
+        expect(saver.build_headers(detect_names: false).last.name)
+          .to eq 'Champ 3'
+      end
+    end
+
+    context 'detecting header names' do
+      it 'builds headers with names read from file' do
+        expect(saver.build_headers.map &:name).to eq %w[name score active]
+      end
     end
   end
 end
