@@ -22,14 +22,13 @@ module Operations
     attr_reader   :input, :output, :target, :ignores, :cost, :margin
     attr_reader   :correction, :test_probs, :expectations
 
-    def initialize(input, params, output, ignore_lines: 0)
+    def initialize(input, params, output)
       @input        = input
       @output       = output
       @target       = params[0].to_i
       @ignores      = params[1]
       @cost         = !params[2].empty? ? params[2].to_f : nil
       @margin       = !params[3].empty? ? params[3].to_f : nil
-      @ignore_lines = ignore_lines
 
       @correction   = nil
       @test_probs   = []

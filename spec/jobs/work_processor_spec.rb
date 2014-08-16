@@ -2,13 +2,12 @@ require 'spec_helper'
 
 describe WorkProcessor do
   class DummyOperation
-    attr_reader :input, :params, :output, :ignore_lines
+    attr_reader :input, :params, :output
 
-    def initialize(input, params, output, ignore_lines: 0)
+    def initialize(input, params, output)
       @input        = input
       @params       = params
       @output       = output
-      @ignore_lines = ignore_lines
     end
 
     def process!
