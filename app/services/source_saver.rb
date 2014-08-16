@@ -25,14 +25,14 @@ class SourceSaver
       detect_names: file_header
     )
     source.save if save?
-  rescue SourceNormalizer::UnknownSourceError
+  rescue OptiFront::UnknownSourceError
     source.errors[:sha256] = 'Format de fichier inconnu'
     false
   end
 
   def normalizer
     @normalizer ||= SourceNormalizer.new(
-      file.path, detect_charset, file_header
+      file.path, file.content_type, detect_charset, file_header
     )
   end
 

@@ -20,6 +20,8 @@ gem 'backburner',     '~> 0.4'
 
 gem 'exception_notification', '~> 4.0'
 
+gem 'creek',          '~> 1.0.5'
+
 gem 'geo_score',      git: 'git:datacube/geo_score'
 
 

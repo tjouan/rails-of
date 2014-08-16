@@ -71,4 +71,6 @@ module OptiFront
       File.join('data', Rails.env, 'sources') :
       File.join('data', 'sources')
   end
+
+  UnknownSourceError = Class.new(RuntimeError)
 end
