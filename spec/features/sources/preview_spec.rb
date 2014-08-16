@@ -6,7 +6,6 @@ feature 'Sources preview' do
   background do
     sign_in
     create_source
-    visit sources_path
     click_icon 'Preview'
   end
 

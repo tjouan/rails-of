@@ -6,7 +6,6 @@ feature 'Sources file transcoding' do
   background do
     sign_in
     create_source file: 'mydata_latin1.csv'
-    visit sources_path
     click_icon 'Preview'
   end
 

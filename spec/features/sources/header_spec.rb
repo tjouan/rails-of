@@ -15,7 +15,7 @@ feature 'Sources header' do
 
     scenario 'detects header names' do
       create_source
-      visit edit_source_path Source.unscoped.last
+      click_icon 'Edit'
       expect(page.first('.source-headers-list input[type=text]').value)
         .to eq 'name'
     end
@@ -33,7 +33,7 @@ feature 'Sources header' do
     scenario 'creates header' do
       create_source header: false
       click_button 'Enregistrer'
-      visit source_path(Source.last)
+      click_link 'mydata'
 
       expect(page.all('.source-headers-list tbody td').map(&:text)).to eq [
         'Champ 1', 'Texte',
@@ -45,16 +45,14 @@ feature 'Sources header' do
 
   context 'edit' do
     background do
-      create_source header: false
-      click_button 'Enregistrer'
-      visit sources_path
+      create_source
+      click_icon 'Edit'
     end
 
     scenario 'edits a header' do
-      click_icon 'Edit'
       fill_in 'source[headers_attributes][0][name]', with: 'other name'
       click_button 'Enregistrer'
-      visit source_path Source.last
+      click_link 'mydata'
 
       expect(page.all('.source-headers-list tbody td').first.text)
         .to eq 'other name'

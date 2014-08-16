@@ -9,8 +9,6 @@ feature 'Sources description' do
   end
 
   scenario 'associates description to a source' do
-    visit sources_path
-
     click_icon 'Edit'
     fill_in 'Description', with: 'some description'
     click_button 'Enregistrer'
