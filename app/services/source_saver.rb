@@ -25,6 +25,9 @@ class SourceSaver
       detect_names: file_header
     )
     source.save if save?
+  rescue SourceNormalizer::UnknownSourceError
+    source.errors[:sha256] = 'Format de fichier inconnu'
+    false
   end
 
   def normalizer

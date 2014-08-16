@@ -4,16 +4,17 @@
       %fieldset
         %legend Fichier
 
-        - if @source.errors.any?
-          .form-errors
-            %p Veuillez sélectionner un fichier
-
         %p.field
           = f.file_field :file
 
         %p.field
           = check_box_tag 'file_header'
           = label_tag 'file_header', 'ce fichier comporte un en-tête'
+
+        - if @source.errors.any?
+          .form-errors
+            - @source.errors.each do |k, v|
+              %p= v
 
     %p.field
       %label

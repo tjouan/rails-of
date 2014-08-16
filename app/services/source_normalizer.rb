@@ -1,4 +1,6 @@
 class SourceNormalizer
+  UnknownSourceError = Class.new(RuntimeError)
+
   attr_reader :input_path, :charset, :first_row, :rows_added
 
   def initialize(input_path, charset, has_header)
@@ -27,6 +29,8 @@ class SourceNormalizer
       end
     end
     output.path
+  rescue CSV::MalformedCSVError
+    fail UnknownSourceError
   ensure
     output.close
   end
