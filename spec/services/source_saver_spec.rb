@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SourceSaver do
   let(:file)      { fixture_file_upload 'mydata.csv', 'text/csv' }
   let(:source)    { Source.new }
-  subject(:saver) { described_class.new(source, file, save: false) }
+  subject(:saver) { described_class.new(source, file, true, save: false) }
 
   describe '#call' do
     it 'saves the file' do
@@ -11,9 +11,14 @@ describe SourceSaver do
       expect { source.to_file }.not_to raise_error
     end
 
+    it 'updates the source file name' do
+      saver.call
+      expect(source.file_name).to eq 'mydata.csv'
+    end
+
     it 'updates source rows count' do
       saver.call
-      expect(source.rows_count).to eq 4
+      expect(source.rows_count).to eq 3
     end
 
     it 'detects headers' do
@@ -22,26 +27,22 @@ describe SourceSaver do
     end
 
     it 'saves the source' do
-      saver = described_class.new(source, file)
+      saver = described_class.new(source, file, true)
       expect(source).to receive(:save)
       saver.call
     end
   end
 
   describe '#save_file' do
-    it 'copies the file' do
-      saver.save_file
+    it 'moves the given file' do
+      saver.save_file(file.path)
       expect(File.read(source.path)).to eq file.read
     end
 
     it 'updates the source SHA256 digest' do
-      saver.save_file
-      expect(source.sha256).to eq Digest::SHA256.file(file.path).hexdigest
-    end
-
-    it 'updates the source file name' do
-      saver.save_file
-      expect(source.file_name).to eq 'mydata.csv'
+      digest = Digest::SHA256.file(file.path).hexdigest
+      saver.save_file(file.path)
+      expect(source.sha256).to eq digest
     end
   end
 
@@ -60,24 +61,26 @@ describe SourceSaver do
   end
 
   describe '#build_headers!' do
+    let(:row) { %w[name score active] }
+
     it 'detects columns count' do
-      expect(saver.build_headers.size).to eq 3
+      expect(saver.build_headers(row).size).to eq 3
     end
 
     it 'assigns columns position' do
-      expect(saver.build_headers.map &:position).to eq [0, 1, 2]
+      expect(saver.build_headers(row).map &:position).to eq [0, 1, 2]
     end
 
     context 'not detecting header names' do
       it 'builds placeholder headers' do
-        expect(saver.build_headers(detect_names: false).last.name)
+        expect(saver.build_headers(row, detect_names: false).last.name)
           .to eq 'Champ 3'
       end
     end
 
     context 'detecting header names' do
       it 'builds headers with names read from file' do
-        expect(saver.build_headers.map &:name).to eq %w[name score active]
+        expect(saver.build_headers(row).map &:name).to eq %w[name score active]
       end
     end
   end

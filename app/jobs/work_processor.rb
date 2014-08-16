@@ -31,7 +31,8 @@ class WorkProcessor
         work.user.sources.new(
           label: "#{work.source.label} enrichi par #{work.operation.name}"
         ),
-        output_file(f, work.source.file_name)
+        output_file(f, work.source.file_name),
+        false
       ).call
     end
   rescue Backburner::Job::JobTimeout
@@ -48,8 +49,7 @@ class WorkProcessor
     operation = operation_class.new(
       work.source.to_file,
       work.parameters,
-      output,
-      ignore_lines: work.source.file_header ? 1 : 0
+      output
     )
     operation.work = work if operation.respond_to? :work=
     operation
@@ -61,7 +61,6 @@ class WorkProcessor
 
   def output_file(file, file_name)
     file.define_singleton_method(:original_filename) { file_name }
-    file.define_singleton_method(:content_type)      { 'text/csv' }
     file
   end
 end

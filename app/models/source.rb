@@ -13,13 +13,12 @@ class Source < ActiveRecord::Base
   before_create :set_default_label
 
   validates_presence_of :sha256
-  validates_presence_of :charset
 
   default_scope { order('created_at DESC') }
 
 
   def to_s
-    '#%d %s %s,%s (#%d)' % [id, label, mime_type, charset, user_id]
+    '#%d %s (#%d)' % [id, label, user_id]
   end
 
   def path
@@ -27,11 +26,11 @@ class Source < ActiveRecord::Base
   end
 
   def to_file
-    File.new(path, encoding: charset)
+    File.new(path)
   end
 
   def rows
-    to_csv.tap { |e| e.shift if file_header }
+    to_csv
   end
 
   def first_row

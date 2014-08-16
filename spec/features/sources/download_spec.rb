@@ -11,7 +11,7 @@ feature 'Source download' do
   end
 
   scenario 'gets the attached file' do
-    expect(page.body).to eq uploaded_source_file.read
+    expect(page.body).to eq "foo,42,1\nbar,13,1\nbaz,32,0\n"
   end
 
   scenario 'sets the source content-type' do

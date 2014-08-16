@@ -18,8 +18,8 @@ class SourcesController < ApplicationController
   def create
     @source = current_user.sources.new source_params.except :file
 
-    if SourceSaver.new(@source, source_params[:file]).call
-      if @source.file_header
+    if SourceSaver.new(@source, source_params[:file], params[:file_header]).call
+      if params[:file_header]
         flash[:notice] = 'Données « %s » enregistrées.' % @source.label
         redirect_to dashboard_path
       else
@@ -51,7 +51,7 @@ class SourcesController < ApplicationController
   end
 
   def source_params
-    params.require(:source).permit(:label, :description, :file, :file_header, {
+    params.require(:source).permit(:label, :description, :file, {
       headers_attributes: [:id, :position, :name, :type]
     })
   end

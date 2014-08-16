@@ -15,21 +15,12 @@
     %tr
       %th Nom d'origine
       %td= @source.file_name
-    %tr
-      %th Type
-      %td= @source.mime_type
-    %tr
-      %th Jeu de caractère
-      %td= @source.charset
 
 
 %h2 Données
 
 %table
   %tbody
-    %tr
-      %th Présence d'en-tête
-      %td= @source.file_header ? 'Oui' : 'Non'
     %tr
       %th Nombre de lignes
       %td= @source.rows_count

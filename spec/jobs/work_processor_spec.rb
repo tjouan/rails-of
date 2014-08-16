@@ -48,7 +48,7 @@ describe WorkProcessor do
     context 'when operation succeeds' do
       it 'builds a new saver' do
         expect(saver)
-          .to receive(:new).with(an_instance_of(Source), an_instance_of(File))
+          .to receive(:new).with(an_instance_of(Source), an_instance_of(File), false)
         processor.call
       end
 
@@ -133,10 +133,6 @@ describe WorkProcessor do
 
     it 'defines original_filename as the file name' do
       expect(output_file.original_filename).to eq file_name
-    end
-
-    it 'defines content_type as text/csv' do
-      expect(output_file.content_type).to eq 'text/csv'
     end
   end
 end

@@ -11,14 +11,14 @@ module AcceptanceHelpers
     @_current_user
   end
 
-  def create_source(file: 'mydata.csv', header: false)
+  def create_source(file: 'mydata.csv', header: true)
     @_uploaded_source_file_path = uploaded_source_path file
 
     visit new_source_path
     if header
-      check 'en-tête'
+      check 'file_header'
     else
-      uncheck 'en-tête'
+      uncheck 'file_header'
     end
     attach_file 'source_file', @_uploaded_source_file_path
     click_button 'Enregistrer'

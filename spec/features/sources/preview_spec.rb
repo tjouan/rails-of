@@ -10,9 +10,14 @@ feature 'Sources preview' do
     click_icon 'Preview'
   end
 
-  scenario 'shows data preview' do
-    expect(page.all('main table tbody td').map(&:text)).to eq %w[
+  scenario 'shows header preview' do
+    expect(page.all('.sources-preview th').map(&:text)).to eq %w[
       name  score active
+    ]
+  end
+
+  scenario 'shows rows preview' do
+    expect(page.all('.sources-preview td').map(&:text)).to eq %w[
       foo   42    1
       bar   13    1
       baz   32    0

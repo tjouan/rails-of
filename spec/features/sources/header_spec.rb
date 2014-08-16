@@ -5,22 +5,23 @@ feature 'Sources header' do
 
   background do
     sign_in
-    create_source
   end
 
   context 'new' do
     scenario 'detects columns count' do
+      create_source header: false
       expect(page.all('.source-headers-list select').size).to eq 3
     end
 
     scenario 'detects header names' do
-      create_source header: true
+      create_source
       visit edit_source_path Source.unscoped.last
       expect(page.first('.source-headers-list input[type=text]').value)
         .to eq 'name'
     end
 
     scenario 'lists available data types' do
+      create_source header: false
       expect(page).to have_select(
         'source[headers_attributes][0][type]',
         with_options: %w[Texte Entier]
@@ -30,6 +31,7 @@ feature 'Sources header' do
 
   context 'create' do
     scenario 'creates header' do
+      create_source header: false
       click_button 'Enregistrer'
       visit source_path(Source.last)
 
@@ -43,6 +45,7 @@ feature 'Sources header' do
 
   context 'edit' do
     background do
+      create_source header: false
       click_button 'Enregistrer'
       visit sources_path
     end

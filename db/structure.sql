@@ -149,9 +149,6 @@ CREATE TABLE sources (
     description character varying(255),
     sha256 character varying(255) NOT NULL,
     file_name character varying(255),
-    mime_type character varying(255),
-    charset character varying(255),
-    file_header boolean DEFAULT false NOT NULL,
     rows_count integer,
     user_id integer NOT NULL
 );
@@ -412,6 +409,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140803144345');
 INSERT INTO schema_migrations (version) VALUES ('20140803170644');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814130211');
+
+INSERT INTO schema_migrations (version) VALUES ('20140816143724');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 

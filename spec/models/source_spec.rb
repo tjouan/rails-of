@@ -15,14 +15,6 @@ describe Source do
     end
   end
 
-  context 'without charset' do
-    before { source.charset = nil }
-
-    it 'is not valid' do
-      expect(source).not_to be_valid
-    end
-  end
-
   it 'accepts nested attributes for headers' do
     expect(source).to accept_nested_attributes_for :headers
   end
@@ -45,11 +37,6 @@ describe Source do
   describe '#to_file' do
     subject(:source) { described_class.new attributes_for(:source) }
 
-    it 'builds a File with #charset as the encoding' do
-      expect(File).to receive(:new).with(source.path, encoding: source.charset)
-      source.to_file
-    end
-
     it 'returns the file' do
       file = double 'file'
       allow(File).to receive(:new) { file }
@@ -64,21 +51,6 @@ describe Source do
         %w[bar 13 1],
         %w[baz 32 0]
       ]
-    end
-
-    context 'without file header' do
-      before { source.file_header = false }
-
-      it 'starts at the very first line' do
-        expect(source.rows.shift).to eq %w[name score active]
-      end
-    end
-  end
-
-  describe '#first_row' do
-    it 'returns the very first row even with truthy file_header' do
-      source.file_header = true
-      expect(source.first_row).to eq %w[name score active]
     end
   end
 

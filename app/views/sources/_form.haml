@@ -4,23 +4,16 @@
       %fieldset
         %legend Fichier
 
-        - if @source.errors.include? :sha256
-          .errors
+        - if @source.errors.any?
+          .form-errors
             %p Veuillez sélectionner un fichier
-
-        - if @source.errors.include? :charset
-          .errors
-            %p Erreur lors de l'enregistrement de votre fichier :
-            %ul
-              - @source.errors[:charset].each do |e|
-                %li= e
 
         %p.field
           = f.file_field :file
 
         %p.field
-          = f.check_box :file_header
-          = f.label :file_header, 'ce fichier comporte un en-tête'
+          = check_box_tag 'file_header'
+          = label_tag 'file_header', 'ce fichier comporte un en-tête'
 
     %p.field
       %label
