@@ -43,7 +43,7 @@ describe Header do
     end
   end
 
-  describe '#value_sampe' do
+  describe '#value_sample' do
     let(:source) { build :source }
 
     before { header.source = source }
