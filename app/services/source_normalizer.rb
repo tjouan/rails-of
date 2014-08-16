@@ -1,4 +1,8 @@
 class SourceNormalizer
+  XLSX_MIMES = %w[
+    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  ].freeze
+
   attr_reader :input_path, :format, :charset, :first_row, :rows_added
 
   def initialize(input_path, format, charset, has_header)
@@ -43,7 +47,7 @@ class SourceNormalizer
   end
 
   def xlsx?
-    %w[xls excel openxml].any? { |e| format.downcase.include? e }
+    XLSX_MIMES.any? { |e| format.downcase.include? e }
   end
 
   def xlsx_enum
