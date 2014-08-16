@@ -20,7 +20,7 @@ describe WorkProcessor do
 
   let(:operations)    { { dummy: DummyOperation } }
   let(:operation)     { create :operation, name: 'Dummy', ref: 'dummy' }
-  let(:work)          { create :work, operation: operation }
+  let(:work)          { build_stubbed :work, operation: operation }
   let(:saver)         { double('source version saver').as_null_object }
 
   subject :processor do
@@ -34,6 +34,8 @@ describe WorkProcessor do
   end
 
   describe '#call' do
+    let(:work) { create :work, operation: operation }
+
     it 'touches started_at' do
       processor.call
       expect(work.started_at).to be_within(1.second).of Time.now
@@ -65,6 +67,8 @@ describe WorkProcessor do
     end
 
     context 'when operation fails' do
+      let(:work) { build_stubbed :work, operation: operation }
+
       before do
         allow_any_instance_of(DummyOperation)
           .to receive(:process!).and_raise RuntimeError
@@ -86,6 +90,8 @@ describe WorkProcessor do
     end
 
     context 'when operation timeouts' do
+      let(:work) { build_stubbed :work, operation: operation }
+
       before do
         allow_any_instance_of(DummyOperation)
           .to receive(:process!).and_raise Backburner::Job::JobTimeout
