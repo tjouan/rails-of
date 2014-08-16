@@ -47,7 +47,7 @@ class WorkProcessor
 
   def operation_to(output)
     operation = operation_class.new(
-      work.source.to_file,
+      work.source.path,
       work.parameters,
       output
     )

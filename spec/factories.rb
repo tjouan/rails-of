@@ -19,8 +19,12 @@ FactoryGirl.define do
     file_name   'mydata.csv'
 
     after :build do |e|
-      e.stub(:to_file) do
-        StringIO.new("foo,42,1\nbar,13,1\nbaz,32,0\n")
+      e.stub(:rows) do
+        [
+          %w[foo 42 1],
+          %w[bar 13 1],
+          %w[baz 32 0]
+        ]
       end
     end
   end

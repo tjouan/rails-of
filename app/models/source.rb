@@ -25,10 +25,6 @@ class Source < ActiveRecord::Base
     File.join(Rails.configuration.sources_path, sha256)
   end
 
-  def to_file
-    File.new(path)
-  end
-
   def rows
     to_csv
   end
@@ -53,6 +49,6 @@ class Source < ActiveRecord::Base
   private
 
   def to_csv
-    CSV.new(to_file)
+    CSV.new(File.new(path))
   end
 end

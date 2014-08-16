@@ -34,16 +34,6 @@ describe Source do
     end
   end
 
-  describe '#to_file' do
-    subject(:source) { described_class.new attributes_for(:source) }
-
-    it 'returns the file' do
-      file = double 'file'
-      allow(File).to receive(:new) { file }
-      expect(source.to_file).to be file
-    end
-  end
-
   describe '#rows' do
     it 'enumerates all data lines' do
       expect(source.rows.each.to_a).to eq [

@@ -8,7 +8,7 @@ describe SourceSaver do
   describe '#call' do
     it 'saves the file' do
       saver.call
-      expect { source.to_file }.not_to raise_error
+      expect { source.rows }.not_to raise_error
     end
 
     it 'updates the source file name' do
