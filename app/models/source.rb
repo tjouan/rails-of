@@ -33,10 +33,6 @@ class Source < ActiveRecord::Base
     to_csv
   end
 
-  def first_row
-    to_csv.shift
-  end
-
   def line_sample
     rows.shift
   end
