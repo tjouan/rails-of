@@ -5,9 +5,14 @@ class SourceSaver
 
   attr_reader :source, :file
 
-  def initialize(source, file)
+  def initialize(source, file, save: true)
     @source = source
     @file   = file
+    @save   = save
+  end
+
+  def save?
+    @save
   end
 
   def call
@@ -15,7 +20,7 @@ class SourceSaver
     source.charset    = detect_charset
     source.rows_count = source.rows.count
     source.headers    = build_headers(detect_names: source.file_header)
-    source.save
+    source.save if save?
   end
 
   def save_file

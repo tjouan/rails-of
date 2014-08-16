@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe SourceSaver do
   let(:file)      { fixture_file_upload 'mydata.csv', 'text/csv' }
-  let(:user)      { create :user }
-  let(:source)    { user.sources.new }
-  subject(:saver) { described_class.new(source, file) }
+  let(:source)    { Source.new }
+  subject(:saver) { described_class.new(source, file, save: false) }
 
   describe '#call' do
     it 'saves the file' do
@@ -18,11 +17,14 @@ describe SourceSaver do
     end
 
     it 'detects headers' do
-      expect { saver.call }.to change(source.headers, :count).by 3
+      saver.call
+      expect(source.headers.size).to eq 3
     end
 
     it 'saves the source' do
-      expect { saver.call }.to change(Source, :count).by 1
+      saver = described_class.new(source, file)
+      expect(source).to receive(:save)
+      saver.call
     end
   end
 
