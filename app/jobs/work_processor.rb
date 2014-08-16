@@ -11,12 +11,12 @@ class WorkProcessor
     end
   end
 
-  attr_reader :work, :operations, :source_saver
+  attr_reader :work, :operations, :saver
 
-  def initialize(work, operations: OPERATIONS, source_saver: SourceSaver)
-    @work         = work
-    @operations   = operations
-    @source_saver = source_saver
+  def initialize(work, operations: OPERATIONS, saver: SourceVersionSaver)
+    @work       = work
+    @operations = operations
+    @saver      = saver
   end
 
   def call
@@ -26,14 +26,7 @@ class WorkProcessor
       op = operation_to(f)
       op.process!
       work.update_attribute :results, op.results_report
-      f.rewind
-      source_saver.new(
-        work.user.sources.new(
-          label: "#{work.source.label} enrichi par #{work.operation.name}"
-        ),
-        output_file(f, work.source.file_name),
-        false
-      ).call
+      saver.new(work.source, work.operation, f).call
     end
   rescue Backburner::Job::JobTimeout
     work.touch :terminated_at

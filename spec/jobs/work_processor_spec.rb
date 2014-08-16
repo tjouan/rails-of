@@ -21,10 +21,10 @@ describe WorkProcessor do
   let(:operations)    { { dummy: DummyOperation } }
   let(:operation)     { create :operation, name: 'Dummy', ref: 'dummy' }
   let(:work)          { create :work, operation: operation }
-  let(:saver)         { double('source saver').as_null_object }
+  let(:saver)         { double('source version saver').as_null_object }
 
   subject :processor do
-    described_class.new(work, source_saver: saver, operations: operations)
+    described_class.new(work, operations: operations, saver: saver)
   end
 
   describe '#work' do
@@ -47,7 +47,7 @@ describe WorkProcessor do
     context 'when operation succeeds' do
       it 'builds a new saver' do
         expect(saver)
-          .to receive(:new).with(an_instance_of(Source), an_instance_of(File), false)
+          .to receive(:new).with(work.source, work.operation, an_instance_of(File))
         processor.call
       end
 
