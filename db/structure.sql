@@ -183,7 +183,8 @@ CREATE TABLE users (
     updated_at timestamp without time zone,
     name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
-    password_digest character varying(255) NOT NULL
+    password_digest character varying(255) NOT NULL,
+    admin boolean DEFAULT false NOT NULL
 );
 
 
@@ -411,6 +412,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140803170644');
 INSERT INTO schema_migrations (version) VALUES ('20140814130211');
 
 INSERT INTO schema_migrations (version) VALUES ('20140816143724');
+
+INSERT INTO schema_migrations (version) VALUES ('20140817122949');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
