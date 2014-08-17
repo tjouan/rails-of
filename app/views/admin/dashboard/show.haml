@@ -1,0 +1,7 @@
+%h1 Dashboard
+
+
+- if @resources.any?
+  %ul
+    - @resources.each do |e|
+      %li= link_to e.plural_name, collection_path(e)

@@ -20,4 +20,10 @@ Rails.application.routes.draw do
 
   get '/404' => 'errors#not_found'
   get '/500' => 'errors#internal_error'
+
+  namespace :admin do
+    get '', to: 'dashboard#show'
+    resources :operations
+    resources :users
+  end
 end

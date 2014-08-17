@@ -1,0 +1,12 @@
+%h1
+  Showing
+  = @model.singular_name
+  = '#%d' % @object.id
+
+
+%pre= @object.to_yaml
+
+
+%ul.actions
+  %li
+    = link_to 'Back', collection_path(@model)

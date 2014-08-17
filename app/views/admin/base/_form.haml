@@ -1,0 +1,25 @@
+= form_for [:admin, @object], html: { class: 'form' } do |f|
+  %fieldset
+    - @fields.each do |attr, type|
+      %p.field
+        - if type == :check_box
+          = f.send(type, attr)
+          = f.label attr
+        - else
+          = f.label attr
+          %br
+          = f.send(type, attr)
+
+    - if @object.errors.any?
+      .forms-errors
+        %p= t('errors_count', count: @object.errors.size)
+        %ul
+          - @object.errors.full_messages.each do |error|
+            %li= error
+
+
+  %ul.actions
+    %li
+      = f.submit
+    %li
+      = link_to 'Back', collection_path(@model)
