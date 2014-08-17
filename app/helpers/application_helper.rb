@@ -39,4 +39,22 @@ module ApplicationHelper
       javascript_include_tag filepath
     end
   end
+
+  def markdown_format(str)
+    markdown_parser.render(str).html_safe
+  end
+
+
+  private
+
+  def markdown_parser
+    @_markdown_parser ||= Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      no_intra_emphasis:    true,
+      fenced_code_blocks:   true,
+      lax_spacing:          true,
+      space_after_headers:  true,
+      highlight:            true
+    )
+  end
 end
