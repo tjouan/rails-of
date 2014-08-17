@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate!
+  before_filter :set_locale
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     redirect_to signin_path unless current_user
+  end
+
+  def set_locale
+    I18n.locale = :fr unless Rails.env.test?
   end
 end

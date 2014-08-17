@@ -16,7 +16,6 @@ class Admin::ResourcesController < Admin::BaseController
     }
   }
 
-  before_filter :set_local
   before_filter :set_model
   before_action :set_collection,  only: :index
   before_action :set_object,      only: %i[show edit update destroy]
@@ -68,10 +67,6 @@ class Admin::ResourcesController < Admin::BaseController
 
 
   private
-
-  def set_local
-    I18n.locale = :en
-  end
 
   def set_model
     @model = controller_name.classify.constantize
