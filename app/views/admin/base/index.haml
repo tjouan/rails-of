@@ -13,7 +13,9 @@
         %th
           Record
         %th.list-date
-          Created
+          Created at
+        %th.list-date
+          Updated at
         - if @model.edit? || @model.destroy?
           %th.list-actions
             Actions
@@ -25,6 +27,8 @@
             = link_to e, object_path(e)
           %td.list-date
             = e.created_at
+          %td.list-date
+            = e.updated_at
           - if @model.edit? || @model.destroy?
             %td.list-actions
               %ul.actions
