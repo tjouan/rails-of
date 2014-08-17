@@ -49,7 +49,12 @@ module ApplicationHelper
 
   def markdown_parser
     @_markdown_parser ||= Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
+      Redcarpet::Render::HTML.new(
+        filter_html:      true,
+        no_images:        true,
+        no_styles:        true,
+        safe_links_only:  true
+      ),
       no_intra_emphasis:    true,
       fenced_code_blocks:   true,
       lax_spacing:          true,
