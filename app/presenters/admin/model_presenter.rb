@@ -15,4 +15,31 @@ class Admin::ModelPresenter
   def plural_name
     model.model_name.plural
   end
+
+  def edit?
+    has_route_for :edit
+  end
+
+  def new?
+    has_route_for :new
+  end
+
+  def destroy?
+    has_route_for :destroy
+  end
+
+
+  private
+
+  def has_route_for(action)
+    routes_for_resource(model_name.route_key).any? do |e|
+      e.defaults[:action] == action.to_s
+    end
+  end
+
+  def routes_for_resource(resource_key)
+    @_resource_routes ||= Rails.application.routes.routes.select do |e|
+      e.defaults[:controller] == 'admin/%s' % resource_key
+    end
+  end
 end

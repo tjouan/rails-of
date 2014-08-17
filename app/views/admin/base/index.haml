@@ -14,8 +14,9 @@
           Record
         %th.list-date
           Created
-        %th.list-actions
-          Actions
+        - if @model.edit? || @model.destroy?
+          %th.list-actions
+            Actions
 
     %tbody
       - @collection.each do |e|
@@ -24,14 +25,18 @@
             = link_to e, object_path(e)
           %td.list-date
             = e.created_at
-          %td.list-actions
-            %ul.actions
-              = action_link :edit, edit_path(e)
-              = action_link :delete, object_path(e)
+          - if @model.edit? || @model.destroy?
+            %td.list-actions
+              %ul.actions
+                - if @model.edit?
+                  = action_link :edit, edit_path(e)
+                - if @model.destroy?
+                  = action_link :delete, object_path(e)
 
 
 %ul.actions
-  %li
-    = link_to "New #{@model.singular_name}", new_path(@model)
+  - if @model.new?
+    %li
+      = link_to "New #{@model.singular_name}", new_path(@model)
   %li
     = link_to 'Back', admin_path

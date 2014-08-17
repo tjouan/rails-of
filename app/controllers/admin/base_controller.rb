@@ -1,7 +1,9 @@
 class Admin::BaseController < ApplicationController
   RESOURCES = [
     Operation,
-    User
+    Source,
+    User,
+    Work,
   ].freeze
 
   before_filter :authorize!

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '', to: 'dashboard#show'
     resources :operations
+    resources :sources, only: [:index, :show]
     resources :users
+    resources :works, only: [:index, :show]
   end
 end
