@@ -1,6 +1,18 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
+  factory :article do
+    zone 'traning'
+    body <<-eoh
+Some article
+============
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+eoh
+  end
+
   factory :header do
     name      'name'
     type      :text
