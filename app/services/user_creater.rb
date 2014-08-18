@@ -6,6 +6,10 @@ class UserCreater
   end
 
   def call
-    user.save
+    return false unless user.save
+
+    UsersMailer.async.welcome(user.id)
+
+    true
   end
 end
