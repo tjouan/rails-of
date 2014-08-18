@@ -7,7 +7,7 @@ describe User do
     expect(user).to be_valid
   end
 
-  it 'has secure passowrd' do
+  it 'has secure password' do
     expect(user).to have_secure_password
   end
 
