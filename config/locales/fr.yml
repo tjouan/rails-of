@@ -17,6 +17,10 @@ fr:
   authent:
     invalid:      Authentification incorrecte
   signin:         Connexion
+  account:        Compte
+
+  trainings:      Formation
+  contact:        Contact
 
 
   activerecord:

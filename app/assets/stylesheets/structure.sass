@@ -61,8 +61,29 @@ body > main
     background-color: inherit
     color: $blue
 
+    .icon path
+      fill: $blue
+
+  .icon
+    width: 1.5rem
+    height: 1.5rem
+    margin-right: .5rem
+    background-color: inherit
+
+    path
+      fill: $gray_light
+
 #footer
   padding: 1rem .5rem
+  font-size: 1.2rem
 
   ul
+    padding: 0
     list-style-type: none
+
+  ul li
+    display: inline-block
+    margin-left: 2rem
+
+    &:first-child
+      margin-left: 0

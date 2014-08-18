@@ -17,6 +17,10 @@ en:
   authent:
     invalid:      Invalid authentication
   signin:         Signin
+  account:        Account
+
+  trainings:      Training
+  contact:        Contact
 
 
   activerecord:
