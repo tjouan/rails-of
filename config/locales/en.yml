@@ -5,17 +5,21 @@ en:
 
   dashboard:      Dashboard
 
+  data:           Data
   preview:        Preview
   download:       Download
   upload:         Upload new data
 
   report:         Report
 
+  results:        Results
   queued:         Queued
   processing:     Processing
   processed:      Processed
   error:          Error
   timeout:        Timeout
+
+  tools:          Tools
 
   authent:
     invalid:      Invalid authentication

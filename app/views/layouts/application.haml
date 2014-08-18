@@ -27,12 +27,9 @@
           %nav
             %ul
               = action_link :dashboard, dashboard_path, append_text: true
-              %li
-                = link_to 'Données', sources_path
-              %li
-                = link_to 'Outils', operations_path
-              %li
-                = link_to 'Résultats', works_path
+              = action_link :data, sources_path, append_text: true
+              = action_link :tools, operations_path, append_text: true
+              = action_link :results, works_path, append_text: true
               = action_link :signout, signout_path, append_text: true
 
 

@@ -5,17 +5,21 @@ fr:
 
   dashboard:      Tableau de bord
 
+  data:           Données
   preview:        Prévisualiser
   download:       Télécharger
   upload:         Ajouter des données
 
   report:         Rapport
 
+  results:        Résultats
   queued:         En attente
   processing:     En cours
   processed:      Terminé
   error:          Erreur
   timeout:        Expiré
+
+  tools:          Outils
 
   authent:
     invalid:      Authentification incorrecte

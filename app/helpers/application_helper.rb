@@ -2,14 +2,17 @@ module ApplicationHelper
   ACTIONS_ICONS = {
     account:    :user,
     contact:    :envelope,
+    data:       :dup,
     delete:     :x,
     dashboard:  :home,
     download:   :download,
     edit:       :pencil,
     preview:    :lens,
     report:     :report,
+    results:    :report,
     signin:     :enter,
     signout:    :exit,
+    tools:      :gears,
     trainings:  :book,
     upload:     :upload
   }.freeze
