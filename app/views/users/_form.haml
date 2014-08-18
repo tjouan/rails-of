@@ -1,11 +1,6 @@
 = form_for @user, html: { class: 'form' } do |f|
   %fieldset
     %p.field
-      = f.label :name
-      %br
-      = f.text_field :name, placeholder: 'Prénom Nom (ou raison sociale)'
-
-    %p.field
       = f.label :email
       %br
       = f.email_field :email, placeholder: 'example@example.net'

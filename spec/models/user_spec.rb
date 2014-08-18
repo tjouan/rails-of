@@ -11,10 +11,6 @@ describe User do
     expect(user).to have_secure_password
   end
 
-  it 'validates presence of the name' do
-    expect(user).to validate_presence_of :name
-  end
-
   it 'validates presence of the email' do
     expect(user).to validate_presence_of :email
   end

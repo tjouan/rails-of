@@ -213,7 +213,7 @@ CREATE TABLE users (
     id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    name character varying(255) NOT NULL,
+    name character varying(255),
     email character varying(255) NOT NULL,
     password_digest character varying(255) NOT NULL,
     admin boolean DEFAULT false NOT NULL
@@ -463,6 +463,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140816143724');
 INSERT INTO schema_migrations (version) VALUES ('20140817122949');
 
 INSERT INTO schema_migrations (version) VALUES ('20140818103521');
+
+INSERT INTO schema_migrations (version) VALUES ('20140818214509');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
