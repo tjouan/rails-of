@@ -35,5 +35,4 @@
 
 
 %ul.actions
-  %li
-    = link_to 'Ajouter des données', new_source_path
+  = action_link :upload, new_source_path, append_text: true

@@ -4,6 +4,7 @@ module ApplicationHelper
     contact:    :envelope,
     delete:     :x,
     download:   :download,
+    upload:     :upload,
     edit:       :pencil,
     preview:    :lens,
     report:     :report,
