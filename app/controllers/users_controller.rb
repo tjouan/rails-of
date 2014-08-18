@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+
+    if UserCreater.new(@user).call
       self.current_user = @user
       redirect_to :root
     else
