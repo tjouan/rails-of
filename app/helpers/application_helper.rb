@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def embed_svg_sprite(filename)
     path = Rails.root.join('app', 'assets', 'images', filename)
-    File.new(path).read.html_safe
+    File.read(path).html_safe
   end
 
   def action_link(action, href, append_text: false, custom_text: nil)
