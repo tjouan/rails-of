@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'dashboard#show'
 
-  resources :operations, only: [:index, :show]
+  resources :operations, only: %i[index show]
 
   resources :sources do
     resource :headers, only: :edit
@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
   get '/signin' => 'sessions#new'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: %i[new create]
 
-  resources :works, only: [:index, :show, :new, :create]
+  resources :works, only: %i[index show new create]
 
   get '/404' => 'errors#not_found'
   get '/500' => 'errors#internal_error'
@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '', to: 'dashboard#show'
     resources :operations
-    resources :sources, only: [:index, :show]
+    resources :sources, only: %i[index show]
     resources :users
-    resources :works, only: [:index, :show]
+    resources :works, only: %i[index show]
   end
 end
