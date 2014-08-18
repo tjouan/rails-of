@@ -8,6 +8,10 @@ module ApplicationHelper
   }.freeze
 
 
+  def current_user?
+    !!@current_user
+  end
+
   def embed_svg_sprite(filename)
     path = Rails.root.join('app', 'assets', 'images', filename)
     File.read(path).html_safe

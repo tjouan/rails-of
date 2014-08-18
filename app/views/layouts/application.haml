@@ -19,22 +19,23 @@
         %p
           +33 1 23 45 67 89
 
-        %nav
-          %ul
-            %li
-              = link_to 'Tableau de bord', dashboard_path
-            %li
-              = link_to 'Données', sources_path
-            %li
-              = link_to 'Outils', operations_path
-            %li
-              = link_to 'Résultats', works_path
-            %li
-              = link_to 'Formation', trainings_path
-            %li
-              = link_to 'Compte'
-            %li
-              = link_to 'Contact'
+        - if current_user?
+          %nav
+            %ul
+              %li
+                = link_to 'Tableau de bord', dashboard_path
+              %li
+                = link_to 'Données', sources_path
+              %li
+                = link_to 'Outils', operations_path
+              %li
+                = link_to 'Résultats', works_path
+              %li
+                = link_to 'Formation', trainings_path
+              %li
+                = link_to 'Compte'
+              %li
+                = link_to 'Contact'
 
 
     %main
