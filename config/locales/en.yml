@@ -18,6 +18,22 @@ en:
     invalid:      Invalid authentication
 
 
+  activerecord:
+    models:
+      operation:  operation
+      user:       user
+    attributes:
+      operation:
+        name:         name
+        ref:          reference
+        description:  description
+      user:
+        name:         name
+        email:        email
+        password:     password
+        password_confirmation: password confirmation
+
+
   errors_count:
     zero:   no error
     one:    1 error
