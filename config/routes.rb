@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resource :download, only: :show
   end
 
+  resources :trainings, only: :index
+
   resources :users, only: %i[new create]
 
   resources :works, only: %i[index show new create]
