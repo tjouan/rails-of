@@ -26,8 +26,7 @@
         - else
           %nav
             %ul
-              %li
-                = link_to 'Tableau de bord', dashboard_path
+              = action_link :dashboard, dashboard_path, append_text: true
               %li
                 = link_to 'Données', sources_path
               %li

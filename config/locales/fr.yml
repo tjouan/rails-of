@@ -3,6 +3,8 @@ fr:
   delete:         Supprimer
   delete_confirm: Confirmez la suppression
 
+  dashboard:      Tableau de bord
+
   preview:        Prévisualiser
   download:       Télécharger
   upload:         Ajouter des données

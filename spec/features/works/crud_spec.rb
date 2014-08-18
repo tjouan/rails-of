@@ -10,7 +10,7 @@ feature 'Works CRUD' do
       operation.save!
       sign_in
       create_source
-      click_link 'Tableau de bord'
+      click_link 'Dashboard'
       click_link operation.name
     end
 

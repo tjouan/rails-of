@@ -3,14 +3,15 @@ module ApplicationHelper
     account:    :user,
     contact:    :envelope,
     delete:     :x,
+    dashboard:  :home,
     download:   :download,
-    upload:     :upload,
     edit:       :pencil,
     preview:    :lens,
     report:     :report,
     signin:     :enter,
     signout:    :exit,
-    trainings:  :book
+    trainings:  :book,
+    upload:     :upload
   }.freeze
 
 

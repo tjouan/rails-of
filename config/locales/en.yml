@@ -3,6 +3,8 @@ en:
   delete:         Delete
   delete_confirm: Confirm deletion
 
+  dashboard:      Dashboard
+
   preview:        Preview
   download:       Download
   upload:         Upload new data
