@@ -15,11 +15,6 @@
       %br
       = f.password_field :password
 
-    %p.field
-      = f.label :password_confirmation
-      %br
-      = f.password_field :password_confirmation
-
 
     - if @user.errors.any?
       .form-errors
