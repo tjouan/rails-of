@@ -19,7 +19,12 @@
         %p
           +33 1 23 45 67 89
 
-        - if current_user?
+        - if !current_user?
+          %nav
+            %ul
+              %li
+                = link_to 'Connexion', signin_path
+        - else
           %nav
             %ul
               %li
