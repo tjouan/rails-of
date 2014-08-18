@@ -16,6 +16,7 @@ en:
 
   authent:
     invalid:      Invalid authentication
+  signin:         Signin
 
 
   activerecord:

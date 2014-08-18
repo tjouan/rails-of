@@ -16,6 +16,7 @@ fr:
 
   authent:
     invalid:      Authentification incorrecte
+  signin:         Connexion
 
 
   activerecord:

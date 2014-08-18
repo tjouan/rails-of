@@ -22,8 +22,7 @@
         - if !current_user?
           %nav
             %ul
-              %li
-                = link_to 'Connexion', signin_path
+              = action_link :signin, signin_path, append_text: true
         - else
           %nav
             %ul

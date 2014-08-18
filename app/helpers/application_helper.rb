@@ -4,7 +4,8 @@ module ApplicationHelper
     download: :download,
     edit:     :pencil,
     preview:  :lens,
-    report:   :report
+    report:   :report,
+    signin:   :enter
   }.freeze
 
 
