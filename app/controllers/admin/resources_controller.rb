@@ -2,6 +2,10 @@ class Admin::ResourcesController < Admin::BaseController
   include Admin::RoutingHelper
 
   OBJECT_FORM_FIELDS = {
+    Article => {
+      zone: :text_field,
+      body: :text_area
+    },
     Operation => {
       name:         :text_field,
       ref:          :text_field,

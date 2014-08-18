@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#show'
+    resources :articles
     resources :operations
     resources :sources, only: %i[index show]
     resources :users
