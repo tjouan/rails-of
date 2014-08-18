@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: :create
   get '/signin' => 'sessions#new'
+  get '/signout' => 'sessions#destroy'
 
   resources :sources do
     resource :headers, only: :edit

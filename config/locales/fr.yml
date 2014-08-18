@@ -17,6 +17,7 @@ fr:
   authent:
     invalid:      Authentification incorrecte
   signin:         Connexion
+  signout:        Déconnexion
   account:        Compte
 
   trainings:      Formation

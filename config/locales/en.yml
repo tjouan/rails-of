@@ -17,6 +17,7 @@ en:
   authent:
     invalid:      Invalid authentication
   signin:         Signin
+  signout:        Signout
   account:        Account
 
   trainings:      Training

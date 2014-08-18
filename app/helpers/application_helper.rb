@@ -8,6 +8,7 @@ module ApplicationHelper
     preview:    :lens,
     report:     :report,
     signin:     :enter,
+    signout:    :exit,
     trainings:  :book
   }.freeze
 
