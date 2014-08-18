@@ -1,9 +1,9 @@
 module ApplicationHelper
   ACTIONS_ICONS = {
-    preview:  :lens,
+    delete:   :x,
     download: :download,
     edit:     :pencil,
-    delete:   :x,
+    preview:  :lens,
     report:   :report
   }.freeze
 
