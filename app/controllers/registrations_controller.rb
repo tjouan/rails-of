@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   def edit
-    @user = current_user
+    @user = UserRegistrationForm.new({}, current_user)
   end
 
   def update
@@ -17,6 +17,6 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :terms)
   end
 end

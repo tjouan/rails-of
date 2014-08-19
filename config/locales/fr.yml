@@ -33,6 +33,7 @@ fr:
 
   attributes:
     name:         Prénom Nom
+    terms:        Conditions générales d'utilisation
   activerecord:
     attributes:
       user:

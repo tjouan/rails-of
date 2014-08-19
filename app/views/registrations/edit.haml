@@ -8,6 +8,12 @@
       %br
       = f.text_field :name, placeholder: 'Prénom Nom'
 
+    %p.field
+      = f.check_box :terms
+      = f.label :terms do
+        J'accepte les
+        = link_to 'conditions générales d\'utilisation', '/cgu.pdf'
+
 
     - if @user.errors.any?
       .form-errors
