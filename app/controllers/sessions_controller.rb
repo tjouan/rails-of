@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email])
     if user.try(:authenticate, params[:session][:password])
-      flash[:notice] = 'Bienvenue %s' % user.name
+      flash[:notice] = 'Bienvenue %s' % user.name if user.name
       self.current_user = user
       redirect_to :root
     else
