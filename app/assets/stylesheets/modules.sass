@@ -10,6 +10,21 @@
 .icon-set
   display: none
 
+  // FIXME: chromium won't support changing SVG styles on svg.icon > use.
+  path
+    fill: $blue
+
+  #icon-home,
+  #icon-file_dup,
+  #icon-gears,
+  #icon-report,
+  #icon-exit,
+  #icon-book,
+  #icon-user,
+  #icon-envelope
+    path
+      fill: $white
+
 .icon
   shape-rendering: geometricPrecision
   vertical-align: text-bottom
