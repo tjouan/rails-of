@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :works
 
   validates :email,     presence: true, uniqueness: true
-  validates :password,  length: { minimum: 8 }
+  validates :password,  length: { minimum: 8 }, if: :password_digest_changed?
 
 
   def to_s

@@ -9,14 +9,19 @@ class FormBase
       new(*args)
     end
 
-    def model_name
-      ActiveModel::Name.new(resource)
+    def delegate_attributes(attrs)
+      def_delegators :@object, *attrs
+    end
+
+    def resource(res)
+      self.define_singleton_method(:attached_resource) { res }
     end
   end
 
   attr_reader :object
 
-  def initialize(attributes = {}, object = self.class.resource.new)
+  def initialize(attributes = {}, object = self.class.attached_resource.new)
+    define_model_name
     @object = object
 
     attributes.each do |k, v|
@@ -36,7 +41,7 @@ class FormBase
   end
 
   def persisted?
-    false
+    object.persisted?
   end
 
   def before_save
@@ -45,5 +50,14 @@ class FormBase
   def save
     before_save
     valid? and object.save
+  end
+
+
+  private
+
+  def define_model_name
+    self.class.define_singleton_method(:model_name) do
+      ActiveModel::Name.new(self.attached_resource)
+    end
   end
 end

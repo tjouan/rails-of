@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   resources :trainings, only: :index
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create update] do
+    resource :registration, only: %i[edit update]
+  end
 
   resources :works, only: %i[index show new create]
 

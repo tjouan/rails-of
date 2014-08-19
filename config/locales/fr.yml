@@ -31,10 +31,12 @@ fr:
   contact:        Contact
 
 
+  attributes:
+    name:         Prénom Nom
   activerecord:
     attributes:
       user:
-        name:     Nom
+        name:     Prénom Nom
         email:    Adresse mail
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe

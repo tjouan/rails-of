@@ -1,12 +1,11 @@
 class WorkForm < FormBase
   class FirstnamesForm < WorkForm
-    def_delegators :@object, :parameters
+    delegate_attributes :parameters
   end
 
   class GeoScoreForm < WorkForm
-    def_delegators :@object, :parameters
+    delegate_attributes :parameters
   end
-
 
   class OpticibleForm < WorkForm
     def setup
@@ -63,25 +62,21 @@ class WorkForm < FormBase
     opticible:  OpticibleForm
   }.freeze
 
-  ATTRIBUTES_DELEGATED = %i[
+  resource Work
+
+  delegate_attributes %i[
     id
     operation
     source
     source_id
     target_source
     target_source_id
-  ].freeze
-
-  def_delegators :@object, *ATTRIBUTES_DELEGATED
+  ]
 
   class << self
     def build(*args)
       operation = Operation.find(args.first[:operation_id])
       OPERATION_FORMS[operation.ref.to_sym].new(*args)
-    end
-
-    def resource
-      Work
     end
   end
 

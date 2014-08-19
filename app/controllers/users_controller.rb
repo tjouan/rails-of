@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if UserCreater.new(@user).call
       self.current_user = @user
-      redirect_to :root
+      redirect_to edit_user_registration_path @user
     else
       render :new
     end

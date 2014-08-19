@@ -1,0 +1,22 @@
+%h1 Inscription
+
+
+= form_for @user, url: user_registration_path, html: { class: 'form' } do |f|
+  %fieldset
+    %p.field
+      = f.label :name
+      %br
+      = f.text_field :name, placeholder: 'Prénom Nom'
+
+
+    - if @user.errors.any?
+      .form-errors
+        %p= t('errors_count', count: @user.errors.size)
+        %ul
+          - @user.errors.full_messages.each do |e|
+            %li= e
+
+
+  %ul.actions
+    %li
+      = f.submit 'Valider mon inscription'
