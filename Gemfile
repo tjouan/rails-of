@@ -27,9 +27,6 @@ gem 'redcarpet',      '~> 3.1.2'
 gem 'geo_score',      git: 'git:datacube/geo_score'
 
 
-gem 'newrelic_rpm',   '~> 3.9'
-
-
 group :development, :test do
   gem 'pry-rails'
 
