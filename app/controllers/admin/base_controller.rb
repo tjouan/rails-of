@@ -4,7 +4,7 @@ class Admin::BaseController < ApplicationController
     Operation,
     Source,
     User,
-    Work,
+    Work
   ].freeze
 
   before_filter :authorize!
