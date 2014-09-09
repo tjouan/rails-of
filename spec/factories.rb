@@ -31,7 +31,7 @@ eoh
     file_name   'mydata.csv'
 
     after :build do |e|
-      e.stub(:rows) do
+      def e.rows
         [
           %w[foo 42 1],
           %w[bar 13 1],
