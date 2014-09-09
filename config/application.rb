@@ -26,7 +26,7 @@ module OptiFront
 
     config.active_record.schema_format :sql
 
-    config.force_ssl = true if Rails.env.production?
+    config.force_ssl = true if ENV.key? 'OPTI_FRONT_FORCE_SSL'
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
