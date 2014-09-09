@@ -17,6 +17,7 @@ class SourceSaver
   end
 
   def call
+    source.errors[:sha256] = 'Fichier absent' and return false unless file
     save_file normalizer.normalize!
     source.file_name  = Pathname.new(file.original_filename).to_s
     source.rows_count = normalizer.rows_added
