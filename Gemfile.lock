@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: git://github.com/tjouan/spork.git
-  revision: 0031bb85acaf0d1cc0a75b2b2afbf9488478ee39
-  branch: rspec-2.99
+  revision: 49ab62dd1e3f250cc438be928cf47f6dd0763923
+  branch: rspec-3
   specs:
     spork (1.0.0rc4)
 

@@ -43,7 +43,7 @@ group :development, :test do
   gem 'listen',             '2.7.5',      require: false
   gem 'celluloid',          '0.16.0.pre', require: false
 
-  gem 'spork',              github: 'tjouan/spork', branch: 'rspec-2.99'
+  gem 'spork',              github: 'tjouan/spork', branch: 'rspec-3'
 
   gem 'spork-rails',        '~> 4.0'
   gem 'guard-spork',        '~> 1.5'
