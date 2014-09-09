@@ -4,7 +4,7 @@ class SourceDestroyer
   end
 
   def call
-    File.delete(@source.path)
     @source.destroy
+    File.delete(@source.path) unless Source.exists?(sha256: @source.sha256)
   end
 end
