@@ -1,6 +1,7 @@
 class Admin::BaseController < ApplicationController
   RESOURCES = [
     Article,
+    Offer,
     Operation,
     Source,
     User,

@@ -96,6 +96,40 @@ ALTER SEQUENCE headers_id_seq OWNED BY headers.id;
 
 
 --
+-- Name: offers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE offers (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    name character varying(255),
+    ref character varying(255),
+    price numeric(6,2),
+    visible boolean DEFAULT false
+);
+
+
+--
+-- Name: offers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE offers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: offers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE offers_id_seq OWNED BY offers.id;
+
+
+--
 -- Name: operations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -301,6 +335,13 @@ ALTER TABLE ONLY headers ALTER COLUMN id SET DEFAULT nextval('headers_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY offers ALTER COLUMN id SET DEFAULT nextval('offers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY operations ALTER COLUMN id SET DEFAULT nextval('operations_id_seq'::regclass);
 
 
@@ -346,6 +387,14 @@ ALTER TABLE ONLY articles
 
 ALTER TABLE ONLY headers
     ADD CONSTRAINT headers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: offers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY offers
+    ADD CONSTRAINT offers_pkey PRIMARY KEY (id);
 
 
 --
@@ -473,6 +522,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140818214509');
 INSERT INTO schema_migrations (version) VALUES ('20140923154808');
 
 INSERT INTO schema_migrations (version) VALUES ('20140923224939');
+
+INSERT INTO schema_migrations (version) VALUES ('20140929192705');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 

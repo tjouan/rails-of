@@ -6,6 +6,12 @@ class Admin::ResourcesController < Admin::BaseController
       zone: :text_field,
       body: :text_area
     },
+    Offer => {
+      name:     :text_field,
+      ref:      :text_field,
+      price:    :number_field,
+      visible:  :check_box
+    },
     Operation => {
       name:         :text_field,
       ref:          :text_field,

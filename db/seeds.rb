@@ -15,6 +15,29 @@ unless Rails.env.test?
   }.each { |k, v| Operation.where(ref: k).first_or_create(v) }
 
 
+  {
+    gold: {
+      name:     'Gold',
+      price:    100.00,
+      visible:  true
+    },
+    silver: {
+      name:     'Silver',
+      price:    200.00,
+      visible:  true
+    },
+    bronze: {
+      name:     'Bronze',
+      price:    300.00,
+      visible:  true
+    },
+    free: {
+      name:     'Essai gratuit',
+      visible:  false
+    }
+  }.each { |k, v| Offer.where(ref: k).first_or_create(v) }
+
+
   Article.where(zone: 'doc').first_or_create(body: <<-eoh)
 Titre de niveau 1
 =================
