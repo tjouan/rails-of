@@ -30,8 +30,8 @@ gem 'geo_score',      git: 'git:datacube/geo_score'
 group :development, :test do
   gem 'pry-rails'
 
-  gem 'rspec',              '~> 2.14'
-  gem 'rspec-rails',        '~> 2.14'
+  gem 'rspec',              '~> 3.1'
+  gem 'rspec-rails',        '~> 3.1'
 
   gem 'factory_girl_rails', '~> 4.4'
 
