@@ -44,10 +44,11 @@
     .footer_wrapper
       %footer#footer
         %ul
-          %li
-            = action_link :trainings, trainings_path, append_text: true
-          %li
-            = action_link :account, dashboard_path, append_text: true
+          - if current_user?
+            %li
+              = action_link :trainings, trainings_path, append_text: true
+            %li
+              = action_link :account, dashboard_path, append_text: true
           %li
             = action_link :contact, dashboard_path, append_text: true
 
