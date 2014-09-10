@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
+  def current_user?
+    !!@current_user
+  end
+
 
   private
 
