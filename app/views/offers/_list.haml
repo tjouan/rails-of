@@ -1,0 +1,11 @@
+%table.offers-list
+  %thead
+    %tr
+      %th
+      - @offers.each do |e|
+        %th= e.name
+  %tbody
+    %tr
+      %th(scope='row') Prix
+      - @offers.each do |e|
+        %td.list-numeric= number_to_currency e.price
