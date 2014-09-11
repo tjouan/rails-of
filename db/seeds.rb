@@ -81,7 +81,6 @@ ou encore ==hightlighted==.
 Contrairement à la syntaxe Markdown originale, on peut utiliser des
 underscores_entre_des_mots sans déclencher la création d'emphase.
 
-
 ---
 
 Pour un bloc de texte préformaté, il faut englober le bloc entre deux
