@@ -33,8 +33,8 @@ Titre de niveau 2
 #Un croisillon en début de ligne sera préservé s'il n'est pas suivi
 d'un espace.
 
-
 ---
+
 
 Trois caractères moins (`-`) consécutifs provoquent une séparation
 (élément hr en HTML).
@@ -82,6 +82,7 @@ Contrairement à la syntaxe Markdown originale, on peut utiliser des
 underscores_entre_des_mots sans déclencher la création d'emphase.
 
 ---
+
 
 Pour un bloc de texte préformaté, il faut englober le bloc entre deux
 lignes constituées de trois caractères backticks (`)
@@ -152,6 +153,7 @@ end
 ```
 
 ---
+
 
 Citations :
 
