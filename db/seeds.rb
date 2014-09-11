@@ -50,7 +50,7 @@ Deux sauts de lignes consécutifs créent un nouveau paragraphe.
 ---
 
 
-Les astérisques en début de ligne permettent de créer une liste :
+Les astérisques en début de ligne permettent de créer une liste :
 
 * red
 * green
@@ -58,7 +58,7 @@ Les astérisques en début de ligne permettent de créer une liste :
 * blue
   (le texte reste attaché à l'entrée courante)
 
-On peut également créer des listes ordonnées :
+On peut également créer des listes ordonnées :
 
 1. red
 2. green
@@ -83,71 +83,27 @@ underscores_entre_des_mots sans déclencher la création d'emphase.
 
 ---
 
+Ajout d'une image inline :
+
+![OptiDM by datacube](/assets/logo.png)
+
+Avec attribut HTML "title" :
+
+![OptiDM by datacube](/assets/logo.png "attribut title sur image")
+
+---
+
 
 Pour un bloc de texte préformaté, il faut englober le bloc entre deux
 lignes constituées de trois caractères backticks (`)
 
 ```
-module GeoScore
-  class Matcher
-    attr_reader :db_file, :keys, :db_proc, :value_arity
+class OffersPresenter
+  extend Forwardable
+  def_delegators :@offers, :any?, :each
 
-    def initialize(db_file, keys, debug: false, &block)
-      @db_file      = db_file
-      @keys         = keys
-      @debug        = debug
-      @db_proc      = block
-      @value_arity  = nil
-    end
-
-    def key_arity
-      keys.values.first.arity
-    end
-
-    def debug?
-      !!@debug
-    end
-
-    def [](*args)
-      return default_value unless valid_arguments? args
-
-      keys.each do |k, v|
-        key = v.call *args
-        if m = db[k][key]
-          return debug? ? [k, inspect_key(key), *m] : m
-        end
-      end
-
-      default_value
-    end
-
-    def valid_arguments?(args)
-      return false unless args.compact.size == key_arity
-      true
-    end
-
-    def default_value
-      Array.new(debug? ? value_arity + 2 : value_arity)
-    end
-
-    def inspect_key(key)
-      return '[%s]' % key.join(', ') if key.respond_to? :each
-      key
-    end
-
-    def db
-      @db ||= begin
-        db_file.inject({}) do |m, r|
-          keys.each do |k, v|
-            m[k] ||= {}
-            key_args, value = db_proc.call r
-            @value_arity ||= value.size
-            m[k][v.call(key_args)] = value
-          end
-          m
-        end
-      end
-    end
+  def initialize(offers)
+    @offers = offers.map { |e| OfferPresenter.new(e) }
   end
 end
 ```
@@ -155,7 +111,7 @@ end
 ---
 
 
-Citations :
+Citations :
 
 
 > > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
