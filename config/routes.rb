@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#show'
+    get 'doc/markdown', to: 'docs#markdown'
     resources :articles
     resources :operations
     resources :sources, only: %i[index show]

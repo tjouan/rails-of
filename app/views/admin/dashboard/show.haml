@@ -2,6 +2,14 @@
 
 
 - if @resources.any?
+  %h2 Resources
+
   %ul
     - @resources.each do |e|
       %li= link_to e.plural_name, collection_path(e)
+
+
+%h2 Documentation
+
+%ul
+  %li= link_to 'Markdown', admin_doc_markdown_path
