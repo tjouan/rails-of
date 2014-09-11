@@ -51,6 +51,8 @@ module Operations
           output_results(rows_test)
         end
       end
+
+      output.rewind
     end
 
     def results_report
