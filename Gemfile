@@ -25,6 +25,7 @@ gem 'creek',          '~> 1.0.5'
 gem 'redcarpet',      '~> 3.1.2'
 
 gem 'opti-tools',     git: 'git:datacube/opti-tools'
+#gem 'opti-tools',     path: '../opti-tools'
 
 
 group :development, :test do
