@@ -65,7 +65,6 @@ module ApplicationHelper
     @_markdown_parser ||= Redcarpet::Markdown.new(
       Redcarpet::Render::HTML.new(
         filter_html:      true,
-        no_images:        true,
         no_styles:        true,
         safe_links_only:  true
       ),
