@@ -18,6 +18,9 @@ require 'open3'
 require 'pathname'
 require 'tempfile'
 
+require 'opti_tools/geo_score'
+require 'opti_tools/firstnames'
+
 module OptiFront
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

@@ -1,7 +1,7 @@
 class WorkProcessor
   OPERATIONS = {
-    firstnames: GeoScore::Operations::Firstnames,
-    geoscore:   GeoScore::Operation,
+    firstnames: OptiTools::Firstnames::Operation,
+    geoscore:   OptiTools::GeoScore::Operation,
     opticible:  Operations::Opticible
   }.freeze
 

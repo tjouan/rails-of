@@ -24,7 +24,7 @@ gem 'creek',          '~> 1.0.5'
 
 gem 'redcarpet',      '~> 3.1.2'
 
-gem 'geo_score',      git: 'git:datacube/geo_score'
+gem 'opti-tools',     git: 'git:datacube/opti-tools'
 
 
 group :development, :test do
