@@ -17,9 +17,9 @@ GIT
 
 GIT
   remote: git:datacube/opti-tools
-  revision: ac9b2163b47a27e19ac2fb3ce2636251e10887a5
+  revision: e22bf6a64239a606cf6b61276955062ad5fff659
   specs:
-    opti-tools (0.2.1)
+    opti-tools (0.2.2)
       text (~> 1.2)
 
 GEM
