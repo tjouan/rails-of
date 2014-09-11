@@ -23,7 +23,7 @@ class WorkProcessor
     work.touch :started_at
 
     Tempfile.create('opti-work') do |f|
-      op = operation_to(f)
+      op = operation_to f
       op.process!
       work.update_attribute :results, op.results_report
       saver.new(work.source, work.operation, f).call

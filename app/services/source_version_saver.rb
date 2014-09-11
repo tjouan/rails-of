@@ -19,7 +19,7 @@ class SourceVersionSaver
       file_name:    parent.file_name,
       headers:      parent.headers.map(&:dup)
     )
-    save_file(source, file.path)
+    save_file source, file.path
     source.rows_count = source.rows.count
 
     source.save if save?
