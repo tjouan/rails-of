@@ -72,8 +72,6 @@ transformée en lien.
 
 ---
 
-![Test](http://www.datacube.fr/images/SmallLogo.png "Test_offres")
-
 
 On peut déclarer une *emphase*,
 du texte en **strong**,
