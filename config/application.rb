@@ -69,7 +69,7 @@ module OptiFront
     }
 
 
-    config.host       = ENV['OPTI_FRONT_HOST'].freeze
+    config.host       = ENV.fetch('OPTI_FRONT_HOST', 'localhost.invalid').freeze
     config.host_prod  = 'beta.optidm.fr'
 
     config.sources_path = Rails.env.test? ?
