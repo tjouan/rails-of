@@ -19,11 +19,7 @@
         %p
           +33 1 23 45 67 89
 
-        - if !current_user?
-          %nav
-            %ul
-              = action_link :signin, signin_path, append_text: true
-        - else
+        - if current_user?
           %nav
             %ul
               = action_link :dashboard, dashboard_path, append_text: true
@@ -31,6 +27,10 @@
               = action_link :tools, operations_path, append_text: true
               = action_link :results, works_path, append_text: true
               = action_link :signout, signout_path, append_text: true
+        - else
+          %nav
+            %ul
+              = action_link :signin, signin_path, append_text: true
 
 
     %main
