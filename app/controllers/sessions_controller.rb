@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_filter :authenticate!, only: %i[new create]
 
   def new
+    @path = params[:path]
   end
 
   def create
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
     if user.try(:authenticate, params[:session][:password])
       flash[:notice] = 'Bienvenue %s' % user.name if user.name
       self.current_user = user
-      redirect_to :root
+      redirect_to params[:session][:path] || :root
     else
       flash[:error] = t 'authent.invalid'
       render 'new'

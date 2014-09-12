@@ -2,6 +2,8 @@
 
 
 = form_for :session, url: sessions_path, html: { class: 'form' } do |f|
+  = f.hidden_field :path, value: @path
+
   %fieldset
     %p.field
       %label

@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate!
-    redirect_to signin_path unless current_user
+    redirect_to signin_path path: request.fullpath unless current_user
   end
 
   def set_locale
