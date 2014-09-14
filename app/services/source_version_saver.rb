@@ -13,16 +13,23 @@ class SourceVersionSaver
   end
 
   def call
-    source = parent.user.sources.new(
-      label:        "#{parent.label} enrichi par #{operation.name}",
-      description:  parent.description,
-      file_name:    parent.file_name,
-      headers:      parent.headers.map(&:dup)
+    source = @parent.user.sources.new(
+      label:        label,
+      description:  @parent.description,
+      file_name:    @parent.file_name,
+      headers:      @parent.headers.map(&:dup)
     )
-    save_file source, file.path
+    save_file source, @file.path
     source.rows_count = source.rows.count
 
     source.save if save?
+  end
+
+
+  private
+
+  def label
+    "#{@parent.label} enrichi par #{@operation.name}"
   end
 
   def save_file(source, file_path)

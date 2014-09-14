@@ -45,4 +45,8 @@ class Work < ActiveRecord::Base
   def parameters_as_headers(index)
     source.headers.where position: parameters[index].split(',').map(&:to_i)
   end
+
+  def parent_source
+    target_source or source
+  end
 end
