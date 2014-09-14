@@ -1,10 +1,9 @@
 class SourceVersionSaver
-  attr_reader :parent, :operation, :file
-
-  def initialize(parent, operation, file, save: true)
+  def initialize(parent, operation, file, headers, save: true)
     @parent     = parent
     @operation  = operation
     @file       = file
+    @headers    = headers
     @save       = save
   end
 
@@ -19,6 +18,7 @@ class SourceVersionSaver
       file_name:    @parent.file_name,
       headers:      @parent.headers.map(&:dup)
     )
+    build_extra_headers source
     save_file source, @file.path
     source.rows_count = source.rows.count
 
@@ -30,6 +30,12 @@ class SourceVersionSaver
 
   def label
     "#{@parent.label} enrichi par #{@operation.name}"
+  end
+
+  def build_extra_headers(source)
+    @headers.map do |k, v|
+      source.append_header k, v
+    end
   end
 
   def save_file(source, file_path)

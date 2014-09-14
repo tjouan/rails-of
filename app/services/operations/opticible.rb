@@ -39,6 +39,17 @@ module Operations
       ENV.key? DEBUG_VAR
     end
 
+    def headers
+      if debug?
+        {
+          'raw probability'       => :int,
+          'adjusted probability'  => :int
+        }
+      else
+        { 'probability' => :int }
+      end
+    end
+
     def process!
       log_info "WORK: ##{work.id}"
       Dir.mktmpdir(TMPDIR_PATTERN) do |dir|

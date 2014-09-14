@@ -45,6 +45,10 @@ class Source < ActiveRecord::Base
     headers.select { |e| e.type == type }
   end
 
+  def append_header(name, type)
+    headers.new(name: name, type: type, position: headers.last.position + 1)
+  end
+
 
   private
 

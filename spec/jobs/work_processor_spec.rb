@@ -10,6 +10,10 @@ describe WorkProcessor do
       @output       = output
     end
 
+    def headers
+      {}
+    end
+
     def process!
     end
 
@@ -48,8 +52,8 @@ describe WorkProcessor do
 
     context 'when operation succeeds' do
       it 'builds a new saver' do
-        expect(saver)
-          .to receive(:new).with(work.source, work.operation, an_instance_of(File))
+        expect(saver).to receive(:new)
+          .with(work.source, work.operation, an_instance_of(File), {})
         processor.call
       end
 

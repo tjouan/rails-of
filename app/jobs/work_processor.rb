@@ -26,7 +26,7 @@ class WorkProcessor
       op = operation_to f
       op.process!
       work.update_attribute :results, op.results_report
-      saver.new(work.parent_source, work.operation, f).call
+      saver.new(work.parent_source, work.operation, f, op.headers).call
     end
   rescue Backburner::Job::JobTimeout
     work.touch :terminated_at
