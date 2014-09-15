@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if UserCreater.new(@user).call
       self.current_user = @user
-      flash[:notice] = 'Bienvenue sur OptiDM !'
+      flash[:notice] = 'Bienvenue sur Datacube !'
       redirect_to edit_user_registration_path @user
     else
       render :new
