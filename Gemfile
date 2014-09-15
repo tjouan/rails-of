@@ -30,7 +30,9 @@ gem 'opti-tools',     git: 'git:datacube/opti-tools'
 
 group :development, :test do
   gem 'pry-rails'
+end
 
+group :test do
   gem 'rspec',              '~> 3.1'
   gem 'rspec-rails',        '~> 3.1'
 
@@ -48,8 +50,6 @@ group :development, :test do
 
   gem 'spork-rails',        '~> 4.0'
   gem 'guard-spork',        '~> 1.5'
-end
 
-group :test do
   gem 'backburner_spec',    git: 'git://github.com/ogerman/backburner_spec'
 end
