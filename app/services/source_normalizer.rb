@@ -51,6 +51,8 @@ class SourceNormalizer
   end
 
   def xlsx_enum
+    require 'creek'
+
     sheet = Creek::Book.new(input_path, check_file_extension: false).sheets.first
     Enumerator.new do |y|
       begin

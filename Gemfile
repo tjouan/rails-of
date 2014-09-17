@@ -20,7 +20,7 @@ gem 'backburner',     '~> 0.4'
 
 gem 'exception_notification', '~> 4.0'
 
-gem 'creek',          '~> 1.0.5'
+gem 'creek',          '~> 1.0.5', require: false
 
 gem 'redcarpet',      '~> 3.1.2'
 
