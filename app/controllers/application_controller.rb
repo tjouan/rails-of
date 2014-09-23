@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate!
+  before_filter :register!
   before_filter :set_locale
 
   helper_method :current_user, :current_user?
@@ -26,6 +27,15 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     redirect_to signin_path path: request.fullpath unless current_user
+  end
+
+  def register!
+    p params
+    return if params[:controller] == 'registrations' && params[:action] == 'edit'
+    if current_user.name.nil?
+      flash[:error] = t 'registration.required'
+      redirect_to edit_user_registration_path current_user
+    end
   end
 
   def set_locale
