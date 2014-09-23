@@ -26,8 +26,6 @@ en:
   signin:         Signin
   signout:        Signout
   account:        Account
-  registration:
-    required:     Complete registration is required
 
   trainings:      Training
   contact:        Contact

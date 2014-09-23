@@ -26,8 +26,6 @@ fr:
   signin:         Connexion
   signout:        Déconnexion
   account:        Compte
-  registration:
-    required:     Vous devez compléter votre inscription
 
   trainings:      Formation
   contact:        Contact
