@@ -49,7 +49,12 @@ class FormBase
 
   def save
     before_save
-    valid? and object.save
+    if valid? && object.valid?
+      object.save
+    else
+      object.valid?
+      merge_errors and false
+    end
   end
 
 
@@ -59,5 +64,9 @@ class FormBase
     self.class.define_singleton_method(:model_name) do
       ActiveModel::Name.new(self.attached_resource)
     end
+  end
+
+  def merge_errors
+    object.errors.each { |k, v| errors[k] = v }
   end
 end
