@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def register!
-    p params
-    return if params[:controller] == 'registrations' && params[:action] == 'edit'
+    return if params[:controller] == 'registrations'
+
     if current_user.name.nil?
       flash[:error] = t 'registration.required'
       redirect_to edit_user_registration_path current_user
