@@ -30,7 +30,9 @@ class ApplicationController < ActionController::Base
   end
 
   def register!
-    return if !current_user? || params[:controller] == 'registrations'
+    return if !current_user? ||
+      params[:controller] == 'registrations' ||
+      (params[:controller] == 'sessions' && params[:action] == 'destroy')
 
     if current_user.name.nil?
       flash[:error] = t 'registration.required'
