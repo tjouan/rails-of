@@ -1,7 +1,7 @@
 class UsersMailer < ActionMailer::Base
   include Backburner::Performable
 
-  default from: 'contact@datacube.fr'
+  default from: 'alexis@datacube.fr'
 
   def welcome(user_id)
     @user = User.find(user_id)
