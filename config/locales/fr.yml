@@ -38,7 +38,7 @@ fr:
     name:         Prénom Nom
     tel_number:   Numéro de téléphone
     terms:        Conditions générales d'utilisation
-  activerecord:
+  activemodel:
     attributes:
       user:
         name:     Prénom Nom
