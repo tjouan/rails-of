@@ -34,7 +34,9 @@ fr:
 
 
   attributes:
+    company:      Raison sociale
     name:         Prénom Nom
+    tel_number:   Numéro de téléphone
     terms:        Conditions générales d'utilisation
   activerecord:
     attributes:

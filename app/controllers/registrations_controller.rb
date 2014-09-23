@@ -17,6 +17,6 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :terms)
+    params.require(:user).permit(:name, :company, :tel_number, :terms)
   end
 end

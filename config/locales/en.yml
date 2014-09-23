@@ -33,6 +33,8 @@ en:
   contact:        Contact
 
 
+  attributes:
+    tel_number:   telephone number
   activerecord:
     models:
       operation:  operation
