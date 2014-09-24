@@ -60,14 +60,13 @@ module OptiFront
       zopim.js
     ]
 
+    config.host       = ENV.fetch('OPTI_FRONT_HOST', 'localhost.invalid').freeze
+    config.host_prod  = 'beta.optidm.fr'
+
     config.action_mailer.delivery_method = :sendmail
     ActionMailer::Base.sendmail_settings = {
       arguments: '-i -f tj+datacube_opti_front@a13.fr'
     }
-
-
-    config.host       = ENV.fetch('OPTI_FRONT_HOST', 'localhost.invalid').freeze
-    config.host_prod  = 'beta.optidm.fr'
 
     config.sources_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sources') :
