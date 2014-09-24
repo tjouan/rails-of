@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :trainings, only: :index
 
   resources :users, only: %i[new create update]
+  get '/users/activation/:token', to: 'users/activations#activate',
+    as: 'user_activation'
 
   resources :works, only: %i[index show new create]
 

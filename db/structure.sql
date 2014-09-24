@@ -218,7 +218,9 @@ CREATE TABLE users (
     password_digest character varying(255) NOT NULL,
     admin boolean DEFAULT false NOT NULL,
     company character varying(255),
-    tel_number character varying(255)
+    tel_number character varying(255),
+    active boolean DEFAULT false,
+    activation_token character varying(255)
 );
 
 
@@ -469,6 +471,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140818103521');
 INSERT INTO schema_migrations (version) VALUES ('20140818214509');
 
 INSERT INTO schema_migrations (version) VALUES ('20140923154808');
+
+INSERT INTO schema_migrations (version) VALUES ('20140923224939');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
