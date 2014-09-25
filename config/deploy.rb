@@ -3,7 +3,7 @@ require 'producer/rails'
 
 set :repository,      'git:datacube/opti-front'
 set :app_path,        'www/opti-front'
-set :app_mkdir,       %w[data data/sources]
+set :app_mkdir,       %w[data/sources]
 
 set :queue,           :backburner
 set :queue_workers,   (target.include? 'prod') ? 2 : 1
