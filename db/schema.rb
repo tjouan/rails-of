@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20140923154808) do
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
-    t.string   "zone"
-    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zone",       null: false
+    t.text     "body",       null: false
   end
 
   create_table "headers", force: true do |t|
@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 20140923154808) do
     t.string   "name",       null: false
     t.integer  "type",       null: false
     t.integer  "position",   null: false
-  end
-
-  create_table "offers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "ref"
-    t.decimal  "price",      precision: 6, scale: 2
   end
 
   create_table "operations", force: true do |t|
