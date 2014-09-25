@@ -82,7 +82,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  config.middleware.delete 'ActionDispatch::ShowExceptions'
+  config.middleware.delete 'Rack::ShowExceptions'
 
   config.middleware.use ExceptionNotification::Rack,
     email: {
