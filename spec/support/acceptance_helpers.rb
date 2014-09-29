@@ -7,6 +7,10 @@ module AcceptanceHelpers
     click_button 'Connexion'
   end
 
+  def sign_in_with_active_user
+    sign_in create :user, active: true
+  end
+
   def current_user
     @_current_user
   end

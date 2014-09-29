@@ -8,7 +8,7 @@ feature 'Works CRUD' do
   context 'creation' do
     background do
       operation.save!
-      sign_in
+      sign_in_with_active_user
       create_source
       click_link 'Dashboard'
       click_link operation.name
