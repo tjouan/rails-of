@@ -65,7 +65,7 @@ module OptiFront
 
     config.action_mailer.default_url_options  = { host: config.host }
     config.action_mailer.delivery_method      = :sendmail
-    ActionMailer::Base.sendmail_settings      = {
+    config.action_mailer.sendmail_settings    = {
       arguments: '-i -f tj+datacube_opti_front@a13.fr'
     }
 
