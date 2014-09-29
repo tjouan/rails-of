@@ -4,6 +4,7 @@ class UserForm < FormBase
   delegate_attributes %i[
     id email password password_confirmation
     name company tel_number
+    subscriptions
   ]
 
   validates :name,  presence: true

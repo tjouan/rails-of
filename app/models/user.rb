@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :sources
+  has_many :subscriptions
   has_many :works
 
   validates :email,     presence: true, uniqueness: true

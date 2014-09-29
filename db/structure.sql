@@ -240,6 +240,40 @@ ALTER SEQUENCE sources_id_seq OWNED BY sources.id;
 
 
 --
+-- Name: subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE subscriptions (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    user_id integer NOT NULL,
+    offer_id integer NOT NULL,
+    start_at timestamp without time zone,
+    end_at timestamp without time zone
+);
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE subscriptions_id_seq OWNED BY subscriptions.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -363,6 +397,13 @@ ALTER TABLE ONLY sources ALTER COLUMN id SET DEFAULT nextval('sources_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -422,6 +463,14 @@ ALTER TABLE ONLY sources
 
 
 --
+-- Name: subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY subscriptions
+    ADD CONSTRAINT subscriptions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -456,6 +505,20 @@ CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
 --
 
 CREATE INDEX index_sources_on_user_id ON sources USING btree (user_id);
+
+
+--
+-- Name: index_subscriptions_on_offer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_subscriptions_on_offer_id ON subscriptions USING btree (offer_id);
+
+
+--
+-- Name: index_subscriptions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_subscriptions_on_user_id ON subscriptions USING btree (user_id);
 
 
 --
@@ -524,6 +587,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140923154808');
 INSERT INTO schema_migrations (version) VALUES ('20140923224939');
 
 INSERT INTO schema_migrations (version) VALUES ('20140929192705');
+
+INSERT INTO schema_migrations (version) VALUES ('20140929225926');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 

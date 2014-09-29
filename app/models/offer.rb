@@ -1,4 +1,12 @@
 class Offer < ActiveRecord::Base
+  FREE_OFFER_DAY_COUNT = 14
+
+  class << self
+    def free_offer
+      find_by_ref 'free'
+    end
+  end
+
   scope :visible, -> { where visible: true }
 
 
