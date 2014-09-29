@@ -1,6 +1,9 @@
 class WorksController < ApplicationController
   WORK_PARAMETERS = [:id, :target, :cost, :margin, { ignore: [] }].freeze
+  ACTIVATION_REQUIRED_MESSAGE =
+    'Vous devez activer votre compte pour utiliser les outils'.freeze
 
+  before_filter :warn_when_not_activated, except: :index
   before_action :set_work, only: :show
 
   def index
@@ -11,11 +14,15 @@ class WorksController < ApplicationController
   end
 
   def new
+    warn_when_not_activated
+
     @work     = WorkForm.build(params.slice :operation_id, new_work)
     @sources  = current_user.sources
   end
 
   def create
+    warn_when_not_activated true and return
+
     @work = WorkForm.build(work_params, new_work)
 
     if WorkSubmitter.new(@work).call
@@ -43,5 +50,13 @@ class WorksController < ApplicationController
           params[:work][:parameters].is_a?(Hash) ? WORK_PARAMETERS : []
       }
     )
+  end
+
+  def warn_when_not_activated(redirect = false)
+    return if current_user.active?
+    flash[redirect ? :error : :notice] = ACTIVATION_REQUIRED_MESSAGE
+    flash.discard unless redirect
+    redirect_to dashboard_path if redirect
+    redirect
   end
 end
