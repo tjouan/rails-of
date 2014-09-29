@@ -16,6 +16,7 @@ class Admin::ResourcesController < Admin::BaseController
       email:                  :email_field,
       password:               :password_field,
       password_confirmation:  :password_field,
+      active:                 :check_box,
       admin:                  :check_box
     }
   }
