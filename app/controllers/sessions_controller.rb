@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user.try(:authenticate, params[:session][:password])
       flash[:notice] = 'Bienvenue %s' % user.name if user.name
       self.current_user = user
-      redirect_to params[:session][:path] || :root
+      redirect_to params[:session][:path] || dashboard_path
     else
       flash[:error] = t 'authent.invalid'
       render 'new'
