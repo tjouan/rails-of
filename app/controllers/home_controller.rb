@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
   def index
     @user   = User.new
-    @offers = OffersPresenter.new(Offer.all)
+    @offers = OffersPresenter.new(Offer.visible)
   end
 end
