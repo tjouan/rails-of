@@ -68,6 +68,11 @@ module OptiFront
     config.action_mailer.sendmail_settings    = {
       arguments: '-i -f tj+datacube_opti_front@a13.fr'
     }
+    if config.host == config.host_prod
+      config.action_mailer.default_options = {
+        bcc: %w[tj+datacube_opti_front_bcc@a13.fr alexis.dolle@datacube.fr]
+      }
+    end
 
     config.sources_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sources') :
