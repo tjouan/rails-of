@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if UserCreater.new(@user).call
       self.current_user = @user.object
-      flash[:notice] = 'Bienvenue sur Datacube !'
+      flash[:notice] = 'Bienvenue sur DATACUBE !'
       redirect_to dashboard_path
     else
       render :new

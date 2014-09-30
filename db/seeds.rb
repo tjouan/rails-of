@@ -108,11 +108,11 @@ underscores_entre_des_mots sans déclencher la création d'emphase.
 
 Ajout d'une image inline :
 
-![OptiDM by datacube](/assets/logo.png)
+![DATACUBE](/assets/logo.png)
 
 Avec attribut HTML "title" :
 
-![OptiDM by datacube](/assets/logo.png "attribut title sur image")
+![DATACUBE](/assets/logo.png "attribut title sur image")
 
 ---
 

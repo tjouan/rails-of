@@ -7,7 +7,7 @@ class UsersMailer < ActionMailer::Base
     @user = User.find(user_id)
     mail(
       to: @user.email,
-      subject: 'Bienvenue sur Datacube !'
+      subject: 'Bienvenue sur DATACUBE !'
     ).deliver
   end
 end

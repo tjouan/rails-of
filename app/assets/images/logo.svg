@@ -79,10 +79,10 @@
      id="surface4"
      transform="matrix(1.728,0,0,1.728,-259.15408,-105.78817)">
     <text
-       style="font-size:50px;fill:#6d6f71;font-family:Kabel Bk BT"
+       style="font-size:40px;fill:#6d6f71;font-family:Kabel Bk BT"
        font-size="50"
        id="0"
        transform="translate(147.3925,226.0425)"
-       xml:space="preserve">datacube</text>
+       xml:space="preserve">DATACUBE</text>
   </g>
 </svg>
