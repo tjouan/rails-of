@@ -5,10 +5,11 @@
 .home.index #main
   text-align: center
 
-  input, button
-    font-size: 1.5rem
+  h2
+    margin-top: 3rem
 
   button
+    font-size: 1.5rem
     +buttonify_focus
 
   .home_intro
@@ -19,6 +20,7 @@
 
     h1
       display: inline-block
+      margin-top: 12rem
       padding: 2rem 8rem
       +borderify(.4rem)
       font-size: 3rem
@@ -28,9 +30,12 @@
 
     .new_user
       input, button
-        width: 30%
+        width: 35%
+        font-size: 1.8rem
       input
         padding: .8rem .5rem
+      button
+        margin-left: 1rem
 
   .col_enum
     padding-left: 0
@@ -39,11 +44,28 @@
     > li
       display: block
       float: left
-      width: 32%
+      width: 25%
+      margin-left: 4%
+      margin-right: 3%
+
+    &.short
+      padding-left: 4rem
+      text-align: left
+
+    &.full
+      ul
+        padding: 1rem 0 0 0
+        border-top: solid 1px $gray
+        list-style: none
+        background-color: inherit
+        color: $gray
 
   .offers-list
-    width: 80%
+    width: 70%
     margin: 0 auto
+
+    .gold
+      background-color: $blue_lighter
 
 
 .sources-list

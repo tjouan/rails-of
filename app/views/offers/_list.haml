@@ -3,9 +3,21 @@
     %tr
       %th
       - @offers.each do |e|
-        %th= e.name
+        %th(class="#{e.ref}")= e.name
   %tbody
     %tr
-      %th(scope='row') Prix
+      %th(scope='row') Abonnement mensuel
       - @offers.each do |e|
-        %td.list-numeric= number_to_currency e.price
+        %td(class="#{e.ref}")= number_to_currency e.price
+    - %w[A B C D E F].each do |feature|
+      %tr
+        %th(scope='row')
+          = "Fonctionnalité #{feature}"
+        - @offers.each do |e|
+          %td(class="#{e.ref}")
+            OK
+    %tr
+      %th(scope='row')
+      - @offers.each do |e|
+        %td(class="#{e.ref}")
+          %button Essai gratuit

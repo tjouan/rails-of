@@ -1,6 +1,6 @@
 class OfferPresenter
   extend Forwardable
-  def_delegators :@offer, :description, :name, :price
+  def_delegators :@offer, :name, :ref, :price
 
   def initialize(offer)
     @offer = offer
