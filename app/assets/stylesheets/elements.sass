@@ -22,6 +22,20 @@ a
     text-decoration: underline
 
 
+form
+  input[type=email],
+  input[type=text],
+  input[type=password],
+  textarea
+    padding: .2rem
+    border: solid 1px $gray_light
+    +borderify
+    &:focus
+      box-shadow: 0 0 1.5px 1px $blue_light
+
+  button
+    +buttonify
+
 table
   border-collapse: collapse
 

@@ -71,12 +71,19 @@
   legend
     font-weight: bold
 
-  input[type=text],
-    //width: 98%
+  input, textarea
+    margin-top: .3rem
 
   textarea
     width: 98%
     min-height: 4em
+
+  button[type=submit]
+    +focusify
+    font-size: 1rem
+
+  .actions a
+    +buttonify
 
 .form-errors
   +boxify($red_light, $red_dark)

@@ -1,7 +1,66 @@
-%h1
-  Améliorez vos performances marketing & commerciales
+.intro
+  %h1
+    Améliorez vos performances
+    %br
+    marketing & commerciales
 
 
-= render 'users/form_email'
+  = render 'users/form_email'
+
+
+%h2 DATACUBE au service de vos données
+
+%p
+  DATACUBE vous permet d'améliorer la performance de vos actions marketing &
+  commerciales grâce à l'analyse de vos données.
+
+%p Simple. Économique. Efficace.
+
+%hr
+
+%ul.col_enum
+  %li
+    %h3 Enrichir vos données
+    %p Améliorez la connaissance client
+  %li
+    %h3 Analyser vos données
+    %p Trouvez des leviers d'action
+  %li
+    %h3 Boostez vos résultats
+    %p Développez votre activité
+
+%ul.col_enum
+  %li
+    %h3 Interface simple
+    %p Vous profitez de nos outils en ligne, en quelques clics.
+    %ul
+      %li Sans installation
+      %li Sans configuration
+      %li Sans formation fastidieuse
+    %p
+      %button Essai gratuit
+  %li
+    %h3 Outils efficaces
+    %p Vous accédez à nos outils qui répondent à vos besoins.
+    %ul
+      %li Sans installation
+      %li Sans configuration
+      %li Sans formation fastidieuse
+    %p
+      %button Essai gratuit
+  %li
+    %h3 Support temps réel
+    %p Vous êtes aidés et accompagnés en temps réel, à tout moment
+    %ul
+      %li Sans installation
+      %li Sans configuration
+      %li Sans formation fastidieuse
+    %p
+      %button Essai gratuit
+
+
+%h2 Une tarification attractive
+
+%p Adaptée aux TPE, PME et grands comptes.
 
 = render 'offers/list', offers: @offers if @offers.any?

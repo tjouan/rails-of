@@ -1,11 +1,3 @@
-= form_for @user, url: new_user_path, method: :get, html: { class: 'form' } do |f|
-  %fieldset
-    %p.field
-      = f.label :email
-      %br
-      = f.email_field :email
-
-
-  %ul.actions
-    %li
-      = f.submit 'Inscription'
+= form_for @user, url: new_user_path, method: :get do |f|
+  = f.email_field :email, placeholder: 'Votre adresse mail'
+  = f.button 'Essayer gratuitement'
