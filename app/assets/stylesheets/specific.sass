@@ -61,8 +61,29 @@
         color: $gray
 
   .offers-list
-    width: 70%
+    width: 80%
     margin: 0 auto
+
+    th, td
+      padding: .3rem 1rem
+
+    thead th.gold,
+    thead th.silver,
+    thead th.bronze,
+    .price td
+      background-color: $blue
+      color: white
+      font-size: 1.5rem
+
+    thead th.gold
+      border-top: solid 2px $blue_dark
+      font-size: 2rem
+
+    th.gold, td.gold
+      border-left: solid 2px $blue_dark
+      border-right: solid 2px $blue_dark
+      &.action
+        border-bottom: solid 2px $blue_dark
 
     .gold
       background-color: $blue_lighter
