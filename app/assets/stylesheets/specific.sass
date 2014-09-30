@@ -1,4 +1,8 @@
-.home.index main
+.home.index .main_wrapper
+  //background: url(image_path('noise.png')) repeat scroll left top, url(image_path('home_bg.jpeg')) no-repeat scroll left top / contain transparent
+  background: url(image_path('home_bg.jpeg')) no-repeat scroll left top / contain transparent
+
+.home.index #main
   text-align: center
 
   input, button
@@ -7,9 +11,8 @@
   button
     +buttonify_focus
 
-  .intro
-    padding-bottom: 4rem
-    background: url(image_path('home_bg.jpeg')) no-repeat
+  .home_intro
+    min-height: 870px
 
     h1, .new_user
       margin: 6rem 0

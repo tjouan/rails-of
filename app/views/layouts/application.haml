@@ -33,12 +33,13 @@
               = action_link :signin, signin_path, append_text: true
 
 
-    %main
-      - flash.each do |name, message|
-        .flash(class="flash-#{name}")
-          %p= message
+    .main_wrapper
+      %main#main
+        - flash.each do |name, message|
+          .flash(class="flash-#{name}")
+            %p= message
 
-      = yield
+        = yield
 
 
     .footer_wrapper
