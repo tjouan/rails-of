@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user.try(:authenticate, params[:session][:password])
       flash[:notice] = 'Bienvenue %s' % user.name if user.name
       self.current_user = user
-      redirect_to params[:session][:path] || dashboard_path
+      redirect_to redirected_path
     else
       flash[:error] = t 'authent.invalid'
       render 'new'
@@ -20,5 +20,12 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     redirect_to :root
+  end
+
+
+  private
+
+  def redirected_path
+    params[:session][:path].empty? and dashboard_path or params[:session][:path]
   end
 end
