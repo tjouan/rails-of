@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   skip_before_filter :authenticate!, only: %i[new create]
 
   def new
-    @user = UserForm.new(params[:user] ? user_params : {})
+    @user             = UserForm.new(params[:user] ? user_params : {})
+    @email_field_hide = !!params[:user]
   end
 
   def create

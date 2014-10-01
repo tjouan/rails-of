@@ -1,9 +1,12 @@
 = form_for @user, html: { class: 'form' } do |f|
   %fieldset
-    %p.field
-      = f.label :email
-      %br
-      = f.email_field :email
+    - if @email_field_hide
+      = f.hidden_field :email
+    - else
+      %p.field
+        = f.label :email
+        %br
+        = f.email_field :email
 
     %p.field
       = f.label :password
