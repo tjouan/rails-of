@@ -52,7 +52,7 @@ module ApplicationHelper
   end
 
   def markdown_format(str)
-    markdown_parser.render(str).html_safe
+    str and markdown_parser.render(str).html_safe or nil
   end
 
 
