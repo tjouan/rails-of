@@ -9,6 +9,10 @@
       = @work.operation.name
 
     - unless @work.source
+
+      .operation-help
+        = markdown_format @work.operation.help_intent
+
       %p.field
         %label
           Données :
@@ -23,6 +27,9 @@
             = collection_select :work, :target_source_id, @sources, :id, :label
 
     - else
+      .operation-help
+        = markdown_format @work.operation.help_usage
+
       %p
         Données :
         = @work.source.label
