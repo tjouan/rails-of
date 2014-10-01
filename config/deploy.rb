@@ -5,6 +5,8 @@ set :repository,      'git:datacube/opti-front'
 set :app_path,        'www/opti-front'
 set :app_mkdir,       %w[data/sources]
 
+set :db_seed,         true
+
 set :queue,           :backburner
 set :queue_workers,   (target.include? 'prod') ? 2 : 1
 
