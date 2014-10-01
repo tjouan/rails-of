@@ -1,6 +1,7 @@
 module ApplicationHelper
   ACTIONS_ICONS = {
     account:    :user,
+    check:      :check,
     contact:    :envelope,
     data:       :file_dup,
     delete:     :x,
