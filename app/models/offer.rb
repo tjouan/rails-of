@@ -1,5 +1,5 @@
 class Offer < ActiveRecord::Base
-  FREE_OFFER_DAY_COUNT = 14
+  FREE_OFFER_DAY_COUNT = 15
 
   class << self
     def free_offer
