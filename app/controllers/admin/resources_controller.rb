@@ -39,7 +39,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def show
-    @model= Admin::ModelPresenter.new(@model)
+    @model = Admin::ModelPresenter.new(@model)
   end
 
   def new
@@ -59,6 +59,7 @@ class Admin::ResourcesController < Admin::BaseController
       redirect_to collection_path(@model),
         notice: "#{model_name.singular.capitalize} was successfully created."
     else
+      @model = Admin::ModelPresenter.new(@model)
       render :new
     end
   end
@@ -68,6 +69,7 @@ class Admin::ResourcesController < Admin::BaseController
       redirect_to collection_path(@model),
         notice: "#{model_name.singular.capitalize} was successfully updated."
     else
+      @model = Admin::ModelPresenter.new(@model)
       render :edit
     end
   end

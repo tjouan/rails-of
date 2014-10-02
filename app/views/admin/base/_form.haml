@@ -11,7 +11,7 @@
           = f.send(type, attr)
 
     - if @object.errors.any?
-      .forms-errors
+      .form-errors
         %p= t('errors_count', count: @object.errors.size)
         %ul
           - @object.errors.full_messages.each do |error|
