@@ -16,6 +16,7 @@ class DistributionChart
                 .domain([0, @dataset.length])
     @xAxis  = d3.svg.axis()
                 .scale(@x)
+                .tickFormat((d) -> d * 10)
                 .orient('bottom')
     @y      = d3.scale.linear()
                 .range([@height, 0])
