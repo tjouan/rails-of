@@ -30,6 +30,19 @@ en:
   trainings:      Training
   contact:        Contact
 
+  operation:
+    col:
+      adjusted_probability: Adjusted probability
+      adjusted_score:       Adjusted score
+      estimated_age:        Estimated age
+      gender:               Gender
+      insee_code:           INSEE code
+      match_key:            Match key
+      match_type:           Match type
+      probability:          Probability
+      raw_probability:      Raw probability
+      raw_score:            Raw score
+
 
   attributes:
     tel_number:   telephone number

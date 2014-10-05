@@ -30,6 +30,19 @@ fr:
   trainings:      Formation
   contact:        Contact
 
+  operation:
+    col:
+      adjusted_probability: Probabilité ajustée
+      adjusted_score:       Score ajusté
+      estimated_age:        Âge estimé
+      gender:               Genre
+      insee_code:           Code INSEE
+      match_key:            Clé de correspondance
+      match_type:           Type de correspondance
+      probability:          Probabilité
+      raw_probability:      Probabilité brut
+      raw_score:            Score brut
+
 
   attributes:
     company:      Raison sociale

@@ -34,7 +34,7 @@ class SourceVersionSaver
 
   def build_extra_headers(source)
     @headers.map do |k, v|
-      source.append_header k, v
+      source.append_header I18n.t("operation.col.#{k}"), v
     end
   end
 

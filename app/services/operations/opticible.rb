@@ -42,8 +42,8 @@ module Operations
     def headers
       if debug?
         {
-          'raw probability'       => :int,
-          'adjusted probability'  => :int
+          'raw_probability'       => :int,
+          'adjusted_probability'  => :int
         }
       else
         { 'probability' => :int }
