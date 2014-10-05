@@ -47,17 +47,30 @@
     > li
       display: block
       float: left
-      width: 25%
-      margin-left: 4%
-      margin-right: 3%
+      width: 29%
+      margin-left: 2%
+      margin-right: 2%
 
     &.short
-      padding-left: 4rem
       text-align: left
+      h3, p
+        margin: .4rem 0
+      & > li
+        width: 27%
+        padding-left: 6%
+        margin-left: 0%
+        margin-right: 0%
+        &.operations-sources
+          background: url(image_path('icons/icomoon/user.svg')) no-repeat 0 .5rem / 2.8rem
+        &.operations-results
+          background: url(image_path('icons/icomoon/gears.svg')) no-repeat 0 .5rem / 2.8rem
+        &.operations-reports
+          background: url(image_path('icons/icomoon/report.svg')) no-repeat 0 .5rem / 2.8rem
 
     &.full
       ul
-        padding: 1rem 0 0 0
+        margin-top: 1.5rem
+        padding: 1.5rem 0 0 0
         border-top: solid 1px $gray
         list-style: none
         background-color: inherit
