@@ -17,9 +17,3 @@
           = "Fonctionnalité #{feature}"
         - @offers.each do |e|
           %td(class="#{e.ref}")= svg_icon :check, 'oui'
-
-    %tr
-      %th(scope='row')
-      - @offers.each do |e|
-        %td(class="#{e.ref} action")
-          %button Essai gratuit
