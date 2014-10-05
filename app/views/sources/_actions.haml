@@ -1,0 +1,6 @@
+%ul.actions
+  - unless except == :preview
+    = action_link :preview, source_preview_path(@source), append_text: true
+  = action_link :download, source_download_path(@source), append_text: true
+  = action_link :edit, edit_source_path(@source), append_text: true
+  = action_link :delete, @source, append_text: true
