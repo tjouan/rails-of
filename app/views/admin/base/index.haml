@@ -1,6 +1,6 @@
 %h1
   Listing
-  = @model.plural_name
+  = @resource.plural_name
 
 
 - if @collection.empty?
@@ -12,13 +12,13 @@
       %tr
         %th
           Record
-        - @model.list_attrs.each do |k, v|
+        - @resource.list_attrs.each do |k, v|
           %th= k.capitalize
         %th.list-date
           Created at
         %th.list-date
           Updated at
-        - if @model.edit? || @model.destroy?
+        - if @resource.edit? || @resource.destroy?
           %th.list-actions
             Actions
 
@@ -27,24 +27,24 @@
         %tr
           %td
             = link_to e, object_path(e)
-          - @model.list_attrs.each do |k, v|
+          - @resource.list_attrs.each do |k, v|
             %th= v.call e
           %td.list-date
             = e.created_at
           %td.list-date
             = e.updated_at
-          - if @model.edit? || @model.destroy?
+          - if @resource.edit? || @resource.destroy?
             %td.list-actions
               %ul.actions
-                - if @model.edit?
+                - if @resource.edit?
                   = action_link :edit, edit_path(e)
-                - if @model.destroy?
+                - if @resource.destroy?
                   = action_link :delete, object_path(e)
 
 
 %ul.actions
-  - if @model.new?
+  - if @resource.new?
     %li
-      = link_to "New #{@model.singular_name}", new_path(@model)
+      = link_to "New #{@resource.singular_name}", new_path(@resource)
   %li
     = link_to 'Back', admin_path

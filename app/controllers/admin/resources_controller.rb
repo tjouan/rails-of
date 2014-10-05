@@ -36,26 +36,22 @@ class Admin::ResourcesController < Admin::BaseController
   }
 
   before_filter :set_model
+  before_filter :set_resource,    only: %i[index show new edit]
   before_action :set_collection,  only: :index
   before_action :set_object,      only: %i[show edit update destroy]
   before_action :set_fields,      only: %i[new edit create update]
 
   def index
-    @model = Admin::ModelPresenter.new(@model, list_attrs: OBJECT_LIST_ATTRS[@model])
   end
 
   def show
-    @model = Admin::ModelPresenter.new(@model)
   end
 
   def new
     @object = @model.new
-    @model  = Admin::ModelPresenter.new(@model)
   end
 
   def edit
-    @fields = OBJECT_FORM_FIELDS[@model]
-    @model  = Admin::ModelPresenter.new(@model)
   end
 
   def create
@@ -65,7 +61,7 @@ class Admin::ResourcesController < Admin::BaseController
       redirect_to collection_path(@model),
         notice: "#{model_name.singular.capitalize} was successfully created."
     else
-      @model = Admin::ModelPresenter.new(@model)
+      set_resource
       render :new
     end
   end
@@ -75,7 +71,7 @@ class Admin::ResourcesController < Admin::BaseController
       redirect_to collection_path(@model),
         notice: "#{model_name.singular.capitalize} was successfully updated."
     else
-      @model = Admin::ModelPresenter.new(@model)
+      set_resource
       render :edit
     end
   end
@@ -91,6 +87,13 @@ class Admin::ResourcesController < Admin::BaseController
 
   def set_model
     @model = controller_name.classify.constantize
+  end
+
+  def set_resource
+    @resource = Admin::ModelPresenter.new(
+      @model,
+      list_attrs: (OBJECT_LIST_ATTRS[@model] or {})
+    )
   end
 
   def set_collection

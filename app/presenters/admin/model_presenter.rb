@@ -1,6 +1,6 @@
 class Admin::ModelPresenter
   DEFAULT_OPTIONS = {
-    list_attrs: []
+    list_attrs: {}
   }.freeze
 
   extend Forwardable

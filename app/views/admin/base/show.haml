@@ -1,6 +1,6 @@
 %h1
   Showing
-  = @model.singular_name
+  = @resource.singular_name
   = '#%d' % @object.id
 
 
@@ -9,4 +9,4 @@
 
 %ul.actions
   %li
-    = link_to 'Back', collection_path(@model)
+    = link_to 'Back', collection_path(@resource)
