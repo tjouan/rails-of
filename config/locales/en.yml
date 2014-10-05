@@ -42,6 +42,7 @@ en:
       probability:          Probability
       raw_probability:      Raw probability
       raw_score:            Raw score
+      score:                Geoscore
 
 
   attributes:
