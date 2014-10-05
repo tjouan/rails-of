@@ -7,8 +7,10 @@
         Outil
       %th.list-date
         Date
-      %th.list-actions
+      %th.list-status
         État
+      %th.list-actions
+        Actions
 
   %tbody
     - works.each do |work|
@@ -19,9 +21,9 @@
           = work.operation.name
         %td.list-date
           = l work.created_at
+        %td.list-status
+          = t(work.status)
         %td.list-actions
           - if work.status == :processed
             %ul.actions
-              = action_link :report, work_path(work), custom_text: t(work.status)
-          - else
-            = t(work.status)
+              = action_link :report, work_path(work)
