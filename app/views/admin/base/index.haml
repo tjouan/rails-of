@@ -12,6 +12,8 @@
       %tr
         %th
           Record
+        - @model.list_attrs.each do |k, v|
+          %th= k.capitalize
         %th.list-date
           Created at
         %th.list-date
@@ -25,6 +27,8 @@
         %tr
           %td
             = link_to e, object_path(e)
+          - @model.list_attrs.each do |k, v|
+            %th= v.call e
           %td.list-date
             = e.created_at
           %td.list-date

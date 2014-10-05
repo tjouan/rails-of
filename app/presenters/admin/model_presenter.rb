@@ -1,11 +1,16 @@
 class Admin::ModelPresenter
+  DEFAULT_OPTIONS = {
+    list_attrs: []
+  }.freeze
+
   extend Forwardable
   def_delegators :@model, :model_name
 
   attr_reader :model
 
-  def initialize(model)
-    @model = model
+  def initialize(model, options = {})
+    @model    = model
+    @options  = DEFAULT_OPTIONS.merge options
   end
 
   def singular_name
@@ -26,6 +31,10 @@ class Admin::ModelPresenter
 
   def destroy?
     has_route_for :destroy
+  end
+
+  def list_attrs
+    @options[:list_attrs]
   end
 
 

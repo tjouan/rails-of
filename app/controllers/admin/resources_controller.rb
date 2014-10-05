@@ -29,13 +29,19 @@ class Admin::ResourcesController < Admin::BaseController
     }
   }
 
+  OBJECT_LIST_ATTRS = {
+    Work => {
+      user: proc { |e| e.user.email }
+    }
+  }
+
   before_filter :set_model
   before_action :set_collection,  only: :index
   before_action :set_object,      only: %i[show edit update destroy]
   before_action :set_fields,      only: %i[new edit create update]
 
   def index
-    @model = Admin::ModelPresenter.new(@model)
+    @model = Admin::ModelPresenter.new(@model, list_attrs: OBJECT_LIST_ATTRS[@model])
   end
 
   def show
