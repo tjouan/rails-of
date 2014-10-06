@@ -9,7 +9,7 @@
     %tr.price
       %th(scope='row') Abonnement mensuel
       - @offers.each do |e|
-        %td(class="#{e.ref}")= number_to_currency e.price
+        %td(class="#{e.ref}")= number_to_currency e.price, precision: 0
 
     - %w[A B C D E F].each do |feature|
       %tr
