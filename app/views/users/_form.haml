@@ -37,7 +37,7 @@
       = f.check_box :terms
       = f.label :terms do
         J'accepte les
-        = link_to 'conditions générales d\'utilisation', '/cgu.pdf'
+        = link_to 'conditions générales d\'utilisation', terms_path
 
 
     - if @user.errors.any?

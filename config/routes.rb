@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resource :download, only: :show
   end
 
+  get 'terms', to: 'pages#terms'
+
   resources :trainings, only: :index
 
   resources :users, only: %i[new create update]
