@@ -1,3 +1,33 @@
+.dashboard_directions
+  padding-left: 0
+  border-spacing: 2rem 0
+  list-style-type: none
+  counter-reset: dashboard_directions
+
+  li
+    +boxify
+    display: table-cell
+    padding: 1rem 3rem
+    border: solid 2px $blue
+    text-align: center
+    vertical-align: middle
+    background: $white
+
+  li::before
+    display: block
+    content: counter(dashboard_directions)
+    counter-increment: dashboard_directions
+    margin-bottom: 1rem
+    font-size: 4rem
+    font-weight: bold
+    background-color: inherit
+    color: $blue
+    text-shadow: 1px 1px 1px $blue_darker
+
+  a
+    font-size: 1.2rem
+
+
 .home.index .main_wrapper
   //background: url(image_path('noise.png')) repeat scroll left top, url(image_path('home_bg.jpeg')) no-repeat scroll left top / contain transparent
   background: url(image_path('home_bg.jpeg')) no-repeat scroll left top / contain transparent
@@ -13,9 +43,6 @@
   button
     font-size: 1.5rem
     +buttonify_focus
-
-  hr
-    margin: 4rem 0
 
   .home_intro
     min-height: 720px

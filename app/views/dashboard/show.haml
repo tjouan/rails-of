@@ -7,10 +7,39 @@
   = render 'works/list', works: @works
 
 
-- if @operations.any?
+- if @operations.any? && current_user.sources.any?
+
   %h2 Actions rapides
 
   %ul
     - @operations.each do |operation|
       %li
         = link_to operation.name, new_work_path(operation_id: operation)
+
+
+- else
+
+  %p
+    Votre tableau de bord liste les dernières opérations réalisées, et permet
+    de démarrer rapidement vos analyses.
+  %p
+    Vous devez au préalable nous transmettre des données, merci
+    = precede 'd\'' do
+      = succeed '.' do
+        = link_to 'ajouter un fichier à vos données', new_source_path
+
+  %hr
+
+  %ol.dashboard_directions
+    %li
+      = link_to sources_path do
+        Connecter mes données
+    %li
+      = link_to operations_path do
+        Enrichir mes données
+    %li
+      = link_to operations_path do
+        Analyser mes données
+    %li
+      = link_to works_path do
+        Exploiter mes données
