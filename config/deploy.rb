@@ -3,12 +3,12 @@ require 'producer/rails'
 
 set :repository,      'git:datacube/opti-front'
 set :app_path,        'www/opti-front'
-set :app_mkdir,       %w[data/sources]
+set :app_mkdir,       %w[data/sources db]
 
 set :db_seed,         true
 
-set :queue,           :backburner
-set :queue_workers,   (target.include? 'prod') ? 2 : 1
+# FIXME: should be a hash { redis: 1 }
+set :processes,       "queue=1,redis=1,worker=#{target.include?('prod') ? 2 : 1}"
 
 set :www_server,      :unicorn
 set :www_workers,     2
