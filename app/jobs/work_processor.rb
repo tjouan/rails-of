@@ -2,7 +2,8 @@ class WorkProcessor
   OPERATIONS = {
     firstnames: OptiTools::Firstnames::Operation,
     geoscore:   OptiTools::GeoScore::Operation,
-    opticible:  Operations::Opticible
+    opticible:  Operations::Opticible,
+    insee:      OptiTools::INSEE::Operation
   }.freeze
 
   class << self

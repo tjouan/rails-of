@@ -1,0 +1,18 @@
+%p Configuration des champs de la source de données
+
+%table
+  %thead
+    %tr
+      %th Analyse
+      %th
+      %th Données
+  %tbody
+    - ['Adresse', 'Code postal', 'Ville'].each do |e|
+      %tr
+        %td
+          = e
+        %td
+          ⇄
+        %td
+          = f.collection_select 'parameters', work.source.headers,
+            :position, :name, {}, { name: 'work[parameters][]' }

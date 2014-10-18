@@ -7,6 +7,10 @@ class WorkForm < FormBase
     delegate_attributes :parameters
   end
 
+  class INSEEForm < WorkForm
+    delegate_attributes :parameters
+  end
+
   class OpticibleForm < WorkForm
     def setup
       return unless source
@@ -59,7 +63,8 @@ class WorkForm < FormBase
   OPERATION_FORMS = {
     firstnames: FirstnamesForm,
     geoscore:   GeoScoreForm,
-    opticible:  OpticibleForm
+    opticible:  OpticibleForm,
+    insee:      INSEEForm
   }.freeze
 
   resource Work

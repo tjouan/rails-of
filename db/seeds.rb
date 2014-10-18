@@ -11,6 +11,10 @@ unless Rails.env.test?
     opticible: {
       name:         'Opticible',
       description:  "Outil Opticible\n"
+    },
+    insee: {
+      name:         'Scoring INSEE',
+      description:  "Scoring INSEE\n"
     }
   }.each { |k, v| Operation.where(ref: k).first_or_create(v) }
 
