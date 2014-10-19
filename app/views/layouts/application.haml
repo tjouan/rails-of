@@ -45,14 +45,40 @@
 
     .footer_wrapper
       %footer#footer
-        %ul
+        %ul.contact-links
           - if current_user?
             %li
               = action_link :trainings, trainings_path, append_text: true
             %li
               = action_link :account, dashboard_path, append_text: true
           %li
-            = action_link :contact, dashboard_path, append_text: true
+            = link_to 'Facebook', 'https://www.facebook.com/DATACUBE.FR'
+          %li
+            = action_link :contact, 'mailto:contact@datacube.fr', append_text: true
+
+        %p.contact-address
+          %b Addresse
+          %br
+          DATACUBE
+          %br
+          18 rue des caillouins
+          %br
+          14123 Cormelles-le-Royal
+          %br
+          France
+
+        %p.contact-phone
+          %b Téléphone
+          09 72 37 84 46
+
+        %hr
+
+        %ul
+          %li
+            Service édité par DATACUBE
+          %li
+            Design :
+            = link_to 'HTML5 UP', 'http://html5up.net/'
 
 
     = javascript_include_tag_prod 'zopim'
