@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: git:datacube/opti-tools
-  revision: 244550ce2fc28fb71049ad79057d92b2bfe9e1a2
+  revision: 80fecb9840a2c7643c169d500deaf6053770ca76
   specs:
     opti-tools (0.2.7)
       hiredis (~> 0.5)
