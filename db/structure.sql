@@ -106,7 +106,8 @@ CREATE TABLE offers (
     name character varying(255),
     ref character varying(255),
     price numeric(6,2),
-    visible boolean DEFAULT false
+    visible boolean DEFAULT false,
+    quota integer DEFAULT 500000 NOT NULL
 );
 
 
@@ -252,7 +253,9 @@ CREATE TABLE subscriptions (
     user_id integer NOT NULL,
     offer_id integer NOT NULL,
     start_at timestamp without time zone,
-    end_at timestamp without time zone
+    end_at timestamp without time zone,
+    quota integer DEFAULT 50000 NOT NULL,
+    usage integer DEFAULT 0 NOT NULL
 );
 
 
@@ -593,6 +596,10 @@ INSERT INTO schema_migrations (version) VALUES ('20140929192705');
 INSERT INTO schema_migrations (version) VALUES ('20140929225926');
 
 INSERT INTO schema_migrations (version) VALUES ('20141001160325');
+
+INSERT INTO schema_migrations (version) VALUES ('20141021154120');
+
+INSERT INTO schema_migrations (version) VALUES ('20141021154252');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 

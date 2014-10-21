@@ -28,6 +28,7 @@ class WorkProcessor
       op.process!
       work.update_attribute :results, op.results_report
       saver.new(work.parent_source, work.operation, f, op.headers).call
+      update_user_usage
     end
   rescue Backburner::Job::JobTimeout
     work.touch :terminated_at
@@ -56,5 +57,12 @@ class WorkProcessor
   def output_file(file, file_name)
     file.define_singleton_method(:original_filename) { file_name }
     file
+  end
+
+
+  private
+
+  def update_user_usage
+    work.user.current_subscription.increment_usage! work.usage
   end
 end

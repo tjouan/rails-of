@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001160325) do
+ActiveRecord::Schema.define(version: 20141021154252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141001160325) do
     t.string   "ref"
     t.decimal  "price",      precision: 6, scale: 2
     t.boolean  "visible",                            default: false
+    t.integer  "quota",                              default: 500000, null: false
   end
 
   create_table "operations", force: true do |t|
@@ -77,10 +78,12 @@ ActiveRecord::Schema.define(version: 20141001160325) do
   create_table "subscriptions", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",    null: false
-    t.integer  "offer_id",   null: false
+    t.integer  "user_id",                    null: false
+    t.integer  "offer_id",                   null: false
     t.datetime "start_at"
     t.datetime "end_at"
+    t.integer  "quota",      default: 50000, null: false
+    t.integer  "usage",      default: 0,     null: false
   end
 
   add_index "subscriptions", ["offer_id"], name: "index_subscriptions_on_offer_id", using: :btree

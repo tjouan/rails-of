@@ -14,11 +14,12 @@ class UserCreater
 
   private
 
-  def build_subscription
+  def build_subscription(offer = Offer.free_offer)
     Subscription.new(
-      offer:    Offer.free_offer,
+      offer:    offer,
       start_at: DateTime.now,
-      end_at:   Offer::FREE_OFFER_DAY_COUNT.days.from_now
+      end_at:   Offer::FREE_OFFER_DAY_COUNT.days.from_now,
+      quota:    offer.quota
     )
   end
 end

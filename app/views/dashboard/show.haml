@@ -17,6 +17,17 @@
         = link_to operation.name, new_work_path(operation_id: operation)
 
 
+  %h2 État de votre quota
+
+  %p
+    %b= number_to_human current_user.current_subscription_usage
+    \/
+    = number_to_human current_user.current_subscription_quota
+    = precede '(' do
+      = succeed ')' do
+        = current_user.current_subscription_description
+
+
 - else
 
   %p

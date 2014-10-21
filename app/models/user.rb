@@ -19,6 +19,22 @@ class User < ActiveRecord::Base
     update! active: true
   end
 
+  def current_subscription
+    subscriptions.last
+  end
+
+  def current_subscription_usage
+    current_subscription.usage
+  end
+
+  def current_subscription_quota
+    current_subscription.quota
+  end
+
+  def current_subscription_description
+    current_subscription.offer.description
+  end
+
 
   private
 

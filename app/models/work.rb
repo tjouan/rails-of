@@ -49,4 +49,17 @@ class Work < ActiveRecord::Base
   def parent_source
     target_source or source
   end
+
+  def sources
+    [source, target_source].compact
+  end
+
+  def usage
+    unless multiplier = operation.usage_multiplier
+      ignored_parameters = parameters[1] ? parameters[1].split(',') : []
+      multiplier = source.headers.count - ignored_parameters.size
+    end
+
+    multiplier * sources.inject(0) { |m, e| m += e.rows_count }
+  end
 end
