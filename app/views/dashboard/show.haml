@@ -20,9 +20,9 @@
   %h2 État de votre quota
 
   %p
-    %b= number_to_human current_user.current_subscription_usage
+    %b= number_with_delimiter current_user.current_subscription_usage
     \/
-    = number_to_human current_user.current_subscription_quota
+    = number_with_delimiter current_user.current_subscription_quota
     = precede '(' do
       = succeed ')' do
         = current_user.current_subscription_description
