@@ -1,6 +1,50 @@
 class Offer < ActiveRecord::Base
   FREE_OFFER_DAY_COUNT  = 15
   ORDER_BY              = %w[bronze silver gold].freeze
+  FEATURES              = {
+    firstnames: {
+      name:   'Scoring Prénom',
+      bronze: true,
+      silver: true,
+      gold:   true
+    },
+    profile: {
+      name:   'Scoring Profil',
+      bronze: true,
+      silver: true,
+      gold:   true
+    },
+    geoscore: {
+      name:   'Scoring Géographique',
+      bronze: true,
+      silver: true,
+      gold:   true
+    },
+    opticible: {
+      name:   'Optimisation Ciblage',
+      bronze: true,
+      silver: true,
+      gold:   true
+    },
+    support_mail: {
+      name:   'Support email',
+      bronze: true,
+      silver: true,
+      gold:   true
+    },
+    support_chat: {
+      name:   'Support chat',
+      bronze: false,
+      silver: true,
+      gold:   true
+    },
+    support_phone: {
+      name:   'Formation téléphonique 1H',
+      bronze: false,
+      silver: true,
+      gold:   true
+    }
+  }.freeze
 
   class << self
     def free_offer

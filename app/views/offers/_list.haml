@@ -11,9 +11,20 @@
       - @offers.each do |e|
         %td(class="#{e.ref}")= number_to_currency e.price, precision: 0
 
-    - %w[A B C D E F].each do |feature|
+    %tr.quota
+      %th(scope='row') Volume mensuel données
+      - @offers.each do |e|
+        %td(class="#{e.ref}")
+          %b
+            = number_with_delimiter e.quota
+
+    - Offer::FEATURES.each do |_, feature|
       %tr
         %th(scope='row')
-          = "Fonctionnalité #{feature}"
+          = feature[:name]
         - @offers.each do |e|
-          %td(class="#{e.ref}")= svg_icon :check, 'oui'
+          %td(class="#{e.ref}")
+            - if feature[e.ref.to_sym]
+              = svg_icon :check, 'oui'
+            - else
+              = svg_icon :uncheck, 'non'

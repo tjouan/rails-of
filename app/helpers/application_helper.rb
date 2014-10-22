@@ -15,6 +15,7 @@ module ApplicationHelper
     signout:    :exit,
     tools:      :gears,
     trainings:  :book,
+    uncheck:    :x,
     upload:     :upload
   }.freeze
 
