@@ -9,4 +9,8 @@ class Subscription < ActiveRecord::Base
   def increment_usage!(usage_increment)
     update_attribute :usage, usage + usage_increment
   end
+
+  def quota_exceeded?
+    usage >= quota
+  end
 end

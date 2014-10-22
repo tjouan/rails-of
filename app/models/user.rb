@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     current_subscription.offer.description
   end
 
+  def quota_exceeded?
+    current_subscription.quota_exceeded?
+  end
+
 
   private
 
