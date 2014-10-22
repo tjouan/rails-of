@@ -4,6 +4,7 @@ class Admin::BaseController < ApplicationController
     Offer,
     Operation,
     Source,
+    Subscription,
     User,
     Work
   ].freeze
