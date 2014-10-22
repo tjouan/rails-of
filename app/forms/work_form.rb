@@ -69,6 +69,8 @@ class WorkForm < FormBase
 
   resource Work
 
+  validate :user_quota
+
   delegate_attributes %i[
     id
     operation
@@ -76,6 +78,7 @@ class WorkForm < FormBase
     source_id
     target_source
     target_source_id
+    user
   ]
 
   class << self
@@ -87,5 +90,13 @@ class WorkForm < FormBase
 
   def need_target?
     return false
+  end
+
+  def user_quota
+    if object.usage > user.usage_left
+      usage_needed = object.usage - user.usage_left
+      errors.add :user_quota,
+        'Quota actuel insuffisant (manque %s)' % usage_needed
+    end
   end
 end

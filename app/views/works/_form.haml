@@ -49,6 +49,11 @@
         %legend Prévisualisation données
         = render 'previews/preview', source: @work.source, count: 5
 
+    - if @work.errors[:user_quota] && @work.errors[:user_quota].any?
+      %br
+      .form-errors
+        %p= @work.errors[:user_quota].first
+
 
   %ul.actions
     %li

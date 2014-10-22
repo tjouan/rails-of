@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     current_subscription.quota_exceeded?
   end
 
+  def usage_left
+    current_subscription.quota - current_subscription.usage
+  end
+
 
   private
 
