@@ -1,6 +1,6 @@
 class Offer < ActiveRecord::Base
   FREE_OFFER_DAY_COUNT  = 15
-  ORDER_BY              = %w[bronze silver gold]
+  ORDER_BY              = %w[bronze silver gold].freeze
 
   class << self
     def free_offer
