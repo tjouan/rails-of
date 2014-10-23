@@ -9,7 +9,6 @@
       = @work.operation.name
 
     - unless @work.source
-
       .operation-help
         = markdown_format @work.operation.help_intent
 
@@ -25,6 +24,7 @@
             Données cible :
             %br
             = collection_select :work, :target_source_id, @sources, :id, :label
+
 
     - else
       .operation-help
@@ -48,6 +48,7 @@
       %fieldset
         %legend Prévisualisation données
         = render 'previews/preview', source: @work.source, count: 5
+
 
     - if @work.errors[:user_quota] && @work.errors[:user_quota].any?
       %br
