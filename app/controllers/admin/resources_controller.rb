@@ -10,6 +10,7 @@ class Admin::ResourcesController < Admin::BaseController
       name:     :text_field,
       ref:      :text_field,
       price:    :number_field,
+      quota:    :number_field,
       visible:  :check_box
     },
     Operation => {
@@ -27,6 +28,8 @@ class Admin::ResourcesController < Admin::BaseController
       email:                  :email_field,
       password:               :password_field,
       password_confirmation:  :password_field,
+      company:                :text_field,
+      tel_number:             :text_field,
       active:                 :check_box,
       admin:                  :check_box
     }
