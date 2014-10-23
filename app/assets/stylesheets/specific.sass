@@ -142,6 +142,7 @@
   width: 100%
 
 .sources-preview
+  max-width: $main_width - 6rem
   overflow-x: auto
 
 
@@ -157,10 +158,13 @@
 
 
 .works #new_work
-  min-width: 90%
   overflow: auto
 
   .operation-help
     float: right
-    width: 66%
+    width: 50%
     padding-left: 2rem
+
+  #work_source_id,
+  #work_target_source_id
+    max-width: 35%
