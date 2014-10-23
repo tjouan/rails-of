@@ -93,6 +93,8 @@ class WorkForm < FormBase
   end
 
   def user_quota
+    return unless object.usage
+
     if object.usage > user.usage_left
       usage_needed = object.usage - user.usage_left
       errors.add :user_quota,

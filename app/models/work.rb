@@ -56,6 +56,7 @@ class Work < ActiveRecord::Base
 
   def usage
     unless multiplier = operation.usage_multiplier
+      return unless parameters
       ignored_parameters = parameters[1] ? parameters[1].split(',') : []
       multiplier = source.headers.count - ignored_parameters.size
     end
