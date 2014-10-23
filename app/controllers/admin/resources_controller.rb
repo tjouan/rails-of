@@ -19,6 +19,9 @@ class Admin::ResourcesController < Admin::BaseController
       help_intent:  :text_area,
       help_usage:   :text_area
     },
+    Subscription => {
+      quota:        :number_field
+    },
     User => {
       name:                   :text_field,
       email:                  :email_field,

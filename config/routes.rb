@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :offers
     resources :operations
     resources :sources, only: %i[index show]
-    resources :subscriptions, only: %i[index show]
+    resources :subscriptions
     resources :users
     resources :works, only: %i[index show]
   end
