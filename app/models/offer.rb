@@ -1,6 +1,6 @@
 class Offer < ActiveRecord::Base
   FREE_OFFER_DAY_COUNT  = 15
-  ORDER_BY              = %w[bronze silver gold].freeze
+  ORDER_BY              = %w[gold silver bronze].freeze
   FEATURES              = {
     firstnames: {
       name:   'Scoring Prénom',
