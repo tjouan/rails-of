@@ -1,9 +1,9 @@
 class Operation < ActiveRecord::Base
   USAGE_MULTIPLIERS = {
-    firstnames: 1,
-    geoscore:   2,
-    insee:      3
-  }
+    firstnames: 2,
+    geoscore:   1,
+    insee:      26
+  }.freeze
 
   has_many :works, dependent: :destroy
 
