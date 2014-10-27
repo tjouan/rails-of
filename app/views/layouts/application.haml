@@ -19,8 +19,7 @@
           (current_user? ? dashboard_path : root_path ),
           id: 'logo'
 
-        %p
-          09 72 37 84 47
+        %p= Rails.application.config.phone_number
 
         - if current_user?
           %nav
@@ -70,8 +69,7 @@
           France
 
         %p.contact-phone
-          %b Téléphone
-          09 72 37 84 46
+          %b= Rails.application.config.phone_number
 
         %hr
 

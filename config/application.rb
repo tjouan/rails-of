@@ -80,6 +80,8 @@ module OptiFront
     config.sources_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sources') :
       File.join('data', 'sources')
+
+    config.phone_number = '09 72 37 84 47'.freeze
   end
 
   UnknownSourceError = Class.new(RuntimeError)
