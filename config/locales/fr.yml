@@ -44,6 +44,35 @@ fr:
       raw_score:            Score brut
       score:                Geoscore
 
+      iris_match:           Correspondance Iris
+      foreign_rate:         Taux étrangers
+      csp_rate:             Taux CSP+
+      csp:                  CSP la plus représentée
+      age_category:         Catgorie d'âge adulte la plus représentée
+      retired_rate:         Taux de retraités
+      single_family_rate:   Taux de familles mono-parentales
+      single_person_rate:   Taux de célibataires
+      home_person_rate:     Personnes par foyer
+      big_family_rate:      Taux familles nombreuses
+      second_home_rate:     Taux de résidences secondaires
+      house_rate:           Taux de maisons
+      home_rooms_count:     Nombre de pièces moyen par résidence principale
+      home_size:            Surface estimée logement
+      moved_since_category: Récence d'emménagement tranche
+      moved_since:          Récence d'emménagement estimée
+      owner_rate:           Taux de propriétaires RP
+      hlm_rate:             Taux de HLM
+      electrical_heat_rate: Taux d'équipement chauffage électrique
+      parking_rate:         Taux parkings RP
+      cars_rate:            Taux de voitures
+      study_rate:           Taux études supérieures
+      study_level:          Niveau d'étude le plus représenté
+      studying_rate:        Part de la population en cours de scolarité
+      unemployed_rate:      Taux de chômage
+      pub_transport_rate:   Taux utilisation transport en commun travail
+      income_average:       Revenu médian
+
+
 
   attributes:
     company:      Raison sociale
