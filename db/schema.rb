@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021154252) do
+ActiveRecord::Schema.define(version: 20141101214452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20141021154252) do
     t.string   "zone",       null: false
     t.text     "body",       null: false
   end
+
+  create_table "exports", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "source_id",                 null: false
+    t.string   "sha256"
+    t.string   "charset",                   null: false
+    t.boolean  "header",     default: true, null: false
+    t.string   "separator",                 null: false
+    t.string   "file_name",                 null: false
+  end
+
+  add_index "exports", ["source_id"], name: "index_exports_on_source_id", using: :btree
 
   create_table "headers", force: true do |t|
     t.integer  "source_id",  null: false

@@ -1,0 +1,45 @@
+%h1
+  Export des données
+  = "« #{@source.label} »"
+
+
+- if @exports.any?
+  %table.exports-list
+    %thead
+      %tr
+        %th
+          Export
+        %th
+          En-tête
+        %th.list-date
+          Exporté le
+        %th.list-actions
+          Actions
+
+    %tbody
+      - @exports.each do |export|
+        %tr
+          %td
+            - if export.ready?
+              = link_to export.file_name, source_export_path(@source, export)
+            - else
+              = export.file_name
+          %td
+            = export.header? ? 'oui' : 'non'
+          %td.list-date
+            - if export.ready?
+              = l export.updated_at
+            - else
+              (en cours)
+          %td.list-actions
+            - if export.ready?
+              %ul.actions
+                = action_link :delete, [@source, export]
+
+- else
+  %p Aucun export disponible.
+
+
+%ul.actions
+  %li
+    = link_to 'Nouvel export', new_source_export_path

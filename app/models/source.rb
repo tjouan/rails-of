@@ -7,8 +7,8 @@ class Source < ActiveRecord::Base
     -> { order 'position ASC' },
     dependent: :destroy
   accepts_nested_attributes_for :headers
-
   has_many :works, dependent: :destroy
+  has_many :exports, dependent: :destroy
 
   before_create :set_default_label
 

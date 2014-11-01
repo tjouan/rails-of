@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resource :headers, only: :edit
     resource :preview, only: :show
     resource :download, only: :show
+    resources :exports, only: %i[index show new create destroy]
   end
 
   get 'terms', to: 'pages#terms'

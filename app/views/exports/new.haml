@@ -1,0 +1,34 @@
+%h1
+  Nouvel export des données
+  = "« #{@source.label} »"
+
+
+= form_for [:source, @export], html: { class: 'form' } do |f|
+  %fieldset
+    %p.field
+      = f.check_box :header
+      = f.label :header
+
+    -#
+      %p.field
+        = f.label :separator
+        %br
+        = f.text_field :separator
+
+    %p.field
+      = f.label :file_name
+      %br
+      = f.text_field :file_name
+
+
+    - if @export.errors.any?
+      .form-errors
+        %p= t('errors_count', count: @export.errors.size)
+        %ul
+          - @export.errors.full_messages.each do |e|
+            %li= e
+
+
+  %ul.actions
+    %li
+      = f.button 'Exporter'
