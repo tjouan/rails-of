@@ -21,7 +21,8 @@ class Admin::ResourcesController < Admin::BaseController
       help_usage:   :text_area
     },
     Subscription => {
-      quota:        :number_field
+      usage:  :number_field,
+      quota:  :number_field
     },
     User => {
       name:                   :text_field,
