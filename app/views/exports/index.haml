@@ -24,7 +24,7 @@
               = link_to export.file_name, source_export_path(@source, export)
             - else
               = export.file_name
-          %td
+          %td.list-boolean
             = export.header? ? 'oui' : 'non'
           %td.list-date
             - if export.ready?
