@@ -33,11 +33,11 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#show'
     get 'doc/markdown', to: 'docs#markdown'
     resources :articles
-    resources :offers
-    resources :operations
+    resources :offers, only: %i[index show edit update]
+    resources :operations, only: %i[index show edit update]
     resources :sources, only: %i[index show]
-    resources :subscriptions
-    resources :users
+    resources :subscriptions, only: %i[index show edit update]
+    resources :users, only: %i[index show edit update]
     resources :works, only: %i[index show]
   end
 end

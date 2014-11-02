@@ -8,14 +8,12 @@ class Admin::ResourcesController < Admin::BaseController
     },
     Offer => {
       name:     :text_field,
-      ref:      :text_field,
       price:    :number_field,
       quota:    :number_field,
       visible:  :check_box
     },
     Operation => {
       name:         :text_field,
-      ref:          :text_field,
       description:  :text_area,
       help_intent:  :text_area,
       help_usage:   :text_area
@@ -26,9 +24,6 @@ class Admin::ResourcesController < Admin::BaseController
     },
     User => {
       name:                   :text_field,
-      email:                  :email_field,
-      password:               :password_field,
-      password_confirmation:  :password_field,
       company:                :text_field,
       tel_number:             :text_field,
       active:                 :check_box,
