@@ -29,6 +29,8 @@
               = action_link :tools, operations_path, append_text: true
               = action_link :results, works_path, append_text: true
               = action_link :signout, signout_path, append_text: true
+              - if current_user.admin?
+                = link_to 'Admin', admin_path
         - else
           %nav
             %ul
