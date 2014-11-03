@@ -21,14 +21,15 @@ fr:
 
   tools:          Outils
 
-  authent:
-    invalid:      Authentification incorrecte
   signin:         Connexion
   signout:        Déconnexion
   account:        Compte
 
   trainings:      Formation
   contact:        Contact
+
+  authent:
+    invalid:      Authentification incorrecte
 
   operation:
     col:

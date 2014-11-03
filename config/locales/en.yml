@@ -21,14 +21,15 @@ en:
 
   tools:          Tools
 
-  authent:
-    invalid:      Invalid authentication
   signin:         Signin
   signout:        Signout
   account:        Account
 
   trainings:      Training
   contact:        Contact
+
+  authent:
+    invalid:      Invalid authentication
 
   operation:
     col:
