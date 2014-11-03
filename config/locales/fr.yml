@@ -1,32 +1,25 @@
 fr:
-  edit:           Modifier
+  account:        Compte
+  contact:        Contact
+  dashboard:      Tableau de bord
+  data:           Données
   delete:         Supprimer
   delete_confirm: Confirmez la suppression
-
-  dashboard:      Tableau de bord
-
-  data:           Données
-  preview:        Prévisualiser
   download:       Télécharger
-  upload:         Ajouter des données
-
-  report:         Rapport
-
-  results:        Résultats
-  queued:         En attente
-  processing:     En cours
-  processed:      Terminé
+  edit:           Modifier
   error:          Erreur
-  timeout:        Expiré
-
-  tools:          Outils
-
+  preview:        Prévisualiser
+  processed:      Terminé
+  processing:     En cours
+  queued:         En attente
+  report:         Rapport
+  results:        Résultats
   signin:         Connexion
   signout:        Déconnexion
-  account:        Compte
-
+  timeout:        Expiré
+  tools:          Outils
   trainings:      Formation
-  contact:        Contact
+  upload:         Ajouter des données
 
   authent:
     invalid:      Authentification incorrecte

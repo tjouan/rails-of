@@ -1,32 +1,25 @@
 en:
-  edit:           Edit
+  account:        Account
+  contact:        Contact
+  dashboard:      Dashboard
+  data:           Data
   delete:         Delete
   delete_confirm: Confirm deletion
-
-  dashboard:      Dashboard
-
-  data:           Data
-  preview:        Preview
   download:       Download
-  upload:         Upload new data
-
-  report:         Report
-
-  results:        Results
-  queued:         Queued
-  processing:     Processing
-  processed:      Processed
+  edit:           Edit
   error:          Error
-  timeout:        Timeout
-
-  tools:          Tools
-
+  preview:        Preview
+  processed:      Processed
+  processing:     Processing
+  queued:         Queued
+  report:         Report
+  results:        Results
   signin:         Signin
   signout:        Signout
-  account:        Account
-
+  timeout:        Timeout
+  tools:          Tools
   trainings:      Training
-  contact:        Contact
+  upload:         Upload new data
 
   authent:
     invalid:      Invalid authentication
