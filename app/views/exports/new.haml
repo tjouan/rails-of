@@ -12,7 +12,7 @@
     %p.field
       = f.label :charset
       %br
-      = f.select :charset, @export.available_charsets
+      = f.select :charset, @export.available_charsets.map(&:upcase)
 
     %p.field
       = f.label :separator
