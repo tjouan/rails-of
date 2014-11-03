@@ -9,6 +9,11 @@
       = f.check_box :header
       = f.label :header
 
+    %p.field
+      = f.label :charset
+      %br
+      = f.select :charset, @export.available_charsets
+
     -#
       %p.field
         = f.label :separator

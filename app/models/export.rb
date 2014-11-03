@@ -1,4 +1,6 @@
 class Export < ActiveRecord::Base
+  CHARSETS = %w[utf-8 iso-8859-15 iso-8859-1].freeze
+
   belongs_to :source
 
   after_initialize :set_defaults, if: :new_record?
@@ -18,6 +20,10 @@ class Export < ActiveRecord::Base
 
   def path
     File.join(Rails.configuration.sources_path, sha256)
+  end
+
+  def available_charsets
+    CHARSETS
   end
 
   def set_defaults

@@ -11,6 +11,8 @@
           Export
         %th
           En-tête
+        %th
+          Jeu de caractère
         %th.list-date
           Exporté le
         %th.list-actions
@@ -26,6 +28,8 @@
               = export.file_name
           %td.list-boolean
             = export.header? ? 'oui' : 'non'
+          %td.list-short-enum
+            = export.charset.upcase
           %td.list-date
             - if export.ready?
               = l export.updated_at

@@ -16,7 +16,7 @@ class ExportSaver
   end
 
   def export
-    Tempfile.create('opti-export') do |f|
+    Tempfile.create('opti-export', io_options) do |f|
       CSV(f, csv_options) do |csv_out|
         csv_out << @export.source.headers.map(&:name) if @export.header
         @export.source.rows.each { |r| csv_out << r }
@@ -32,6 +32,13 @@ class ExportSaver
 
 
   private
+
+  def io_options
+    {
+      external_encoding:  @export.charset,
+      undef:              :replace
+    }
+  end
 
   def csv_options
     {

@@ -41,6 +41,7 @@ class ExportsController < ApplicationController
   end
 
   def export_params
-    params.require(:export).permit(:source_id, :header, :separator, :file_name)
+    params.require(:export)
+      .permit %i[source_id header charset separator file_name]
   end
 end
