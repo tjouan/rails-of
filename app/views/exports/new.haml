@@ -17,7 +17,8 @@
     %p.field
       = f.label :separator
       %br
-      = f.text_field :separator
+      = f.select :separator,
+        @export.separators.map { |k, v| ["#{t v} #{k.inspect}", k] }
 
     %p.field
       = f.label :file_name

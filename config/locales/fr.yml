@@ -1,5 +1,6 @@
 fr:
   account:        Compte
+  comma:          virgule
   contact:        Contact
   dashboard:      Tableau de bord
   data:           Données
@@ -14,8 +15,10 @@ fr:
   queued:         En attente
   report:         Rapport
   results:        Résultats
+  semicolon:      point-virgule
   signin:         Connexion
   signout:        Déconnexion
+  tabulation:     tabulation
   timeout:        Expiré
   tools:          Outils
   trainings:      Formation

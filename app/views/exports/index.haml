@@ -13,6 +13,8 @@
           En-tête
         %th
           Jeu de caractère
+        %th
+          Séparateur
         %th.list-date
           Exporté le
         %th.list-actions
@@ -30,6 +32,8 @@
             = export.header? ? 'oui' : 'non'
           %td.list-short-enum
             = export.charset.upcase
+          %td.list-short-enum
+            = export.separator_description
           %td.list-date
             - if export.ready?
               = l export.updated_at

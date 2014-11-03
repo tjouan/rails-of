@@ -1,5 +1,6 @@
 en:
   account:        Account
+  comma:          comma
   contact:        Contact
   dashboard:      Dashboard
   data:           Data
@@ -14,9 +15,11 @@ en:
   queued:         Queued
   report:         Report
   results:        Results
+  semicolon:      semicolon
   signin:         Signin
   signout:        Signout
   timeout:        Timeout
+  tabulation:     tabulation
   tools:          Tools
   trainings:      Training
   upload:         Upload new data
