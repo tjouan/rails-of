@@ -11,7 +11,7 @@ class Export < ActiveRecord::Base
   after_initialize :set_defaults, if: :new_record?
 
   validates :source,    presence: true
-  validates :charset,   presence: true
+  validates :charset,   inclusion: CHARSETS
   validates :header,    presence: true
   validates :separator, inclusion: SEPARATORS.keys
   validates :file_name, presence: true
@@ -27,7 +27,7 @@ class Export < ActiveRecord::Base
     File.join(Rails.configuration.sources_path, sha256)
   end
 
-  def available_charsets
+  def charsets
     CHARSETS
   end
 
