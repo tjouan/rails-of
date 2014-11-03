@@ -17,7 +17,7 @@ class ExportSaver
 
   def export
     Tempfile.create('opti-export') do |f|
-      CSV(f, col_sep: @export.separator) do |csv_out|
+      CSV(f, csv_options) do |csv_out|
         csv_out << @export.source.headers.map(&:name) if @export.header
         @export.source.rows.each { |r| csv_out << r }
       end
@@ -28,5 +28,14 @@ class ExportSaver
     end
 
     @export.save
+  end
+
+
+  private
+
+  def csv_options
+    {
+      col_sep: @export.separator
+    }
   end
 end
