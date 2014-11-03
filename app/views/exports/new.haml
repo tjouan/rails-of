@@ -14,11 +14,10 @@
       %br
       = f.select :charset, @export.available_charsets
 
-    -#
-      %p.field
-        = f.label :separator
-        %br
-        = f.text_field :separator
+    %p.field
+      = f.label :separator
+      %br
+      = f.text_field :separator
 
     %p.field
       = f.label :file_name
