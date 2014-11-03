@@ -22,6 +22,7 @@ class ExportSaver
         @export.source.rows.each { |r| csv_out << r }
       end
 
+      f.flush
       @export.sha256 = Digest::SHA256.file(f.path).hexdigest
       FileUtils.cp f.path, @export.path
     end
