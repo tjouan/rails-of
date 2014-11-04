@@ -20,12 +20,6 @@ class Offer < ActiveRecord::Base
       silver: true,
       gold:   true
     },
-    opticible: {
-      name:   'Optimisation Ciblage',
-      bronze: true,
-      silver: true,
-      gold:   true
-    },
     support_mail: {
       name:   'Support email',
       bronze: true,

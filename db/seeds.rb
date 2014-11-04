@@ -8,10 +8,6 @@ unless Rails.env.test?
       name:         'GeoScore',
       description:  "Outil de scoring GeoScore\n"
     },
-    opticible: {
-      name:         'Opticible',
-      description:  "Outil Opticible\n"
-    },
     insee: {
       name:         'Scoring INSEE',
       description:  "Scoring INSEE\n"
