@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def show
     @works      = current_user.works.latest
-    @operations = Operation.all
+    @operations = Operation.active
   end
 end

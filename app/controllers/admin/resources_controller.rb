@@ -14,6 +14,7 @@ class Admin::ResourcesController < Admin::BaseController
     },
     Operation => {
       name:         :text_field,
+      active:       :check_box,
       description:  :text_area,
       help_intent:  :text_area,
       help_usage:   :text_area

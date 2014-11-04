@@ -2,7 +2,7 @@ class OperationsController < ApplicationController
   before_action :set_operation, only: :show
 
   def index
-    @operations = Operation.all
+    @operations = Operation.active
   end
 
   def show

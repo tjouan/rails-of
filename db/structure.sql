@@ -178,7 +178,8 @@ CREATE TABLE operations (
     ref character varying(255),
     description text,
     help_intent text,
-    help_usage text
+    help_usage text,
+    active boolean DEFAULT true NOT NULL
 );
 
 
@@ -660,6 +661,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141021154120');
 INSERT INTO schema_migrations (version) VALUES ('20141021154252');
 
 INSERT INTO schema_migrations (version) VALUES ('20141101214452');
+
+INSERT INTO schema_migrations (version) VALUES ('20141104162829');
 
 INSERT INTO schema_migrations (version) VALUES ('30');
 
