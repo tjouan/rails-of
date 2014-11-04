@@ -61,7 +61,7 @@ module OptiFront
     ]
 
     config.host       = ENV.fetch('OPTI_FRONT_HOST', 'localhost.invalid').freeze
-    config.host_prod  = 'beta.optidm.fr'
+    config.host_prod  = 'datacube.fr'
 
     config.action_mailer.default_url_options  = {
       host:     config.host,
