@@ -63,6 +63,7 @@ class WorkProcessor
   private
 
   def update_user_usage
-    work.user.current_subscription.increment_usage! work.usage
+    return unless usage = work.usage
+    work.user.current_subscription.increment_usage! usage
   end
 end
