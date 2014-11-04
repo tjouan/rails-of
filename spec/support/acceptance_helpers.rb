@@ -7,8 +7,8 @@ module AcceptanceHelpers
     click_button 'Connexion'
   end
 
-  def sign_in_with_active_user
-    sign_in create :user, active: true
+  def sign_in_with_subscribed_user
+    sign_in create :subscribed_user
   end
 
   def current_user

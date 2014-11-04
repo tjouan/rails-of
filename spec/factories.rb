@@ -19,6 +19,13 @@ eoh
     position  0
   end
 
+  factory :offer do
+    factory :free_offer do
+      ref     'free'
+      visible false
+    end
+  end
+
   factory :operation do
     name  'GeoScore'
     ref   'geoscore'
@@ -45,6 +52,19 @@ eoh
     name      'Bob'
     email     'bob@example.net'
     password  'p4ssw0rd'
+
+    trait :active do
+      active true
+    end
+
+    trait :subscribed do
+      after :create do |e|
+        create :free_offer unless Offer.free_offer
+        UserCreater.new(e).call
+      end
+    end
+
+    factory :subscribed_user, traits: %i[active subscribed]
   end
 
   factory :work do
