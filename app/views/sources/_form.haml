@@ -1,20 +1,34 @@
 = form_for @source, html: { class: 'form' } do |f|
   %fieldset
     - if @source.new_record?
-      %fieldset
+      %fieldset.sources-new-file
         %legend Fichier
 
-        %p.field
-          = f.file_field :file
+        .sources-new-file-controls
+          %p.field
+            = f.file_field :file
 
-        %p.field
-          = check_box_tag 'file_header'
-          = label_tag 'file_header', 'ce fichier comporte un en-tête'
+          %p.field
+            = check_box_tag 'file_header'
+            = label_tag 'file_header', 'ce fichier comporte un en-tête'
 
-        - if @source.errors.any?
-          .form-errors
-            - @source.errors.each do |k, v|
-              %p= v
+          - if @source.errors.any?
+            .form-errors
+              - @source.errors.each do |k, v|
+                %p= v
+
+        .sources-new-file-help
+          %p Formats de fichiers supportés :
+          %ul
+            %li
+              Microsoft Excel 2007 ou supérieur
+              (Format OOXML, extension du nom de fichier #{code '.xlsx'})
+            %li
+              Texte
+              (Format CSV,
+              séparateur de lignes « saut de ligne » soit #{code '\n'},
+              séparateur de colonnes #{code ','})
+
 
     %p.field
       %label

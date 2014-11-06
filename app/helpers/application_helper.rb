@@ -56,6 +56,10 @@ module ApplicationHelper
     str and markdown_parser.render(str).html_safe or nil
   end
 
+  def code(content)
+    content_tag :code, content
+  end
+
 
   private
 
