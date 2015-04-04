@@ -3,8 +3,7 @@
   %head
     %meta(charset='utf-8')
     %title
-      DATACUBE - Améliorez votre prospection commerciale et vos campagnes
-      Marketing (version bêta)
+      OptiFront
 
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
@@ -15,7 +14,7 @@
 
     .header_wrapper
       %header#header
-        = link_to image_tag('logo.svg', height: '96', alt: 'DATACUBE'),
+        = link_to image_tag('logo.svg', height: '96', alt: 'OptiFront'),
           (current_user? ? dashboard_path : root_path ),
           id: 'logo'
 
@@ -54,19 +53,15 @@
               = action_link :trainings, trainings_path, append_text: true
             %li
               = action_link :account, dashboard_path, append_text: true
-          %li
-            = action_link :contact, 'mailto:contact@datacube.fr', append_text: true
-          %li
-            = link_to 'Facebook', 'https://www.facebook.com/DATACUBE.FR'
 
         %p.contact-address
           %b Adresse
           %br
-          DATACUBE
+          OptiFront
           %br
-          18 rue des caillouins
+          Lorem ipsum dolor sit amet
           %br
-          14123 Cormelles-le-Royal
+          Normandie
           %br
           France
 

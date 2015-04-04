@@ -24,11 +24,11 @@ class Admin::ResourcesController < Admin::BaseController
       quota:  :number_field
     },
     User => {
-      name:                   :text_field,
-      company:                :text_field,
-      tel_number:             :text_field,
-      active:                 :check_box,
-      admin:                  :check_box
+      name:       :text_field,
+      company:    :text_field,
+      tel_number: :text_field,
+      active:     :check_box,
+      admin:      :check_box
     }
   }
 

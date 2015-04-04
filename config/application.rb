@@ -61,7 +61,7 @@ module OptiFront
     ]
 
     config.host       = ENV.fetch('OPTI_FRONT_HOST', 'localhost.invalid').freeze
-    config.host_prod  = 'datacube.fr'
+    config.host_prod  = 'optifront.example'
 
     config.action_mailer.default_url_options  = {
       host:     config.host,
@@ -69,11 +69,11 @@ module OptiFront
     }
     config.action_mailer.delivery_method      = :sendmail
     config.action_mailer.sendmail_settings    = {
-      arguments: '-i -f tj+datacube_opti_front@a13.fr'
+      arguments: '-i -f user+sender@optifront.example'
     }
     if config.host == config.host_prod
       config.action_mailer.default_options = {
-        bcc: %w[tj+datacube_opti_front_bcc@a13.fr alexis.dolle@datacube.fr]
+        bcc: %w[user+alt@optifront.example user+alt_@optifront.example]
       }
     end
 
@@ -81,7 +81,7 @@ module OptiFront
       File.join('data', Rails.env, 'sources') :
       File.join('data', 'sources')
 
-    config.phone_number = '09 72 37 84 47'.freeze
+    config.phone_number = '+33 6 28 25 39 00'.freeze
   end
 
   UnknownSourceError = Class.new(RuntimeError)

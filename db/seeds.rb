@@ -90,7 +90,7 @@ On peut également créer des listes ordonnées :
 ---
 
 
-Une URI entre chevrons, <http://datacube.fr/>, est automatiquement
+Une URI entre chevrons, <http://optifront.example/>, est automatiquement
 transformée en lien.
 
 ---
@@ -108,11 +108,11 @@ underscores_entre_des_mots sans déclencher la création d'emphase.
 
 Ajout d'une image inline :
 
-![DATACUBE](/assets/logo.png)
+![OptiFront](/assets/logo.png)
 
 Avec attribut HTML "title" :
 
-![DATACUBE](/assets/logo.png "attribut title sur image")
+![OptiFront](/assets/logo.png "attribut title sur image")
 
 ---
 

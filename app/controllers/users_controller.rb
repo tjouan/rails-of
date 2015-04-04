@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if UserCreater.new(@user).call
       self.current_user = @user.object
-      flash[:notice] = 'Bienvenue sur DATACUBE !'
+      flash[:notice] = 'Bienvenue sur OptiFront !'
       redirect_to dashboard_path
     else
       render :new

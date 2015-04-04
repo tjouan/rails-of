@@ -15,16 +15,6 @@ GIT
   specs:
     spork (1.0.0rc4)
 
-GIT
-  remote: git:datacube/opti-tools
-  revision: 2f695afc6ac8dbb84336efc116cb4edbb8a09120
-  specs:
-    opti-tools (0.2.11)
-      hiredis (~> 0.5)
-      redis (~> 3.1)
-      text (~> 1.2)
-      unf (~> 0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -262,7 +252,6 @@ DEPENDENCIES
   haml-rails (~> 0.5)
   jquery-rails (~> 3.1)
   listen (= 2.7.5)
-  opti-tools!
   pg (~> 0.17)
   pry-rails
   rails (~> 4.1.7)

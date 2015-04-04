@@ -1,7 +1,7 @@
 require 'producer/rails'
 
 
-set :repository,      'git:datacube/opti-front'
+set :repository,      'git:opti-front'
 set :app_path,        'www/opti-front'
 set :app_mkdir,       %w[data/sources db]
 

@@ -80,7 +80,7 @@ Rails.application.configure do
   config.middleware.use ExceptionNotification::Rack,
     email: {
       email_prefix:         '[opti-front] ',
-      sender_address:       'tj+datacube_opti_front@a13.fr',
-      exception_recipients: %w[tj+datacube_opti_front@a13.fr]
+      sender_address:       'user+sender@optifront.example',
+      exception_recipients: %w[user+exceptions@optifront.example]
     }
 end

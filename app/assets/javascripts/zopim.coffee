@@ -10,6 +10,6 @@ $ ->
     z.set._ = []
 
     e     = d.createElement(t)
-    e.src = '//v2.zopim.com/?2Kb7rvWUAnpGtVad9es1kASBk9A8fk9K'
+    e.src = '//v2.zopim.com/?FIXME'
     s     = d.getElementsByTagName(t)[0]
     s.parentNode.insertBefore(e, s)
