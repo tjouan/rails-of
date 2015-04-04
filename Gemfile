@@ -39,9 +39,7 @@ group :test do
 
   gem 'capybara',           '~> 2.3'
 
-  gem 'guard-rspec',        '~> 4.2.9',   require: false
-  gem 'listen',             '2.7.5',      require: false
-  gem 'celluloid',          '0.16.0.pre', require: false
+  #gem 'guard-rspec',        '~> 4.2'
 
   gem 'spork',              github: 'tjouan/spork', branch: 'rspec-3'
 
