@@ -1,8 +1,5 @@
 class WorkProcessor
   OPERATIONS = {
-    firstnames: OptiTools::Firstnames::Operation,
-    geoscore:   OptiTools::GeoScore::Operation,
-    insee:      OptiTools::INSEE::Operation
   }.freeze
 
   class << self
