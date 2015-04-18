@@ -20,6 +20,6 @@ describe User do
   end
 
   it 'validates minimum length for the password' do
-    expect(user).to ensure_length_of(:password).is_at_least 8
+    expect(user).to validate_length_of(:password).is_at_least 8
   end
 end
