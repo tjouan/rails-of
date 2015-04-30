@@ -1,3 +1,0 @@
-[submodule "vendor/deploy/stdlib"]
-	path = vendor/deploy/stdlib
-	url = git:producer-stdlib
